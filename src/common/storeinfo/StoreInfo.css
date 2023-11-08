@@ -1,0 +1,42 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+.generalInfo{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: tattoo;
+   justify-content: space-around;
+   padding-top: 2em;
+   padding-bottom: 2em;
+   border-top: solid 1px rgba(255, 255, 255, 0.5);
+   width: 70vw;
+   margin-left: 15vw;
+}
+
+.titleinfo{
+   font-size: 1.5em;
+   color: rgb(218, 183, 94)
+}
+
+.info{
+   margin-top: -0.2em;
+   font-size: 1em;
+   
+}
+
+.directionInfo{
+   border-right: 1px solid rgba(255, 255, 255, 0.5);
+   padding-right: 4em;
+}
+
+.phoneInfo{
+   
+   border-right: 1px solid rgba(255, 255, 255, 0.5);
+   padding-right: 8em;
+   
+   
+   
+}

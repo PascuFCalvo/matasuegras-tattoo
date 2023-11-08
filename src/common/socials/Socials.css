@@ -1,0 +1,32 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+.navbarButtonsSocials {
+   font-family: tattoo;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: center;
+   margin-left: 88%;
+   margin-top: -8.2em;
+   
+   
+   
+}
+
+.botonNavBarSocials > img{
+   width: 3em;
+   padding: 0.5em;
+
+}
+
+.botonNavBarSocials > img:hover {
+   transform: scale(1.2);
+   cursor: pointer;
+   filter: contrast(2);
+   transition: 0.5s;
+   
+   
+}
