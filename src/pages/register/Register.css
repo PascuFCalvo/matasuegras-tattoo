@@ -1,0 +1,19 @@
+.Register{
+   display: flex;
+   justify-content: flex-end;
+   height: 88vh;
+   width: 100vw;
+}
+
+.RegisterBackground
+{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin-right: 5em;
+   background-color: rgba(172, 15, 15, 0.5);
+   width: 30em;
+   height: 20em;
+}
+

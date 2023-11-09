@@ -1,15 +1,19 @@
 import { Footer } from "../../common/footer/Footer";
-import { Header } from "../../common/header/header";
-import { Logo } from "../../common/logo/logo";
+import { Header } from "../../common/header/Header";
+import { Body } from "../Body/Body";
+
+
 import "./Home.css";
 
 export const Home = () => {
   return (
     <div className="homeBody">
-      <div className="homeBodyInner"></div>
+      <div className="homeBodyInner">
       <Header />
-      <Logo />
-      <Footer />
+      <Body />
+      <Footer />  
+      </div>
+      
     </div>
   );
 };

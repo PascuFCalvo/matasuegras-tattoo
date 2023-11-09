@@ -1,14 +1,18 @@
 import "./Navbar.css"
+import {  useNavigate } from "react-router-dom";
+
 
 export const Navbar = () => {
   let botones = [
     {
       id: 1,
       nombre: "INICIO",
+      path: "/"
     },
     {
       id: 2,
       nombre: "ESTUDIO",
+      
     },
     {
       id: 3,
@@ -28,15 +32,15 @@ export const Navbar = () => {
     },
   ];
 
-  const elegido = (boton) => {
-    console.log(boton);
-  };
+  const navigate = useNavigate();
 
   return (
     <div className = "navbarButtons">
       {botones.map((boton) => {
         return (
-          <div className="botonNavBar" key={boton.id} onClick={() => elegido(boton)} >
+          <div className="botonNavBar" key={boton.id} onClick={() => 
+          navigate(boton.path)
+          } >
             {boton.nombre}
           </div>
         );

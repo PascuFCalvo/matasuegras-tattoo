@@ -1,7 +1,8 @@
 import { LogoChiquito } from "../logochiquito/LogoChiquito";
 import { Navbar } from "../navbar/navbar";
 import { NavbarLogin } from "../navbarlogin/NavBarLogin";
-import { NavbarSocials } from "../socials/socials";
+import { NavbarSocials } from "../socials/Socials";
+
 import "./Header.css";
 
 

@@ -20,3 +20,6 @@ export const NavbarSocials = () => {
     </div>
   );
 };
+
+/* https://www.youtube.com/@PonyLawson */
+/* https://www.instagram.com/nolandtattooparlour/ */

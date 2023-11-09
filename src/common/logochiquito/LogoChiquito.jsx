@@ -6,7 +6,8 @@ export const LogoChiquito = () => {
    
    return (
       <> 
-      <div className = "logoChiquito"></div>
+      <a href="http://localhost:5173/"><div className = "logoChiquito"></div></a>
+      
       
       </>
      

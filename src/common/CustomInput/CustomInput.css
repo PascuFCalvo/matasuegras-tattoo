@@ -1,0 +1,25 @@
+@font-face {
+    font-family: tattoo;
+    src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+ }
+
+
+.customInput{
+    font-family: tattoo;
+    font-size: 20px;
+    padding: 1em;
+    padding-bottom: 0em;
+    padding-top: 0em;
+    height: 3em;
+    width: 18em;
+    border: none;
+    background-color: transparent;
+    border-bottom: solid 2px rgb(218, 183, 94);
+    outline: none;
+   
+}
+
+.customInput:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.3)
+}

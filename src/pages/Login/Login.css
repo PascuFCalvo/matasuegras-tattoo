@@ -1,0 +1,68 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+
+
+.Login{
+   font-family: tattoo;
+   display: flex;
+   justify-content: flex-end;
+   height: 88vh;
+   width: 100vw;
+}
+
+.formBackground{
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+   align-items: center;
+   margin-right: 5em;
+   background-color: rgba(128, 128, 128, 0.5);
+   width: 30em;
+   height: 25em;
+   position: relative;
+   
+
+}
+
+.buttonSubmit {
+
+   height: 3em;
+   width: 10em;
+   background-color: rgb(218, 183, 94);
+   color: rgb(255, 255, 255);
+   font-weight: bolder;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   bottom: 2em ;
+   right: 2em;
+   
+}
+
+.buttonSubmit:hover {
+
+   transition: 0.2s;
+   color: white;
+   cursor: pointer;
+   background-color: rgb(221, 176, 61);;
+}
+
+.buttonSubmit:active {
+
+   background-color: rgb(218, 183, 94);
+}
+
+.overInput{
+   margin-top: 1em;
+   font-size: 22px;
+   width: 100%;
+   text-align: start;
+   margin-left: 3.6em;
+   height: 2em;
+   margin-top: 1em;
+   
+}
