@@ -8,6 +8,7 @@ import { Footer } from "../../common/footer/Footer";
 
 export const Register = () => {
 
+  
   const navigate = useNavigate();
 
   const [credenciales, setCredenciales] = useState({
@@ -44,6 +45,9 @@ export const Register = () => {
 
   }
 
+  
+
+
   return (
    <div><div className="Register"><div className="formBackgroundRegister">
       <div className="overInput">Nombre</div>
@@ -79,10 +83,12 @@ export const Register = () => {
         functionProp={functionHandler}
       />
       
-      <div className='buttonSubmit' onClick={logMe}>Log Me!</div>
+      <div className='buttonSubmit' onClick={logMe}>Registrarme</div>
     </div></div>
-    <Footer />
-</div>
+    
+    <Footer  paddingTop="8"/> 
+    </div>
+
    
     
   );

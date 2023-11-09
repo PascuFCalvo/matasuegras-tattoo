@@ -10,7 +10,7 @@
    display: flex;
    justify-content: flex-end;
    height: 88vh;
-   width: 100vw;
+   width: 100%;
 }
 
 .formBackgroundRegister{

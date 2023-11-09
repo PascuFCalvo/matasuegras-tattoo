@@ -4,6 +4,7 @@ import { MainPage } from '../MainPage/MainPage';
 import { Register } from '../Register/Register';
 import { Gallery } from '../Gallery/Gallery';
 import { ElEstudio } from '../ElEstudio/ElEstudio';
+import { TattoArtist } from '../TattooArtist/TattooArtist';
 
 
 export const Body = () => {
@@ -15,6 +16,8 @@ export const Body = () => {
                 <Route path="/register" element={<Register />}/>
                 <Route path="/gallery" element={<Gallery />}/>
                 <Route path="/elestudio" element={<ElEstudio />}/>
+                <Route path="/tatuadores" element={<TattoArtist />}/>
+                
                 
             </Routes>
          </>

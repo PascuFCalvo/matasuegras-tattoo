@@ -1,0 +1,35 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+.backgroundTattooArtist {
+   background-color: bisque;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   height: auto;
+   font-family: tattoo;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: black;
+
+}
+
+.tattooimage {
+   width: 100%;
+}
+
+.gridTattooArtist div {
+   max-width: 25em;
+   padding: 1em;
+}
+
+
+.gridTattooArtist {
+   padding: 2em;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   
+}

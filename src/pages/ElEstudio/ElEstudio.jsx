@@ -3,10 +3,11 @@ import elEstudio1 from "../../images/elEstudio1.jpg"
 import elEstudio2 from "../../images/elEstudio2.jpg"
 import elEstudio3 from "../../images/elEstudio3.jpg"
 import elEstudio4 from "../../images/elEstudio4.jpg"
+import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 
 export const ElEstudio = () => {
   return (
-    <div className="backgroundElEstudio">
+   <div><div className="backgroundElEstudio">
       <div className = "textoEstudio">
          <div className = "tituloTexto">
          NUESTRO ESTUDIO DE TATUAJE Y PIERCING EN VALENCIA<br/>
@@ -35,9 +36,11 @@ export const ElEstudio = () => {
       <img src ={elEstudio2}></img>
       <img src ={elEstudio3}></img>
       </div>
-      <img src ={elEstudio4}></img>
+      <img className = "final" src ={elEstudio4}></img>
     </div>
-      
+    <FooterBlack/>
+      </div>
+    
       
   );
 };

@@ -18,22 +18,20 @@
 }
 
 .titleinfo{
+   
    font-size: 1.5em;
    color: rgb(218, 183, 94)
 }
 
 
 
-.directionInfo{
-   border-right: 1px solid rgba(255, 255, 255, 0.5);
-   padding-right: 4em;
-}
+
+ 
 
 .phoneInfo{
-   
+   border-left: 1px solid rgba(255, 255, 255, 0.5);
    border-right: 1px solid rgba(255, 255, 255, 0.5);
-   padding-right: 8em;
-   
-   
-   
-}
+   padding-right: 8em; 
+   padding-left: 8em;
+   }
+

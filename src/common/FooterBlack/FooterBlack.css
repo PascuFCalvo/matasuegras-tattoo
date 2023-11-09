@@ -1,0 +1,36 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+.footerBlack {
+   font-family: tattoo;
+   width: 100vw;
+   height: 30em;
+   background-color: #202020;
+}
+
+.titleFooter{
+   font-size: 2em;
+   padding-top: 3em;
+   display: flex;
+   justify-content: space-evenly;
+   color: rgb(218, 183, 94);
+   
+   
+}
+
+.titleFooter div  {
+   border-bottom: solid 1px ;
+}
+
+.infoFooter div {
+   line-height: 2;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   margin-top: 2em;
+   margin-left: 10%;
+   text-align: start;
+   width: 20%;
+   max-width: 20%;
+}
+
