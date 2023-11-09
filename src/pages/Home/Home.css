@@ -1,17 +1,8 @@
-.homeBody {
-   width: 100vw;
-   height: 100vh;
-   background-color: rgb(255, 255, 255);
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-  
-}
+
 
 .homeBodyInner {
-   width: 98vw;
-   height: 97vh;
+   width: 100vw;
+   height: 100vh;
    background-image: url("../../images/image2.jpg"); 
    opacity: 1;  
   

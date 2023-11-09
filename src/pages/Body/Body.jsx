@@ -2,6 +2,8 @@ import { Routes, Route } from 'react-router-dom';
 import { Login } from '../Login/Login';
 import { MainPage } from '../MainPage/MainPage';
 import { Register } from '../Register/Register';
+import { Gallery } from '../Gallery/Gallery';
+import { ElEstudio } from '../ElEstudio/ElEstudio';
 
 
 export const Body = () => {
@@ -11,6 +13,8 @@ export const Body = () => {
                 <Route path="/" element={<MainPage />}/>
                 <Route path="/login" element={<Login />}/>
                 <Route path="/register" element={<Register />}/>
+                <Route path="/gallery" element={<Gallery />}/>
+                <Route path="/elestudio" element={<ElEstudio />}/>
                 
             </Routes>
          </>

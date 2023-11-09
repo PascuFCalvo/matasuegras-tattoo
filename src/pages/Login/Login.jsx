@@ -3,7 +3,8 @@ import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { logUser } from "../../services/apiCalls";
 import { useNavigate } from 'react-router-dom';
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Footer } from "../../common/footer/Footer";
 
 export const Login = () => {
 
@@ -20,10 +21,9 @@ export const Login = () => {
       [e.target.name]: e.target.value
     }));
   };
-
-//   useEffect(()=>{
-//     console.log(credenciales);
-//   },[credenciales]);
+  useEffect(()=>{
+    console.log(credenciales);
+  },[credenciales]);
 
   const logMe = () => {
 
@@ -44,7 +44,7 @@ export const Login = () => {
   }
 
   return (
-   <div className="Login"><div className="formBackground">
+   <div><div className="Login"><div className="formBackground">
       <div className="overInput">Nombre</div>
       <CustomInput
         design="customInput"
@@ -56,14 +56,16 @@ export const Login = () => {
       <div className="overInput">eMail</div>
       <CustomInput
         design="customInput"
-        type="email"
-        name="email"
-        placeholder=""
-        functionProp={functionHandler}
+  type="email"
+  name="email"
+  placeholder=""
+  functionProp={functionHandler}
       />
       <div className='buttonSubmit' onClick={logMe}>Log Me!</div>
     </div></div>
-
+      <Footer />  
+   </div>
+   
     
   );
 };

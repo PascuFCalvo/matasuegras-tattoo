@@ -12,7 +12,7 @@ export const Navbar = () => {
     {
       id: 2,
       nombre: "ESTUDIO",
-      
+      path: "elestudio"
     },
     {
       id: 3,
@@ -21,6 +21,7 @@ export const Navbar = () => {
     {
       id: 4,
       nombre: "GALERIA",
+      path: "gallery"
     },
     {
       id: 5,

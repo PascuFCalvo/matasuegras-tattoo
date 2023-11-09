@@ -1,8 +1,8 @@
 .footer{
    
    height: 10em;
-   width: 97.8%;
+   width: 100vw;
    position: absolute;
    bottom: 0;
-   margin-bottom: 0.7%;
+   
 }
