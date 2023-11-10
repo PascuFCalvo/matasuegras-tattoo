@@ -1,0 +1,21 @@
+.Appointment{
+   font-family: tattoo;
+   display: flex;
+   justify-content: flex-end;
+   height: 82vh;
+   width: 100vw;
+   justify-content: center;
+     
+}
+
+.AppointmentBackground{
+   display: flex;
+   flex-direction: column;
+   justify-content: start;
+   align-items: center;
+   
+   background-color: rgba(128, 128, 128, 0.5);
+   width: 40em;
+   height: 30em;
+   position: relative;
+}

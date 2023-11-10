@@ -27,7 +27,7 @@
 
 }
 
-.buttonSubmit {
+.buttonSubmitLogin {
 
    height: 3em;
    width: 10em;
@@ -38,12 +38,12 @@
    justify-content: center;
    align-items: center;
    position: absolute;
-   bottom: 2em ;
+   bottom: 1em ;
    right: 2em;
    
 }
 
-.buttonSubmit:hover {
+.buttonSubmitLogin:hover {
 
    transition: 0.2s;
    color: white;
@@ -51,7 +51,7 @@
    background-color: rgb(221, 176, 61);;
 }
 
-.buttonSubmit:active {
+.buttonSubmitLogin:active {
 
    background-color: rgb(218, 183, 94);
 }

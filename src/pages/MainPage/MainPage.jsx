@@ -6,7 +6,7 @@ export const MainPage = () => {
      return (
          <div className="MainPage">
             <Logo />
-            <Footer />  
+           <Footer />   
          </div>
      )
 }

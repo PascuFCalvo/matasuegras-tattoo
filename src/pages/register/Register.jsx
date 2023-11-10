@@ -1,95 +1,120 @@
-
-import "./Register.css";
-import { CustomInput } from "../../common/CustomInput/CustomInput";
-import { logUser } from "../../services/apiCalls";
-import { useNavigate } from 'react-router-dom';
 import { useState } from "react";
+import { CustomInput } from "../../common/CustomInput/CustomInput";
+import { validator } from "../../services/useful";
+import { registerUser } from "../../services/apiCalls";
+import { useNavigate } from 'react-router-dom';
 import { Footer } from "../../common/footer/Footer";
+import "./Register.css";
 
 export const Register = () => {
-
-  
   const navigate = useNavigate();
 
-  const [credenciales, setCredenciales] = useState({
-    email: "",
-    password: "",
+  const [user, setUser] = useState({
+    user_name: '',
+    email: '',
+    password: '',
+    phone: ''
+  });
+
+  const [userError, setUserError] = useState({
+    user_nameError: '',
+    emailError: '',
+    passwordError: '',
+    phoneError: ''
   });
 
   const functionHandler = (e) => {
-    setCredenciales((prevState) => ({
+    setUser((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
-//   useEffect(()=>{
-//     console.log(credenciales);
-//   },[credenciales]);
+  const errorCheck = (e) => {
+    let error = validator(e.target.name, e.target.value);
 
-  const logMe = () => {
+    setUserError((prevState) => ({
+      ...prevState,
+      [e.target.name + 'Error']: error,
+    }));
+  };
 
-    logUser(credenciales)
-        .then(
-            resultado => {
-                console.log(resultado)
-                //Aqui guardaría el token........
+  const Submit = () => {
+    for (let test1 in user) {
+      if (user[test1] === "") {
+        return;
+      }
+    }
 
-                //Una vez guardado el token....nos vamos a home....
-                setTimeout(()=>{
-                    navigate("/");
-                },500);
-            }
-        )
-        .catch(error => console.log(error));
+    for (let test in userError) {
+      if (userError[test] !== "") {
+        return;
+      }
+    }
 
-  }
+    registerUser(user)
+      .then(resultado => {
+        console.log(resultado);
 
-  
-
+        setTimeout(() => {
+          navigate("/login");
+        }, 1000);
+      })
+      .catch(error => console.log(error));
+  };
 
   return (
-   <div><div className="Register"><div className="formBackgroundRegister">
-      <div className="overInput">Nombre</div>
-      <CustomInput
-        design="customInput"
-        type="email"
-        name="email"
-        placeholder=""
-        functionProp={functionHandler}
-      />
-      <div className="overInput">eMail</div>
-      <CustomInput
-        design="customInput"
-        type="email"
-        name="email"
-        placeholder=""
-        functionProp={functionHandler}
-      />
-       <div className="overInput">Password</div>
-      <CustomInput
-        design="customInput"
-        type="password"
-        name="email"
-        placeholder=""
-        functionProp={functionHandler}
-      />
-       <div className="overInput">Telefono</div>
-      <CustomInput
-        design="customInput"
-        type="number"
-        name="email"
-        placeholder=""
-        functionProp={functionHandler}
-      />
-      
-      <div className='buttonSubmit' onClick={logMe}>Registrarme</div>
-    </div></div>
-    
-    <Footer  paddingTop="8"/> 
-    </div>
+    <div className="Register">
+      <div className="formBackgroundRegister">
+        <div className="overInput">Nombre</div>
+        <CustomInput
+          design={`customInput ${userError.user_nameError !== "" ? 'customInputError' : ''}`}
+          type={"text"}
+          name={"user_name"}
+          placeholder={"YourName"}
+          value={user.user_name}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.user_nameError}</div>
+        <div className="overInput">email</div>
+        <CustomInput
+          design={`customInput ${userError.emailError !== "" ? 'customInputError' : ''}`}
+          type={"email"}
+          name={"email"}
+          placeholder={"mail@yourdomain.com"}
+          value={user.email}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.emailError}</div>
+        <div className="overInput">Password</div>
+        <CustomInput
+          design={`customInput ${userError.passwordError !== "" ? 'customInputError' : ''}`}
+          type={"password"}
+          name={"password"}
+          placeholder={"********"}
+          value={user.password}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.passwordError}</div>
+        <div className="overInput">Telefono</div>
+        <CustomInput
+          design={`customInput ${userError.phoneError !== "" ? 'customInputError' : ''}`}
+          type={"text"}
+          name={"phone"}
+          placeholder={""}
+          value={user.phone}
+          functionProp={functionHandler}
+          functionBlur={errorCheck}
+        />
+        <div className='errorMsg'>{userError.phoneError}</div>
 
-   
-    
+        <div className='buttonSubmit' onClick={Submit}>Registrar</div>
+        <div className = "blank"></div>
+      </div>
+      <Footer />
+    </div>
   );
 };

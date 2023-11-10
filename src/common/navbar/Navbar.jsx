@@ -27,6 +27,7 @@ export const Navbar = () => {
     {
       id: 5,
       nombre: "PEDIR CITA",
+      path: "cita"
     },
     {
       id: 6,
