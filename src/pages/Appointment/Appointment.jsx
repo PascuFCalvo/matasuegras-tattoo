@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
-import { getTattooArtist } from "../../services/apiCalls";
+import { createAppointment, getTattooArtist } from "../../services/apiCalls";
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import "./Appointment.css";
-
-
-//falta recibir la id del cliente (esta en el token)
+import { Navigate } from "react-router-dom"; // Cambiado de Navigate a navigate
 
 export const Appointment = () => {
   const [tattooArtists, setTattooArtists] = useState([]);
   const [selectedDate, setSelectedDate] = useState(getTodayDate());
   const [selectedShift, setSelectedShift] = useState("morning");
   const [selectedTattooArtist, setSelectedTattooArtist] = useState("");
+  const [selectedService, setSelectedService] = useState("tattoo");
+  const [selectedTattooArtistId, setSelectedTattooArtistId] = useState(2);
+  const [selectedUserId, setSelectedUserId] = useState(20);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -40,10 +43,32 @@ export const Appointment = () => {
   const handleTattooArtistChange = (event) => {
     const selectedTattooArtist = event.target.value;
     setSelectedTattooArtist(selectedTattooArtist);
+
+    const selectedTattooArtistObject = tattooArtists.find(
+      (artist) => artist.user_name === selectedTattooArtist
+    );
+      
+    if (selectedTattooArtistObject) {
+      setSelectedTattooArtistId(selectedTattooArtistObject.id);
+    }
+  };
+
+  const handleServiceChange = (event) => {
+    const selectedService = event.target.value;
+    setSelectedService(selectedService);
+  };
+
+  const handleTitleChange = (event) => {
+    const newTitle = event.target.value;
+    setTitle(newTitle);
+  };
+
+  const handleDescriptionChange = (event) => {
+    const newDescription = event.target.value;
+    setDescription(newDescription);
   };
 
   const formatSelectedDate = () => {
-    
     const date = new Date(selectedDate);
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, "0");
@@ -52,12 +77,25 @@ export const Appointment = () => {
   };
 
   const handleSubmit = () => {
-    // Aquí puedes implementar la lógica para enviar la información seleccionada
-    // Puedes enviar los valores de selectedDate, selectedShift y selectedTattooArtist a tu servidor, por ejemplo
-    const formattedDate = formatSelectedDate();
-    console.log("Fecha seleccionada:", formattedDate);
-    console.log("Turno seleccionado:", selectedShift);
-    console.log("Tatuador seleccionado:", selectedTattooArtist);
+    const body = {
+      title: title,
+      description: description,
+      tattoo_artist: selectedTattooArtistId,
+      client: selectedUserId,
+      type: selectedService,
+      date: formatSelectedDate(),
+      turn: selectedShift,
+    };
+    console.log(body);
+
+    createAppointment(body)
+      .then((resultado) => {
+        console.log(resultado);
+        setTimeout(() => {
+          Navigate("/login");
+        }, 1000);
+      })
+      .catch((error) => console.log(error));
   };
 
   function getTodayDate() {
@@ -73,21 +111,54 @@ export const Appointment = () => {
       <div className="Appointment">
         {tattooArtists.length > 0 ? (
           <div className="AppointmentBackground">
-            <div className="appointmentDate">Seleccione la fecha:</div>
+            <div className="title">Titulo</div>
             <input
+              className="customInput"
+              type="text"
+              id="title"
+              value={title}
+              onChange={handleTitleChange}
+            />
+            <div className="title">Descripcion</div>
+            <input
+              className="customInput"
+              type="text"
+              id="description"
+              value={description}
+              onChange={handleDescriptionChange}
+            />
+            <div className="title">Selecciona una fecha</div>
+            <input
+              className="selectDate"
               type="date"
               id="appointmentDate"
               value={selectedDate}
               onChange={handleDateChange}
               min={getTodayDate()}
             />
-            <div className="appointmentDate">Seleccione el turno:</div>
-            <select id="shift" value={selectedShift} onChange={handleShiftChange}>
+            <div className="title">Selecciona un Servicio</div>
+            <select
+              className="selectService"
+              id="selectService"
+              value={selectedService}
+              onChange={handleServiceChange}
+            >
+              <option value="tattoo">Tattoo</option>
+              <option value="piercing">Piercing</option>
+            </select>
+            <div className="title">Selecciona un Turno</div>
+            <select
+              className="selectShift"
+              id="shift"
+              value={selectedShift}
+              onChange={handleShiftChange}
+            >
               <option value="morning">Mañana</option>
               <option value="afternoon">Tarde</option>
             </select>
-            <div className="appointmentDate">Selecciona el tatuador:</div>
+            <div className="title">Selecciona un Tatuador</div>
             <select
+              className="selectArtist"
               id="selectTattooArtist"
               value={selectedTattooArtist}
               onChange={handleTattooArtistChange}
@@ -98,7 +169,9 @@ export const Appointment = () => {
                 </option>
               ))}
             </select>
-            <button onClick={handleSubmit}>Enviar</button>
+            <div className="buttonSubmitLogin" onClick={handleSubmit}>
+              Pedir Cita
+            </div>
           </div>
         ) : (
           <div>Aún no han venido</div>
@@ -108,3 +181,5 @@ export const Appointment = () => {
     </div>
   );
 };
+
+export default Appointment;

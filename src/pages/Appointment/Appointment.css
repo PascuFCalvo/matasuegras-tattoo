@@ -16,6 +16,38 @@
    
    background-color: rgba(128, 128, 128, 0.5);
    width: 40em;
-   height: 30em;
+   height: 50em;
    position: relative;
 }
+
+.title{
+   padding-top: 0.5em;
+   font-family: tattoo;
+    font-size: 20px;
+  
+
+}
+
+.selectDate, .selectService, .selectShift, .selectArtist{
+   padding-top: 1em;
+   width: 63%;
+   height: 3em;
+   font-size: 18px;
+   background-color: transparent;
+   border: none;
+   border-bottom: solid 2px rgb(218, 183, 94);
+ 
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   -ms-appearance: none;
+   appearance: none;
+   border-radius: 0; /* Elimina el border radius */
+   position: relative;
+ }
+ 
+ 
+
+
+
+
+ 
