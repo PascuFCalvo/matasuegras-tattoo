@@ -19,4 +19,11 @@ export const getTattooArtist = async () => {
   return await axios.get(`http://localhost:4000/public/tattooArtists`);
 };
 
+export const getAllUsers = async () => {
+  return await axios.get(`http://localhost:4000/blackAlien/getUsers`)
+}
+
+export const getAppointments= async () => {
+  return await axios.get(`http://localhost:4000/blackAlien/getAppointments`)
+}
 

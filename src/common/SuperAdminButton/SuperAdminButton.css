@@ -1,0 +1,22 @@
+.superAdminButton{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   top: 0%;
+   left: 85.6%;
+   width: 12em;
+   height: 3em;
+   background-color: transparent;
+   border: solid 1px rgba(255, 255, 255, 0.5);
+   color: rgba(255, 255, 255, 0.5);
+   padding: 0.2;
+
+}
+
+.superAdminButton:hover{
+   transition: 0.5s;
+   color: goldenrod;
+   border: solid 1px goldenrod;
+   cursor: pointer;
+}
