@@ -1,0 +1,60 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+
+.backGroundInfo{
+   width: 100vw;
+   height: 200vh;
+   background-color: bisque;
+   display: flex;
+   flex-direction: column;
+   align-items: cente;
+   color: black;
+}
+
+.title{
+   font-family: tattoo;
+   font-size: 30px;
+   padding: 2em;
+}
+
+.cardTattooArtist{
+   display: flex;
+   flex-direction: row;
+}
+
+.pictureInfoDC{
+   margin: 3em;
+   width: 40vw;
+   height: 80em;
+   background-image: url("../../images/Dewis-Consin-Gramde.jpg");
+   background-repeat: no-repeat;
+}
+
+.textBio {
+   margin: 3em;
+   text-align: start;
+   width:40vw;
+   font-size: 20px;
+   line-height: 2;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.ButtonBackTattooArtist{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 10em;
+   height: 3em;
+   border: solid 2px rgb(32, 32, 32);
+   margin-left: 42em;
+}
+
+.ButtonBackTattooArtist:hover{
+   background-color: rgb(36, 36, 36);
+   color: bisque;
+   cursor: pointer;
+   transition: 0.5s;
+}

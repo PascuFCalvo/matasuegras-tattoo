@@ -20,6 +20,10 @@
    width: 100%;
 }
 
+.tattooimage:hover {
+   cursor: pointer;
+}
+
 .gridTattooArtist div {
    max-width: 25em;
    padding: 1em;
