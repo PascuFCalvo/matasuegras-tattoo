@@ -1,0 +1,10 @@
+.UnderFooter{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-size: 24px;
+   height: 5em;
+   width: 100vw;
+   background-color: #dab75e;
+   color: black;
+}

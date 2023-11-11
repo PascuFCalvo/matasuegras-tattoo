@@ -13,11 +13,12 @@
    flex-direction: column;
    justify-content: start;
    align-items: center;
-   
+   margin-top: 2em;
    background-color: rgba(128, 128, 128, 0.5);
    width: 40em;
-   height: 50em;
+   height: 40em;
    position: relative;
+   overflow-y: scroll;
 }
 
 .title{
@@ -44,6 +45,47 @@
    border-radius: 0; /* Elimina el border radius */
    position: relative;
  }
+
+
+
+ .buttonSubmitPedirCita {
+
+   height: 3em;
+   width: 10em;
+   background-color: rgb(218, 183, 94);
+   color: rgb(255, 255, 255);
+   font-weight: bolder;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   bottom: -6em ;
+   right: 2em;
+   margin-bottom: 2em;
+   
+   
+}
+
+.blankPedirCita{
+   position: absolute;
+   bottom: -6em ;
+   height: 1em;
+   width: 100%;
+   background-color: transparent
+}
+
+.buttonSubmitPedirCita:hover {
+
+   transition: 0.2s;
+   color: white;
+   cursor: pointer;
+   background-color: rgb(221, 176, 61);;
+}
+
+.buttonSubmitPedirCitat:active {
+
+   background-color: rgb(218, 183, 94);
+}
  
  
 

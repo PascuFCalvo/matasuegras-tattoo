@@ -6,8 +6,9 @@
 .footerBlack {
    font-family: tattoo;
    width: 100vw;
-   height: 30em;
+   height: 40em;
    background-color: #202020;
+   position: relative;
 }
 
 .titleFooter{
@@ -34,3 +35,34 @@
    max-width: 20%;
 }
 
+.googleMapFooterBlack{
+   position: absolute;
+   top: 30%;
+   left: 54.5%;
+   margin-bottom: 3em;
+}
+
+.instagram{
+   position: absolute;
+   top: 30%;
+   left: 76%;
+   height: 350px;
+   
+}
+
+.columnaIzquierdaFooter{
+   position: absolute;
+   top: 45%;
+   margin-left: 0px;
+   font-size: 16px;
+   display:flex;
+   flex-direction: column;
+   width: 40vw;
+
+}
+
+.verticalNavbar {
+   position: absolute;
+   top: 30%;
+   left: 37%;
+}

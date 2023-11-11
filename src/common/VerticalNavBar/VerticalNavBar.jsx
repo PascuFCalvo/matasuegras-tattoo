@@ -1,8 +1,8 @@
-import "./Navbar.css"
+import "./VerticalNavbar.css"
 import {  useNavigate } from "react-router-dom";
 
 
-export const Navbar = () => {
+export const VerticalNavbar = () => {
   let botones = [
     {
       id: 1,
@@ -39,10 +39,10 @@ export const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className = "navbarButtons">
+    <div className = "VerticalnavbarButtons">
       {botones.map((boton) => {
         return (
-          <div className="botonNavBar" key={boton.id} onClick={() => 
+          <div className="VerticalbotonNavBar" key={boton.id} onClick={() => 
           navigate(boton.path)
           } >
             {boton.nombre}

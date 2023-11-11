@@ -88,6 +88,8 @@ export const Appointment = () => {
     };
     console.log(body);
 
+    alert("cita crada correctamente")
+
     createAppointment(body)
       .then((resultado) => {
         console.log(resultado);
@@ -169,9 +171,10 @@ export const Appointment = () => {
                 </option>
               ))}
             </select>
-            <div className="buttonSubmitLogin" onClick={handleSubmit}>
+            <div className="buttonSubmitPedirCita" onClick={handleSubmit}>
               Pedir Cita
             </div>
+            <div className="blankPedirCita"></div>
           </div>
         ) : (
           <div>Aún no han venido</div>

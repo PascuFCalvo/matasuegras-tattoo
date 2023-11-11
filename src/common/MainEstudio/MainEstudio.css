@@ -1,0 +1,70 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+.backgroundElEstudio{
+      background-color: bisque;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   height: auto;
+   font-family: tattoo;;
+   font-weight:100;
+   
+}
+
+.textoEstudio {
+   max-width: 1000px;
+   color: #1f1f1f;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-align: start;
+   padding-left: 10%;
+   padding-right: 10%;
+   padding-top: 4em;
+   
+
+}
+.final {
+   margin-bottom: 5em;
+}
+
+.parrafoTexto{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 18;
+   line-height: 2;
+   padding-bottom: 2em;
+}
+
+.tituloTexto{
+   text-align: center;
+   font-size: 30px;
+   padding-bottom: 2em;
+   padding-top: 2em;
+}
+
+img {
+   max-width: 1000px;
+   width: 80%;
+   
+}
+
+.flexfotos{
+   max-width: 1000px;
+   width: 80%;
+   display: flex;
+   justify-content: space-between;
+   padding-top:2em;
+   padding-bottom:2em;
+   
+}
+
+.flexfotos > img{
+   
+   width: 48.5%;
+   
+}

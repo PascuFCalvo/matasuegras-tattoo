@@ -1,0 +1,86 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+.backgroundTattooArtist {
+   background-color: bisque;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+
+   height: auto;
+   font-family: tattoo;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   color: black;
+
+}
+
+.nuestrosTatuadores {
+   font-family: tattoo;
+   font-size: 30px;
+   margin-bottom: 2em;
+   margin-top: 1em;
+}
+
+.flexTattoArtist{
+  position: relative; 
+}
+
+.tattooimage {
+   width: 100%;
+   
+}
+
+.p{
+   width: 20em;
+   height: 2em;
+   position: absolute;
+   top:15%;
+   left: -17%;
+   color: transparent;
+   font-size: 1.6em;
+}
+
+.pfila2{
+   width: 20em;
+   height: 2em;
+   position: absolute;
+   top:62%;
+   left: -17%;
+   color: transparent;
+   font-size: 1.6em;
+}
+
+.tattooimage:hover{
+   filter: sepia(0.5) brightness(70%);
+   transition: 1s;
+   color: white;  
+}
+
+.tattooimage:hover + .p {
+   transition: 2s;
+   color: white;
+ }
+
+ .tattooimage:hover + .pfila2 {
+   transition: 2s;
+   color: white;
+ }
+
+
+
+.gridTattooArtist div {
+   max-width: 25em;
+   padding: 1em;
+}
+
+
+.gridTattooArtist {
+   padding: 2em;
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   
+}

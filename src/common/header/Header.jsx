@@ -1,5 +1,5 @@
 import { LogoChiquito } from "../logochiquito/LogoChiquito";
-import { Navbar } from "../navbar/navbar";
+import { Navbar } from "../navbar/Navbar";
 import { NavbarLogin } from "../navbarlogin/NavBarLogin";
 import { NavbarSocials } from "../socials/Socials";
 

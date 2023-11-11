@@ -1,0 +1,60 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+.stylesSection{
+   justify-content: center;
+   display: flex;
+   flex-wrap: wrap;
+   width: 100vw;
+   background-color: bisque;
+   
+}
+
+.styleSection{
+   background-color: bisque;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: auto;
+   font-family: tattoo;;
+   font-weight:100;
+   
+}
+
+.cardStyle{
+   display: flex;
+   flex-direction: column;
+   width: 12em;
+   justify-content: center;
+   align-items: center;
+   background-color: transparent;
+   color: black;
+   padding-top: 3em;
+   padding-left: 8em;
+   padding-right: 8em;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cardStyleImage{
+   width: 5em;
+   margin-bottom: 0.5em;
+   margin-top: 0.5em;
+}
+
+.cardStyleTitle{
+   margin-bottom: 0.5em;
+}
+
+
+.tituloEstilos{
+   display: flex;
+   justify-content: center;
+   padding-top: 3em;
+   padding-bottom: 3em;
+   background-color: bisque;
+   color: black;
+   font-size: 30px;
+   font-family: tattoo;
+}

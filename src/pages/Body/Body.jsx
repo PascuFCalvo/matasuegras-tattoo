@@ -6,6 +6,7 @@ import { Gallery } from '../Gallery/Gallery';
 import { ElEstudio } from '../ElEstudio/ElEstudio';
 import { TattoArtist } from '../TattooArtist/TattooArtist';
 import { Appointment } from '../Appointment/Appointment';
+import { Contact } from '../Contact/Contact';
 
 
 export const Body = () => {
@@ -19,6 +20,8 @@ export const Body = () => {
                 <Route path="/elestudio" element={<ElEstudio />}/>
                 <Route path="/tatuadores" element={<TattoArtist />}/>
                 <Route path="/cita" element={<Appointment />}/>
+                <Route path="/contacto" element={<Contact />}/>
+
 
                 
                 
