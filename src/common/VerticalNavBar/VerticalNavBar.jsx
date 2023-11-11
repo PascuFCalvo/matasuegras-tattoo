@@ -7,32 +7,32 @@ export const VerticalNavbar = () => {
     {
       id: 1,
       nombre: "INICIO",
-      path: "/"
+      path: "../"
     },
     {
       id: 2,
       nombre: "ESTUDIO",
-      path: "elestudio"
+      path: "../elestudio"
     },
     {
       id: 3,
       nombre: "TATUADORES",
-      path: "tatuadores"
+      path: "../tatuadores"
     },
     {
       id: 4,
       nombre: "GALERIA",
-      path: "gallery"
+      path: "../gallery"
     },
     {
       id: 5,
       nombre: "PEDIR CITA",
-      path: "cita"
+      path: "../cita"
     },
     {
       id: 6,
       nombre: "CONTACTO",
-      path: "contacto"
+      path: "../contacto"
     },
   ];
 

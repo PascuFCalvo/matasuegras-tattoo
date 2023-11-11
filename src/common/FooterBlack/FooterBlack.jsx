@@ -4,6 +4,10 @@ import "./FooterBlack.css";
 import { InstagramEmbed } from "react-social-media-embed";
 
 export const FooterBlack = () => {
+
+  
+
+
   return (
     <>
       <div className="footerBlack">

@@ -32,3 +32,9 @@
    border-left: solid 1px hsla(43, 63%, 61%, 0.5) ;
    
 }
+
+@media only screen and (max-width: 1280px) {
+   .navbarButtons {
+     display: none;
+   }
+ }

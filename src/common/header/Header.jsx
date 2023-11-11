@@ -1,3 +1,4 @@
+import { BurguerMenu } from "../BurguerMenu/BurguerMenu";
 import { LogoChiquito } from "../logochiquito/LogoChiquito";
 import { Navbar } from "../navbar/Navbar";
 import { NavbarLogin } from "../navbarlogin/NavBarLogin";
@@ -13,6 +14,7 @@ export const Header = () => {
       <> 
       <div className = "header">
          <LogoChiquito />
+         <BurguerMenu />
          <Navbar />
          <NavbarLogin />
          <NavbarSocials />
