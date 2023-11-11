@@ -20,10 +20,10 @@ export const MainTattoArtist = () => {
           <div>Rockero de cuna y tatuador por curiosidad, se debate entre el sonido de una Les Paul y el zumbido de las máquinas de tatuar. Su adicción al punk le lleva a crear su propio sello discográfico, Mongolic Records, aunque su verdadero oficio son las pieles.</div>
         </div>
         <div className="flexTattoArtist">
-          <img className = "tattooimage" src={DewisConsin}></img>
+          <img className = "tattooimage  dewis" id = "col2"  src={DewisConsin}></img>
           <div className = "p">Dewis Consin</div>
           <div>Empece a tatuar por el año 1995 con un amigo que me ayudo a conseguir lo justo para empezar a dar mis primeros pasos, y la información básica para hacerlo, aprender a soldar agujas solo, fue un infierno.</div>
-          <img className = "tattooimage" src={DonRogelio}></img>
+          <img className = "tattooimage" id = "col2" src={DonRogelio}></img>
           <div className = "pfila2">DonRogelio</div>
           <div>DonRogelio es un ilustrador y diseñador nacido en La Habana en el 87. Empieza a explorar el tattoo como otro soporte de expresión de la plástica. Por 2008 había muy poca escena del tattoo en Cuba.</div>
         </div>

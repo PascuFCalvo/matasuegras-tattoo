@@ -24,9 +24,7 @@
    margin-top: 1em;
 }
 
-.flexTattoArtist{
-  position: relative; 
-}
+
 
 .tattooimage {
    width: 100%;
@@ -72,8 +70,13 @@
 
 
 .gridTattooArtist div {
+   /* display: flex;
+   flex-direction: column;
+   justify-content: center; */
+   align-items: center;
    max-width: 25em;
    padding: 1em;
+   /* margin-left: 10%; */
 }
 
 
@@ -84,3 +87,27 @@
    flex-wrap: wrap;
    
 }
+@media only screen and (max-width: 1360px) {
+
+   #col2{
+      margin-top: -0.7em;
+   }
+
+   
+
+   .gridTattooArtist {
+      display: flex;
+      justify-content: center;
+   }
+
+
+   .gridTattooArtist div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 25em;
+      
+   }
+   
+ }
