@@ -16,7 +16,7 @@ export const Header = () => {
          <LogoChiquito />
          <BurguerMenu />
          <Navbar />
-         <NavbarLogin />
+         <NavbarLogin textColor="crimson" />
          <NavbarSocials />
       </div>
          

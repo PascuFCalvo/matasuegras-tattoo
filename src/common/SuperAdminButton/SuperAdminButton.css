@@ -4,7 +4,7 @@
    align-items: center;
    position: absolute;
    top: 0%;
-   left: 85.6%;
+   left: 72%;
    width: 12em;
    height: 3em;
    background-color: transparent;
@@ -20,3 +20,16 @@
    border: solid 1px goldenrod;
    cursor: pointer;
 }
+
+@media only screen and (max-width: 420px) {
+   
+   .superAdminButton {
+     
+      margin-left: -22%;
+      
+      margin-top: 0.2em;
+      
+   
+   
+   }
+ }

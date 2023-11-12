@@ -1,88 +1,90 @@
 @font-face {
-   font-family: tattoo;
-   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+  font-family: tattoo;
+  src: url("../../assets/fonts/YesevaOne-Regular.ttf");
 }
 
 .hamburguesa-menu {
-   
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding-top: 6em;
-   position: relative;
-   display: none;
-   width: 3em;
-   margin-left: 20em;
-   /* background-color: red; */
-   margin-bottom: 1em;
-   
- }
- 
- .menu-icon {
-   cursor: pointer;
-   display: flex;
-   flex-direction: column;
-   color: rgb(211, 180, 103);
- }
- 
- .bar {
-   width: 3em;
-   height: 0.13em;
-   background-color: rgba(240, 248, 255, 0.822);
-   margin: 0.5em 0;
-   transition: 0.4s;
- }
- 
- .open .bar:nth-child(1) {
-   transform: rotate(-90deg) ;
-   margin-left:1em;
- }
- 
- .open .bar:nth-child(2) {
-   transform: rotate(-90deg); 
-   
- }
- 
- .open .bar:nth-child(3) {
-   transform: rotate(-90deg) ;
-   margin-left:-1em;
-   
- }
- 
- 
- .opciones {
-   font-family: tattoo;
-   font-size: 21px;
-   display: none;
-   flex-direction: column;
-   position: absolute;
-   top: 8em;
-   right: 6.5em;
-   color: rgba(240, 248, 255, 0.877);
-   
-   
-   
-   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 4em;
+  position: relative;
+  width: 3em;
+  margin-left: 20em;
+  margin-bottom: 1em;
+}
+
+.menu-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  color: rgb(211, 180, 103);
+}
+
+.bar {
+  width: 3em;
+  height: 0.13em;
+  background-color: rgba(240, 248, 255, 0.822);
+  margin: 0.5em 0;
+  transition: 0.4s;
+}
+
+.open .bar:nth-child(1) {
+  transform: rotate(-90deg);
+  margin-left: 1em;
+}
+
+.open .bar:nth-child(2) {
+  transform: rotate(-90deg);
+}
+
+.open .bar:nth-child(3) {
+  transform: rotate(-90deg);
+  margin-left: -1em;
+}
+
+.opciones {
+  font-family: tattoo;
+  font-size: 21px;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 8em;
+  right: 6.5em;
+  color: rgba(240, 248, 255, 0.877);
+  z-index: 1;
 }
 
 .opciones.open {
-   display: flex;
+  display: flex;
 }
 
 .opcion {
-   border-bottom: solid 1px white;
-   padding: 10px;
-   cursor: pointer;
-   transition: background-color 0.3s ease;
- }
- 
- .opcion:hover {
-   color: rgb(199, 169, 94);
-   transition: 0.5s;
- }
+  border-bottom: solid 1px white;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
- @media only screen and (max-width: 1280px) {
-   .hamburguesa-menu {
-     display: block;
-   }
- }
+.opcion:hover {
+  color: rgb(199, 169, 94);
+  transition: 0.5s;
+}
+
+.hamburguesa-menu:hover .opciones {
+  display: flex;
+}
+
+@media only screen and (max-width: 1280px) {
+  .hamburguesa-menu {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 420px) {
+  .hamburguesa-menu {
+    display: none;
+  }
+
+ 
+}

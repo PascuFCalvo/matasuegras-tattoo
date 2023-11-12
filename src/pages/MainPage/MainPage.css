@@ -2,3 +2,12 @@
    height: 76vh;
    position: relative;
 }
+
+@media only screen and (max-width: 960px) {
+      
+   .MainPage {
+      height: 40vh;
+      position: relative;
+   }
+   
+ }

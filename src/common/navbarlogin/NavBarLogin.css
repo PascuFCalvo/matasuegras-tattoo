@@ -4,13 +4,14 @@
 }
 
 .navbarButtonsLogin {
+   
    font-family: tattoo;
    display: flex;
    flex-direction: row;
    align-items: center;
    justify-content: center;
-   margin-left: 80%;
-   margin-top: -10.2em;
+   margin-left: 74%;
+   margin-top: -10.15em;
    
    
    
@@ -19,12 +20,12 @@
 .botonNavBarLogin {
    padding: 1em;
    font-size: 1.2em;
-   margin-top: 5em;
+   margin-top: 5.2em;
 
 }
 
 .botonNavBarLogin:hover {
-   padding: 0.5em;
+   
    font-size: 1.2em;
    border-top:  solid 1px rgba(218, 183, 93, 0.486);
    border-right:  solid 1px rgba(218, 183, 93, 0.486);
@@ -34,3 +35,35 @@
    transform: scale(1.1);
    
 }
+
+@media only screen and (max-width: 960px) {
+   
+   .navbarButtonsLogin{
+     
+      margin-left: 55%;
+      
+      margin-top: -11em;
+   
+   }
+
+   .botonNavBarLogin:hover {
+   
+      font-size: 1.2em;
+      border-top:  none;
+      border-right:  none;
+      cursor: pointer;
+      color: #dab75e;
+      transition: 0.5s;
+      transform: scale(1.1);
+      
+   }
+ }
+
+ @media only screen and (max-width: 420px) {
+   
+   .navbarButtonsLogin{
+   
+     margin-left: 0%;
+     margin-top: -30%;
+   }
+   }

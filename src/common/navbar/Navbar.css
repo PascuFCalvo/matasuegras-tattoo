@@ -14,7 +14,7 @@
 }
 
 .botonNavBar {
-   padding: 1em;
+   padding: 0.8em;
    font-size: 1.2em;
    margin-top: 5%;
 
@@ -37,4 +37,20 @@
    .navbarButtons {
      display: none;
    }
+ }
+
+ @media only screen and (max-width: 420px) {
+   .navbarButtons {
+     display: block;
+     display: flex;
+     transform: scale(0.5);
+     margin-top: 7.5em;
+     
+   }
+
+   .botonNavBar:hover{
+      
+      border: none;
+      
+    }
  }

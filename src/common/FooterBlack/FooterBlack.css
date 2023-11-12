@@ -6,63 +6,66 @@
 .footerBlack {
    font-family: tattoo;
    width: 100vw;
-   height: 40em;
+   height: auto;
    background-color: #202020;
-   position: relative;
-}
-
-.titleFooter{
-   font-size: 2em;
-   padding-top: 3em;
    display: flex;
-   justify-content: space-evenly;
-   color: rgb(218, 183, 94);
-   
+   justify-content: center;
+   flex-wrap: wrap;
    
 }
 
-.titleFooter div  {
-   border-bottom: solid 1px ;
-}
-
-.infoFooter div {
-   line-height: 2;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   margin-top: 2em;
-   margin-left: 10%;
+.verticalCard{
+   width: 20em;
    text-align: start;
-   width: 20%;
-   max-width: 20%;
-}
-
-.googleMapFooterBlack{
-   position: absolute;
-   top: 30%;
-   left: 54.5%;
-   margin-bottom: 3em;
-}
-
-.instagram{
-   position: absolute;
-   top: 30%;
-   left: 76%;
-   height: 350px;
+   margin-left: 1em;
+   margin-right: 1em;
    
+   
+}
+
+.columnaIzquierdaArribaFooter{
+   margin-top: 2em;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .columnaIzquierdaFooter{
-   position: absolute;
-   top: 45%;
-   margin-left: 0px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   line-height: 2;
    font-size: 16px;
-   display:flex;
-   flex-direction: column;
-   width: 40vw;
-
+   margin-top: 2em;
 }
 
-.verticalNavbar {
-   position: absolute;
-   top: 30%;
-   left: 37%;
+.verticalCardTitle{
+   margin-top: 1em;
+   font-size: 22px;
+   font-family: tattoo;
+   color: rgb(196, 169, 102);
 }
+
+.googleMapFooterBlack{
+   margin-top: 2em;
+}
+
+.instagram{
+   margin-top: 2em;
+   height: 350px;
+   margin-bottom: 1em;
+}
+
+.verticalNavbar{
+   margin-top:1.5em;
+}
+
+
+
+
+
+
+
+@media only screen and (max-width: 960px) {
+   
+  
+   
+   
+ }
+

@@ -4,6 +4,7 @@
 }
 
 .navbarButtonsSocials {
+   
    font-family: tattoo;
    display: flex;
    flex-direction: row;
@@ -30,3 +31,29 @@
 
 
 }
+
+@media only screen and (max-width: 960px) {
+   
+   .navbarButtonsSocials {
+     
+      margin-left: 0%;
+      
+      margin-top: 9em;
+      
+   
+   
+   }
+ }
+
+ @media only screen and (max-width: 420px) {
+   
+   .navbarButtonsSocials {
+     
+      margin-left: 0%;
+      
+      margin-top: 3em;
+      
+   
+   
+   }
+ }

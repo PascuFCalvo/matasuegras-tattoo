@@ -4,6 +4,7 @@ import Alice from "../../images/Alice.jpg";
 import DewisConsin from "../../images/Dewis-consin.jpg";
 import DonRogelio from "../../images/Don-Rogelio.jpg";
 import Sento from "../../images/Sento.jpg";
+import { ScrollToTopButton } from "../ScrollToTop/ScrollToTop";
 
 
 export const MainTattoArtist = () => {
@@ -34,7 +35,8 @@ export const MainTattoArtist = () => {
           
         </div>
         
-      </div></div>
+      </div>
+      <ScrollToTopButton/></div>
       
       
     </div>

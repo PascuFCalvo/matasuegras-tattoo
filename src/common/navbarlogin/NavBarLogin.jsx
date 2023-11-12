@@ -1,11 +1,10 @@
 import "./NavbarLogin.css";
 import { useNavigate } from "react-router-dom";
 
-export const NavbarLogin = () => {
+export const NavbarLogin = ({ textColor }) => {
   const navigate = useNavigate();
 
-  // Verificar si el usuario ha iniciado sesión
-  const isLoggedIn = localStorage.getItem('token'); // Asumiendo que tu token se llama 'token'
+  const isLoggedIn = localStorage.getItem('token');
 
   let botones = isLoggedIn
     ? [
@@ -13,9 +12,7 @@ export const NavbarLogin = () => {
           id: 1,
           nombre: "LOG OUT",
           onClick: () => {
-            
             localStorage.removeItem('token');
-            
             navigate("/login");
           },
         },
@@ -41,6 +38,7 @@ export const NavbarLogin = () => {
             className="botonNavBarLogin"
             key={boton.id}
             onClick={boton.onClick ? boton.onClick : () => navigate(boton.path)}
+            style={{ color: boton.nombre === "LOG OUT" ? textColor : '' }}
           >
             {boton.nombre}
           </div>
