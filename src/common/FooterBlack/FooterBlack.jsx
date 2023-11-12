@@ -1,4 +1,4 @@
-import { UnderFooter } from "../CustomInput/UnderFooter/UnderFooter";
+import { UnderFooter } from "../UnderFooter/UnderFooter";
 import { VerticalNavbar } from "../VerticalNavBar/VerticalNavBar";
 import "./FooterBlack.css";
 import { InstagramEmbed } from "react-social-media-embed";
