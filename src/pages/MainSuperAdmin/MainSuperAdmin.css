@@ -47,3 +47,10 @@
    cursor: pointer;
 
 }
+
+@media only screen and (max-width: 1280px) {
+   .BackgroundMainSuperAdmin {
+      margin-top: 23vh;
+   
+} 
+}

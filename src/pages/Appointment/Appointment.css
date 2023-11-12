@@ -89,6 +89,38 @@
 }
  
 
+.selectService option,
+.selectShift option,
+.selectArtist option {
+  font-size: 22px; /* Establece el tamaño de fuente para las opciones */
+  background-color: rgba(128, 128, 128, 0); /* Fondo de las opciones */
+  color: rgb(0, 0, 0); /* Color del texto de las opciones */
+  border: none; /* Elimina el borde de las opciones */
+  padding: 1em;
+  border-radius: 0em;
+  margin: 2em;
+}
+
+/* Estiliza la flecha del desplegable */
+.selectService::-ms-expand,
+.selectShift::-ms-expand,
+.selectArtist::-ms-expand {
+  display: none; /* Oculta la flecha en Internet Explorer */
+}
+
+.selectService::after,
+.selectShift::after,
+.selectArtist::after {
+  content: '\25BC'; /* Agrega un triángulo como flecha en navegadores modernos */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none; /* Evita que la flecha sea clickeable */
+  color: rgb(255, 255, 255); /* Color de la flecha */
+}
+
+
 @media only screen and (max-width: 1280px) {
    .Appointment {
       margin-top: 23vh;

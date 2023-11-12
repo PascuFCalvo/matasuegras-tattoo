@@ -6,6 +6,11 @@ import elEstudio4 from "../../images/elEstudio4.jpg"
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 
 export const ElEstudio = () => {
+
+  
+
+  
+
   return (
    <div><div className="backgroundElEstudio">
       <div className = "textoEstudio">

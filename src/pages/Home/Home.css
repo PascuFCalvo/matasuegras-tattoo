@@ -1,6 +1,9 @@
 body{
   max-width: 100%;
     overflow-x: hidden;
+    p::selected{
+      background-color: brown;
+    }
     /* background-color: bisque; */
 }
 

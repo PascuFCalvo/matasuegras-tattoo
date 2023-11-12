@@ -110,3 +110,10 @@
    cursor: pointer;
    transform: 0.5s;
 }
+
+@media only screen and (max-width: 1280px) {
+   .ListUsers {
+      margin-top: 23vh;
+   
+} 
+}
