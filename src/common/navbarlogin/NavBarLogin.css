@@ -12,28 +12,25 @@
    justify-content: center;
    margin-left: 77%;
    margin-top: -10.3em;
-   
-   
-   
-   
+  
 }
 
 .botonNavBarLogin {
    padding: 1em;
-   font-size: 1.2em;
+   z-index: 2;
    margin-top: 1.2em;
 
 }
 
 .botonNavBarLogin:hover {
    
-   font-size: 1.2em;
+   
    border-top:  solid 1px rgba(218, 183, 93, 0.486);
    border-right:  solid 1px rgba(218, 183, 93, 0.486);
    cursor: pointer;
    color: #dab75e;
    transition: 0.5s;
-   transform: scale(1.1);
+   
    
 }
 
@@ -44,10 +41,10 @@
     align-items: flex-end;
     justify-content: flex-start;
     margin-right: 2em;
-    padding: 0em;
     
     
-    margin-top: -22em; 
+    
+    margin-top: -19.5em; 
     height: 10em;
    
    }
@@ -65,7 +62,7 @@
       cursor: pointer;
       color: #dab75e;
       transition: 0.5s;
-      transform: scale(1.1);
+      
       
    }
    .botonNavBarLogin:hover {
@@ -78,10 +75,11 @@
  @media only screen and (max-width: 420px) {
    
    .navbarButtonsLogin{
-   
+      font-size: 12px;
      margin-left: 100%;
      margin-top: -32%;
-     transform: scale(0.5);
+     
+     
      
    }
 
