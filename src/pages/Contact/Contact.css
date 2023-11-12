@@ -113,3 +113,55 @@
    cursor: pointer;
    color: bisque;
 }
+
+@media only screen and (max-width: 420px) {
+   
+   .blockColumns {
+      margin-left: 0.5em;
+      margin-right: 0.5em;
+      flex-direction: column;
+      width: 90vw;
+   }
+
+   .inputContacto {
+      
+      width: 90vw;
+    
+}
+
+.Campo{
+   max-width: 90vw;
+   
+}
+
+.titleContact{
+   max-width: 90vw;
+  
+
+
+}
+
+.textContact{
+   max-width: 90vw;
+   
+}
+
+
+.columnaIzquierda {
+       
+   width: 90vw;
+   
+   
+
+}
+.columnaDerecha {
+   width: 90vw;
+   
+
+}
+.googleMap {
+   width: 95vw;
+}
+
+
+}
