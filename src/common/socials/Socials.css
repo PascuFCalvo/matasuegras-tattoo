@@ -37,9 +37,22 @@
    
    .navbarButtonsSocials {
      
-      margin-left: 85%;
+      margin-left: 78%;
+      /* flex-direction: column; */
+      margin-top: -17em;
+      
+   
+   
+   }
+ }
+
+ @media only screen and (max-width: 960px) {
+   
+   .navbarButtonsSocials {
+     
+      margin-left: 76%;
       flex-direction: column;
-      margin-top: 0em;
+      margin-top: -1em;
       
    
    
@@ -50,7 +63,7 @@
    
    .navbarButtonsSocials {
      
-      margin-left: 60%;
+      margin-left: 68%;
       flex-direction: row;
       margin-top: 1em;
       transform: scale(0.6);
