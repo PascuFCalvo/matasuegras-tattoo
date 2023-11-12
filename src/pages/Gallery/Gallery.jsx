@@ -6,6 +6,9 @@ import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import "./Gallery.css";
 
 export const Gallery = () => {
+
+  
+
   const [tattoos, setTattoos] = useState([]);
 
   useEffect(() => {
