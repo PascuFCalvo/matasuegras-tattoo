@@ -29,7 +29,7 @@ export const Gallery = () => {
       {tattoos.length > 0 ? (
         <div className="tattooRoster">
           {tattoos.map((tattoo) => (
-            <TattooCard key={tattoo.id} image={tattoo.image_url} />
+            <TattooCard key={tattoo.id} image={tattoo.image_url}/>
           ))}
         </div>
       ) : (

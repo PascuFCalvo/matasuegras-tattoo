@@ -64,7 +64,7 @@ export const Register = () => {
   };
 
   return (
-    <div className="Register">
+    <div><div className="Register">
       <div className="formBackgroundRegister">
         <div className="overInput">Nombre</div>
         <CustomInput
@@ -114,7 +114,8 @@ export const Register = () => {
         <div className='buttonSubmit' onClick={Submit}>Registrar</div>
         <div className = "blank"></div>
       </div>
-      <Footer />
-    </div>
+      
+    </div><Footer /></div>
+    
   );
 };

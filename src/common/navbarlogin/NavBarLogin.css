@@ -11,7 +11,8 @@
    align-items: center;
    justify-content: center;
    margin-left: 74%;
-   margin-top: -10.15em;
+   margin-top: -10.3em;
+   
    
    
    
@@ -20,7 +21,7 @@
 .botonNavBarLogin {
    padding: 1em;
    font-size: 1.2em;
-   margin-top: 5.2em;
+   margin-top: 1.2em;
 
 }
 
@@ -36,25 +37,40 @@
    
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1280px) {
    
    .navbarButtonsLogin{
-     
-      margin-left: 55%;
-      
-      margin-top: -11em;
+    flex-direction: column; 
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin-right: 2em;
+    padding: 0em;
+    
+    
+    margin-top: -22em; 
+    height: 10em;
    
    }
 
+   .botonNavBarLogin {
+      
+      font-size: 1.2em;
+      margin-bottom: -2em;
+   }
+   
    .botonNavBarLogin:hover {
    
       font-size: 1.2em;
-      border-top:  none;
-      border-right:  none;
+      
       cursor: pointer;
       color: #dab75e;
       transition: 0.5s;
       transform: scale(1.1);
+      
+   }
+   .botonNavBarLogin:hover {
+   
+      border: none;
       
    }
  }
@@ -63,7 +79,16 @@
    
    .navbarButtonsLogin{
    
-     margin-left: 0%;
-     margin-top: -30%;
+     margin-left: 100%;
+     margin-top: -32%;
+     transform: scale(0.5);
+     
    }
+
+   .botonNavBarLogin:hover {
+   
+      border: none;
+      
+   }
+   
    }

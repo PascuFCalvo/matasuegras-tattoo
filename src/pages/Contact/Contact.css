@@ -3,19 +3,18 @@
    src: url("../../assets/fonts/YesevaOne-Regular.ttf");
 }
 
-.backgroundContact{
+.backgroundContact {
    background-color: bisque;
    display: flex;
    flex-direction: column;
-   
-   
    height: auto;
-   font-family: tattoo;;
-   font-weight:100;
-   
+   font-family: tattoo;
+   ;
+   font-weight: 100;
+
 }
 
-.blockColumns{
+.blockColumns {
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    font-size: 20px;
    display: flex;
@@ -23,7 +22,7 @@
    justify-content: space-evenly;
 }
 
-.titleContact{
+.titleContact {
    max-width: 40vw;
    margin-top: 3em;
    margin-bottom: 3em;
@@ -33,7 +32,7 @@
 
 }
 
-.textContact{
+.textContact {
    max-width: 40vw;
    line-height: 2;
    text-align: start;
@@ -43,30 +42,31 @@
 
 
 .columnaIzquierda {
-       
+
    width: 42vw;
    color: black;
-   
+
 
 }
+
 .columnaDerecha {
    width: 42vw;
    color: black;
-   
+
 
 }
 
-.negrita{
+.negrita {
    font-weight: 900;
 }
 
 .googleMap {
-   word-wrap: 50vw;
+   min-width: 350px;
    margin-bottom: 3em;
    margin-right: 9em;
 }
 
-.Campo{
+.Campo {
    max-width: 36vw;
    font-size: 26px;
    text-align: start;
@@ -94,7 +94,7 @@
    resize: none
 }
 
-.buttonSend{
+.buttonSend {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -105,17 +105,94 @@
    border: solid 3px rgb(53, 53, 53);
    margin-bottom: 3em;
    margin-top: 2em;
-   
+
 }
 
-.buttonSend:hover{
-   background-color: rgb(53, 53, 53); 
+.buttonSend:hover {
+   background-color: rgb(53, 53, 53);
    cursor: pointer;
    color: bisque;
 }
 
+@media only screen and (max-width: 1280px) {
+   .backgroundContact {
+      margin-top: 23vh;
+
+   }
+
+
+}
+
+@media only screen and (max-width: 960px) {
+   .blockColumns {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-size: 20px;
+      display: flex;
+      flex-direction: column;
+      width: 90vw;
+   }
+
+   .columnaIzquierda {
+
+      width: 90vw;
+      color: black;
+      margin-left: 1em;
+
+
+   }
+
+   .columnaDerecha {
+      width: 90vw;
+      color: black;
+      margin-left: 1em;
+
+   }
+
+   .inputContacto {
+
+      width: 90vw;
+
+   }
+
+   .Campo {
+      max-width: 90vw;
+
+   }
+
+   .titleContact {
+      max-width: 90vw;
+
+
+
+   }
+
+   .textContact {
+      max-width: 90vw;
+
+   }
+
+
+   .columnaIzquierda {
+
+      width: 90vw;
+
+
+
+   }
+
+   .columnaDerecha {
+      width: 90vw;
+
+
+   }
+
+
+}
+
+
+
 @media only screen and (max-width: 420px) {
-   
+
    .blockColumns {
       margin-left: 0.5em;
       margin-right: 0.5em;
@@ -124,44 +201,46 @@
    }
 
    .inputContacto {
-      
+
       width: 90vw;
-    
-}
 
-.Campo{
-   max-width: 90vw;
-   
-}
+   }
 
-.titleContact{
-   max-width: 90vw;
-  
+   .Campo {
+      max-width: 90vw;
 
+   }
 
-}
-
-.textContact{
-   max-width: 90vw;
-   
-}
+   .titleContact {
+      max-width: 90vw;
 
 
-.columnaIzquierda {
-       
-   width: 90vw;
-   
-   
 
-}
-.columnaDerecha {
-   width: 90vw;
-   
+   }
 
-}
-.googleMap {
-   width: 95vw;
-}
+   .textContact {
+      max-width: 90vw;
+
+   }
+
+
+   .columnaIzquierda {
+
+      width: 90vw;
+
+
+
+   }
+
+   .columnaDerecha {
+      width: 90vw;
+
+
+   }
+
+   .googleMap {
+      width: 95vw;
+   }
 
 
 }

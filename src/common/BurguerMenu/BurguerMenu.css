@@ -75,16 +75,18 @@
   display: flex;
 }
 
-@media only screen and (max-width: 1280px) {
+/* @media only screen and (max-width: 1280px) {
   .hamburguesa-menu {
     display: block;
   }
-}
+} */
 
 @media only screen and (max-width: 420px) {
   .hamburguesa-menu {
     display: none;
   }
+}
+
 
  
-}
+

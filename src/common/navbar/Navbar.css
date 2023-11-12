@@ -9,6 +9,12 @@
    flex-direction: row;
    align-items: center;
    justify-content: center;
+   padding-top: 10em;   margin-bottom: 0px;
+   flex-wrap: wrap;
+   width: 60vw;
+   margin-left: 20vw;
+   
+   
    
    
 }
@@ -16,14 +22,13 @@
 .botonNavBar {
    padding: 0.8em;
    font-size: 1.2em;
-   margin-top: 5%;
+   margin-top: -1%;
 
 }
 
 .botonNavBar:hover {
    padding: 0.5em;
    font-size: 1.2em;
-   
    cursor: pointer;
    color: #dab75e;
    transition: 0.5s;
@@ -34,17 +39,42 @@
 }
 
 @media only screen and (max-width: 1280px) {
-   .navbarButtons {
-     display: none;
+   .botonNavBar {
+      font-family: tattoo;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      width: 100vw;
+      margin-left: -20%;
+           
+      z-index: 2;
+     
+   }
+
+   .botonNavBar:hover {
+      border:none;
    }
  }
 
  @media only screen and (max-width: 420px) {
    .navbarButtons {
+   
      display: block;
      display: flex;
      transform: scale(0.5);
-     margin-top: 7.5em;
+     padding-top: 6em;
+     margin-top: 6em;
+     margin-bottom: 3em;
+      height: 0em;
+      margin-left: 20vw;
+     
+   }
+   .botonNavBar {
+      
+      margin-left: -15em; 
+        
+       
      
    }
 

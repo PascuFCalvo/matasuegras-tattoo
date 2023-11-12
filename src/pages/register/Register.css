@@ -98,3 +98,37 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
+
+@media only screen and (max-width: 1280px) {
+   .Register{
+      margin-left: -8%;
+      margin-top: 3%
+   }
+}
+
+@media only screen and (max-width: 960px) {
+   .Register{
+      margin-left: 6%;
+      margin-top: 1%;
+   }
+   @media only screen and (max-width: 420px) {
+      .Register{
+         background-color: rgb(36, 36, 36);
+         transform: scale(0.7);
+         margin-top: -14%;
+         margin-left: 0%;
+         width: 28em;
+         height: 25em;
+      }
+   
+      .formBackgroundRegister{
+         margin: 0em;
+         background-color: transparent;
+         z-index: 2;
+         
+      
+      }
+   }
+
+}
+

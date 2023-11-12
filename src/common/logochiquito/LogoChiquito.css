@@ -22,6 +22,16 @@
    transition: 0.5s;
 }
 
+@media only screen and (max-width: 960px) {
+   
+   .logoChiquito{
+   
+     margin-left: 35%;
+     margin-right: 35%;
+     
+   }
+   }
+
 @media only screen and (max-width: 420px) {
    
    .logoChiquito{
