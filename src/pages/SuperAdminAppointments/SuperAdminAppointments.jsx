@@ -5,6 +5,7 @@ import {
   getAllUsers,
   getAppointments,
   getTattooArtist,
+  updateAnAppointment,
 } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 
@@ -31,14 +32,14 @@ export const SuperAdminAppointments = () => {
           throw new Error(resultado.statusText);
         }
 
-        // Actualizar el estado local después de la eliminación exitosa
+        
         setAppointments((prevAppointments) =>
           prevAppointments.filter((appointment) => appointment.id !== id)
         );
 
-        const buttonRect = document.querySelector(
-          `.buttonDelete[data-index="${index}"]`
-        ).getBoundingClientRect();
+        const buttonRect = document
+          .querySelector(`.buttonDelete[data-index="${index}"]`)
+          .getBoundingClientRect();
 
         setMessagePosition({
           top: buttonRect.top + window.scrollY + 25,
@@ -55,7 +56,7 @@ export const SuperAdminAppointments = () => {
         console.log("Error al eliminar cita:", error);
         // Manejar el error según sea necesario
       });
-    }
+  };
 
   const editarCita = (appointment) => {
     setEditing(true);
@@ -63,7 +64,26 @@ export const SuperAdminAppointments = () => {
   };
 
   const guardarCambios = () => {
-    // Aquí deberías llamar al método PUT para modificar la base de datos con la cita editada
+    let body = {
+      user_id: editedAppointment.client,
+      id: editedAppointment.id,
+      title: editedAppointment.title,
+      description: editedAppointment.description,
+      tattoo_artist: editedAppointment.tattoo_artist,
+      client: editedAppointment.client,
+      type: "tattoo",
+    };
+
+    console.log(body);
+
+    updateAnAppointment(body)
+      .then((resultado) => {
+        console.log("cita actualizada", resultado);
+      })
+      .catch((error) => {
+        console.error("Error updateando", error);
+      });
+
     setEditing(false);
   };
 

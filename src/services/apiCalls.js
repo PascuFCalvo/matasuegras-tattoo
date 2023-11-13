@@ -39,6 +39,11 @@ export const deleteAnAppointment= async (body) => {
   return await axios.delete(`http://localhost:4000/appointments/delete`, body)
 }
 
+export const updateAnAppointment= async (body) => {
+  return await axios.put(`http://localhost:4000/appointments/update`, body)
+}
+
+
 
 
 
