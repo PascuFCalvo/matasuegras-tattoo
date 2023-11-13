@@ -155,16 +155,21 @@ export const SuperAdminAppointments = () => {
                           })
                         }
                       />
-                      <input
-                        type="text"
-                        value={editedAppointment.tattoo_artist}
-                        onChange={(e) =>
-                          setEditedAppointment({
-                            ...editedAppointment,
-                            tattoo_artist: e.target.value,
-                          })
-                        }
-                      />
+                       <select
+                value={editedAppointment.tattoo_artist}
+                onChange={(e) =>
+                  setEditedAppointment({
+                    ...editedAppointment,
+                    tattoo_artist: e.target.value,
+                  })
+                }
+              >
+                {tattooArtist.map((artist, index) => (
+                  <option key={index} value={index}>
+                    {artist.user_name}
+                  </option>
+                ))}
+              </select>
                       <input
                         type="text"
                         value={editedAppointment.client}
