@@ -17,6 +17,20 @@
   
 }
 
+.botonNavBarLogin2{
+   padding: 1em;
+   z-index: 2;
+   margin-top: 1.2em;
+}
+ 
+ .botonNavBarLogin.logout {
+   color: red;
+ }
+
+ .botonNavBarLogin.logout:hover {
+   color: darkred;
+ }
+
 .botonNavBarLogin {
    padding: 1em;
    z-index: 2;

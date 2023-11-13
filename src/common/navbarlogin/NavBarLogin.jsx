@@ -2,13 +2,11 @@ import { jwtDecode } from "jwt-decode";
 import "./NavbarLogin.css";
 import { useNavigate } from "react-router-dom";
 
-
-
-export const NavbarLogin = ( ) => {
+export const NavbarLogin = () => {
   const navigate = useNavigate();
 
-   const isLoggedIn = localStorage.getItem('token');
-    console.log(isLoggedIn)
+  const isLoggedIn = localStorage.getItem('token');
+  console.log(isLoggedIn);
 
   let decoded = {};
   if (isLoggedIn) {
@@ -20,11 +18,11 @@ export const NavbarLogin = ( ) => {
   const userLevel = localStorage.getItem('level');
   console.log(userLevel);
 
-  let botones = isLoggedIn
+  const botones = isLoggedIn
     ? [
         {
           id: 1,
-          nombre: "LOG OUT",
+          nombre: `LOG OUT`,
           onClick: () => {
             localStorage.removeItem('token');
             navigate("/login");
@@ -49,32 +47,19 @@ export const NavbarLogin = ( ) => {
       {botones.map((boton) => {
         return (
           <div
-            className="botonNavBarLogin"
+            className={`botonNavBarLogin ${boton.nombre === "LOG OUT" ? 'logout' : ''}`}
             key={boton.id}
             onClick={boton.onClick ? boton.onClick : () => navigate(boton.path)}
-            style={{ color: boton.nombre === "LOG OUT" ? '' : '' }}
           >
             {boton.nombre}
           </div>
         );
       })}
+      {isLoggedIn && (
+        <div className="botonNavBarLogin2">
+          {decoded.user_name} 
+        </div>
+      )}
     </div>
   );
 };
-
-
-
-// export const NavbarLogin = ( ) => {
-
-//     c
-
-  
-//     return (
-//     <div className="navbarButtonsLogin">
-//       <div className='botonNavBarLogin'>LOGIN</div>
-//       <div className='botonNavBarLogin'>REGISTER</div>
-//     </div>
-//     );
-//   }
-
-
