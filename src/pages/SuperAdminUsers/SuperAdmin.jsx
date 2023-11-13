@@ -6,6 +6,11 @@ import { useNavigate } from "react-router-dom";
 export const SuperAdminUsers = () => {
   const [users, setUsers] = useState([]);
 
+  const deleteUser = (id) =>{
+    console.log("hola", id)
+
+  }
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,7 +34,7 @@ export const SuperAdminUsers = () => {
       <div className="ListUsers">
          <div className="panelAdminTitle">LISTADO DE USUARIOS</div>
         {users.length > 0 ? (
-          <><div className="User" >
+          <><div className="User" key={users.id}>
             <div className = "UserInfo"></div>
             {users.map((user) => (
               <div className = "userRow" key={users.id}>
@@ -41,7 +46,11 @@ export const SuperAdminUsers = () => {
               <div className = "created_at">{user.created_at}</div>
               <div className = "updated_at">{user.updated_at}</div>
               <div className = "buttonEdit"> Edit</div>
-              <div className = "buttonDelete"> X</div>
+              <div className="buttonDelete" 
+              onClick={() => deleteUser(user.id)}
+              >
+                    X
+                  </div>
               </div>
               
               

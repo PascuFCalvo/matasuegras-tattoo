@@ -88,7 +88,7 @@ export const Appointment = () => {
     };
     console.log(body);
 
-    alert("cita crada correctamente")
+    alert("cita creada correctamente")
 
     createAppointment(body)
       .then((resultado) => {
