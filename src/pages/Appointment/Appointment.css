@@ -51,6 +51,20 @@
    
  }
 
+ .selectShift > option {
+   background-color: goldenrod;
+   color: black;
+ }
+
+ .selectService >option{
+   background-color: goldenrod;
+   color: black
+ }
+
+ .selectArtist >option{
+   background-color: goldenrod;
+   color: black
+ }
 
 
  .buttonSubmitPedirCita {
