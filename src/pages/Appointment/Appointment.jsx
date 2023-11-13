@@ -32,6 +32,11 @@ export const Appointment = () => {
 
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
+    const selectedDay = new Date(selectedDate).getDay();
+    if (selectedDay === 1 || selectedDay === 0) {
+      alert("Domingo y Lunes estamos cerrados");
+      return;
+    }
     setSelectedDate(selectedDate);
   };
 

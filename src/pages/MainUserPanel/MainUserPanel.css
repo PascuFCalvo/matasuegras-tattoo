@@ -1,0 +1,56 @@
+.BackgroundMainSuperAdmin{
+   background-color: bisque;
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+.titleAdmin {
+   padding-top: 2em;
+   font-size: 30px;
+   color: black;
+
+}
+
+.headerAdminPanel{
+   margin-top: 2em;
+   width: 50vw;
+   height: 15em;
+   background-image: url("../../images/adminpanel.jpg");
+   background-position: center;
+   background-size: cover;
+}
+
+
+.buttons {
+   display: flex;
+}
+
+.buttonUsers {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size: 20px;
+   width: 15em;
+   height: 5em;
+   border: solid 2px black;
+   color: black;
+   margin: 2em;
+}
+
+.buttonUsers:hover{
+   background-color: rgb(37, 37, 37);
+   color: bisque;
+   transition: 0.5s;
+   cursor: pointer;
+
+}
+
+@media only screen and (max-width: 1280px) {
+   .BackgroundMainSuperAdmin {
+      margin-top: 23vh;
+   
+} 
+}

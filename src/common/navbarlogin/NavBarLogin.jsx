@@ -1,10 +1,22 @@
 import "./NavbarLogin.css";
 import { useNavigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
 
 export const NavbarLogin = ({ textColor }) => {
   const navigate = useNavigate();
 
   const isLoggedIn = localStorage.getItem('token');
+  console.log(isLoggedIn)
+
+  let decoded = {};
+  if (isLoggedIn) {
+    decoded = jwtDecode(isLoggedIn);
+    console.log(decoded);
+    localStorage.setItem("level", decoded.level);
+  }
+
+  const userLevel = localStorage.getItem('level');
+  console.log(userLevel);
 
   let botones = isLoggedIn
     ? [
@@ -16,19 +28,16 @@ export const NavbarLogin = ({ textColor }) => {
             navigate("/login");
           },
         },
-      ]
-    : [
-        {
-          id: 1,
-          nombre: "LOGIN",
-          path: "/login",
-        },
         {
           id: 2,
-          nombre: "REGISTRATE",
-          path: "/register",
+          nombre: decoded.user_name,
+          onClick: () => {
+            
+            console.log("Button clicked for user: ", decoded.user_name);
+          },
         },
-      ];
+      ]
+    : [];
 
   return (
     <div className="navbarButtonsLogin">
@@ -47,3 +56,4 @@ export const NavbarLogin = ({ textColor }) => {
     </div>
   );
 };
+

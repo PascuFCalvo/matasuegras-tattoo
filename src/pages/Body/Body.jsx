@@ -16,6 +16,10 @@ import { DewisConsinInfo } from '../DewisConsinInfo/DewisConsinInfo';
 import { AliceInfo } from '../AliceInfo/Aliceinfo';
 import { SentoInfo } from '../SentoInfo/SentoInfo';
 import { DonRogelioInfo } from '../DonRogelioInfo/DonRogelioInfo';
+import { MainTattooPanel } from '../MainTattooPanel/MainTattooPanel';
+import { MainUserPanel } from '../MainUserPanel/MainUserPanel';
+import { TattoArtistAppointments } from '../MainTattooPanelAppointments/TattoArtistAppointments';
+import { UserPanelAppointments } from '../MainUserPanelAppointment/MainUserPanelAppointments';
 
 
 export const Body = () => {
@@ -31,6 +35,10 @@ export const Body = () => {
                 <Route path="/cita" element={<Appointment />}/>
                 <Route path="/contacto" element={<Contact />}/>
                 <Route path="/superAdmin" element={<MainSuperAdmin />}/>
+                <Route path="/myTattooPanel" element={<MainTattooPanel />}/>
+                <Route path="/myTattooPanel/tattooArtistAppointments" element={<TattoArtistAppointments/>}/>
+                <Route path="/myUserPanel" element={<MainUserPanel />}/>
+                <Route path="/myUserPanel/UserPanelAppointments" element={<UserPanelAppointments />}/>
                 <Route path="/superAdmin/superAdminUsers" element={<SuperAdminUsers />}/>
                 <Route path="/superAdmin/superAdminAppointments" element={<SuperAdminAppointments />}/>
                 <Route path="/tatuadores/blackAlien" element={<BlackAlienInfo />}/>

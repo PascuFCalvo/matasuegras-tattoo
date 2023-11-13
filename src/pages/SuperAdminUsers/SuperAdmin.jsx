@@ -1,14 +1,25 @@
 import { useEffect, useState } from "react";
 import "./SuperAdmin.css";
-import { getAllUsers } from "../../services/apiCalls";
+import { deleteAUser, getAllUsers } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 
 export const SuperAdminUsers = () => {
   const [users, setUsers] = useState([]);
 
   const deleteUser = (id) =>{
-    console.log("hola", id)
+    
+    let body = {"id": id}
+    console.log(body)
 
+    deleteAUser(body)
+    .then(resultado => {
+      console.log(resultado);
+
+      setTimeout(() => {
+        navigate("/superAdmin/superAdminUsers");
+      }, 2000);
+    })
+    .catch(error => console.log(error.message));
   }
 
   const navigate = useNavigate();
@@ -25,7 +36,6 @@ export const SuperAdminUsers = () => {
     }
   });
 
-  console.log(users);
 
   return (
     <div>
