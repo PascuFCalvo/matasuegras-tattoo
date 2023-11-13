@@ -1,3 +1,5 @@
+
+
 @font-face {
    font-family: tattoo;
    src: url("../../assets/fonts/YesevaOne-Regular.ttf");
@@ -88,6 +90,26 @@
 .updated_at {
    width: 12em;
 }
+
+.popupMessage {
+   position: absolute;
+   
+   transform: translate(-50%, -50%);
+   background-color: crimson;
+   color: #fff; /* Color del texto, puede ajustarse según tus preferencias */
+   padding: 10px 20px;
+   border-radius: 5px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   opacity: 0; 
+   transition: opacity 0.3s ease-in-out;
+ }
+ 
+ .popupMessage.show {
+   opacity: 1; 
+ }
 
 @media only screen and (max-width: 1280px) {
    .ListUsers {

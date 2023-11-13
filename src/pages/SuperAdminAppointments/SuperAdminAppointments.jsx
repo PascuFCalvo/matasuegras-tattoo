@@ -16,6 +16,56 @@ export const SuperAdminAppointments = () => {
   const [client, setClient] = useState([]);
   const [editing, setEditing] = useState(false);
   const [editedAppointment, setEditedAppointment] = useState({});
+  const [showMessage, setShowMessage] = useState(false);
+  const [messagePosition, setMessagePosition] = useState({ top: 0, left: 0 });
+
+  const deleteAppointment = (id, index) => {
+    let body = { id: id };
+    console.log(body);
+
+    deleteAnAppointment(body)
+      .then((resultado) => {
+        console.log(resultado);
+
+        if (resultado.status !== 200) {
+          throw new Error(resultado.statusText);
+        }
+
+        // Actualizar el estado local después de la eliminación exitosa
+        setAppointments((prevAppointments) =>
+          prevAppointments.filter((appointment) => appointment.id !== id)
+        );
+
+        const buttonRect = document.querySelector(
+          `.buttonDelete[data-index="${index}"]`
+        ).getBoundingClientRect();
+
+        setMessagePosition({
+          top: buttonRect.top + window.scrollY + 25,
+          left: buttonRect.right + window.scrollX + 100,
+        });
+
+        setShowMessage(true);
+
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 2000);
+      })
+      .catch((error) => {
+        console.log("Error al eliminar cita:", error);
+        // Manejar el error según sea necesario
+      });
+    }
+
+  const editarCita = (appointment) => {
+    setEditing(true);
+    setEditedAppointment({ ...appointment });
+  };
+
+  const guardarCambios = () => {
+    // Aquí deberías llamar al método PUT para modificar la base de datos con la cita editada
+    setEditing(false);
+  };
 
   useEffect(() => {
     if (tattooArtist.length === 0) {
@@ -40,36 +90,6 @@ export const SuperAdminAppointments = () => {
         });
     }
   });
-
-  const deleteAppointment = (id) => {
-    let body = { id: id };
-    console.log(body);
-
-    deleteAnAppointment(body)
-      .then((resultado) => 
-      {
-        console.log(resultado);
-
-        setTimeout(() => {
-          navigate("/superAdmin/superAdminAppointments");
-        }, 2000);
-      })
-      .catch((error) => console.log(error.message));
-
-      
-  };
-
-  
-
-  const editarCita = (appointment) => {
-    setEditing(true);
-    setEditedAppointment({ ...appointment });
-  };
-
-  const guardarCambios = () => {
-    //Aqui he de llamar al metodo put da la para modificar la base de datos con la cita editada
-    setEditing(false);
-  };
 
   useEffect(() => {
     if (appointments.length === 0) {
@@ -198,6 +218,17 @@ export const SuperAdminAppointments = () => {
           <div>Aún no han venido</div>
         )}
       </div>
+      {showMessage && (
+        <div
+          className={`popupMessage ${showMessage ? "show" : ""}`}
+          style={{
+            top: `${messagePosition.top}px`,
+            left: `${messagePosition.left}px`,
+          }}
+        >
+          Cita eliminada
+        </div>
+      )}
     </>
   );
 };
