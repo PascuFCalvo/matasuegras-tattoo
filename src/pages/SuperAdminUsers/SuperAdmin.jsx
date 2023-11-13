@@ -16,10 +16,10 @@ export const SuperAdminUsers = () => {
       console.log(resultado);
 
       setTimeout(() => {
-        navigate("/superAdmin/superAdminUsers");
-      }, 2000);
+        navigate("/superAdmin");
+      }, 1000);
     })
-    .catch(error => console.log(error.message));
+    .catch(error => console.log(error));
   }
 
   const navigate = useNavigate();

@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import "./SuperAdminAppointments.css";
-import { deleteAnAppointment, getAllUsers, getAppointments, getTattooArtist } from "../../services/apiCalls";
+import {
+  deleteAnAppointment,
+  getAllUsers,
+  getAppointments,
+  getTattooArtist,
+} from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 
 export const SuperAdminAppointments = () => {
-
   const navigate = useNavigate();
 
   const [appointments, setAppointments] = useState([]);
   const [tattooArtist, setTattooArtist] = useState([]);
-  const [client, setClient] = useState([])
+  const [client, setClient] = useState([]);
+  const [editing, setEditing] = useState(false);
+  const [editedAppointment, setEditedAppointment] = useState({});
 
   useEffect(() => {
     if (tattooArtist.length === 0) {
@@ -22,7 +28,6 @@ export const SuperAdminAppointments = () => {
         });
     }
   }, [tattooArtist]);
-  console.log(tattooArtist)
 
   useEffect(() => {
     if (client.length === 0) {
@@ -31,28 +36,40 @@ export const SuperAdminAppointments = () => {
           setClient(response.data.Users);
         })
         .catch((error) => {
-          console.error("Error fetching tattoo artist:", error);
+          console.error("Error fetching users:", error);
         });
     }
-  },);
-  console.log(client)
+  });
 
-  
-  const deleteAppointment = (id) =>{
-    
-    let body = {"id": id}
-    console.log(body)
+  const deleteAppointment = (id) => {
+    let body = { id: id };
+    console.log(body);
 
     deleteAnAppointment(body)
-    .then(resultado => {
-      console.log(resultado);
+      .then((resultado) => 
+      {
+        console.log(resultado);
 
-      setTimeout(() => {
-        navigate("/superAdmin/superAdminAppointments");
-      }, 2000);
-    })
-    .catch(error => console.log(error.message));
-  }
+        setTimeout(() => {
+          navigate("/superAdmin/superAdminAppointments");
+        }, 2000);
+      })
+      .catch((error) => console.log(error.message));
+
+      
+  };
+
+  
+
+  const editarCita = (appointment) => {
+    setEditing(true);
+    setEditedAppointment({ ...appointment });
+  };
+
+  const guardarCambios = () => {
+    //Aqui he de llamar al metodo put da la para modificar la base de datos con la cita editada
+    setEditing(false);
+  };
 
   useEffect(() => {
     if (appointments.length === 0) {
@@ -66,39 +83,117 @@ export const SuperAdminAppointments = () => {
     }
   });
 
-  console.log(appointments);
-
   return (
     <>
-    <div className="ListUsers">
-         <div className="panelAdminTitle">LISTADO DE CITAS</div>
+      <div className="ListUsers">
+        <div className="panelAdminTitle">LISTADO DE CITAS</div>
         {appointments.length > 0 ? (
-          <><div className="User" >
-            <div className = "UserInfo"></div>
-            {appointments.map((appointment) => (
-              <div className = "userRow" key={appointment.id}>
-              <div className = "id">{appointment.id}</div>
-              <div className = "userName">{appointment.title}</div>
-              <div className = "email">{appointment.description}</div>
-              <div className = "phone"> {tattooArtist[appointment.tattoo_artist].user_name}</div>
-              <div className = "level">{client[appointment.client].user_name}</div>
-              <div className = "created_at">{appointment.created_at}</div>
-              <div className = "updated_at">{appointment.updated_at}</div>
-              <div className = "buttonEdit"> Edit</div>
-              <div className="buttonDelete" 
-              onClick={() => deleteAppointment(appointment.id)}
-              >
+          <>
+            <div className="User">
+              <div className="UserInfo"></div>
+              {appointments.map((appointment) => (
+                <div className="userRow" key={appointment.id}>
+                  {editing && editedAppointment.id === appointment.id ? (
+                    <>
+                      <input
+                        type="text"
+                        value={editedAppointment.title}
+                        onChange={(e) =>
+                          setEditedAppointment({
+                            ...editedAppointment,
+                            title: e.target.value,
+                          })
+                        }
+                      />
+                      <input
+                        type="text"
+                        value={editedAppointment.description}
+                        onChange={(e) =>
+                          setEditedAppointment({
+                            ...editedAppointment,
+                            description: e.target.value,
+                          })
+                        }
+                      />
+                      <input
+                        type="text"
+                        value={editedAppointment.tattoo_artist}
+                        onChange={(e) =>
+                          setEditedAppointment({
+                            ...editedAppointment,
+                            tattoo_artist: e.target.value,
+                          })
+                        }
+                      />
+                      <input
+                        type="text"
+                        value={editedAppointment.client}
+                        onChange={(e) =>
+                          setEditedAppointment({
+                            ...editedAppointment,
+                            client: e.target.value,
+                          })
+                        }
+                      />
+                      <input
+                        type="text"
+                        value={editedAppointment.created_at}
+                        onChange={(e) =>
+                          setEditedAppointment({
+                            ...editedAppointment,
+                            created_at: e.target.value,
+                          })
+                        }
+                      />
+                      <input
+                        type="text"
+                        value={editedAppointment.updated_at}
+                        onChange={(e) =>
+                          setEditedAppointment({
+                            ...editedAppointment,
+                            updated_at: e.target.value,
+                          })
+                        }
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <div className="id">{appointment.id}</div>
+                      <div className="userName">{appointment.title}</div>
+                      <div className="email">{appointment.description}</div>
+                      <div className="phone">
+                        {tattooArtist[appointment.tattoo_artist].user_name}
+                      </div>
+                      <div className="level">
+                        {client[appointment.client].user_name}
+                      </div>
+                      <div className="created_at">{appointment.created_at}</div>
+                      <div className="updated_at">{appointment.updated_at}</div>
+                    </>
+                  )}
+                  <div
+                    className="buttonEdit"
+                    onClick={
+                      editing ? guardarCambios : () => editarCita(appointment)
+                    }
+                  >
+                    {editing && editedAppointment.id === appointment.id
+                      ? "Guardar"
+                      : "Edit"}
+                  </div>
+                  <div
+                    className="buttonDelete"
+                    onClick={() => deleteAppointment(appointment.id)}
+                  >
                     X
                   </div>
-              </div>
-              
-              
-            ))}
-          </div>
-          <div className = "buttonBack" onClick={() => 
-          navigate("/superAdmin")
-          }>Volver al panel</div></>
-          
+                </div>
+              ))}
+            </div>
+            <div className="buttonBack" onClick={() => navigate("/superAdmin")}>
+              Volver al panel
+            </div>
+          </>
         ) : (
           <div>Aún no han venido</div>
         )}
