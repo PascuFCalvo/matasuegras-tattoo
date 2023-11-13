@@ -1,12 +1,14 @@
+import { jwtDecode } from "jwt-decode";
 import "./NavbarLogin.css";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 
-export const NavbarLogin = ({ textColor }) => {
+
+
+export const NavbarLogin = ( ) => {
   const navigate = useNavigate();
 
-  const isLoggedIn = localStorage.getItem('token');
-  console.log(isLoggedIn)
+   const isLoggedIn = localStorage.getItem('token');
+    console.log(isLoggedIn)
 
   let decoded = {};
   if (isLoggedIn) {
@@ -28,16 +30,19 @@ export const NavbarLogin = ({ textColor }) => {
             navigate("/login");
           },
         },
+      ]
+    : [
+        {
+          id: 1,
+          nombre: "LOGIN",
+          path: "/login",
+        },
         {
           id: 2,
-          nombre: decoded.user_name,
-          onClick: () => {
-            
-            console.log("Button clicked for user: ", decoded.user_name);
-          },
+          nombre: "REGISTRATE",
+          path: "/register",
         },
-      ]
-    : [];
+      ];
 
   return (
     <div className="navbarButtonsLogin">
@@ -47,7 +52,7 @@ export const NavbarLogin = ({ textColor }) => {
             className="botonNavBarLogin"
             key={boton.id}
             onClick={boton.onClick ? boton.onClick : () => navigate(boton.path)}
-            style={{ color: boton.nombre === "LOG OUT" ? textColor : '' }}
+            style={{ color: boton.nombre === "LOG OUT" ? '' : '' }}
           >
             {boton.nombre}
           </div>
@@ -56,4 +61,20 @@ export const NavbarLogin = ({ textColor }) => {
     </div>
   );
 };
+
+
+
+// export const NavbarLogin = ( ) => {
+
+//     c
+
+  
+//     return (
+//     <div className="navbarButtonsLogin">
+//       <div className='botonNavBarLogin'>LOGIN</div>
+//       <div className='botonNavBarLogin'>REGISTER</div>
+//     </div>
+//     );
+//   }
+
 

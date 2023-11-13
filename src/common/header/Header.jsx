@@ -1,4 +1,5 @@
 
+
 import { LogoChiquito } from "../logochiquito/LogoChiquito";
 import { Navbar } from "../navbar/Navbar";
 import { NavbarLogin } from "../navbarlogin/NavBarLogin";
@@ -16,8 +17,9 @@ export const Header = () => {
          <LogoChiquito />
          {/* <BurguerMenu /> */}
          <Navbar />
-         <NavbarLogin textColor="crimson" />
+         <NavbarLogin />
          <NavbarSocials />
+         
       </div>
          
       </>
