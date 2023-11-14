@@ -9,6 +9,7 @@ export const UserPanelAppointments = () => {
 
   const [appointments, setAppointments] = useState([]);
   const [user, setUser] = useState([]);
+  const [tattooArtist, setTattooArtist] = useState([]);
 
   const isLoggedIn = localStorage.getItem('token');
   console.log(isLoggedIn)
@@ -22,6 +23,19 @@ export const UserPanelAppointments = () => {
     localStorage.setItem("nombre", decoded.user_name);
     console.log(decoded.user_name)
   }
+
+  useEffect(() => {
+    if (tattooArtist.length === 0) {
+      getTattooArtist()
+        .then((response) => {
+          setTattooArtist(response.data.Artists);
+          console.log(tattooArtist)
+        })
+        .catch((error) => {
+          console.error("Error fetching tattoo artist:", error);
+        });
+    }
+  }, [tattooArtist]);
 
   useEffect(() => {
     if (user.length === 0) {
@@ -84,9 +98,8 @@ export const UserPanelAppointments = () => {
                   <div className="userName">{appointment.title}</div>
                   <div className="email">{appointment.description}</div>
                   <div className="phone">
-                    Artista {appointment.tattoo_artist}
+                  {tattooArtist[appointment.tattoo_artist].user_name}
                   </div>
-                  <div className="level">Cliente {appointment.client}</div>
                   <div className="created_at">{appointment.created_at}</div>
                   <div className="updated_at">{appointment.updated_at}</div>
                   <div className="buttonEdit"> Edit</div>

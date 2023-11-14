@@ -3,6 +3,7 @@ import { createAppointment, getTattooArtist } from "../../services/apiCalls";
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import "./Appointment.css";
 import { Navigate } from "react-router-dom"; // Cambiado de Navigate a navigate
+import { jwtDecode } from "jwt-decode";
 
 export const Appointment = () => {
   const [tattooArtists, setTattooArtists] = useState([]);
@@ -11,9 +12,27 @@ export const Appointment = () => {
   const [selectedTattooArtist, setSelectedTattooArtist] = useState("");
   const [selectedService, setSelectedService] = useState("tattoo");
   const [selectedTattooArtistId, setSelectedTattooArtistId] = useState(2);
-  const [selectedUserId, setSelectedUserId] = useState(20);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [selectedUserId, setSelectedUserId] = useState(0);
+
+  const isLoggedIn = localStorage.getItem('token');
+  console.log(isLoggedIn);
+
+  let decoded = {};
+  if (isLoggedIn) {
+    decoded = jwtDecode(isLoggedIn);
+    console.log(decoded);
+    localStorage.setItem("id", decoded.id);
+  }
+  
+
+  useEffect(()=>
+  setSelectedUserId(decoded.id), [decoded.id]
+  );
+  console.log(selectedUserId)
+  
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -93,7 +112,9 @@ export const Appointment = () => {
     };
     console.log(body);
 
-    alert("cita creada correctamente")
+    if (!body.title || !body.description || !body.tattoo_artist || !body.type || !body.date || !body.client || !body.turn){
+      alert("Revisa el formulario, te falta algun dato")
+    }else alert("cita creada correctamente")
 
     createAppointment(body)
       .then((resultado) => {

@@ -20,7 +20,10 @@ export const SuperAdminAppointments = () => {
   
 
   const deleteAppointment = (id) => {
-    let body = {id:parseInt(id)}
+    let body = {
+      params : {id},
+      }
+      console.log(body)
                   
     deleteAnAppointment(body)
       .then((resultado) => {
