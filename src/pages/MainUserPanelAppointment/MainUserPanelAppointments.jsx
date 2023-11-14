@@ -88,6 +88,25 @@ export const UserPanelAppointments = () => {
     return artist ? artist.user_name : "";
   };
 
+  
+  const handleAppointmentClick = (appointment) => {
+    // Create an object with the appointment details
+    const appointmentDetails = {
+      id: appointment.id,
+      title: appointment.title,
+      description: appointment.description,
+      tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
+      created_at: appointment.date,
+      updated_at: appointment.turn,
+      
+    };
+
+   
+    localStorage.setItem("selectedAppointment", JSON.stringify(appointmentDetails));
+
+    window.location.reload()
+  };
+
   return (
     <>
     <AppointmentDetail/>
@@ -98,7 +117,9 @@ export const UserPanelAppointments = () => {
             <div className="User">
               <div className="UserInfo"></div>
               {filteredAppointments.map((appointment) => (
-                <div className="userRow" onClick={()=>localStorage.setItem("appointmentId", appointment.id)} key={appointment.id}>
+                <div className="userRow" onClick={() => handleAppointmentClick(appointment)}
+                  key={appointment.id}
+                >
                   <div className="id">{appointment.id}</div>
                   <div className="userName">{appointment.title}</div>
                   <div className="email">{appointment.description}</div>
