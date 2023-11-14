@@ -32,6 +32,8 @@ Desarrollada como formacion del Bootcamp de Full Stack Developer de Geekshubs Ac
       <td valign="top"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1150px-React-icon.svg.png" width="60"></td>
       <td valign="top"><img src="https://cdn.icon-icons.com/icons2/3913/PNG/512/openai_logo_icon_248315.png" width="50"></td>
       <td valign="top"><img src="https://banner2.cleanpng.com/20180531/sas/kisspng-bootstrap-react-software-framework-javascript-fron-5b0f9b1ab26fd7.9058729715277494027309.jpg" width="70"></td>
+      <td valign="top"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1280px-Flag_of_India.svg.png" width="60"></td>
+  
   
   
 

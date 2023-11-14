@@ -17,13 +17,11 @@ export const SuperAdminAppointments = () => {
   const [client, setClient] = useState([]);
   const [editing, setEditing] = useState(false);
   const [editedAppointment, setEditedAppointment] = useState({});
-  const [showMessage, setShowMessage] = useState(false);
-  const [messagePosition, setMessagePosition] = useState({ top: 0, left: 0 });
+  
 
-  const deleteAppointment = (id, index) => {
-    let body = { id: id };
-    console.log(body);
-
+  const deleteAppointment = (id) => {
+    let body = {id:parseInt(id)}
+                  
     deleteAnAppointment(body)
       .then((resultado) => {
         console.log(resultado);
@@ -37,20 +35,7 @@ export const SuperAdminAppointments = () => {
           prevAppointments.filter((appointment) => appointment.id !== id)
         );
 
-        const buttonRect = document
-          .querySelector(`.buttonDelete[data-index="${index}"]`)
-          .getBoundingClientRect();
-
-        setMessagePosition({
-          top: buttonRect.top + window.scrollY + 25,
-          left: buttonRect.right + window.scrollX + 100,
-        });
-
-        setShowMessage(true);
-
-        setTimeout(() => {
-          setShowMessage(false);
-        }, 2000);
+        
       })
       .catch((error) => {
         console.log("Error al eliminar cita:", error);
@@ -243,17 +228,9 @@ export const SuperAdminAppointments = () => {
           <div>Aún no han venido</div>
         )}
       </div>
-      {showMessage && (
-        <div
-          className={`popupMessage ${showMessage ? "show" : ""}`}
-          style={{
-            top: `${messagePosition.top}px`,
-            left: `${messagePosition.left}px`,
-          }}
-        >
-          Cita eliminada
-        </div>
-      )}
+     
+         
+    
     </>
   );
 };
