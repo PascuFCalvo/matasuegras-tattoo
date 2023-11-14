@@ -17,14 +17,13 @@ export const SuperAdminAppointments = () => {
   const [client, setClient] = useState([]);
   const [editing, setEditing] = useState(false);
   const [editedAppointment, setEditedAppointment] = useState({});
-  
+  const [showMessage, setShowMessage] = useState(false);
+  const [messagePosition, setMessagePosition] = useState({ top: 0, left: 0 });
 
-  const deleteAppointment = (id) => {
-    let body = {
-      params : {id},
-      }
-      console.log(body)
-                  
+  const deleteAppointment = (id, index) => {
+    let body = { id: id };
+    console.log(body);
+
     deleteAnAppointment(body)
       .then((resultado) => {
         console.log(resultado);
@@ -33,16 +32,27 @@ export const SuperAdminAppointments = () => {
           throw new Error(resultado.statusText);
         }
 
-        
         setAppointments((prevAppointments) =>
           prevAppointments.filter((appointment) => appointment.id !== id)
         );
 
-        
+        const buttonRect = document
+          .querySelector(`.buttonDelete[data-index="${index}"]`)
+          .getBoundingClientRect();
+
+        setMessagePosition({
+          top: buttonRect.top + window.scrollY + 25,
+          left: buttonRect.right + window.scrollX + 100,
+        });
+
+        setShowMessage(true);
+
+        setTimeout(() => {
+          setShowMessage(false);
+        }, 2000);
       })
       .catch((error) => {
         console.log("Error al eliminar cita:", error);
-        // Manejar el error según sea necesario
       });
   };
 
@@ -80,6 +90,7 @@ export const SuperAdminAppointments = () => {
       getTattooArtist()
         .then((response) => {
           setTattooArtist(response.data.Artists);
+          console.log(response.data.Artists);
         })
         .catch((error) => {
           console.error("Error fetching tattoo artist:", error);
@@ -97,7 +108,8 @@ export const SuperAdminAppointments = () => {
           console.error("Error fetching users:", error);
         });
     }
-  });
+  }, [client]);
+  console.log(client);
 
   useEffect(() => {
     if (appointments.length === 0) {
@@ -109,7 +121,8 @@ export const SuperAdminAppointments = () => {
           console.error("Error fetching tattoos:", error);
         });
     }
-  });
+  }, [appointments]);
+  console.log(appointments);
 
   return (
     <>
@@ -143,21 +156,21 @@ export const SuperAdminAppointments = () => {
                           })
                         }
                       />
-                       <select
-                value={editedAppointment.tattoo_artist}
-                onChange={(e) =>
-                  setEditedAppointment({
-                    ...editedAppointment,
-                    tattoo_artist: e.target.value,
-                  })
-                }
-              >
-                {tattooArtist.map((artist, index) => (
-                  <option key={index} value={index}>
-                    {artist.user_name}
-                  </option>
-                ))}
-              </select>
+                      <select
+                        value={editedAppointment.tattoo_artist}
+                        onChange={(e) =>
+                          setEditedAppointment({
+                            ...editedAppointment,
+                            tattoo_artist: e.target.value,
+                          })
+                        }
+                      >
+                        {tattooArtist.map((artist, index) => (
+                          <option key={index} value={index}>
+                            {artist.user_name}
+                          </option>
+                        ))}
+                      </select>
                       <input
                         type="text"
                         value={editedAppointment.client}
@@ -195,7 +208,22 @@ export const SuperAdminAppointments = () => {
                       <div className="userName">{appointment.title}</div>
                       <div className="email">{appointment.description}</div>
                       <div className="phone">
-                        {tattooArtist[appointment.tattoo_artist].user_name}
+                        {editing && editedAppointment.id === appointment.id ? (
+                          <input
+                            type="text"
+                            value={editedAppointment.tattoo_artist}
+                            onChange={(e) =>
+                              setEditedAppointment({
+                                ...editedAppointment,
+                                tattoo_artist: e.target.value,
+                              })
+                            }
+                          />
+                        ) : (
+                          tattooArtist.find(
+                            (artist) => artist.id === appointment.tattoo_artist
+                          )?.user_name || "N/A"
+                        )}
                       </div>
                       <div className="level">
                         {client[appointment.client].user_name}
@@ -231,9 +259,17 @@ export const SuperAdminAppointments = () => {
           <div>Aún no han venido</div>
         )}
       </div>
-     
-         
-    
+      {showMessage && (
+        <div
+          className={`popupMessage ${showMessage ? "show" : ""}`}
+          style={{
+            top: `${messagePosition.top}px`,
+            left: `${messagePosition.left}px`,
+          }}
+        >
+          Cita eliminada
+        </div>
+      )}
     </>
   );
 };
