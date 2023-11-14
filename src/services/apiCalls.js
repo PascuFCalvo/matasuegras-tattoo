@@ -36,8 +36,6 @@ export const deleteAUser= async (body) => {
 }
 
 export const deleteAnAppointment= async (body) => {
-
- 
   return await axios.delete(`http://localhost:4000/appointments/delete`, body)
 }
 

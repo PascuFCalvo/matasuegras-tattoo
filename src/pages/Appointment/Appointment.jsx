@@ -1,20 +1,17 @@
 import { useEffect, useState } from "react";
-import {
-  createAppointment,
-  getAppointments,
-  getTattooArtist,
-} from "../../services/apiCalls";
+import { createAppointment, getTattooArtist } from "../../services/apiCalls";
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import "./Appointment.css";
+import { Navigate, useNavigate } from "react-router-dom"; // Cambiado de Navigate a navigate
 import { jwtDecode } from "jwt-decode";
-import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
-import { useNavigate } from "react-router-dom";
 
 export const Appointment = () => {
-  const navigate = useNavigate();
-  const [appointments, setAppointments] = useState([]);
+
+  
+
+
   const [tattooArtists, setTattooArtists] = useState([]);
+  const [selectedDate, setSelectedDate] = useState(getTodayDate());
   const [selectedShift, setSelectedShift] = useState("morning");
   const [selectedTattooArtist, setSelectedTattooArtist] = useState("");
   const [selectedService, setSelectedService] = useState("tattoo");
@@ -22,33 +19,35 @@ export const Appointment = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedUserId, setSelectedUserId] = useState(0);
-  const [selected, setSelected] = useState();
-  
-  const isLoggedIn = localStorage.getItem("token");
-  let decoded = {};
 
+  
+
+  const isLoggedIn = localStorage.getItem('token');
+  const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    if (!isLoggedIn) {
+      // User is not logged in, redirect to login page
+      navigate("/login");
+    }
+  }, [isLoggedIn, navigate]);
+
+
+  let decoded = {};
   if (isLoggedIn) {
     decoded = jwtDecode(isLoggedIn);
     console.log(decoded);
     localStorage.setItem("id", decoded.id);
-  } else {
-    
-    navigate("/login");
-    
   }
   
-  useEffect(() => {
-    if (appointments.length === 0) {
-      getAppointments()
-        .then((response) => {
-          setAppointments(response.data.Appointments);
-        })
-        .catch((error) => {
-          console.error("Error fetching tattoos:", error);
-        });
-    }
-  });
-  console.log(appointments);
+
+  useEffect(()=>
+  setSelectedUserId(decoded.id), [decoded.id]
+  );
+  console.log(selectedUserId)
+  
+  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,11 +64,15 @@ export const Appointment = () => {
     }
   }, [tattooArtists]);
 
-  console.log(tattooArtists);
-
-
-  useEffect(() => setSelectedUserId(decoded.id), [decoded.id]);
-  console.log(selectedUserId);
+  const handleDateChange = (event) => {
+    const selectedDate = event.target.value;
+    const selectedDay = new Date(selectedDate).getDay();
+    if (selectedDay === 1 || selectedDay === 0) {
+      alert("Domingo y Lunes estamos cerrados");
+      return;
+    }
+    setSelectedDate(selectedDate);
+  };
 
   const handleShiftChange = (event) => {
     const selectedShift = event.target.value;
@@ -83,7 +86,7 @@ export const Appointment = () => {
     const selectedTattooArtistObject = tattooArtists.find(
       (artist) => artist.user_name === selectedTattooArtist
     );
-
+      
     if (selectedTattooArtistObject) {
       setSelectedTattooArtistId(selectedTattooArtistObject.id);
     }
@@ -104,6 +107,14 @@ export const Appointment = () => {
     setDescription(newDescription);
   };
 
+  const formatSelectedDate = () => {
+    const date = new Date(selectedDate);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  };
+
   const handleSubmit = () => {
     const body = {
       title: title,
@@ -111,57 +122,32 @@ export const Appointment = () => {
       tattoo_artist: selectedTattooArtistId,
       client: selectedUserId,
       type: selectedService,
-      date: selected,
+      date: formatSelectedDate(),
       turn: selectedShift,
     };
     console.log(body);
 
-    if (
-      !body.title ||
-      !body.description ||
-      !body.tattoo_artist ||
-      !body.type ||
-      !body.date ||
-      !body.client ||
-      !body.turn
-    ) {
-      alert("Revisa el formulario, te falta algun dato");
-    } else alert("cita creada correctamente");
+    if (!body.title || !body.description || !body.tattoo_artist || !body.type || !body.date || !body.client || !body.turn){
+      alert("Revisa el formulario, te falta algun dato")
+    }else alert("cita creada correctamente")
 
     createAppointment(body)
       .then((resultado) => {
         console.log(resultado);
         setTimeout(() => {
-          navigate("/");
+          Navigate("/login");
         }, 1000);
       })
       .catch((error) => console.log(error));
   };
 
-  let today;
-  let year;
-  let month;
-  let day;
-
   function getTodayDate() {
-    today = new Date();
-    year = today.getFullYear();
-    month = String(today.getMonth() + 1).padStart(2, "0");
-    day = String(today.getDate()).padStart(2, "0");
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   }
-
-  getTodayDate();
-
-  const occupiedDates = appointments.map(
-    (appointment) => new Date(appointment.date)
-  );
-  console.log(occupiedDates);
-
-  const disabledDays = {
-    before: new Date(1900, 1, 1),
-    after: new Date(year + 1, month, day),
-    daysOfWeek: [0, 6],
-  };
 
   return (
     <div>
@@ -183,6 +169,15 @@ export const Appointment = () => {
               id="description"
               value={description}
               onChange={handleDescriptionChange}
+            />
+            <div className="title">Selecciona una fecha</div>
+            <input
+              className="selectDate"
+              type="date"
+              id="appointmentDate"
+              value={selectedDate}
+              onChange={handleDateChange}
+              min={getTodayDate()}
             />
             <div className="title">Selecciona un Servicio</div>
             <select
@@ -217,26 +212,6 @@ export const Appointment = () => {
                 </option>
               ))}
             </select>
-            <div className="title">Selecciona una fecha</div>
-
-            <DayPicker
-              defaultMonth={new Date(year, month - 1)}
-              fromDate={new Date(today)}
-              toDate={new Date(year + 1, month, 23)}
-              showOutsideDays
-              fixedWeeks
-              weekStartsOn={1}
-              disabled={disabledDays}
-              DayPicker
-              id="example"
-              numberOfMonths={2}
-              mode="single"
-              required
-              selected={selected}
-              onSelect={setSelected}
-
-              // footer={footer}
-            />
             <div className="buttonSubmitPedirCita" onClick={handleSubmit}>
               Pedir Cita
             </div>

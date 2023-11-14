@@ -85,6 +85,11 @@
    
 }
 
+.inputEdit{
+   padding: 1em;
+   ;
+}
+
 .blankPedirCita{
    position: absolute;
    bottom: -50em ;

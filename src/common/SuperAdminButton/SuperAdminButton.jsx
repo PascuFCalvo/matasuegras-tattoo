@@ -5,12 +5,12 @@ import { jwtDecode } from "jwt-decode";
 
 export const SuperAdminButton = () => {
   const isLoggedIn = localStorage.getItem("token");
-  console.log(isLoggedIn);
+  
 
   let decoded = {};
   if (isLoggedIn) {
     decoded = jwtDecode(isLoggedIn);
-    console.log(decoded);
+    
     localStorage.setItem("level", decoded.level);
   }
 

@@ -5,7 +5,6 @@ import {
   getAllUsers,
   getAppointments,
   getTattooArtist,
-  updateAnAppointment,
 } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 
@@ -15,8 +14,6 @@ export const SuperAdminAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [tattooArtist, setTattooArtist] = useState([]);
   const [client, setClient] = useState([]);
-  const [editing, setEditing] = useState(false);
-  const [editedAppointment, setEditedAppointment] = useState({});
   const [showMessage, setShowMessage] = useState(false);
   const [messagePosition, setMessagePosition] = useState({ top: 0, left: 0 });
 
@@ -54,35 +51,6 @@ export const SuperAdminAppointments = () => {
       .catch((error) => {
         console.log("Error al eliminar cita:", error);
       });
-  };
-
-  const editarCita = (appointment) => {
-    setEditing(true);
-    setEditedAppointment({ ...appointment });
-  };
-
-  const guardarCambios = () => {
-    let body = {
-      user_id: editedAppointment.client,
-      id: editedAppointment.id,
-      title: editedAppointment.title,
-      description: editedAppointment.description,
-      tattoo_artist: editedAppointment.tattoo_artist,
-      client: editedAppointment.client,
-      type: "tattoo",
-    };
-
-    console.log(body);
-
-    updateAnAppointment(body)
-      .then((resultado) => {
-        console.log("cita actualizada", resultado);
-      })
-      .catch((error) => {
-        console.error("Error updateando", error);
-      });
-
-    setEditing(false);
   };
 
   useEffect(() => {
@@ -124,6 +92,11 @@ export const SuperAdminAppointments = () => {
   }, [appointments]);
   console.log(appointments);
 
+  const getTattooArtistName = (artistId) => {
+    const artist = tattooArtist.find((artist) => artist.id === artistId);
+    return artist ? artist.user_name : "";
+  };
+
   return (
     <>
       <div className="ListUsers">
@@ -134,114 +107,20 @@ export const SuperAdminAppointments = () => {
               <div className="UserInfo"></div>
               {appointments.map((appointment) => (
                 <div className="userRow" key={appointment.id}>
-                  {editing && editedAppointment.id === appointment.id ? (
-                    <>
-                      <input
-                        type="text"
-                        value={editedAppointment.title}
-                        onChange={(e) =>
-                          setEditedAppointment({
-                            ...editedAppointment,
-                            title: e.target.value,
-                          })
-                        }
-                      />
-                      <input
-                        type="text"
-                        value={editedAppointment.description}
-                        onChange={(e) =>
-                          setEditedAppointment({
-                            ...editedAppointment,
-                            description: e.target.value,
-                          })
-                        }
-                      />
-                      <select
-                        value={editedAppointment.tattoo_artist}
-                        onChange={(e) =>
-                          setEditedAppointment({
-                            ...editedAppointment,
-                            tattoo_artist: e.target.value,
-                          })
-                        }
-                      >
-                        {tattooArtist.map((artist, index) => (
-                          <option key={index} value={index}>
-                            {artist.user_name}
-                          </option>
-                        ))}
-                      </select>
-                      <input
-                        type="text"
-                        value={editedAppointment.client}
-                        onChange={(e) =>
-                          setEditedAppointment({
-                            ...editedAppointment,
-                            client: e.target.value,
-                          })
-                        }
-                      />
-                      <input
-                        type="text"
-                        value={editedAppointment.created_at}
-                        onChange={(e) =>
-                          setEditedAppointment({
-                            ...editedAppointment,
-                            created_at: e.target.value,
-                          })
-                        }
-                      />
-                      <input
-                        type="text"
-                        value={editedAppointment.updated_at}
-                        onChange={(e) =>
-                          setEditedAppointment({
-                            ...editedAppointment,
-                            updated_at: e.target.value,
-                          })
-                        }
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <div className="id">{appointment.id}</div>
-                      <div className="userName">{appointment.title}</div>
-                      <div className="email">{appointment.description}</div>
-                      <div className="phone">
-                        {editing && editedAppointment.id === appointment.id ? (
-                          <input
-                            type="text"
-                            value={editedAppointment.tattoo_artist}
-                            onChange={(e) =>
-                              setEditedAppointment({
-                                ...editedAppointment,
-                                tattoo_artist: e.target.value,
-                              })
-                            }
-                          />
-                        ) : (
-                          tattooArtist.find(
-                            (artist) => artist.id === appointment.tattoo_artist
-                          )?.user_name || "N/A"
-                        )}
-                      </div>
-                      <div className="level">
-                        {client[appointment.client].user_name}
-                      </div>
-                      <div className="created_at">{appointment.created_at}</div>
-                      <div className="updated_at">{appointment.updated_at}</div>
-                    </>
-                  )}
-                  <div
-                    className="buttonEdit"
-                    onClick={
-                      editing ? guardarCambios : () => editarCita(appointment)
-                    }
-                  >
-                    {editing && editedAppointment.id === appointment.id
-                      ? "Guardar"
-                      : "Edit"}
-                  </div>
+                  <>
+                    <div className="id">{appointment.id}</div>
+                    <div className="userName">{appointment.title}</div>
+                    <div className="email">{appointment.description}</div>
+                    <div className="phone">
+                      {getTattooArtistName(appointment.tattoo_artist)}
+                    </div>
+                    <div className="level">
+                      {client[appointment.client].user_name}
+                    </div>
+                    <div className="created_at">{appointment.created_at}</div>
+                    <div className="updated_at">{appointment.updated_at}</div>
+                  </>
+                  <div className="buttonEdit"> Edit</div>
                   <div
                     className="buttonDelete"
                     onClick={() => deleteAppointment(appointment.id)}

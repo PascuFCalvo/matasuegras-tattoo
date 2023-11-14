@@ -19,7 +19,7 @@ export const SuperAdminUsers = () => {
       .then((resultado) => {
         console.log(resultado);
 
-        // Actualizar el estado local después de la eliminación exitosa
+        
         setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
 
         setMessagePosition({
