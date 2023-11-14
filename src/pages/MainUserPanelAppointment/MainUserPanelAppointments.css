@@ -25,6 +25,11 @@
    display: flex;
 }
 
+.userRow:hover{
+   cursor: pointer;
+   background-color: rgb(252, 199, 135);
+}
+
 .userRow > div {
    border-bottom: solid 1px black;
    margin-top: 1em;

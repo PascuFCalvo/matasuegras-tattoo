@@ -72,6 +72,7 @@ export const TattoArtistAppointments = () => {
 
   return (
     <>
+        
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
         {filteredAppointments.length > 0 ? (

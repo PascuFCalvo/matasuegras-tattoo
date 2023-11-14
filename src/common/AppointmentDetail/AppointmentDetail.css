@@ -1,0 +1,16 @@
+.detailedCardBody{
+   height: 30em;
+   width: 30em;
+
+   display: flex;
+   flex-wrap: wrap;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   color: black;
+   background-color: beige;
+}
+
+.titleDetail{
+   color: black;
+}

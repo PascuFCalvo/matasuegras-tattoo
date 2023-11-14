@@ -20,7 +20,7 @@ import { MainTattooPanel } from '../MainTattooPanel/MainTattooPanel';
 import { MainUserPanel } from '../MainUserPanel/MainUserPanel';
 import { TattoArtistAppointments } from '../MainTattooPanelAppointments/TattoArtistAppointments';
 import { UserPanelAppointments } from '../MainUserPanelAppointment/MainUserPanelAppointments';
-import { MainUserPanelAppointmentsDetails } from '../MainUserPanelAppointmentDetails/MainUserPanelAppointmentDetails';
+
 
 
 export const Body = () => {
@@ -40,7 +40,7 @@ export const Body = () => {
                 <Route path="/myTattooPanel/tattooArtistAppointments" element={<TattoArtistAppointments/>}/>
                 <Route path="/myUserPanel" element={<MainUserPanel />}/>
                 <Route path="/myUserPanel/UserPanelAppointments" element={<UserPanelAppointments />}/>
-                <Route path="/myUserPanel/UserPanelAppointments/details" element={<MainUserPanelAppointmentsDetails />}/>
+                
                 <Route path="/superAdmin/superAdminUsers" element={<SuperAdminUsers />}/>
                 <Route path="/superAdmin/superAdminAppointments" element={<SuperAdminAppointments />}/>
                 <Route path="/tatuadores/blackAlien" element={<BlackAlienInfo />}/>

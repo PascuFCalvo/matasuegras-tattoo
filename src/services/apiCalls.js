@@ -45,5 +45,10 @@ export const updateAnAppointment= async (body) => {
 
 
 
+export const myDetailAppointments = async (body) => {
+  return await axios.get(`http://localhost:4000/user/myAppointments`, body)
+}
+
+
 
 

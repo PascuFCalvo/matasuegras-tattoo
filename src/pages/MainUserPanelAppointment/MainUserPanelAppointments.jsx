@@ -3,6 +3,7 @@ import "./MainUserPanelAppointments.css";
 import { getAllUsers, getAppointments, getTattooArtist } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 
 export const UserPanelAppointments = () => {
   const navigate = useNavigate();
@@ -14,16 +15,13 @@ export const UserPanelAppointments = () => {
 
   
   const isLoggedIn = localStorage.getItem('token');
-  console.log(isLoggedIn)
 
   let decoded = {};
   
   if (isLoggedIn) {
     decoded = jwtDecode(isLoggedIn);
-    console.log(decoded);
     localStorage.setItem("level", decoded.level);
     localStorage.setItem("nombre", decoded.user_name);
-    console.log(decoded.user_name)
   }
 
   useEffect(() => {
@@ -31,7 +29,7 @@ export const UserPanelAppointments = () => {
       getTattooArtist()
         .then((response) => {
           setTattooArtist(response.data.Artists);
-          console.log(tattooArtist)
+         
         })
         .catch((error) => {
           console.error("Error fetching tattoo artist:", error);
@@ -63,20 +61,19 @@ export const UserPanelAppointments = () => {
     }
   }, [appointments]);
 
-  console.log(user);
-  console.log(appointments);
+ 
 
   let encontrado = false;
   let idEncontrada = 0;
   user.forEach(element => {
     if (element.user_name === decoded.user_name) {
-      console.log('Encontrado:', element);
+      
       encontrado = true;
       idEncontrada = element.id
     }
   });
 
-  console.log(idEncontrada)
+ 
 
   let filteredAppointments = [];
 
@@ -93,6 +90,7 @@ export const UserPanelAppointments = () => {
 
   return (
     <>
+    <AppointmentDetail/>
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
         {filteredAppointments.length > 0 ? (
@@ -100,7 +98,7 @@ export const UserPanelAppointments = () => {
             <div className="User">
               <div className="UserInfo"></div>
               {filteredAppointments.map((appointment) => (
-                <div className="userRow" key={appointment.id}>
+                <div className="userRow" onClick={()=>localStorage.setItem("appointmentId", appointment.id)} key={appointment.id}>
                   <div className="id">{appointment.id}</div>
                   <div className="userName">{appointment.title}</div>
                   <div className="email">{appointment.description}</div>
