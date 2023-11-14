@@ -78,7 +78,7 @@
    justify-content: center;
    align-items: center;
    position: absolute;
-   bottom: -45em ;
+   bottom: -50em ;
    right: 2em;
    margin-bottom: 2em;
    
@@ -87,7 +87,7 @@
 
 .blankPedirCita{
    position: absolute;
-   bottom: -45em ;
+   bottom: -50em ;
    height: 1em;
    width: 100%;
    
@@ -111,7 +111,7 @@
 
 @media only screen and (max-width: 1280px) {
    .Appointment {
-      margin-top: 23vh;
+      margin-top: 0vh;
    
 } 
    

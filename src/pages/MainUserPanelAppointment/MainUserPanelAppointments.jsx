@@ -84,6 +84,11 @@ export const UserPanelAppointments = () => {
     );
   }
 
+  const getTattooArtistName = (artistId) => {
+    const artist = tattooArtist.find((artist) => artist.id === artistId);
+    return artist ? artist.user_name : "";
+  };
+
   return (
     <>
       <div className="ListUsers">
@@ -98,7 +103,7 @@ export const UserPanelAppointments = () => {
                   <div className="userName">{appointment.title}</div>
                   <div className="email">{appointment.description}</div>
                   <div className="phone">
-                  {tattooArtist[appointment.tattoo_artist].user_name}
+                    {getTattooArtistName(appointment.tattoo_artist)}
                   </div>
                   <div className="created_at">{appointment.created_at}</div>
                   <div className="updated_at">{appointment.updated_at}</div>
