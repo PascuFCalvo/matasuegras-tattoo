@@ -90,7 +90,7 @@ Conexion a Redes sociales.
 Vista principal del estudio
 Tiene scroll hacia abajo para ir viendo todas las secciones
 
-<img src = "./images/readme/Portada.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "../images/readme/Portada.jpg" width = "600px" alt ="Foto de la vista principal">
 <img src = "./images/readme/VistaInferior.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### El Estudio
