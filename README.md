@@ -90,68 +90,68 @@ Conexion a Redes sociales.
 Vista principal del estudio
 Tiene scroll hacia abajo para ir viendo todas las secciones
 
-<img src = "../images/readme/Portada.jpg" width = "600px" alt ="Foto de la vista principal">
-<img src = "./images/readme/VistaInferior.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Portada.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/VistaInferior.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### El Estudio
 Vista del estudio
 
-<img src = "./images/readme/Estudio1.jpg" width = "600px" alt ="Foto de la vista principal">
-<img src = "./images/readme/Estudio2.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Estudio1.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Estudio2.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### Tatuadores
 Vista de los tatuadores
 
-<img src = "./images/readme/Tatuadores1.jpg" width = "600px" alt ="Foto de la vista principal">
-<img src = "./images/readme/Tatuadores2.jpg" width = "600px" alt ="Foto de la vista principal">
-<img src = "./images/readme/Tatuadores3.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Tatuadores1.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Tatuadores2.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Tatuadores3.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### Galeria
 Galeria de tattoos
 
-<img src = "./images/readme/Galeria.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Galeria.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### Contacto
 Formulario de contacto
-<img src = "./images/readme/Contacto.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Contacto.jpg" width = "600px" alt ="Foto de la vista principal">
 
 
 ###### Citas
 Vista del crador de citas
 
-<img src = "./images/readme/Appointment.jpg" width = "600px" alt ="Vista del Login">
+<img src = "./src/images/readme/Appointment.jpg" width = "600px" alt ="Vista del Login">
 
 ###### Login
 Vista del Login
 
-<img src = "./images/readme/Login.jpg" width = "600px" alt ="Vista del Login">
+<img src = "./src/images/readme/Login.jpg" width = "600px" alt ="Vista del Login">
 
 ###### Register
 Vista del Register
 
-<img src = "./images/readme/Registro.jpg" width = "600px" alt ="Vista del Register">
+<img src = "./src/images/readme/Registro.jpg" width = "600px" alt ="Vista del Register">
 
 ###### LogOut
 Vista del logout
 
-<img src = "./resources/tutorial.jpg" width = "300px" alt ="Vista del logout">
+<img src = "./src/resources/tutorial.jpg" width = "300px" alt ="Vista del logout">
 
 ###### Panel de usuario
 Vista del panel de usuario
 
-<img src = "./resources/tutorial.jpg" width = "300px" alt ="Vista del panel de usuario">
+<img src = "./src/resources/tutorial.jpg" width = "300px" alt ="Vista del panel de usuario">
 
 ###### Panel de tatuador
 Vista del panel de tatuador
 
-<img src = "./resources/tutorial.jpg" width = "300px" alt ="Vista del panel de tatuador">
+<img src = "./src/resources/tutorial.jpg" width = "300px" alt ="Vista del panel de tatuador">
 
 ###### Panel de admin
 Vista del panel de admin
 
-<img src = "./images/readme/Panel admin.jpg" width = "600px" alt ="Foto de la vista principal">
-<img src = "./images/readme/Panel admin citas.jpg" width = "600px" alt ="Foto de la vista principal">
-<img src = "./images/readme/Panel admin users.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Panel admin.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Panel admin citas.jpg" width = "600px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Panel admin users.jpg" width = "600px" alt ="Foto de la vista principal">
 
 
 
