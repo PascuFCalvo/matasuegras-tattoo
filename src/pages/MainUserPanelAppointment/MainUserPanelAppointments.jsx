@@ -93,8 +93,8 @@ export const UserPanelAppointments = () => {
     };
 
     localStorage.setItem("selectedAppointment", JSON.stringify(appointmentDetails));
-
-    window.location.reload();
+    console.log(appointmentDetails)
+    // window.location.reload();
   };
 
   return (

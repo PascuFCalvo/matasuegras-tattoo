@@ -4,7 +4,6 @@ import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import "./Appointment.css";
 import { Navigate, useNavigate } from "react-router-dom"; // Cambiado de Navigate a navigate
 import { jwtDecode } from "jwt-decode";
-import { DayPicker } from "react-day-picker";
 
 export const Appointment = () => {
 
@@ -20,13 +19,9 @@ export const Appointment = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedUserId, setSelectedUserId] = useState(0);
-
-  
-
   const isLoggedIn = localStorage.getItem('token');
   const navigate = useNavigate();
 
-  
   useEffect(() => {
     if (!isLoggedIn) {
       // User is not logged in, redirect to login page
@@ -41,15 +36,10 @@ export const Appointment = () => {
     console.log(decoded);
     localStorage.setItem("id", decoded.id);
   }
-  
-
   useEffect(()=>
   setSelectedUserId(decoded.id), [decoded.id]
   );
   console.log(selectedUserId)
-  
-  
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -141,7 +131,6 @@ export const Appointment = () => {
       })
       .catch((error) => console.log(error));
   };
-
   function getTodayDate() {
     const today = new Date();
     const year = today.getFullYear();
@@ -149,8 +138,6 @@ export const Appointment = () => {
     const day = String(today.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   }
-
- 
   return (
     <div>
       <div className="Appointment">

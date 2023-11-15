@@ -17,23 +17,24 @@
 
 .panelAdminTitle{
    font-size: 26px;
-   padding: 2em;
+   
 }
 
 .userRow {
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    display: flex;
+   border: none;
 }
 
 .userRow:hover{
    cursor: pointer;
    background-color: rgb(252, 199, 135);
+   
 }
 
 .userRow > div {
-   border-bottom: solid 1px black;
-   margin-top: 1em;
-   margin-bottom: 1em;
+   border-bottom: slid 1px black;
+   
 }
 
 .buttonDelete{

@@ -1,20 +1,31 @@
+@font-face {
+   font-family: tattoo;
+   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+}
+
+
 .detailedCardBody{
-   height: 40em;
+
+   height: auto;
    width: 40em;
    position: absolute;
    display: flex;
-   flex-wrap: wrap;
+   margin-top: 2%;
+   margin-bottom: 5%;
    flex-direction: column;
    justify-content: center;
    align-items: center;
-   color: black;
-   background-color: beige;
+   color: bisque;
+   background-color: rgb(26, 26, 26);
    margin-left: 30%;
    z-index: 2;
+   border: bisque;
 }
 
 .imagenCita {
    width: 20em;
+   margin-bottom: 2em;
+   margin-top: 2em;
 }
 
 .visible {
@@ -27,3 +38,57 @@
    height: 0;
    overflow: hidden;
  }
+
+.appointmentID{
+   font-size: 20px;
+   margin-bottom: 1em;
+}
+.appointmentTitle{
+   font-family: tattoo;
+   font-size: 20px;
+   margin-bottom: 1em;
+}
+.appointmentDesc{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size:20px;
+   margin-left: 10%;
+   margin-right: 10%;
+   display: flex;
+   text-align: start;
+   margin-bottom: 1em;
+}
+.appointmentTattoo{
+   font-family: tattoo;
+   font-size: 20px;
+   margin-bottom: 1em;
+}
+.appointmentDate{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size:20px;
+   margin-left: 10%;
+   margin-right: 10%;
+   display: flex;
+   text-align: start;
+   margin-bottom: 1em;
+}
+.appointmentTurn{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   font-size:20px;
+   margin-left: 10%;
+   margin-right: 10%;
+   display: flex;
+   text-align: start;
+   margin-bottom: 1em;
+}
+
+.buttonClose {
+   background-color: rgb(26, 26, 26);
+   margin-bottom: 1em;
+   border-bottom: 2px solid bisque;
+   border-radius: 0px;
+}
+
+.buttonClose:hover {
+   outline: bisque;
+   border: solid 1px bisque;
+}

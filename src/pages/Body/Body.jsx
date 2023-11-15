@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Login } from '../Login/Login';
 import { MainPage } from '../MainPage/MainPage';
 import { Register } from '../register/Register';
@@ -7,7 +7,6 @@ import { ElEstudio } from '../ElEstudio/ElEstudio';
 import { TattoArtist } from '../TattooArtist/TattooArtist';
 import { Appointment } from '../Appointment/Appointment';
 import { Contact } from '../Contact/Contact';
-
 import { MainSuperAdmin } from '../MainSuperAdmin/MainSuperAdmin';
 import { SuperAdminUsers } from '../SuperAdminUsers/SuperAdmin';
 import { SuperAdminAppointments } from '../SuperAdminAppointments/SuperAdminAppointments';
@@ -27,6 +26,7 @@ export const Body = () => {
      return (
          <>
             <Routes>
+                <Route path="*" element={<Navigate to="/"/>}/>
                 <Route path="/" element={<MainPage />}/>
                 <Route path="/login" element={<Login />}/>
                 <Route path="/register" element={<Register />}/>
