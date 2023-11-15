@@ -1,9 +1,10 @@
 import  { useEffect, useState } from "react";
 import "./TattooArtistAppointments.css";
-import { getAllUsers, getAppointments, getTattooArtist } from "../../services/apiCalls";
+import { deleteAnAppointment, getAllUsers, getAppointments, getTattooArtist } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
+import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
 
 export const TattoArtistAppointments = () => {
   const navigate = useNavigate();
@@ -11,8 +12,9 @@ export const TattoArtistAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [users, setUsers] = useState([]);
   const [tattooArtist, setTattooArtist] = useState([]);
-  const [selectedAppointment, setSelectedAppointemt] = useState ({});
+  const [selectedAppointment, setSelectedAppointment] = useState ({});
   const [isModalVisible, setIsModalVisible] = useState (false);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   const isLoggedIn = localStorage.getItem('token');
 
@@ -95,7 +97,7 @@ export const TattoArtistAppointments = () => {
     };
 
     setIsModalVisible(true);
-    setSelectedAppointemt(appointmentDetails);
+    setSelectedAppointment(appointmentDetails);
     
   };
 
@@ -109,13 +111,53 @@ export const TattoArtistAppointments = () => {
     return client ? client.user_name : "";
   };
 
+  const handleEditAppointmentClick = (appointment) => {
+    const appointmentDetails = {
+      id: appointment.id,
+      title: appointment.title,
+      description: appointment.description,
+      trabajo: appointment.type,
+      tattoo_artist: decoded.user_name,
+      client:decoded.user_name,
+      date: appointment.appointment_date,
+      turn: appointment.appointment_turn,
+      created_at: appointment.created_at,
+      updated_at: appointment.updated_at,
+    };
+    setIsEditModalVisible(true);
+    setSelectedAppointment(appointmentDetails);
+  };
+
+  const handleDeleteAppointmentClick = (appointment) => {
+    let body = {"id": appointment.id}
+    console.log(body)
+    alert(`vamos a borrar la id ${appointment.id}`)
+    deleteAnAppointment(body)
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      console.error("Error fetching appointments:", error);
+    });
+  }
+
+  const handleEditDetailVisibilityChange = (state) => {
+    setIsEditModalVisible(state);
+  };
+
   return (
     <>
       <AppointmentDetail
-       selected = {selectedAppointment}
-       visibility={isModalVisible}
-       setVisibility = {handleDetailVisibilityChange}
-       />
+        selected={selectedAppointment}
+        visibility={isModalVisible}
+        setVisibility={handleDetailVisibilityChange}
+      />
+
+      <EditAppointment
+        selected={selectedAppointment}
+        visibility={isEditModalVisible}
+        setVisibility={handleEditDetailVisibilityChange}
+      />
 
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
@@ -124,33 +166,43 @@ export const TattoArtistAppointments = () => {
             <div className="User">
               <div className="UserInfo"></div>
               {filteredAppointments.map((appointment) => (
-                <div
-                  className="userRow"
-                  onClick={() => handleAppointmentClick(appointment)}
-                  key={appointment.id}
-                >
-                  <div className="id">{appointment.id}</div>
-                  <div className="userName">{appointment.title}</div>
-                  <div className="email">{appointment.description}</div>
-                  <div className="phone">
+                <div className="completeRow" key={appointment.id}>
+                  <div
+                    className="userRow"
+                    onClick={() => handleAppointmentClick(appointment)}
+                  >
+                    <div className="id">{appointment.id}</div>
+                    <div className="userName">{appointment.type}</div>
+                    <div className="userName">{appointment.title}</div>
+                    <div className="email">{appointment.description}</div>
+                    <div className="phone">
                     {getClientName(appointment.client)}
+                    </div>
                   </div>
-                  <div className="buttonEdit"> Edit</div>
-                  <div className="buttonDelete"> X</div>
+                  <div className="deleteButtons">
+                    <div
+                      className="buttonEdit"
+                      onClick={() => handleEditAppointmentClick(appointment)}
+                    >
+                      Edit
+                    </div>
+                    <div className="buttonDelete" onClick={() => handleDeleteAppointmentClick(appointment)}>X</div>
+                  </div>
                 </div>
               ))}
             </div>
             <div
               className="buttonBack"
-              onClick={() => navigate("/myTattooPanel")}
+              onClick={() => navigate("/myUserPanel")}
             >
               Volver al panel
             </div>
           </>
         ) : (
-          <div>No hay citas para este tatuador</div>
+          <div>No tienes citas pendientes</div>
         )}
       </div>
     </>
   );
 };
+
