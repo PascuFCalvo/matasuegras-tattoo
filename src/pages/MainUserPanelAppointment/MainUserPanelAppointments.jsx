@@ -12,12 +12,9 @@ export const UserPanelAppointments = () => {
   const [user, setUser] = useState([]);
   const [tattooArtist, setTattooArtist] = useState([]);
 
-
-  
   const isLoggedIn = localStorage.getItem('token');
-
   let decoded = {};
-  
+
   if (isLoggedIn) {
     decoded = jwtDecode(isLoggedIn);
     localStorage.setItem("level", decoded.level);
@@ -29,7 +26,6 @@ export const UserPanelAppointments = () => {
       getTattooArtist()
         .then((response) => {
           setTattooArtist(response.data.Artists);
-         
         })
         .catch((error) => {
           console.error("Error fetching tattoo artist:", error);
@@ -44,7 +40,7 @@ export const UserPanelAppointments = () => {
           setUser(response.data.Users);
         })
         .catch((error) => {
-          console.error("Error fetching tattoo artist:", error);
+          console.error("Error fetching users:", error);
         });
     }
   }, [user]);
@@ -61,19 +57,14 @@ export const UserPanelAppointments = () => {
     }
   }, [appointments]);
 
- 
-
   let encontrado = false;
   let idEncontrada = 0;
-  user.forEach(element => {
+  user.forEach((element) => {
     if (element.user_name === decoded.user_name) {
-      
       encontrado = true;
-      idEncontrada = element.id
+      idEncontrada = element.id;
     }
   });
-
- 
 
   let filteredAppointments = [];
 
@@ -88,7 +79,6 @@ export const UserPanelAppointments = () => {
     return artist ? artist.user_name : "";
   };
 
-  
   const handleAppointmentClick = (appointment) => {
     // Create an object with the appointment details
     const appointmentDetails = {
@@ -96,20 +86,20 @@ export const UserPanelAppointments = () => {
       title: appointment.title,
       description: appointment.description,
       tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      created_at: appointment.date,
-      updated_at: appointment.turn,
-      
+      date: appointment.appointment_date, // Update this line
+      turn: appointment.appointment_turn, // Assuming appointment_turn is also a property
+      created_at: appointment.created_at,
+      updated_at: appointment.updated_at,
     };
 
-   
     localStorage.setItem("selectedAppointment", JSON.stringify(appointmentDetails));
 
-    window.location.reload()
+    window.location.reload();
   };
 
   return (
     <>
-    <AppointmentDetail/>
+      <AppointmentDetail />
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
         {filteredAppointments.length > 0 ? (
@@ -117,7 +107,9 @@ export const UserPanelAppointments = () => {
             <div className="User">
               <div className="UserInfo"></div>
               {filteredAppointments.map((appointment) => (
-                <div className="userRow" onClick={() => handleAppointmentClick(appointment)}
+                <div
+                  className="userRow"
+                  onClick={() => handleAppointmentClick(appointment)}
                   key={appointment.id}
                 >
                   <div className="id">{appointment.id}</div>
@@ -126,8 +118,6 @@ export const UserPanelAppointments = () => {
                   <div className="phone">
                     {getTattooArtistName(appointment.tattoo_artist)}
                   </div>
-                  <div className="created_at">{appointment.created_at}</div>
-                  <div className="updated_at">{appointment.updated_at}</div>
                   <div className="buttonEdit"> Edit</div>
                   <div className="buttonDelete"> X</div>
                 </div>

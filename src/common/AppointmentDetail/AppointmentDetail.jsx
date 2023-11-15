@@ -31,6 +31,8 @@ export const AppointmentDetail = () => {
           <div> {parsedSelected.title}</div>
           <div> {parsedSelected.description}</div>
           <div> TATUADOR: {parsedSelected.tattoo_artist}</div>
+          <div> Fecha: {parsedSelected.date}</div>
+          <div> Turn: {parsedSelected.turn}</div>
           
           
         </>

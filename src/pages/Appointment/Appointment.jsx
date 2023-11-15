@@ -4,6 +4,7 @@ import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import "./Appointment.css";
 import { Navigate, useNavigate } from "react-router-dom"; // Cambiado de Navigate a navigate
 import { jwtDecode } from "jwt-decode";
+import { DayPicker } from "react-day-picker";
 
 export const Appointment = () => {
 
@@ -149,6 +150,7 @@ export const Appointment = () => {
     return `${year}-${month}-${day}`;
   }
 
+ 
   return (
     <div>
       <div className="Appointment">
@@ -206,6 +208,7 @@ export const Appointment = () => {
               value={selectedTattooArtist}
               onChange={handleTattooArtistChange}
             >
+              
               {tattooArtists.map((tattooArtist) => (
                 <option key={tattooArtist.id} value={tattooArtist.user_name}>
                   {tattooArtist.user_name}
