@@ -47,9 +47,9 @@ export const NavbarLogin = () => {
       {botones.map((boton) => {
         return (
           <div
-            className={`botonNavBarLogin ${boton.nombre === "LOG OUT" ? 'logout' : ''}`}
-            key={boton.id}
-            onClick={boton.onClick ? boton.onClick : () => navigate(boton.path)}
+          className={`botonNavBarLogin ${boton.nombre === "LOG OUT" ? 'logout' : ''}`}
+          key={boton.id}
+          onClick={boton.onClick}
           >
             {boton.nombre}
           </div>
