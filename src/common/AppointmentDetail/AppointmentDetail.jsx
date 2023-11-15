@@ -24,7 +24,7 @@ export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
           <div className="detailDesc"> {description}</div>
           <div className="detailWork"> TRABAJO:<span className="blanco">{type}</span></div>
           <div className="detailTattoo">TATUADOR: <span className="blanco">{tattoo_artist}</span></div>
-          <div className="detailClient">CLIENTE: <span className="blanco">{tokendecoded.user_name}</span></div>
+          <div className="detailClient">CLIENTE: <span className="blanco">{client}</span></div>
           <div className="detailDate"> Fecha: <span className="blanco">{date}</span></div>
           <div className="detailTurn"> Turn: <span className="blanco">{turn}</span></div>
         </div>
