@@ -7,7 +7,7 @@
 .detailedCardBody{
 
    height: auto;
-   width: 40em;
+   width: 35em;
    position: absolute;
    display: flex;
    margin-top: 2%;
@@ -20,6 +20,15 @@
    margin-left: 30%;
    z-index: 2;
    border: bisque;
+}
+
+.cardDetailCita{
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: flex-start;
+   padding-left: 3em;
+   padding-right: 3em;
 }
 
 .imagenCita {
@@ -39,47 +48,66 @@
    overflow: hidden;
  }
 
-.appointmentID{
-   font-size: 20px;
-   margin-bottom: 1em;
-}
-.appointmentTitle{
+ .detailID{
    font-family: tattoo;
-   font-size: 20px;
+   font-size: 24px;
    margin-bottom: 1em;
-}
-.appointmentDesc{
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
+ }
+
+ .detailTitle{
    font-size:20px;
-   margin-left: 10%;
-   margin-right: 10%;
-   display: flex;
-   text-align: start;
-   margin-bottom: 1em;
-}
-.appointmentTattoo{
-   font-family: tattoo;
-   font-size: 20px;
-   margin-bottom: 1em;
-}
-.appointmentDate{
    font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size:20px;
-   margin-left: 10%;
-   margin-right: 10%;
-   display: flex;
-   text-align: start;
    margin-bottom: 1em;
-}
-.appointmentTurn{
+   
+ }
+
+ .detailDesc{
+   font-size:20px;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size:20px;
-   margin-left: 10%;
-   margin-right: 10%;
-   display: flex;
-   text-align: start;
    margin-bottom: 1em;
-}
+   color: white;
+ }
+
+ .blanco{
+   color: white
+ }
+ .crimson{
+   color: crimson;
+   font-size: 50px;
+   margin: 0.5em;
+ }
+
+ .detailWork{
+   font-size:20px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   margin-bottom: 1em;
+ }
+
+ .detailTattoo{
+   font-size:20px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   margin-bottom: 1em;
+ }
+
+ .detailClient{
+   font-size:20px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   margin-bottom: 1em;
+ }
+
+ .detailDate{
+   font-size:16px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   margin-bottom: 1em;
+ }
+
+ .detailTurn{
+   font-size:20px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   margin-bottom: 2em;
+ }
+
+
 
 .buttonClose {
    background-color: rgb(26, 26, 26);

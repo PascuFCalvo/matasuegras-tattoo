@@ -20,13 +20,13 @@ export const AppointmentEdit = ({ selected, visibility, setVisibility }) => {
       {
         <>
           <div>PANEL EDICION DE CITAS</div>
-          <div className="appointmentID">TU NUMERO DE CITA: {id}</div>
-          <div className="appointmentTitle"> {title}</div>
-          <div className="appointmentDesc"> {description}</div>
-          <div className="appointmentTattoo">TATUADOR: {tattoo_artist}</div>
-          <div className="appointmentTattoo">CLIENTE: {client}</div>
-          <div className="appointmentDate"> Fecha: {date}</div>
-          <div className="appointmentTurn"> Turn: {turn}</div>
+          <div className="editID">TU NUMERO DE CITA: {id}</div>
+          <div className="edittTitle"> {title}</div>
+          <div className="editDesc"> {description}</div>
+          <div className="editTattoo">TATUADOR: {tattoo_artist}</div>
+          <div className="editClient">CLIENTE: {client}</div>
+          <div className="editDate"> Fecha: {date}</div>
+          <div className="editTurn"> Turn: {turn}</div>
         </>
       }
       <button className="buttonClose" onClick={handleHideClick}>

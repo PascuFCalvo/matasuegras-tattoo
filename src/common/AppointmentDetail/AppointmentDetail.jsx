@@ -18,16 +18,16 @@ export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
     <div className={`detailedCardBody ${visibility ? "visible" : "hidden"}`}>
       <img className="imagenCita" src={matasuegras} alt="Matasuegras" />
       {
-        <>
-          <div className="appointmentID">TU NUMERO DE CITA: {id}</div>
-          <div className="appointmentTitle"> {title}</div>
-          <div className="appointmentDesc"> {description}</div>
-          <div className="appointmentDesc"> TRABAJO:{type}</div>
-          <div className="appointmentTattoo">TATUADOR: {tattoo_artist}</div>
-          <div className="appointmentTattoo">CLIENTE: {client}</div>
-          <div className="appointmentDate"> Fecha: {date}</div>
-          <div className="appointmentTurn"> Turn: {turn}</div>
-        </>
+        <div className="cardDetailCita">
+          <div className="detailID">TU NUMERO DE CITA: <span className="crimson">{id}</span></div>
+          <div className="detailTitle"> {title}</div>
+          <div className="detailDesc"> {description}</div>
+          <div className="detailWork"> TRABAJO:<span className="blanco">{type}</span></div>
+          <div className="detailTattoo">TATUADOR: <span className="blanco">{tattoo_artist}</span></div>
+          <div className="detailClient">CLIENTE: <span className="blanco">{tokendecoded.user_name}</span></div>
+          <div className="detailDate"> Fecha: <span className="blanco">{date}</span></div>
+          <div className="detailTurn"> Turn: <span className="blanco">{turn}</span></div>
+        </div>
       }
       <button className="buttonClose" onClick={handleHideClick}>
         Cerrar

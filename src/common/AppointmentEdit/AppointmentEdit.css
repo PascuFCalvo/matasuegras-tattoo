@@ -39,47 +39,6 @@
    overflow: hidden;
  }
 
-.appointmentID{
-   font-size: 20px;
-   margin-bottom: 1em;
-}
-.appointmentTitle{
-   font-family: tattoo;
-   font-size: 20px;
-   margin-bottom: 1em;
-}
-.appointmentDesc{
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size:20px;
-   margin-left: 10%;
-   margin-right: 10%;
-   display: flex;
-   text-align: start;
-   margin-bottom: 1em;
-}
-.appointmentTattoo{
-   font-family: tattoo;
-   font-size: 20px;
-   margin-bottom: 1em;
-}
-.appointmentDate{
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size:20px;
-   margin-left: 10%;
-   margin-right: 10%;
-   display: flex;
-   text-align: start;
-   margin-bottom: 1em;
-}
-.appointmentTurn{
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size:20px;
-   margin-left: 10%;
-   margin-right: 10%;
-   display: flex;
-   text-align: start;
-   margin-bottom: 1em;
-}
 
 .buttonClose {
    background-color: rgb(26, 26, 26);
