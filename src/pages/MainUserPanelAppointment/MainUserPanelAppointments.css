@@ -32,10 +32,7 @@
    
 }
 
-.userRow > div {
-   border-bottom: slid 1px black;
-   
-}
+
 
 .buttonDelete{
    display: flex;
@@ -126,6 +123,14 @@
    color: bisque;
    outline: none;
    border: none;
+}
+
+.completeRow{
+   display: flex;
+}
+
+.deleteButtons{
+   display: flex;
 }
 @media only screen and (max-width: 1280px) {
    .ListUsers {

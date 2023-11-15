@@ -4,6 +4,7 @@ import { getAllUsers, getAppointments, getTattooArtist } from "../../services/ap
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
+import { EditAppointment} from "../../common/EditAppointment/EditAppointment";
 
 export const UserPanelAppointments = () => {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export const UserPanelAppointments = () => {
   const [tattooArtist, setTattooArtist] = useState([]);
   const [selectedAppointment, setSelectedAppointemt] = useState ({});
   const [isModalVisible, setIsModalVisible] = useState (false);
+  const [isEditModalVisible, setIsEditModalVisible] = useState (false);
 
   
   const isLoggedIn = localStorage.getItem('token');
@@ -104,13 +106,40 @@ export const UserPanelAppointments = () => {
     
   }
 
+  const handleEditAppointmentClick = (appointment) => {
+    
+    const appointmentDetails = {
+      id: appointment.id,
+      title: appointment.title,
+      description: appointment.description,
+      tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
+      date: appointment.appointment_date, 
+      turn: appointment.appointment_turn, 
+      created_at: appointment.created_at,
+      updated_at: appointment.updated_at,
+    };
+    setIsEditModalVisible(true);
+    setSelectedAppointemt(appointmentDetails);
+    
+  };
+
+  const handleEditDetailVisibilityChange = (state) =>{ 
+    setIsEditModalVisible(state)
+    
+  }
+
   return (
     <>
       <AppointmentDetail
-       selected = {selectedAppointment}
-       visibility={isModalVisible}
-       setVisibility = {handleDetailVisibilityChange}
-       />
+        selected={selectedAppointment}
+        visibility={isModalVisible}
+        setVisibility={handleDetailVisibilityChange}
+      />
+
+      <EditAppointment 
+      selected={selectedAppointment}
+      visibility={isEditModalVisible}
+      setVisibility={handleEditDetailVisibilityChange}/>
 
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
@@ -119,10 +148,10 @@ export const UserPanelAppointments = () => {
             <div className="User">
               <div className="UserInfo"></div>
               {filteredAppointments.map((appointment) => (
-                <div
+                <div className = "completeRow" key={appointment.id}><div
                   className="userRow"
                   onClick={() => handleAppointmentClick(appointment)}
-                  key={appointment.id}
+                  
                 >
                   <div className="id">{appointment.id}</div>
                   <div className="userName">{appointment.title}</div>
@@ -130,15 +159,14 @@ export const UserPanelAppointments = () => {
                   <div className="phone">
                     {getTattooArtistName(appointment.tattoo_artist)}
                   </div>
-                  <div className="buttonEdit"> Edit</div>
-                  <div className="buttonDelete"> X</div>
                 </div>
+                  <div className = "deleteButtons">
+                    <div className="buttonEdit" onClick={() => handleEditAppointmentClick(appointment)}>Edit</div>
+                    <div className="buttonDelete">X</div>
+                  </div></div>
               ))}
             </div>
-            <div
-              className="buttonBack"
-              onClick={() => navigate("/myUserPanel")}
-            >
+            <div className="buttonBack" onClick={() => navigate("/myUserPanel")}>
               Volver al panel
             </div>
           </>
