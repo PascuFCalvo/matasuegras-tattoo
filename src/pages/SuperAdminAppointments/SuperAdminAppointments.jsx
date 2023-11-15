@@ -69,6 +69,7 @@ export const SuperAdminAppointments = () => {
       tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
       client:client[appointment.client].user_name,
       date: appointment.appointment_date, 
+      type:appointment.type,
       turn: appointment.appointment_turn, 
       created_at: appointment.created_at,
       updated_at: appointment.updated_at,

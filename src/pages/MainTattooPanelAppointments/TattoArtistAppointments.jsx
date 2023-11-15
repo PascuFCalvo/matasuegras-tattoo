@@ -87,6 +87,7 @@ export const TattoArtistAppointments = () => {
       description: appointment.description,
       tattoo_artist: decoded.user_name,
       client: getClientName(appointment.client),
+      type:appointment.type,
       date: appointment.appointment_date, 
       turn: appointment.appointment_turn, 
       created_at: appointment.created_at,
