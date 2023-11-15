@@ -1,28 +1,41 @@
-import { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import "./TattooArtistAppointments.css";
-import { getAppointments, getTattooArtist } from "../../services/apiCalls";
+import { getAllUsers, getAppointments, getTattooArtist } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 
 export const TattoArtistAppointments = () => {
   const navigate = useNavigate();
 
   const [appointments, setAppointments] = useState([]);
+  const [users, setUsers] = useState([]);
   const [tattooArtist, setTattooArtist] = useState([]);
+  const [selectedAppointment, setSelectedAppointemt] = useState ({});
+  const [isModalVisible, setIsModalVisible] = useState (false);
 
   const isLoggedIn = localStorage.getItem('token');
-  console.log(isLoggedIn)
 
   let decoded = {};
   
   if (isLoggedIn) {
     decoded = jwtDecode(isLoggedIn);
-    console.log(decoded);
     localStorage.setItem("level", decoded.level);
     localStorage.setItem("nombre", decoded.user_name);
-    console.log(decoded.user_name)
   }
 
+  useEffect(() => {
+    if (users.length === 0) {
+      getAllUsers()
+        .then((response) => {
+          setUsers(response.data.Users);
+        })
+        .catch((error) => {
+          console.error("Error fetching users:", error);
+        });
+    }
+  }, [users]);
+  
   useEffect(() => {
     if (tattooArtist.length === 0) {
       getTattooArtist()
@@ -34,7 +47,7 @@ export const TattoArtistAppointments = () => {
         });
     }
   }, [tattooArtist]);
-
+  
   useEffect(() => {
     if (appointments.length === 0) {
       getAppointments()
@@ -46,21 +59,17 @@ export const TattoArtistAppointments = () => {
         });
     }
   }, [appointments]);
-
-  console.log(tattooArtist);
-  console.log(appointments);
-
+  
   let encontrado = false;
   let idEncontrada = 0;
   tattooArtist.forEach(tattooArtist => {
     if (tattooArtist.user_name === decoded.user_name) {
-      console.log('Encontrado:', tattooArtist);
       encontrado = true;
-      idEncontrada = tattooArtist.id
+      idEncontrada = tattooArtist.id;
     }
   });
 
-  console.log(idEncontrada)
+  
 
   let filteredAppointments = [];
 
@@ -70,9 +79,43 @@ export const TattoArtistAppointments = () => {
     );
   }
 
+  const handleAppointmentClick = (appointment) => {
+    
+    const appointmentDetails = {
+      id: appointment.id,
+      title: appointment.title,
+      description: appointment.description,
+      tattoo_artist: decoded.user_name,
+      client: getClientName(appointment.client),
+      date: appointment.appointment_date, 
+      turn: appointment.appointment_turn, 
+      created_at: appointment.created_at,
+      updated_at: appointment.updated_at,
+    };
+
+    setIsModalVisible(true);
+    setSelectedAppointemt(appointmentDetails);
+    
+  };
+
+  const handleDetailVisibilityChange = (state) =>{ 
+    setIsModalVisible(state)
+    
+  }
+
+  const getClientName = (clientId) => {
+    const client = users.find((user) => user.id === clientId);
+    return client ? client.user_name : "";
+  };
+
   return (
     <>
-        
+      <AppointmentDetail
+       selected = {selectedAppointment}
+       visibility={isModalVisible}
+       setVisibility = {handleDetailVisibilityChange}
+       />
+
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
         {filteredAppointments.length > 0 ? (
@@ -80,16 +123,17 @@ export const TattoArtistAppointments = () => {
             <div className="User">
               <div className="UserInfo"></div>
               {filteredAppointments.map((appointment) => (
-                <div className="userRow" key={appointment.id}>
+                <div
+                  className="userRow"
+                  onClick={() => handleAppointmentClick(appointment)}
+                  key={appointment.id}
+                >
                   <div className="id">{appointment.id}</div>
                   <div className="userName">{appointment.title}</div>
                   <div className="email">{appointment.description}</div>
                   <div className="phone">
-                    Artista {appointment.tattoo_artist}
+                    {getClientName(appointment.client)}
                   </div>
-                  <div className="level">Cliente {appointment.client}</div>
-                  <div className="created_at">{appointment.created_at}</div>
-                  <div className="updated_at">{appointment.updated_at}</div>
                   <div className="buttonEdit"> Edit</div>
                   <div className="buttonDelete"> X</div>
                 </div>

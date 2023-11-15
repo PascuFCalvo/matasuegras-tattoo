@@ -1,9 +1,9 @@
 // import  {  useEffect, useState } from "react";
-import "./AppointmentDetail.css";
+import "./AppointmentEdit.css";
 import { jwtDecode } from "jwt-decode";
 import matasuegras from "../../images/matasuegras.png";
 
-export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
+export const AppointmentEdit = ({ selected, visibility, setVisibility }) => {
   const isLoggedIn = localStorage.getItem("token");
   const tokendecoded = jwtDecode(isLoggedIn);
   console.log(tokendecoded)
@@ -19,6 +19,7 @@ export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
       <img className="imagenCita" src={matasuegras} alt="Matasuegras" />
       {
         <>
+          <div>PANEL EDICION DE CITAS</div>
           <div className="appointmentID">TU NUMERO DE CITA: {id}</div>
           <div className="appointmentTitle"> {title}</div>
           <div className="appointmentDesc"> {description}</div>

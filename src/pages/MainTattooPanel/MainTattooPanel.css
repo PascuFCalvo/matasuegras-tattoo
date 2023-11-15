@@ -49,7 +49,10 @@
 }
 
 .infoTatuador{
+   text-align: start;
    color: black;
+   font-size: 20px;
+   
 }
 
 @media only screen and (max-width: 1280px) {

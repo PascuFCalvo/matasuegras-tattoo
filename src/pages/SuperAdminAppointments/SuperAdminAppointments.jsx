@@ -1,57 +1,20 @@
 import { useEffect, useState } from "react";
 import "./SuperAdminAppointments.css";
 import {
-  deleteAnAppointment,
   getAllUsers,
   getAppointments,
   getTattooArtist,
 } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
+import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 
 export const SuperAdminAppointments = () => {
   const navigate = useNavigate();
-
   const [appointments, setAppointments] = useState([]);
   const [tattooArtist, setTattooArtist] = useState([]);
   const [client, setClient] = useState([]);
-  const [showMessage, setShowMessage] = useState(false);
-  const [messagePosition, setMessagePosition] = useState({ top: 0, left: 0 });
-
-  const deleteAppointment = (id, index) => {
-    let body = { id: id };
-    console.log(body);
-
-    deleteAnAppointment(body)
-      .then((resultado) => {
-        console.log(resultado);
-
-        if (resultado.status !== 200) {
-          throw new Error(resultado.statusText);
-        }
-
-        setAppointments((prevAppointments) =>
-          prevAppointments.filter((appointment) => appointment.id !== id)
-        );
-
-        const buttonRect = document
-          .querySelector(`.buttonDelete[data-index="${index}"]`)
-          .getBoundingClientRect();
-
-        setMessagePosition({
-          top: buttonRect.top + window.scrollY + 25,
-          left: buttonRect.right + window.scrollX + 100,
-        });
-
-        setShowMessage(true);
-
-        setTimeout(() => {
-          setShowMessage(false);
-        }, 2000);
-      })
-      .catch((error) => {
-        console.log("Error al eliminar cita:", error);
-      });
-  };
+  const [selectedAppointment, setSelectedAppointemt] = useState ({});
+  const [isModalVisible, setIsModalVisible] = useState (false);
 
   useEffect(() => {
     if (tattooArtist.length === 0) {
@@ -97,8 +60,38 @@ export const SuperAdminAppointments = () => {
     return artist ? artist.user_name : "";
   };
 
+  const handleAppointmentClick = (appointment) => {
+    
+    const appointmentDetails = {
+      id: appointment.id,
+      title: appointment.title,
+      description: appointment.description,
+      tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
+      client:client[appointment.client].user_name,
+      date: appointment.appointment_date, 
+      turn: appointment.appointment_turn, 
+      created_at: appointment.created_at,
+      updated_at: appointment.updated_at,
+    };
+    setIsModalVisible(true);
+    setSelectedAppointemt(appointmentDetails);
+    
+  };
+
+  const handleDetailVisibilityChange = (state) =>{ 
+    setIsModalVisible(state)
+    
+  }
+
   return (
     <>
+    <AppointmentDetail
+    selected = {selectedAppointment}
+    visibility={isModalVisible}
+    setVisibility = {handleDetailVisibilityChange}
+    />
+      
+
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
         {appointments.length > 0 ? (
@@ -106,7 +99,8 @@ export const SuperAdminAppointments = () => {
             <div className="User">
               <div className="UserInfo"></div>
               {appointments.map((appointment) => (
-                <div className="userRow" key={appointment.id}>
+                <div className="userRow" onClick={() => handleAppointmentClick(appointment)}
+                key={appointment.id}>
                   <>
                     <div className="id">{appointment.id}</div>
                     <div className="userName">{appointment.title}</div>
@@ -117,13 +111,11 @@ export const SuperAdminAppointments = () => {
                     <div className="level">
                       {client[appointment.client].user_name}
                     </div>
-                    <div className="created_at">{appointment.created_at}</div>
-                    <div className="updated_at">{appointment.updated_at}</div>
+                    
                   </>
                   <div className="buttonEdit"> Edit</div>
-                  <div
-                    className="buttonDelete"
-                    onClick={() => deleteAppointment(appointment.id)}
+                  <div className="buttonDelete"
+                    
                   >
                     X
                   </div>
@@ -138,17 +130,7 @@ export const SuperAdminAppointments = () => {
           <div>Aún no han venido</div>
         )}
       </div>
-      {showMessage && (
-        <div
-          className={`popupMessage ${showMessage ? "show" : ""}`}
-          style={{
-            top: `${messagePosition.top}px`,
-            left: `${messagePosition.left}px`,
-          }}
-        >
-          Cita eliminada
-        </div>
-      )}
+      
     </>
   );
 };
