@@ -45,7 +45,7 @@ export const Login = () => {
     logUser(credenciales)
       .then((resultado) => {
         
-        //Aqui guardaría el token........
+        
         
         localStorage.setItem("token", resultado.data.token)
         //Una vez guardado el token....nos vamos a home....

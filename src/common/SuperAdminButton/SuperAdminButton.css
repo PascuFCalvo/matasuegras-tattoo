@@ -1,17 +1,15 @@
 .superAdminButton{
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: absolute;
-   top: -10%;
-   left: 75.2em;
+  width: 12em;
+   margin-left: 83%;
+   margin-top: -25em;
+   
+   
    height: 3em;
    background-color: rgb(196, 167, 96);
    border: solid 1px black;
    color: black;
    padding: 0.2;
-   padding-left: 0.5em;
-   padding-right: 0.5em;
+   
 
 }
 
