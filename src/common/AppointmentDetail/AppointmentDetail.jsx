@@ -7,7 +7,7 @@ export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
   const isLoggedIn = localStorage.getItem("token");
   const tokendecoded = jwtDecode(isLoggedIn);
   console.log(tokendecoded)
-  const { id, title, description, tattoo_artist,client, date, turn } = selected;
+  const { id, title, description,type, tattoo_artist,client, date, turn } = selected;
 
   const handleHideClick = () => {
     
@@ -22,6 +22,7 @@ export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
           <div className="appointmentID">TU NUMERO DE CITA: {id}</div>
           <div className="appointmentTitle"> {title}</div>
           <div className="appointmentDesc"> {description}</div>
+          <div className="appointmentDesc"> TRABAJO:{type}</div>
           <div className="appointmentTattoo">TATUADOR: {tattoo_artist}</div>
           <div className="appointmentTattoo">CLIENTE: {client}</div>
           <div className="appointmentDate"> Fecha: {date}</div>

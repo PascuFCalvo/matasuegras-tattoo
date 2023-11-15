@@ -110,6 +110,17 @@
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    width: 12em;
 }
+.inputselect{
+   background-color: white;
+   padding: 0.5em;
+   margin: 0.5em;
+   border: none;
+   font-size: 20px;
+   color: black;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   width: 13em;
+}
+
 
 .buttonSave{
    background-color: green;
