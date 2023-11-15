@@ -11,7 +11,10 @@ export const UserPanelAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const [user, setUser] = useState([]);
   const [tattooArtist, setTattooArtist] = useState([]);
+  const [selectedAppointment, setSelectedAppointemt] = useState ({});
+  const [isModalVisible, setIsModalVisible] = useState (false);
 
+  
   const isLoggedIn = localStorage.getItem('token');
   let decoded = {};
 
@@ -80,26 +83,35 @@ export const UserPanelAppointments = () => {
   };
 
   const handleAppointmentClick = (appointment) => {
-    // Create an object with the appointment details
+    
     const appointmentDetails = {
       id: appointment.id,
       title: appointment.title,
       description: appointment.description,
       tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      date: appointment.appointment_date, // Update this line
-      turn: appointment.appointment_turn, // Assuming appointment_turn is also a property
+      date: appointment.appointment_date, 
+      turn: appointment.appointment_turn, 
       created_at: appointment.created_at,
       updated_at: appointment.updated_at,
     };
-
-    localStorage.setItem("selectedAppointment", JSON.stringify(appointmentDetails));
-    console.log(appointmentDetails)
-    // window.location.reload();
+    setIsModalVisible(true);
+    setSelectedAppointemt(appointmentDetails);
+    
   };
+
+  const handleDetailVisibilityChange = (state) =>{ 
+    setIsModalVisible(state)
+    
+  }
 
   return (
     <>
-      <AppointmentDetail />
+      <AppointmentDetail
+       selected = {selectedAppointment}
+       visibility={isModalVisible}
+       setVisibility = {handleDetailVisibilityChange}
+       />
+
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
         {filteredAppointments.length > 0 ? (

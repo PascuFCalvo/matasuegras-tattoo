@@ -1,52 +1,32 @@
-import  { useEffect, useState } from "react";
+// import  {  useEffect, useState } from "react";
 import "./AppointmentDetail.css";
 import { jwtDecode } from "jwt-decode";
 import matasuegras from "../../images/matasuegras.png";
 
-export const AppointmentDetail = () => {
+export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
   const isLoggedIn = localStorage.getItem("token");
   const tokendecoded = jwtDecode(isLoggedIn);
-  console.log(tokendecoded);
-
-  const [isVisible, setIsVisible] = useState(true);
-  const [localStorageInfo, setLocalStorageInfo] = useState(null);
-
-  useEffect(() => {
-    
-    
-    const selected = localStorage.getItem("selectedAppointment");
-    const parsedSelected = selected ? JSON.parse(selected) : null;
-
-    setLocalStorageInfo(parsedSelected);
-
-  }, []); 
-
-
+  console.log(tokendecoded)
+  const { id, title, description, tattoo_artist, date, turn } = selected;
 
   const handleHideClick = () => {
-    localStorage.removeItem("selectedAppointment");
-    setIsVisible(false);
+    
+    setVisibility(false);
   };
 
   return (
-    <div className={`detailedCardBody ${isVisible ? "visible" : "hidden"}`}>
+    <div className={`detailedCardBody ${visibility ? "visible" : "hidden"}`}>
       <img className="imagenCita" src={matasuegras} alt="Matasuegras" />
-      {localStorageInfo && (
+      {
         <>
-          <div className="appointmentID">
-            {" "}
-            TU NUMERO DE CITA: {localStorageInfo.id}
-          </div>
-          <div className="appointmentTitle"> {localStorageInfo.title}</div>
-          <div className="appointmentDesc"> {localStorageInfo.description}</div>
-          <div className="appointmentTattoo">
-            {" "}
-            TATUADOR: {localStorageInfo.tattoo_artist}
-          </div>
-          <div className="appointmentDate"> Fecha: {localStorageInfo.date}</div>
-          <div className="appointmentTurn"> Turn: {localStorageInfo.turn}</div>
+          <div className="appointmentID">TU NUMERO DE CITA: {id}</div>
+          <div className="appointmentTitle"> {title}</div>
+          <div className="appointmentDesc"> {description}</div>
+          <div className="appointmentTattoo">TATUADOR: {tattoo_artist}</div>
+          <div className="appointmentDate"> Fecha: {date}</div>
+          <div className="appointmentTurn"> Turn: {turn}</div>
         </>
-      )}
+      }
       <button className="buttonClose" onClick={handleHideClick}>
         Cerrar
       </button>

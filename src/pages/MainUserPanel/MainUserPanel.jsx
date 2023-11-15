@@ -9,7 +9,7 @@ export const MainUserPanel = () => {
    const navigate = useNavigate();
 
    
-   const destination2 = "UserPanelAppointments"
+   const destination = "UserPanelAppointments"
 
  
   return (
@@ -19,11 +19,9 @@ export const MainUserPanel = () => {
       <div className="headerAdminPanel"></div>
       <div className = "titleAdmin">PANEL DE USUARIO</div>
       <div className = "buttons">
-         {/* <div className = "buttonUsers" onClick={() => 
-          navigate(destination1)
-          }> Ver Usuarios </div> */}
+        
       <div className = "buttonUsers" onClick={() => 
-          navigate(destination2)
+          navigate(destination)
           }> Ver Citas </div>
       </div>
       
