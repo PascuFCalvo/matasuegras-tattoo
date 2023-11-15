@@ -2,9 +2,18 @@
 import { useNavigate } from "react-router-dom";
 import "./MainUserPanel.css";
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
+import { jwtDecode } from "jwt-decode";
 
 
 export const MainUserPanel = () => {
+
+  const isLoggedIn = localStorage.getItem('token');
+  let decoded = {};
+  if (isLoggedIn) {
+    decoded = jwtDecode(isLoggedIn);
+    console.log(decoded);
+    localStorage.setItem("level", decoded.level);
+  }
 
    const navigate = useNavigate();
 
@@ -18,6 +27,9 @@ export const MainUserPanel = () => {
     <div className = "BackgroundMainSuperAdmin">
       <div className="headerAdminPanel"></div>
       <div className = "titleAdmin">PANEL DE USUARIO</div>
+      <div className = "infoTatuador">NOMBRE: {decoded.user_name}</div>
+      <div className = "infoTatuador">EMAIL: {decoded.email}</div>
+      <div className = "infoTatuador">PHONE: {decoded.phone}</div>
       <div className = "buttons">
         
       <div className = "buttonUsers" onClick={() => 
