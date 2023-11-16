@@ -3,19 +3,29 @@ import { useNavigate } from "react-router-dom";
 import "./MainUserPanel.css";
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import { jwtDecode } from "jwt-decode";
+import { useEffect } from "react";
 
 
 export const MainUserPanel = () => {
+  const navigate = useNavigate();
 
   const isLoggedIn = localStorage.getItem('token');
   let decoded = {};
+  console.log(isLoggedIn)
+  
+
   if (isLoggedIn) {
     decoded = jwtDecode(isLoggedIn);
     console.log(decoded);
     localStorage.setItem("level", decoded.level);
   }
 
-   const navigate = useNavigate();
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  },);
+
 
    
    const destination = "UserPanelAppointments"

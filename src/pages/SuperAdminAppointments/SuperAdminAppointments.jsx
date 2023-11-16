@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
+import { jwtDecode } from "jwt-decode";
 
 export const SuperAdminAppointments = () => {
   const navigate = useNavigate();
@@ -17,6 +18,18 @@ export const SuperAdminAppointments = () => {
   const [selectedAppointment, setSelectedAppointment] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+
+  const isLoggedIn = localStorage.getItem('token');
+  let decoded = {};
+  if (isLoggedIn) {
+    decoded = jwtDecode(isLoggedIn);
+    console.log(decoded);
+    localStorage.setItem("level", decoded.level);
+  }
+
+  if (!isLoggedIn) {
+    navigate("/")
+  }
 
   useEffect(() => {
     if (tattooArtist.length === 0) {

@@ -26,6 +26,12 @@ export const UserPanelAppointments = () => {
   }
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  },);
+
+  useEffect(() => {
     if (tattooArtist.length === 0) {
       getTattooArtist()
         .then((response) => {

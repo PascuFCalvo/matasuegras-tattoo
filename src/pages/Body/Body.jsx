@@ -40,7 +40,6 @@ export const Body = () => {
                 <Route path="/myTattooPanel/tattooArtistAppointments" element={<TattoArtistAppointments/>}/>
                 <Route path="/myUserPanel" element={<MainUserPanel />}/>
                 <Route path="/myUserPanel/UserPanelAppointments" element={<UserPanelAppointments />}/>
-                
                 <Route path="/superAdmin/superAdminUsers" element={<SuperAdminUsers />}/>
                 <Route path="/superAdmin/superAdminAppointments" element={<SuperAdminAppointments />}/>
                 <Route path="/tatuadores/blackAlien" element={<BlackAlienInfo />}/>

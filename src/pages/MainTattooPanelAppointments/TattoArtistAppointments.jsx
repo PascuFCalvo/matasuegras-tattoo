@@ -27,6 +27,13 @@ export const TattoArtistAppointments = () => {
   }
 
   useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  },);
+
+
+  useEffect(() => {
     if (users.length === 0) {
       getAllUsers()
         .then((response) => {

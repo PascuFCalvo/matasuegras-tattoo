@@ -5,9 +5,26 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Footer } from "../../common/footer/Footer";
 import { validator } from "../../services/useful";
+import { jwtDecode } from "jwt-decode";
 
 export const Login = () => {
   const navigate = useNavigate();
+
+  const isLoggedIn = localStorage.getItem('token');
+  let decoded = {};
+  if (isLoggedIn) {
+    decoded = jwtDecode(isLoggedIn);
+    console.log(decoded);
+    localStorage.setItem("level", decoded.level);
+  }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    }
+  },);
+
+  
 
   const [credenciales, setCredenciales] = useState({
     email: "",

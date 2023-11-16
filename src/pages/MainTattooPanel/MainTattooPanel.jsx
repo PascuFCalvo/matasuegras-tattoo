@@ -17,6 +17,13 @@ export const MainTattooPanel = () => {
     localStorage.setItem("level", decoded.level);
   }
 
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/");
+    }
+  },);
+
+
   const navigate = useNavigate();
 
   const destination2 = "tattooArtistAppointments";
