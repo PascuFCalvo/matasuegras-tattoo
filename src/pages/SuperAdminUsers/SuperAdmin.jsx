@@ -6,50 +6,31 @@ import { jwtDecode } from "jwt-decode";
 
 export const SuperAdminUsers = () => {
   const [users, setUsers] = useState([]);
-  const [showMessage, setShowMessage] = useState(false);
-  const [messagePosition, setMessagePosition] = useState({ top: 0, left: 0 });
+
   const buttonRefs = useRef([]);
 
-  const isLoggedIn = localStorage.getItem('token');
+  const isLoggedIn = localStorage.getItem("token");
   let decoded = {};
   if (isLoggedIn) {
     decoded = jwtDecode(isLoggedIn);
     console.log(decoded);
     localStorage.setItem("level", decoded.level);
   }
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   if (!isLoggedIn) {
-    navigate("/")
+    navigate("/");
   }
 
-  const deleteUser = (id, index) => {
+  const deleteUser = (id) => {
     let body = { id: id };
     console.log(body);
 
-    const buttonRect = buttonRefs.current[index].getBoundingClientRect();
+    deleteAUser(body).then((resultado) => {
+      console.log(resultado);
 
-    deleteAUser(body)
-      .then((resultado) => {
-        console.log(resultado);
-
-        
-        setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
-
-        setMessagePosition({
-          top: buttonRect.top + window.scrollY,
-          left: buttonRect.right + window.scrollX + 50,
-        });
-
-        setShowMessage(true);
-
-        setTimeout(() => {
-          setShowMessage(false);
-        }, 2000);
-      })
-      .catch((error) => console.log(error));
+      setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
+    });
   };
-
-  
 
   useEffect(() => {
     if (users.length === 0) {
@@ -99,18 +80,6 @@ export const SuperAdminUsers = () => {
           <div>Aún no han venido</div>
         )}
       </div>
-
-      {showMessage && (
-        <div
-          className={`popupMessage ${showMessage ? "show" : ""}`}
-          style={{
-            top: `${messagePosition.top}px`,
-            left: `${messagePosition.left}px`,
-          }}
-        >
-          Usuario eliminado
-        </div>
-      )}
     </div>
   );
 };
