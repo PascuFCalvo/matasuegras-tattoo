@@ -145,6 +145,9 @@ export const TattoArtistAppointments = () => {
     setIsEditModalVisible(state);
   };
 
+ 
+  
+
   return (
     <>
       <AppointmentDetail
@@ -193,7 +196,7 @@ export const TattoArtistAppointments = () => {
             </div>
             <div
               className="buttonBack"
-              onClick={() => navigate("/myUserPanel")}
+              onClick={() => navigate("/myTattooPanel")}
             >
               Volver al panel
             </div>

@@ -17,12 +17,12 @@ export const UserPanelAppointments = () => {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   const isLoggedIn = localStorage.getItem('token');
-  let decoded = {};
+  let tokendecoded = {};
 
   if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    localStorage.setItem("level", decoded.level);
-    localStorage.setItem("nombre", decoded.user_name);
+    tokendecoded = jwtDecode(isLoggedIn);
+    localStorage.setItem("level", tokendecoded.level);
+    localStorage.setItem("nombre", tokendecoded.user_name);
   }
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export const UserPanelAppointments = () => {
   let encontrado = false;
   let idEncontrada = 0;
   user.forEach((element) => {
-    if (element.user_name === decoded.user_name) {
+    if (element.user_name === tokendecoded.user_name) {
       encontrado = true;
       idEncontrada = element.id;
     }
@@ -90,7 +90,7 @@ export const UserPanelAppointments = () => {
       description: appointment.description,
       type: appointment.type,
       tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client:decoded.user_name,
+      client:tokendecoded.user_name,
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
       created_at: appointment.created_at,
@@ -111,7 +111,7 @@ export const UserPanelAppointments = () => {
       description: appointment.description,
       trabajo: appointment.type,
       tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client:decoded.user_name,
+      client:tokendecoded.user_name,
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
       created_at: appointment.created_at,
@@ -137,6 +137,9 @@ export const UserPanelAppointments = () => {
       console.error("Error fetching appointments:", error);
     });
   }
+
+  
+  
 
 
   return (
