@@ -44,7 +44,7 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
       tattoo_artist:formData.tattoo_artist
     };
 
-    console.log(formData.tattoo_artist)
+   
     
       
       updateAnAppointment(body)
@@ -78,6 +78,7 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
     <div className={`editedCardBody ${visibility ? "visible" : "hidden"}`}>
       <div className="titleEditCitas">PANEL DE EDICION DE CITAS</div>
       <>
+      
         <input
           className="input"
           name="title"

@@ -47,6 +47,12 @@ export const myDetailAppointments = async (body) => {
   return await axios.get(`http://localhost:4000/user/myAppointments`, body)
 }
 
+export const updateUser = async (body) => {
+  return await axios.put(`http://localhost:4000/user/update`, body)
+}
+
+
+// localhost:4000/user/update
 
 
 

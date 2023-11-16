@@ -55,6 +55,24 @@
    
 }
 
+
+.buttonEditArtist{
+   background-color: green;
+   padding: 1em;
+   color: black;
+   width: 10em;
+   border: solid 1px black;
+   transition: 0.4s;}
+.buttonEditArtist:hover{
+   background-color: darkgreen;
+cursor: pointer;
+transition: 0.4s;}
+.buttonEditArtist:active{
+   background-color: green;
+cursor: pointer;
+transition: 0.4s;}
+  
+
 @media only screen and (max-width: 1280px) {
    .BackgroundMainSuperAdmin {
       margin-top: 23vh;
