@@ -161,22 +161,87 @@ Vista del panel de admin
 ### Observaciones
 ​
 - ��Todo el codigo ha sido creado en em's.
-- ��Me gustaria añadir mas hooks para estilos.
 - ��Boton back to top en la vista main
 - ��Necesito mas tiempo para asimilar muchos trozos de codigo bien.
 
 
-
 <br>
-<br>
-
 
 
 ### Cambios pendientes
+- ��Todos los alerts han de ser modales en la version definitiva.
 - ��Me gustaria hacer el tablero dinamico mediante drag & drop.
 - ��Mejorar el responsive
 
 
+###Explicacion de todo la logica del codigo
+
+######NAVBAR LOGIN
+->Si estas logeado el array de botones es LOGOUT, si no el array de botones es LOG IN y REGISTER
+
+-->Cuando renderiza:
+SI el nombre dol boton coincide con LOGOUT, aplica el estilo condicional correspondiente a la classname "logout" si no aplica "".
+
+Como valor a los botones le da el valor del nombre que esta en el objeto y el navigate correspondiente.
+
+Por ultimo tiene un renderizaco condicional que se cumple si estas logeado, entonces ademas de LOGOUT renderiza un dic con el nombre que ha obtenido del token
+
+######LOGIN y REGISTER
+
+La logica tal cual vista en clase
+
+######SUPERADMIN PANEL BUTTON
+
+->Comprueba si estas logeado,y recupera del token el nivel del usuario.
+Segun el nivel de usuario almacena en una variable una DESTINATION y un NOMBRE
+
+-->Cuando renderiza:
+Primero comprueba que se tenga que renderizar creando una constante que luega comprobara en el rendirzado condicional. Si esta constante se cumple, renderiza un boton el el nombre y la destination correspondiente al nivel de usuario, y si no se cumple, pues renderiza null.
+
+######MAIN USER PANEL
+
+->Comprueba que estas logeado, ademas si no estas logeado no te deja entrar aunque hardcodees el url en el navbar
+Luego crea una destination para el boton
+
+-->Cuando renderiza:
+Crea un panel sencillo, con la info que se ha traido del token y un boton con la destination que hemos guardado arriba 
+Luego tiene una funcion que te hace navigate a esa destination.
+
+######TATTOO Y SUPERADMIN
+
+TattoPanel y superAdminPanel, son practicamente iguales, solo que superAdmin tiene dos destinations, entonces renderiza dos botones, uno va a citas y otro a todos los usuarios.
+
+######APPOINTMENT
+
+->Si no estas logeado , te dirige a /login, ya que no puedes pedir una cita sin estar en la aplicacion.
+
+El primer useEffect va a fetchear todos los tatuadores para luego poder mapearlos.
+
+handleDataChange, aparte del tipico uso de una funcion handler para setear el valor segun el valor que tenga el input, tiene un control de fechas para no poder pickear los fines de semana (STACK OVERFLOW)
+
+handleTattooArtist, tipica funcion handler para almacenar el tatuador del input, pero que ademas una vez lo tiene, como tambien necesitamos la id ya que el backend la pide, lo que hace es mapear todo el array de tatuadores.
+
+Si existe ese tatuador, con un setter guarda tambien la id de ese tatuador.
+
+El resto de funciones handler son al uso, simplemente cogen el evento y lo almacenan.
+
+handleSummit: funcion del boton del formulario, primero empaqueta toda la info que necesita en un objeto que sera el que mande como body cuando haga la APICALL
+
+Luego tiene una comprobacion para ver que no hayas dejado ningun campo vacio y poder generar la cita correctamente.
+
+y por ultimo getTodayDate
+
+Funcion de STACK OVERFLOW que obtiene la fecha de hoy (que mas adelante pasaremos como parametro al daypicker para bloquear citas de dias atrasados)
+
+--> Cuando renderiza:
+
+Genera una seria de inputs normales cada uno con su handler para manejar el evento, como peculiaridad, el siguiente parametro en el day picker --min={getTodayDate()}--que bloquea las fechas anteriores al dia de hoy y el mapeo que hace al array de usuarios para generar las diferentes opciones en el select de tatuadores.
+
+Por ultimo renderiza el boton enviar con la funcion handleSummit que manda toda la info al backend.
+
+
+
+<br><br>
 ### Agradecimientos
 
 A toda esos heroes anonimos que suben trocitos de codigo a internet y hace la vida mucho mas facil a los estudintes.

@@ -15,7 +15,7 @@ export const Appointment = () => {
   const [selectedShift, setSelectedShift] = useState("morning");
   const [selectedTattooArtist, setSelectedTattooArtist] = useState("");
   const [selectedService, setSelectedService] = useState("tattoo");
-  const [selectedTattooArtistId, setSelectedTattooArtistId] = useState(2);
+  const [selectedTattooArtistId, setSelectedTattooArtistId] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [selectedUserId, setSelectedUserId] = useState(0);
@@ -24,10 +24,10 @@ export const Appointment = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      // User is not logged in, redirect to login page
+     
       navigate("/login");
     }
-  }, [isLoggedIn, navigate]);
+  });
 
 
   let decoded = {};
