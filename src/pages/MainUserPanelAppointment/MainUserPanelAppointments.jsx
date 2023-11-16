@@ -121,6 +121,10 @@ export const UserPanelAppointments = () => {
     setSelectedAppointment(appointmentDetails);
   };
 
+  const handleEditDetailVisibilityChange = (state) => {
+    setIsEditModalVisible(state);
+  };
+  
   const handleDeleteAppointmentClick = (appointment) => {
     let body = {"id": appointment.id}
     console.log(body)
@@ -134,9 +138,6 @@ export const UserPanelAppointments = () => {
     });
   }
 
-  const handleEditDetailVisibilityChange = (state) => {
-    setIsEditModalVisible(state);
-  };
 
   return (
     <>

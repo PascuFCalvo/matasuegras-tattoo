@@ -21,6 +21,14 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
     turn: selected.turn,
   });
 
+  let redirect
+
+  if(tokendecoded.level === "black_alien"){
+    redirect = "/superAdmin"
+  }else if(tokendecoded.level === "tattoo"){
+    redirect = "/myTattooPanel"
+  }else redirect = "/myUserPanel"
+
   const handleHideClick = () => {
     setVisibility(false);
   };
@@ -33,19 +41,26 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
       description: formData.description,
       client: tokendecoded.id,
       type: formData.type,
+      tattoo_artist:formData.tattoo_artist
     };
-    setTimeout(() => {
-      alert("Ahora hay que mandar los datos al backend");
+
+    console.log(formData.tattoo_artist)
+    
+      
       updateAnAppointment(body)
         .then((resultado) => {
           console.log(resultado);
-
+          alert ("cita actualizada")
+          
           setTimeout(() => {
-            navigate("/MyUserPanel/UserPanelAppointments");
+          navigate(redirect)  
           }, 1000);
+          
+          
         })
         .catch((error) => console.log(error));
-    }, 100);
+
+    
     setTimeout(() => {
       setVisibility(false);
     }, 2000);
