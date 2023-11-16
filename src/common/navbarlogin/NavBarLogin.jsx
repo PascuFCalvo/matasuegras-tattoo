@@ -33,12 +33,16 @@ export const NavbarLogin = () => {
         {
           id: 1,
           nombre: "LOGIN",
-          path: "/login",
+          onClick: () => {
+            navigate("/login");
+          },
         },
         {
           id: 2,
           nombre: "REGISTRATE",
-          path: "/register",
+          onClick: () => {
+            navigate("/register");
+          },
         },
       ];
 

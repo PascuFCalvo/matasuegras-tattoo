@@ -38,6 +38,10 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "vite": "^4.4.5"
-  }
+    "vite": "^4.5.0"
+  },
+  "description": "<h1 align=\"center\"> WIP WIP WIP WIP</h1>",
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -41,17 +41,17 @@ export const Appointment = () => {
   );
   console.log(selectedUserId)
   useEffect(() => {
-    const fetchData = async () => {
+    const bringTattooArtist = async () => {
       try {
         const response = await getTattooArtist();
         setTattooArtists(response.data.Artists);
       } catch (error) {
-        console.error("Error fetching tattoo artists:", error);
+        console.error("Error pillando Tatuadores:", error);
       }
     };
 
     if (tattooArtists.length === 0) {
-      fetchData();
+      bringTattooArtist();
     }
   }, [tattooArtists]);
 
