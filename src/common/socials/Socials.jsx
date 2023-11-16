@@ -6,9 +6,9 @@ import IG from "../../assets/IG.png";
 export const NavbarSocials = () => {
   return (
     <div className="navbarButtonsSocials">
-      <a className="botonNavBarSocials" href="https://www.facebook.com/Nolandtattooparlour"><img src={FB} alt="ig logo" /></a>
-      <a className="botonNavBarSocials" href="https://www.instagram.com/nolandtattooparlour/"><img src={IG} alt="ig logo" /></a>
-      <a className="botonNavBarSocials" href="https://www.youtube.com/@PonyLawson"><img src={YT} alt="yt logo" /></a>
+      <a draggable="false" className="botonNavBarSocials" href="https://www.facebook.com/Nolandtattooparlour"><img src={FB} alt="ig logo" /></a>
+      <a draggable="false" className="botonNavBarSocials" href="https://www.instagram.com/nolandtattooparlour/"><img src={IG} alt="ig logo" /></a>
+      <a draggable="false" className="botonNavBarSocials" href="https://www.youtube.com/@PonyLawson"><img src={YT} alt="yt logo" /></a>
         
       
       

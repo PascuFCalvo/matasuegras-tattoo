@@ -6,7 +6,7 @@ export const Logo = () => {
    
    return (
       <> 
-      <div className = "logo"></div>
+      <div draggable="false" className = "logo"></div>
       
       </>
      
