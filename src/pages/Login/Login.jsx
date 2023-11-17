@@ -1,30 +1,24 @@
+import  { useState, useEffect } from "react";
 import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { logUser } from "../../services/apiCalls";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { Footer } from "../../common/footer/Footer";
+import { useNavigate } from 'react-router-dom';
 import { validator } from "../../services/useful";
 import { jwtDecode } from "jwt-decode";
 
+//Importo Rdx
+
+import { useSelector, useDispatch } from "react-redux";  //useDispatch es necesario para emitir acciones
+import { login, userData } from "../userSlice";
+import { Footer } from "../../common/footer/Footer";
+
+
 export const Login = () => {
+
   const navigate = useNavigate();
 
-  const isLoggedIn = localStorage.getItem('token');
-  let decoded = {};
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    console.log(decoded);
-    localStorage.setItem("level", decoded.level);
-  }
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/");
-    }
-  },);
-
-  
+  const rdxUserData = useSelector(userData);
+  const dispatch = useDispatch();
 
   const [credenciales, setCredenciales] = useState({
     email: "",
@@ -38,10 +32,18 @@ export const Login = () => {
     
   });
 
+  const [msgError, setMsgError] = useState('');
+
+  useEffect(()=>{
+    if(rdxUserData.credentials.token){
+      navigate("/")
+    }
+  },[navigate, rdxUserData])
+
   const functionHandler = (e) => {
     setCredenciales((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     }));
   };
 
@@ -54,24 +56,29 @@ export const Login = () => {
     }));
   };
 
-  useEffect(() => {
-    console.log(credenciales);
-  }, [credenciales]);
-
   const logMe = () => {
+
     logUser(credenciales)
-      .then((resultado) => {
-        
-        
-        
-        localStorage.setItem("token", resultado.data.token)
-        //Una vez guardado el token....nos vamos a home....
-        setTimeout(() => {
-          navigate("/");
-        }, 500);
-      })
-      .catch((error) => console.log(error));
-  };
+        .then(
+            resultado => {
+
+                let decodificado = jwtDecode(resultado.data.token);
+                console.log("soy el token decodificado....", decodificado);
+                //Aqui guardaría el token........en RDXXX
+                dispatch(login({ credentials: resultado.data }))
+
+                //Una vez guardado el token....nos vamos a home....
+                setTimeout(()=>{
+                    navigate("/");
+                },500);
+            }
+        )
+        .catch(error => {
+          console.log(error)
+          setMsgError(error.message);
+        });
+
+  }
 
   return (
     <div>

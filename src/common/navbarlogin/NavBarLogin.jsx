@@ -1,32 +1,40 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { userData, login, logout } from "../../pages/userSlice";
 import { jwtDecode } from "jwt-decode";
 import "./NavbarLogin.css";
-import { useNavigate } from "react-router-dom";
 
 export const NavbarLogin = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const rdxUserData = useSelector(userData);
 
-  const isLoggedIn = localStorage.getItem('token');
-  
-
-  let decoded = {};
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
+  useEffect(() => {
     
-    localStorage.setItem("level", decoded.level);
-  }
 
+    if (!rdxUserData.credentials.token) {
+      // If not logged in, navigate to the login page
+      navigate("/login");
+    } else {
+      // If logged in, decode the token and dispatch login action
+      const decoded = jwtDecode(rdxUserData.credentials.token);
+      dispatch(login(decoded));
+    }
+  }, [dispatch]);
 
-  
+  const handleLogout = () => {
+    dispatch(logout()); // Dispatch the logout action to clear user data
+    navigate("/login");
+  };
 
-  const botones = isLoggedIn
+  const botones = rdxUserData.credentials.token
     ? [
         {
           id: 1,
           nombre: `LOG OUT`,
-          onClick: () => {
-            localStorage.removeItem('token');
-            navigate("/login");
-          },
+          onClick: handleLogout,
+          
         },
       ]
     : [
@@ -51,17 +59,17 @@ export const NavbarLogin = () => {
       {botones.map((boton) => {
         return (
           <div
-          className={`botonNavBarLogin ${boton.nombre === "LOG OUT" ? 'logout' : ''}`}
-          key={boton.id}
-          onClick={boton.onClick}
+            className={`botonNavBarLogin ${boton.nombre === "LOG OUT" ? 'logout' : ''}`}
+            key={boton.id}
+            onClick={boton.onClick}
           >
             {boton.nombre}
           </div>
         );
       })}
-      {isLoggedIn && (
+      {rdxUserData.credentials.token && (
         <div className="botonNavBarLogin2">
-          {decoded.user_name} 
+          {rdxUserData.user_name}
         </div>
       )}
     </div>
