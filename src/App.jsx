@@ -1,4 +1,3 @@
-import 'react-day-picker/dist/style.css';
 import './App.css'
 
 import { Home } from './pages/Home/Home'

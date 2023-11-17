@@ -3,8 +3,14 @@ import "./AppointmentDetail.css";
 import { jwtDecode } from "jwt-decode";
 import matasuegras from "../../images/matasuegras.png";
 
+import { useSelector } from "react-redux";
+import { userData } from "../../pages/userSlice";
+
 export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
-  const isLoggedIn = localStorage.getItem("token");
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  const rdxUserData = useSelector(userData);
+  const isLoggedIn = rdxUserData.credentials.token;
   const tokendecoded = jwtDecode(isLoggedIn);
   console.log(tokendecoded)
   const { id, title, description,type, tattoo_artist,client, date, turn } = selected;

@@ -4,9 +4,20 @@ import { deleteAnAppointment, getAllUsers, getAppointments, getTattooArtist } fr
 import { useNavigate } from "react-router-dom";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
+import { jwtDecode } from "jwt-decode";
+import { useSelector } from "react-redux";
+import { userData } from "../userSlice";
 
 export const TattoArtistAppointments = () => {
+  
+
   const navigate = useNavigate();
+  const rdxUserData = useSelector(userData);
+
+  const isLoggedIn = rdxUserData.credentials.token;
+  const tokendecoded = jwtDecode(isLoggedIn);
+  console.log(tokendecoded);
+
 
   const [appointments, setAppointments] = useState([]);
   const [users, setUsers] = useState([]);

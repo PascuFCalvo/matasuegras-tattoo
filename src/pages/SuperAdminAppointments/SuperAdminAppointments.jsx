@@ -1,52 +1,48 @@
 import { useEffect, useState } from "react";
 import "./SuperAdminAppointments.css";
 import {
-  getAllUsers,
+  
   getAppointments,
-  getTattooArtist,
+  
 } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
+import { login, userData } from "../userSlice";
+import { jwtDecode } from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
 
 export const SuperAdminAppointments = () => {
   const navigate = useNavigate();
-  const [appointments, setAppointments] = useState([]);
-  const [tattooArtist, setTattooArtist] = useState([]);
-  const [client, setClient] = useState([]);
+  // const [tattooArtist, setTattooArtist] = useState([]);
+  // const [client, setClient] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+  const dispatch = useDispatch();
+  const rdxUserData = useSelector(userData);
+  const [appointments, setAppointments] = useState([]);
+
 
   useEffect(() => {
-    if (tattooArtist.length === 0) {
-      getTattooArtist()
-        .then((response) => {
-          setTattooArtist(response.data.Artists);
-        })
-        .catch((error) => {
-          console.error("Error fetching tattoo artist:", error);
-        });
+    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+      console.log("No estás logeado");
+    } else {
+      const decoded = jwtDecode(rdxUserData.credentials.token);
+      console.log(decoded);
+      dispatch(login(decoded));
+      
     }
-  }, [tattooArtist]);
+  }, [dispatch, rdxUserData.credentials]);
 
-  useEffect(() => {
-    if (client.length === 0) {
-      getAllUsers()
-        .then((response) => {
-          setClient(response.data.Users);
-        })
-        .catch((error) => {
-          console.error("Error fetching users:", error);
-        });
-    }
-  }, [client]);
 
   useEffect(() => {
     if (appointments.length === 0) {
       getAppointments()
-        .then((response) => {
-          setAppointments(response.data.Appointments);
+      .then((response) => {
+          console.log(appointments)
+          setAppointments(response.data.myAppointments);
+          console.log(response.data)
         })
         .catch((error) => {
           console.error("Error fetching tattoos:", error);
@@ -54,18 +50,14 @@ export const SuperAdminAppointments = () => {
     }
   }, [appointments]);
 
-  const getTattooArtistName = (artistId) => {
-    const artist = tattooArtist.find((artist) => artist.id === artistId);
-    return artist ? artist.user_name : "";
-  };
-
+  
   const handleAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
       title: appointment.title,
       description: appointment.description,
-      tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client: client[appointment.client].user_name,
+      tattoo_artist: appointment.tattoArtistAppointment.user_name,
+      client: appointment.userAppointment.user_name,
       date: appointment.appointment_date,
       type: appointment.type,
       turn: appointment.appointment_turn,
@@ -90,8 +82,8 @@ export const SuperAdminAppointments = () => {
       title: appointment.title,
       description: appointment.description,
       trabajo: appointment.type,
-      tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client: client[appointment.client].user_name,
+      tattoo_artist: appointment.tattoArtistAppointment.user_name,
+      client: appointment.userAppointment.user_name,
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
     };
@@ -131,10 +123,10 @@ export const SuperAdminAppointments = () => {
                       <div className="userName">{appointment.title}</div>
                       <div className="email">{appointment.description}</div>
                       <div className="phone">
-                        {getTattooArtistName(appointment.tattoo_artist)}
+                        {appointment.userAppointment.user_name}
                       </div>
                       <div className="level">
-                        {client[appointment.client].user_name}
+                      {appointment.tattoArtistAppointment.user_name}
                       </div>
                     </>
                   </div>

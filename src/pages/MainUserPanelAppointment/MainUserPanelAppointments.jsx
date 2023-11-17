@@ -5,9 +5,20 @@ import { useNavigate } from "react-router-dom";
 
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
+import { useSelector } from "react-redux";
+import { userData } from "../userSlice";
+import { jwtDecode } from "jwt-decode";
 
 export const UserPanelAppointments = () => {
   const navigate = useNavigate();
+
+  const rdxUserData = useSelector(userData);
+
+  const isLoggedIn = rdxUserData.credentials.token;
+  const tokendecoded = jwtDecode(isLoggedIn);
+  console.log(tokendecoded);
+
+
 
   const [appointments, setAppointments] = useState([]);
   const [user, setUser] = useState([]);
@@ -22,6 +33,7 @@ export const UserPanelAppointments = () => {
       getTattooArtist()
         .then((response) => {
           setTattooArtist(response.data.Artists);
+          console.log(tattooArtist)
         })
         .catch((error) => {
           console.error("Error fetching tattoo artist:", error);
@@ -56,7 +68,7 @@ export const UserPanelAppointments = () => {
   let encontrado = false;
   let idEncontrada = 0;
   user.forEach((element) => {
-    if (element.user_name === "pepe") {
+    if (element.user_name === tokendecoded.user_name) {
       encontrado = true;
       idEncontrada = element.id;
     }
@@ -82,7 +94,7 @@ export const UserPanelAppointments = () => {
       description: appointment.description,
       type: appointment.type,
       tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client:"pepe",
+      client:tokendecoded.user_name,
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
       created_at: appointment.created_at,
@@ -103,7 +115,7 @@ export const UserPanelAppointments = () => {
       description: appointment.description,
       trabajo: appointment.type,
       tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client:"pepe",
+      client:tokendecoded.user_name,
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
       created_at: appointment.created_at,

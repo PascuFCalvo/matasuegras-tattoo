@@ -3,11 +3,14 @@ import { jwtDecode } from "jwt-decode";
 import "./EditAppointment.css";
 import { useNavigate } from "react-router-dom";
 import { updateAnAppointment } from "../../services/apiCalls";
+import { useSelector } from "react-redux";
+import { userData } from "../../pages/userSlice";
 
 export const EditAppointment = ({ selected, visibility, setVisibility }) => {
   const navigate = useNavigate();
+  const rdxUserData = useSelector(userData);
 
-  const isLoggedIn = localStorage.getItem("token");
+  const isLoggedIn = rdxUserData.credentials.token;
   const tokendecoded = jwtDecode(isLoggedIn);
   console.log(tokendecoded);
 
