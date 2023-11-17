@@ -24,11 +24,11 @@
 }
  
  .botonNavBarLogin.logout {
-   color: rgb(255, 0, 0);
+   color: #C2544F;
  }
 
  .botonNavBarLogin.logout:hover {
-   color: darkred;
+   color: #FF8981;
  }
 
 .botonNavBarLogin {
