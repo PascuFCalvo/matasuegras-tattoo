@@ -132,7 +132,7 @@ export const UserPanelAppointments = () => {
                     <div className="userName">{appointment.title}</div>
                     <div className="email">{appointment.description}</div>
                     <div className="phone">
-                      {appointment.userAppointment.user_name}
+                      {appointment.tattoArtistAppointment.user_name}
                     </div>
                   </div>
                   <div className="deleteButtons">
