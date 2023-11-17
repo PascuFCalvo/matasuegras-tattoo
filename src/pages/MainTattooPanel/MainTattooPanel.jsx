@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./MainTattooPanel.css";
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
-import { jwtDecode } from "jwt-decode";
 import { getTattooArtist } from "../../services/apiCalls";
 import { useEffect, useState } from "react";
 import { EditProfileTattoo } from "../../common/EditProfileTattoo/EditProfileTattoo";
@@ -9,19 +8,7 @@ import { EditProfileTattoo } from "../../common/EditProfileTattoo/EditProfileTat
 export const MainTattooPanel = () => {
   const [isEditPanelModalVisible, setIsEditPanelModalVisible] = useState(false);
 
-  const isLoggedIn = localStorage.getItem('token');
-  let decoded = {};
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    console.log(decoded);
-    localStorage.setItem("level", decoded.level);
-  }
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/");
-    }
-  },);
+ 
 
 
   const navigate = useNavigate();
@@ -45,7 +32,7 @@ export const MainTattooPanel = () => {
 
   let Profile = {};
   tattooArtist.forEach((element) => {
-    if (element.user_name === decoded.user_name) {
+    if (element.user_name === "pepe") {
       Profile = element;
     }
   });

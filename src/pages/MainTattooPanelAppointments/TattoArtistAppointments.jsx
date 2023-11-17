@@ -2,7 +2,6 @@ import  { useEffect, useState } from "react";
 import "./TattooArtistAppointments.css";
 import { deleteAnAppointment, getAllUsers, getAppointments, getTattooArtist } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
 
@@ -16,22 +15,7 @@ export const TattoArtistAppointments = () => {
   const [isModalVisible, setIsModalVisible] = useState (false);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
-  const isLoggedIn = localStorage.getItem('token');
-
-  let decoded = {};
-  
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    localStorage.setItem("level", decoded.level);
-    localStorage.setItem("nombre", decoded.user_name);
-  }
-
-  useEffect(() => {
-    if (!isLoggedIn) {
-      navigate("/");
-    }
-  },);
-
+ 
 
   useEffect(() => {
     if (users.length === 0) {
@@ -72,7 +56,7 @@ export const TattoArtistAppointments = () => {
   let encontrado = false;
   let idEncontrada = 0;
   tattooArtist.forEach(tattooArtist => {
-    if (tattooArtist.user_name === decoded.user_name) {
+    if (tattooArtist.user_name === "pepe") {
       encontrado = true;
       idEncontrada = tattooArtist.id;
     }
@@ -94,7 +78,7 @@ export const TattoArtistAppointments = () => {
       id: appointment.id,
       title: appointment.title,
       description: appointment.description,
-      tattoo_artist: decoded.user_name,
+      tattoo_artist: "pepe",
       client: getClientName(appointment.client),
       type:appointment.type,
       date: appointment.appointment_date, 
@@ -124,8 +108,8 @@ export const TattoArtistAppointments = () => {
       title: appointment.title,
       description: appointment.description,
       trabajo: appointment.type,
-      tattoo_artist: decoded.user_name,
-      client:decoded.user_name,
+      tattoo_artist: "pepe",
+      client:"pepe",
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
       created_at: appointment.created_at,

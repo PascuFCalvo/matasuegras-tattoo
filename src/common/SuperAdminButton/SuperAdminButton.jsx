@@ -1,44 +1,49 @@
-
-import "./SuperAdminButton.css";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
+import { login, userData } from "../../pages/userSlice";
+
+import "./SuperAdminButton.css";
 
 export const SuperAdminButton = () => {
-  const isLoggedIn = localStorage.getItem("token");
-  
-
-  let decoded = {};
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    
-    localStorage.setItem("level", decoded.level);
-  }
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const rdxUserData = useSelector(userData);
+  const [destination, setDestination] = useState("");
 
-  
-  let destination, buttonText;
+  useEffect(() => {
+    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+      console.log("No estás logeado");
+    } else {
+      const decoded = jwtDecode(rdxUserData.credentials.token);
+      console.log(decoded);
+      dispatch(login(decoded));
+      setDestination(decoded.level);
+    }
+  }, [dispatch, rdxUserData.credentials]);
 
-  if (decoded.level === "black_alien") {
-    destination = "/superAdmin";
+  let buttonText;
+  let url;
+
+  if (destination === "black_alien") {
+    url = "/superAdmin";
     buttonText = "Go to Superadmin panel";
-  } else if (decoded.level === "user") {
-    destination = "/MyUserPanel";
+  } else if (destination === "user") {
+    url = "/MyUserPanel";
     buttonText = "Go to My User Panel";
-  } else if (decoded.level === "tattoo") {
-    destination = "/myTattooPanel";
+  } else if (destination === "tattoo") {
+    url = "/myTattooPanel";
     buttonText = "Go to My Tattoo Panel";
   }
 
-  // Verifica si se debe mostrar el botón
-  const shouldShowButton = destination && buttonText;
-
-  return shouldShowButton ? (
-    <div
-      className="superAdminButton"
-      onClick={() => navigate(destination)}
-    >
+  return destination ? (
+    <div className="superAdminButton" onClick={() => navigate(url)}>
       {buttonText}
     </div>
-  ) : null;
+  ) : (
+    <div>
+      Error: No se pudo determinar el destino. Por favor, inicia sesión.
+    </div>
+  );
 };

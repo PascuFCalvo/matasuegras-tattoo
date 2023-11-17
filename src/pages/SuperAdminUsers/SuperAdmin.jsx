@@ -1,27 +1,14 @@
-import { useEffect, useState,} from "react";
+import { useEffect, useState } from "react";
 import "./SuperAdmin.css";
 import { deleteAUser, getAllUsers } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
 
 export const SuperAdminUsers = () => {
   const [users, setUsers] = useState([]);
 
-  
-
-  const isLoggedIn = localStorage.getItem("token");
-  let decoded = {};
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    localStorage.setItem("level", decoded.level);
-  }
   const navigate = useNavigate();
-  if (!isLoggedIn) {
-    navigate("/");
-  }
 
   const deleteUser = (id) => {
-
     deleteAUser(id).then((resultado) => {
       console.log(resultado);
 
@@ -62,7 +49,6 @@ export const SuperAdminUsers = () => {
                   <div
                     className="buttonDelete"
                     onClick={() => deleteUser(user.id, index)}
-                    
                   >
                     X
                   </div>

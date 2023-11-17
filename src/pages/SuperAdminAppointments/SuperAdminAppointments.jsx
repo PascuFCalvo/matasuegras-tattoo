@@ -8,7 +8,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
-import { jwtDecode } from "jwt-decode";
 
 export const SuperAdminAppointments = () => {
   const navigate = useNavigate();
@@ -18,18 +17,6 @@ export const SuperAdminAppointments = () => {
   const [selectedAppointment, setSelectedAppointment] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-
-  const isLoggedIn = localStorage.getItem('token');
-  let decoded = {};
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    console.log(decoded);
-    localStorage.setItem("level", decoded.level);
-  }
-
-  if (!isLoggedIn) {
-    navigate("/")
-  }
 
   useEffect(() => {
     if (tattooArtist.length === 0) {
@@ -97,7 +84,6 @@ export const SuperAdminAppointments = () => {
     setIsEditModalVisible(state);
   };
 
-
   const handleEditAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
@@ -105,17 +91,14 @@ export const SuperAdminAppointments = () => {
       description: appointment.description,
       trabajo: appointment.type,
       tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client:client[appointment.client].user_name,
+      client: client[appointment.client].user_name,
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
-     
     };
-    
-    
+
     setIsEditModalVisible(true);
     setSelectedAppointment(appointmentDetails);
   };
-  
 
   return (
     <>
@@ -138,28 +121,34 @@ export const SuperAdminAppointments = () => {
             <div className="User">
               <div className="UserInfo"></div>
               {appointments.map((appointment) => (
-                <div className="completeRow" key={appointment.id}><div
-                  className="userRow"
-                  onClick={() => handleAppointmentClick(appointment)}
-                  
-                >
-                  <>
-                    <div className="id">{appointment.id}</div>
-                    <div className="userName">{appointment.title}</div>
-                    <div className="email">{appointment.description}</div>
-                    <div className="phone">
-                      {getTattooArtistName(appointment.tattoo_artist)}
+                <div className="completeRow" key={appointment.id}>
+                  <div
+                    className="userRow"
+                    onClick={() => handleAppointmentClick(appointment)}
+                  >
+                    <>
+                      <div className="id">{appointment.id}</div>
+                      <div className="userName">{appointment.title}</div>
+                      <div className="email">{appointment.description}</div>
+                      <div className="phone">
+                        {getTattooArtistName(appointment.tattoo_artist)}
+                      </div>
+                      <div className="level">
+                        {client[appointment.client].user_name}
+                      </div>
+                    </>
+                  </div>
+                  <div className="deleteButtons">
+                    <div
+                      className="buttonEdit"
+                      onClick={() => handleEditAppointmentClick(appointment)}
+                    >
+                      {" "}
+                      Edit
                     </div>
-                    <div className="level">
-                      {client[appointment.client].user_name}
-                    </div>
-                  </>
-                  
-                  
+                    <div className="buttonDelete">X</div>
+                  </div>
                 </div>
-                <div className="deleteButtons"><div className="buttonEdit" onClick={() => handleEditAppointmentClick(appointment)}> Edit</div>
-                  <div className="buttonDelete">X</div></div></div>
-                
               ))}
             </div>
             <div className="buttonBack" onClick={() => navigate("/superAdmin")}>
@@ -173,5 +162,3 @@ export const SuperAdminAppointments = () => {
     </>
   );
 };
-
-

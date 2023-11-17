@@ -1,28 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { validator } from "../../services/useful";
 import { registerUser } from "../../services/apiCalls";
 import { useNavigate } from 'react-router-dom';
 import { Footer } from "../../common/footer/Footer";
 import "./Register.css";
-import { jwtDecode } from "jwt-decode";
+
 
 export const Register = () => {
   const navigate = useNavigate();
 
-  const isLoggedIn = localStorage.getItem('token');
-  let decoded = {};
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    console.log(decoded);
-    localStorage.setItem("level", decoded.level);
-  }
-
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate("/");
-    }
-  },);
 
   const [user, setUser] = useState({
     user_name: '',

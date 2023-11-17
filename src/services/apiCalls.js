@@ -44,8 +44,12 @@ export const updateAnAppointment= async (body) => {
   return await axios.put(`http://localhost:4000/appointments/update`, body)
 }
 
-export const myDetailAppointments = async (body) => {
-  return await axios.get(`http://localhost:4000/user/myAppointments`, body)
+export const myDetailAppointments = async (body,token) => {
+  return await axios.get(`http://localhost:4000/user/myAppointments`, body,{
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  })
 }
 
 export const updateUser = async (body) => {
