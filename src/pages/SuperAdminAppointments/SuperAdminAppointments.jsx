@@ -27,6 +27,8 @@ export const SuperAdminAppointments = () => {
       console.log("No estás logeado");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
+      console.log(rdxUserData.credentials)
+      console.log(rdxUserData.credentials.token)
       console.log(decoded);
       dispatch(login(decoded));
       
@@ -36,7 +38,7 @@ export const SuperAdminAppointments = () => {
 
   useEffect(() => {
     if (appointments.length === 0) {
-      getAppointments()
+      getAppointments(rdxUserData.credentials.token)
       .then((response) => {
           console.log(appointments)
           setAppointments(response.data.myAppointments);
@@ -46,7 +48,7 @@ export const SuperAdminAppointments = () => {
           console.error("Error fetching tattoos:", error);
         });
     }
-  }, [appointments]);
+  }, [appointments, rdxUserData.credentials.token]);
 
   
   const handleAppointmentClick = (appointment) => {

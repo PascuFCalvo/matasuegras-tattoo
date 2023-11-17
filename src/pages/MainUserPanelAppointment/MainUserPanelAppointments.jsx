@@ -29,7 +29,7 @@ export const UserPanelAppointments = () => {
 
   useEffect(() => {
     if (appointments.length === 0) {
-      getAppointments()
+      getAppointments(rdxUserData.credentials.token)
         .then((response) => {
           console.log(appointments);
           setAppointments(response.data.myAppointments);
@@ -39,7 +39,7 @@ export const UserPanelAppointments = () => {
           console.error("Error fetching tattoos:", error);
         });
     }
-  }, [appointments]);
+  }, [appointments, rdxUserData.credentials.token]);
 
   const handleAppointmentClick = (appointment) => {
     const appointmentDetails = {

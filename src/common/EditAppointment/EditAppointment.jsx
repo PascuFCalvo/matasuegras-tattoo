@@ -12,7 +12,6 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
 
   const isLoggedIn = rdxUserData.credentials.token;
   const tokendecoded = jwtDecode(isLoggedIn);
-  console.log(tokendecoded);
 
   const [formData, setFormData] = useState({
     id: selected.id,

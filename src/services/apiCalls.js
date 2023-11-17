@@ -23,8 +23,14 @@ export const getAllUsers = async () => {
   return await axios.get(`http://localhost:4000/blackAlien/getUsers`)
 }
 
-export const getAppointments= async () => {
-  return await axios.get(`http://localhost:4000/blackAlien/getAppointments`)
+export const getAppointments= async (token) => {
+  return await axios.get(`http://localhost:4000/blackAlien/getAppointments`,
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  }
+  )
 }
 
 export const getAppointmentsAsATattooArtist= async (body) => {

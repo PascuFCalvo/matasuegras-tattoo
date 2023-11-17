@@ -17,7 +17,7 @@ export const SuperAdminButton = () => {
       console.log("No estás logeado");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
-      console.log(decoded);
+      
       dispatch(login(decoded));
       setDestination(decoded.level);
     }

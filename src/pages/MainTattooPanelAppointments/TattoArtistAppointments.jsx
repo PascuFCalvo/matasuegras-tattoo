@@ -15,31 +15,37 @@ export const TattoArtistAppointments = () => {
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
   const [appointments, setAppointments] = useState([]);
+  const [nameToFilter, setNameToFilter] = useState();
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       console.log("No estás logeado");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
-      console.log(decoded);
+      setNameToFilter(decoded.user_name);
+      console.log(decoded.user_name)
       dispatch(login(decoded));
     }
   }, [dispatch, rdxUserData.credentials]);
 
   useEffect(() => {
     if (appointments.length === 0) {
-      getAppointments()
+      getAppointments(rdxUserData.credentials.token)
         .then((response) => {
-          console.log(appointments);
           setAppointments(response.data.myAppointments);
-          console.log(response.data);
         })
         .catch((error) => {
-          console.error("Error fetching tattoos:", error);
+          console.error("Error fetching appointments:", error);
         });
     }
-  }, [appointments]);
+  }, [appointments, rdxUserData.credentials.token]);
 
+  const filteredAppointments = () => {
+    return appointments.filter(
+      (appointment) => appointment.tattoArtistAppointment.user_name === nameToFilter
+    );
+  };
+  console.log(appointments)
   const handleAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
@@ -110,11 +116,11 @@ export const TattoArtistAppointments = () => {
 
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
-        {appointments.length > 0 ? (
+        {filteredAppointments().length > 0 ? (
           <>
             <div className="User">
               <div className="UserInfo"></div>
-              {appointments.map((appointment) => (
+              {filteredAppointments().map((appointment) => (
                 <div className="completeRow" key={appointment.id}>
                   <div
                     className="userRow"

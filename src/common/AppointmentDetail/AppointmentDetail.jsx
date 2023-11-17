@@ -12,7 +12,7 @@ export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
   const rdxUserData = useSelector(userData);
   const isLoggedIn = rdxUserData.credentials.token;
   const tokendecoded = jwtDecode(isLoggedIn);
-  console.log(tokendecoded)
+ 
   const { id, title, description,type, tattoo_artist,client, date, turn } = selected;
 
   const handleHideClick = () => {

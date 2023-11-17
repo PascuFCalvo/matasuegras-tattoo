@@ -18,7 +18,6 @@ export const NavbarLogin = () => {
       console.log("No estás logeado");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
-      console.log(decoded);
       dispatch(login(decoded));
       setNombreBoton(decoded.user_name);
     }
