@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userData, login, logout } from "../../pages/userSlice";
@@ -10,18 +10,21 @@ export const NavbarLogin = () => {
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
 
-  useEffect(() => {
-    
 
-    if (!rdxUserData.credentials.token) {
-      // If not logged in, navigate to the login page
-      navigate("/login");
+  let [nombreBoton, setNombreBoton] = useState()
+
+  useEffect(() => {
+    if (!rdxUserData.credentials.token) {  
+      console.log("No estás logeado");
     } else {
-      // If logged in, decode the token and dispatch login action
       const decoded = jwtDecode(rdxUserData.credentials.token);
+      console.log(decoded);
       dispatch(login(decoded));
+      setNombreBoton(decoded.user_name);
     }
-  }, [dispatch]);
+  }, [dispatch, rdxUserData.credentials.token]);
+
+  
 
   const handleLogout = () => {
     dispatch(logout()); // Dispatch the logout action to clear user data
@@ -69,7 +72,7 @@ export const NavbarLogin = () => {
       })}
       {rdxUserData.credentials.token && (
         <div className="botonNavBarLogin2">
-          {rdxUserData.user_name}
+          {nombreBoton}
         </div>
       )}
     </div>
