@@ -29,11 +29,19 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
     redirect = "/myTattooPanel"
   }else redirect = "/myUserPanel"
 
+
   const handleHideClick = () => {
     setVisibility(false);
   };
 
   const handleSaveClick = () => {
+    let tattoo_artist;
+    if (formData.tattoo_artist === "Black alien"){
+      tattoo_artist = 1;
+      
+    }
+
+
     let body = {
       user_id: tokendecoded.id,
       id: selected.id,
@@ -41,8 +49,10 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
       description: formData.description,
       client: tokendecoded.id,
       type: formData.type,
-      tattoo_artist:formData.tattoo_artist
+      tattoo_artist:tattoo_artist,
     };
+
+    console.log(body)
 
    
     
@@ -95,7 +105,7 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
         />
         <select
           className="inputselect"
-          name="tattoo_artist"
+          name="type"
           value={formData.type}
           onChange={handleInputChange}
         >

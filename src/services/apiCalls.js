@@ -31,8 +31,9 @@ export const getAppointmentsAsATattooArtist= async (body) => {
   return await axios.get(`http://localhost:4000/tattoo_artist/myAppointments`, body)
 }
 
-export const deleteAUser= async (body) => {
-  return await axios.delete(`http://localhost:4000/blackAlien/deleteuser`, body)
+export const deleteAUser= async (id) => {
+  
+  return await axios.delete(`http://localhost:4000/blackAlien/deleteuser`, {data : { id: id}})
 }
 
 export const deleteAnAppointment= async (body) => {

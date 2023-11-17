@@ -1,7 +1,8 @@
 .Gallery {
    height: auto;
    width: 100vw;
-   background-color: bisque;
+   background: rgb(255,228,196);
+   background: linear-gradient(180deg, rgba(255,228,196,1) 0%, rgba(198,173,142,1) 100%);
    color: black;
    /* margin-top: 2em; */
 }

@@ -16,7 +16,7 @@
    /* margin-top: 2em; */
    background-color: rgba(128, 128, 128, 0.5);
    width: 40em;
-   height: 40em;
+   height: 30em;
    position: relative;
    overflow-y: scroll;
 }

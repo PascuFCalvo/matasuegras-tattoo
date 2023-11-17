@@ -108,12 +108,14 @@ export const SuperAdminAppointments = () => {
       client:client[appointment.client].user_name,
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
-      created_at: appointment.created_at,
-      updated_at: appointment.updated_at,
+     
     };
+    
+    
     setIsEditModalVisible(true);
     setSelectedAppointment(appointmentDetails);
   };
+  
 
   return (
     <>
