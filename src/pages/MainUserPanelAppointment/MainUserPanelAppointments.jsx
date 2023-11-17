@@ -1,101 +1,55 @@
-import { useEffect, useState } from "react";
 import "./MainUserPanelAppointments.css";
-import { deleteAnAppointment, getAllUsers, getAppointments, getTattooArtist } from "../../services/apiCalls";
+import { useEffect, useState } from "react";
+import { deleteAnAppointment, getAppointments } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
-
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
-import { useSelector } from "react-redux";
-import { userData } from "../userSlice";
+import { login, userData } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
 
 export const UserPanelAppointments = () => {
   const navigate = useNavigate();
-
-  const rdxUserData = useSelector(userData);
-
-  const isLoggedIn = rdxUserData.credentials.token;
-  const tokendecoded = jwtDecode(isLoggedIn);
-  console.log(tokendecoded);
-
-
-
-  const [appointments, setAppointments] = useState([]);
-  const [user, setUser] = useState([]);
-  const [tattooArtist, setTattooArtist] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-
-
-  useEffect(() => {
-    if (tattooArtist.length === 0) {
-      getTattooArtist()
-        .then((response) => {
-          setTattooArtist(response.data.Artists);
-          console.log(tattooArtist)
-        })
-        .catch((error) => {
-          console.error("Error fetching tattoo artist:", error);
-        });
-    }
-  }, [tattooArtist]);
+  const dispatch = useDispatch();
+  const rdxUserData = useSelector(userData);
+  const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    if (user.length === 0) {
-      getAllUsers()
-        .then((response) => {
-          setUser(response.data.Users);
-        })
-        .catch((error) => {
-          console.error("Error fetching users:", error);
-        });
+    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+      console.log("No estás logeado");
+    } else {
+      const decoded = jwtDecode(rdxUserData.credentials.token);
+      console.log(decoded);
+      dispatch(login(decoded));
     }
-  }, [user]);
+  }, [dispatch, rdxUserData.credentials]);
 
   useEffect(() => {
     if (appointments.length === 0) {
       getAppointments()
         .then((response) => {
-          setAppointments(response.data.Appointments);
+          console.log(appointments);
+          setAppointments(response.data.myAppointments);
+          console.log(response.data);
         })
         .catch((error) => {
-          console.error("Error fetching appointments:", error);
+          console.error("Error fetching tattoos:", error);
         });
     }
   }, [appointments]);
-
-  let encontrado = false;
-  let idEncontrada = 0;
-  user.forEach((element) => {
-    if (element.user_name === tokendecoded.user_name) {
-      encontrado = true;
-      idEncontrada = element.id;
-    }
-  });
-
-  let filteredAppointments = [];
-
-  if (encontrado) {
-    filteredAppointments = appointments.filter(
-      (appointment) => appointment.client === idEncontrada
-    );
-  }
-
-  const getTattooArtistName = (artistId) => {
-    const artist = tattooArtist.find((artist) => artist.id === artistId);
-    return artist ? artist.user_name : "";
-  };
 
   const handleAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
       title: appointment.title,
       description: appointment.description,
-      type: appointment.type,
-      tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client:tokendecoded.user_name,
+      tattoo_artist: appointment.tattoArtistAppointment.user_name,
+      client: appointment.userAppointment.user_name,
       date: appointment.appointment_date,
+      type: appointment.type,
       turn: appointment.appointment_turn,
       created_at: appointment.created_at,
       updated_at: appointment.updated_at,
@@ -108,43 +62,38 @@ export const UserPanelAppointments = () => {
     setIsModalVisible(state);
   };
 
+  const handleEditDetailVisibilityChange = (state) => {
+    setIsEditModalVisible(state);
+  };
+
   const handleEditAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
       title: appointment.title,
       description: appointment.description,
       trabajo: appointment.type,
-      tattoo_artist: getTattooArtistName(appointment.tattoo_artist),
-      client:tokendecoded.user_name,
+      tattoo_artist: appointment.tattoArtistAppointment.user_name,
+      client: appointment.userAppointment.user_name,
       date: appointment.appointment_date,
       turn: appointment.appointment_turn,
-      created_at: appointment.created_at,
-      updated_at: appointment.updated_at,
     };
+
     setIsEditModalVisible(true);
     setSelectedAppointment(appointmentDetails);
   };
 
-  const handleEditDetailVisibilityChange = (state) => {
-    setIsEditModalVisible(state);
-  };
-  
   const handleDeleteAppointmentClick = (appointment) => {
-    let body = {"id": appointment.id}
-    console.log(body)
-    alert(`vamos a borrar la id ${appointment.id}`)
+    let body = { id: appointment.id };
+    console.log(body);
+    alert(`vamos a borrar la id ${appointment.id}`);
     deleteAnAppointment(body)
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.error("Error fetching appointments:", error);
-    });
-  }
-
-  
-  
-
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error("Error fetching appointments:", error);
+      });
+  };
 
   return (
     <>
@@ -162,11 +111,11 @@ export const UserPanelAppointments = () => {
 
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
-        {filteredAppointments.length > 0 ? (
+        {appointments.length > 0 ? (
           <>
             <div className="User">
               <div className="UserInfo"></div>
-              {filteredAppointments.map((appointment) => (
+              {appointments.map((appointment) => (
                 <div className="completeRow" key={appointment.id}>
                   <div
                     className="userRow"
@@ -177,7 +126,7 @@ export const UserPanelAppointments = () => {
                     <div className="userName">{appointment.title}</div>
                     <div className="email">{appointment.description}</div>
                     <div className="phone">
-                      {getTattooArtistName(appointment.tattoo_artist)}
+                      {appointment.tattoArtistAppointment.user_name}
                     </div>
                   </div>
                   <div className="deleteButtons">
@@ -187,7 +136,12 @@ export const UserPanelAppointments = () => {
                     >
                       Edit
                     </div>
-                    <div className="buttonDelete" onClick={() => handleDeleteAppointmentClick(appointment)}>X</div>
+                    <div
+                      className="buttonDelete"
+                      onClick={() => handleDeleteAppointmentClick(appointment)}
+                    >
+                      X
+                    </div>
                   </div>
                 </div>
               ))}

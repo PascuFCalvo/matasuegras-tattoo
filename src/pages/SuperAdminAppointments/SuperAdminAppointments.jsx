@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import "./SuperAdminAppointments.css";
+import { useEffect, useState } from "react";
 import {
   
   getAppointments,
@@ -14,8 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const SuperAdminAppointments = () => {
   const navigate = useNavigate();
-  // const [tattooArtist, setTattooArtist] = useState([]);
-  // const [client, setClient] = useState([]);
   const [selectedAppointment, setSelectedAppointment] = useState({});
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
