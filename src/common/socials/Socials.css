@@ -25,9 +25,9 @@
 }
 
 .botonNavBarSocials>img:hover {
-   transform: scale(1.2);
+   transform: scale(1.1);
    cursor: pointer;
-   filter: contrast(2);
+   filter: contrast(1.5);
    transition: 0.5s;
 
 

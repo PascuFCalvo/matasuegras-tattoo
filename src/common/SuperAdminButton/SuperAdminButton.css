@@ -6,9 +6,9 @@
    justify-content: center;
    align-items: center;
    height: 3em;
-   background-color: rgb(196, 167, 96);
-   border: solid 1px black;
-   color: black;
+   background-color: #006C60;
+  
+   color: white;
    padding: 0.2;
    
 
@@ -16,9 +16,9 @@
 
 .superAdminButton:hover{
    transition: 0.5s;
-   color: goldenrod;
-   background-color: black;
-   border: solid 1px goldenrod;
+   
+   background-color:#3F8566;
+   
    cursor: pointer;
 }
 

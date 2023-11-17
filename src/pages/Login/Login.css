@@ -31,7 +31,7 @@
 
    height: 3em;
    width: 10em;
-   background-color: rgb(218, 183, 94);
+   background-color: #006C60;
    color: rgb(255, 255, 255);
    font-weight: bolder;
    display: flex;
@@ -48,12 +48,12 @@
    transition: 0.2s;
    color: white;
    cursor: pointer;
-   background-color: rgb(221, 176, 61);;
+   background-color:#3F8566;
 }
 
 .buttonSubmitLogin:active {
 
-   background-color: rgb(218, 183, 94);
+   background-color: #006C60;
 }
 
 .overInput{

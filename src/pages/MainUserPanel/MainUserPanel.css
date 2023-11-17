@@ -35,14 +35,14 @@
    font-size: 20px;
    width: 15em;
    height: 5em;
-   border: solid 2px black;
-   color: black;
+   border: none;
+   background-color: #006C60;
    margin: 2em;
 }
 
 .buttonUsers:hover{
-   background-color: rgb(37, 37, 37);
-   color: bisque;
+   background-color: #3F8566;
+   
    transition: 0.5s;
    cursor: pointer;
 

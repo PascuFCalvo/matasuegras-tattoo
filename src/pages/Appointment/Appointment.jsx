@@ -2,14 +2,19 @@ import { useEffect, useState } from "react";
 import { createAppointment, getTattooArtist } from "../../services/apiCalls";
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import "./Appointment.css";
-import { Navigate, useNavigate } from "react-router-dom"; // Cambiado de Navigate a navigate
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login, userData } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
 
 export const Appointment = () => {
 
+  const navigate = useNavigate();
+
+
+  const dispatch = useDispatch();
+  const rdxUserData = useSelector(userData);
   
-
-
   const [tattooArtists, setTattooArtists] = useState([]);
   const [selectedDate, setSelectedDate] = useState(getTodayDate());
   const [selectedShift, setSelectedShift] = useState("morning");
@@ -18,27 +23,30 @@ export const Appointment = () => {
   const [selectedTattooArtistId, setSelectedTattooArtistId] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [selectedUserId, setSelectedUserId] = useState(0);
-  const isLoggedIn = localStorage.getItem('token');
-  const navigate = useNavigate();
+  const [selectedUserId, setSelectedUserId] = useState();
 
+  let decoded;
   useEffect(() => {
-    if (!isLoggedIn) {
-     
-      navigate("/login");
+    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+      console.log("No estás logeado");
+    } else {
+      
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      decoded = jwtDecode(rdxUserData.credentials.token);
+      console.log(decoded)
+      dispatch(login(decoded));
+      
     }
-  });
+  }, [dispatch, rdxUserData.credentials]);
+  
+  
+  useEffect(()=>{
+    setSelectedUserId(decoded.id)
+  },[decoded])
 
 
-  let decoded = {};
-  if (isLoggedIn) {
-    decoded = jwtDecode(isLoggedIn);
-    console.log(decoded);
-    localStorage.setItem("id", decoded.id);
-  }
-  useEffect(()=>
-  setSelectedUserId(decoded.id), [decoded.id]
-  );
+ 
+
   console.log(selectedUserId)
   useEffect(() => {
     const bringTattooArtist = async () => {
@@ -120,13 +128,13 @@ export const Appointment = () => {
 
     if (!body.title || !body.description || !body.tattoo_artist || !body.type || !body.date || !body.client || !body.turn){
       alert("Revisa el formulario, te falta algun dato")
-    }else alert("cita creada correctamente")
+    }
 
     createAppointment(body)
-      .then((resultado) => {
-        console.log(resultado);
+      .then(() => {
+      
         setTimeout(() => {
-          Navigate("/login");
+          navigate("/login");
         }, 1000);
       })
       .catch((error) => console.log(error));
@@ -136,7 +144,7 @@ export const Appointment = () => {
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0");
     const day = String(today.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
+    return `${year}/${month}/${day}`;
   }
   return (
     <div>

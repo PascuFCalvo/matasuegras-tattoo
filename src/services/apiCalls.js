@@ -9,6 +9,7 @@ export const registerUser = async (body) => {
 };
 
 export const createAppointment = async (body) => {
+  console.log(body)
    return await axios.post(`http://localhost:4000/appointments/create`, body)
 }
 export const getTattoos = async () => {
