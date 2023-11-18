@@ -112,9 +112,9 @@ export const SuperAdminAppointments = () => {
   };
 
   const handlechange = (e) => {
-    const searchTerm = e.target.value.toLowerCase();
-    setBusqueda(searchTerm);
-    filtrar(searchTerm, originalAppointments); // Filtra la lista original
+    const terminoBusqueda= e.target.value.toLowerCase();
+    setBusqueda(terminoBusqueda);
+    filtrar(terminoBusqueda, originalAppointments); // Filtra la lista original
   };
 
   const filtrar = (terminoBusqueda, lista) => {

@@ -26,9 +26,27 @@
    margin-bottom: 1em;
    font-family: tattoo;
     font-size: 22px;
-    
-  
 
+}
+
+.example-custom-input{
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+   width: 16em;
+   padding: 1em;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: rgba(0, 0, 0, 0.6);
+   border: none;
+   border: solid 2px bisque;
+   cursor: pointer;
+   color: bisque
+}
+
+.example-custom-input:hover{
+   border: solid 2px bisque;
+   background-color: rgba(255, 255, 255, 0.6);
+   transition: 0.4s;
 }
 
 .selectDate{

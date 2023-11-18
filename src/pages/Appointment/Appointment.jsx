@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { createAppointment, getTattooArtist } from "../../services/apiCalls";
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import "./Appointment.css";
@@ -6,6 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { addDays, getDay, subDays } from "date-fns";
 
 export const Appointment = () => {
   const navigate = useNavigate();
@@ -16,25 +19,20 @@ export const Appointment = () => {
   const [tattooArtists, setTattooArtists] = useState([]);
   const [selectedTattooArtist, setSelectedTattooArtist] = useState("");
   const [selectedTattooArtistId, setSelectedTattooArtistId] = useState("");
-  const [selectedDate, setSelectedDate] = useState("");
+  const [startDate, setStartDate] = useState();
   const [selectedShift, setSelectedShift] = useState("morning");
   const [selectedService, setSelectedService] = useState("tattoo");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [selectedUserId, setSelectedUserId] = useState(""); 
- 
+  const [selectedUserId, setSelectedUserId] = useState("");
 
-  
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       alert("No estás logeado");
-      navigate("/login") 
-    
-      
+      navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setSelectedUserId(decoded.id);
-      console.log(decoded.id);
       dispatch(login(decoded));
     }
   }, [dispatch, rdxUserData.credentials]);
@@ -64,14 +62,13 @@ export const Appointment = () => {
     }
   }, [selectedTattooArtist, tattooArtists]);
 
-  const handleDateChange = (event) => {
-    const selectedDate = event.target.value;
-    const selectedDay = new Date(selectedDate).getDay();
-    if (selectedDay === 1 || selectedDay === 0) {
-      alert("Domingo y Lunes estamos cerrados");
-      return;
-    }
-    setSelectedDate(selectedDate);
+  const handleDateChange = (date) => {
+    // const selectedDay = getDay(date);
+    // // if (selectedDay === 0 || selectedDay === 1) {
+    // //   alert("Domingo y Lunes estamos cerrados");
+    // //   return;
+    // // }
+    setStartDate(date);
   };
 
   const handleShiftChange = (event) => {
@@ -100,10 +97,10 @@ export const Appointment = () => {
   };
 
   const formatSelectedDate = () => {
-    const date = new Date(selectedDate);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
+    if (!startDate) return "";
+    const year = startDate.getFullYear();
+    const month = String(startDate.getMonth() + 1).padStart(2, "0");
+    const day = String(startDate.getDate()).padStart(2, "0");
     return `${year}-${month}-${day}`;
   };
 
@@ -114,7 +111,7 @@ export const Appointment = () => {
         !description ||
         !selectedTattooArtistId ||
         !selectedService ||
-        !selectedDate ||
+        !startDate ||
         !selectedUserId ||
         !selectedShift
       ) {
@@ -123,37 +120,40 @@ export const Appointment = () => {
       }
 
       const body = {
-        "title": title,
-        "description": description,
-        "tattoo_artist": selectedTattooArtistId,
-        "client": selectedUserId,
-        "type": selectedService,
-        "date": formatSelectedDate(),
-        "turn": selectedShift,
+        title,
+        description,
+        tattoo_artist: selectedTattooArtistId,
+        client: selectedUserId,
+        type: selectedService,
+        date: formatSelectedDate(),
+        turn: selectedShift,
       };
-
-      console.log(body);
 
       await createAppointment(body);
 
       setTimeout(() => {
-        alert("Cita creada correctamente")
+        alert("Cita creada correctamente");
         navigate("/");
       }, 1000);
     } catch (error) {
       console.error("Error creating appointment:", error);
-      
       alert("Hubo un error al crear la cita. Por favor, inténtalo de nuevo.");
     }
   };
 
-  function getTodayDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, "0");
-    const day = String(today.getDate()).padStart(2, "0");
-    return `${year}-${month}-${day}`;
-  }
+
+
+  // eslint-disable-next-line react/display-name
+  const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
+    <button className="example-custom-input" onClick={onClick} ref={ref}>
+      {value}
+    </button>
+  ));
+ 
+  const isWeekday = (date) => {
+    const day = getDay(date);
+    return day !== 0 && day !== 1;
+  };
 
   return (
     <div>
@@ -177,13 +177,14 @@ export const Appointment = () => {
               onChange={handleDescriptionChange}
             />
             <div className="titleAppointment">Selecciona una fecha</div>
-            <input
-              className="selectDate"
-              type="date"
-              id="appointmentDate"
-              value={selectedDate}
+            <DatePicker className="prueba"
+              selected={startDate}
               onChange={handleDateChange}
-              min={getTodayDate()}
+              includeDateIntervals={[{ start: subDays(new Date(), 0), end: addDays(new Date(), 180) }]}
+              withPortal
+              filterDate={isWeekday}
+              placeholderText="Click aqui para elegir una fecha"
+              customInput={<ExampleCustomInput />}
             />
             <div className="titleAppointment">Selecciona un Servicio</div>
             <select
