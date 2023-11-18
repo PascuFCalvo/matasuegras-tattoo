@@ -50,7 +50,10 @@
 }
 
 .infoTatuador{
-   text-align: start;
+   display: flex;
+   justify-content: flex-start;
+   align-items: flex-start;
+   margin-bottom: 1em;
    color: black;
    font-size: 20px;
    
@@ -58,18 +61,20 @@
 
 
 .buttonEditArtist{
-   background-color: green;
+   background-color: #A7D6C3;
    padding: 1em;
-   color: black;
-   width: 10em;
-   border: solid 1px black;
-   transition: 0.4s;}
+   color: white;
+   width: 4em;
+   margin-top: 2em;
+   transition: 0.4s;
+   margin-left: 13em;
+}
 .buttonEditArtist:hover{
-   background-color: darkgreen;
+   background-color: #3F8566;
 cursor: pointer;
 transition: 0.4s;}
 .buttonEditArtist:active{
-   background-color: green;
+   background-color: #A7D6C3;
 cursor: pointer;
 transition: 0.4s;}
   

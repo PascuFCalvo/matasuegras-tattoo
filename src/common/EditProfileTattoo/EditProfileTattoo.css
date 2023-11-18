@@ -9,6 +9,7 @@
    height: auto;
    padding: 5%;
    background-color: bisque;
+   
    border: solid 1px black;
 }
 
@@ -17,3 +18,30 @@
    font-size: 22px;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.overInput{
+   color: black;
+   font-size: 18px;
+   margin-left: 1em;
+}
+
+.buttonCloseEdit{
+  background-color:  #C2544F;
+  padding: 1em;
+  margin: 1em;
+  margin-top: 2em;
+  border: none
+}
+.buttonCloseEdit:hover{
+   background-color:#FF8981;
+}
+
+.buttonSaveEdit{
+   background-color:  #A7D6C3;
+   padding: 1em;
+   margin: 1em;
+   border: none
+ }
+ .buttonSaveEdit:hover{
+    background-color:#3F8566;
+ }

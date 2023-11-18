@@ -95,6 +95,9 @@ export const UserPanelAppointments = () => {
     deleteAnAppointment(body)
       .then((response) => {
         console.log(response);
+        setTimeout(() => {
+          navigate("/MyUserPanel")
+        }, 500);
       })
       .catch((error) => {
         console.error("Error fetching appointments:", error);

@@ -49,13 +49,14 @@
    align-items: center;
    width: 10em;
    height: 3em;
-   border: solid 2px rgb(32, 32, 32);
+   background-color: #A7D6C3;
    margin-left: 42em;
+   color: white;
 }
 
 .ButtonBackTattooArtist:hover{
-   background-color: rgb(36, 36, 36);
-   color: bisque;
+   background-color: #3F8566;
+   color: rgb(255, 255, 255);
    cursor: pointer;
    transition: 0.5s;
 }

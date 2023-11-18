@@ -94,6 +94,9 @@ export const TattoArtistAppointments = () => {
     deleteAnAppointment(body)
       .then((response) => {
         console.log(response);
+        setTimeout(() => {
+          navigate("/MyTattooPanel")
+        }, 500);
       })
       .catch((error) => {
         console.error("Error fetching appointments:", error);
@@ -153,7 +156,7 @@ export const TattoArtistAppointments = () => {
             </div>
             <div
               className="buttonBack"
-              onClick={() => navigate("/myUserPanel")}
+              onClick={() => navigate("/myTattooPanel")}
             >
               Volver al panel
             </div>

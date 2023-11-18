@@ -1,13 +1,13 @@
 import { jwtDecode } from "jwt-decode";
-import "./EditProfileTattoo.css";
+import "./EditProfileUser.css";
 import { useEffect, useState } from "react";
-import { getTattooArtist, updateUser } from "../../services/apiCalls";
+import { getAllUsers,  updateUser } from "../../services/apiCalls";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
 
-export const EditProfileTattoo = ({ setVisibility }) => {
-  const [tattooArtist, setTattooArtist] = useState([]);
+export const EditProfileUser = ({ setVisibility }) => {
+  const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
   const [profile, setProfile] = useState([]);
@@ -31,27 +31,29 @@ export const EditProfileTattoo = ({ setVisibility }) => {
   }, [dispatch, rdxUserData.credentials]);
 
   useEffect(() => {
-    if (tattooArtist.length === 0) {
-      getTattooArtist()
+    if (users.length === 0) {
+      getAllUsers()
         .then((response) => {
-          setTattooArtist(response.data.Artists);
+          setUsers(response.data.Users);
+          
         })
         .catch((error) => {
-          console.error("Error fetching tattoo artist:", error);
+          console.error("Error fetching users artist:", error);
         });
     }
-  }, [tattooArtist]);
+  }, [users]);
 
   useEffect(() => {
     const filterProfile = () => {
-      return tattooArtist.filter(
-        (tattooArtist) => tattooArtist.user_name === nameToFilter
+      return users.filter(
+        (users) => users.user_name === nameToFilter
       );
     };
 
     setProfile(filterProfile()); 
-  }, [nameToFilter, tattooArtist]);
+  }, [nameToFilter, users]);
 
+  console.log(profile);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

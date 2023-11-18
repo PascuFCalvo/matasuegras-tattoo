@@ -43,8 +43,8 @@ export const deleteAUser= async (id) => {
   return await axios.delete(`http://localhost:4000/blackAlien/deleteuser`, {data : { id: id}})
 }
 
-export const deleteAnAppointment= async (body) => {
-  return await axios.delete(`http://localhost:4000/appointments/delete`, body)
+export const deleteAnAppointment= async (id) => {
+  return await axios.delete(`http://localhost:4000/appointments/delete`, {data : { id: id}})
 }
 
 export const updateAnAppointment= async (body) => {

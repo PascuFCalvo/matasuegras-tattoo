@@ -4,18 +4,29 @@ import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
 import { getTattooArtist } from "../../services/apiCalls";
 import { useEffect, useState } from "react";
 import { EditProfileTattoo } from "../../common/EditProfileTattoo/EditProfileTattoo";
+import { jwtDecode } from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
+import { login, userData } from "../userSlice";
 
 export const MainTattooPanel = () => {
   const [isEditPanelModalVisible, setIsEditPanelModalVisible] = useState(false);
-
- 
-
-
-  const navigate = useNavigate();
-
-  const destination2 = "tattooArtistAppointments";
-
   const [tattooArtist, setTattooArtist] = useState([]);
+ 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const rdxUserData = useSelector(userData);
+  const [profile, setProfile] = useState([]);
+  const [nameToFilter, setNameToFilter] = useState();
+
+  useEffect(() => {
+    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+      console.log("No estás logeado");
+    } else {
+      const decoded = jwtDecode(rdxUserData.credentials.token);
+      setNameToFilter(decoded.user_name);
+      dispatch(login(decoded));
+    }
+  }, [dispatch, rdxUserData.credentials]);
 
   useEffect(() => {
     if (tattooArtist.length === 0) {
@@ -28,14 +39,18 @@ export const MainTattooPanel = () => {
         });
     }
   }, [tattooArtist]);
-  console.log(tattooArtist);
 
-  let Profile = {};
-  tattooArtist.forEach((element) => {
-    if (element.user_name === "pepe") {
-      Profile = element;
-    }
-  });
+  useEffect(() => {
+    const filterProfile = () => {
+      return tattooArtist.filter(
+        (tattooArtist) => tattooArtist.user_name === nameToFilter
+      );
+    };
+
+    setProfile(filterProfile());
+  }, [nameToFilter, tattooArtist]);
+
+  console.log(profile);
 
   const handleClickOnEdit = () => {
     setIsEditPanelModalVisible(true);
@@ -48,18 +63,18 @@ export const MainTattooPanel = () => {
         {isEditPanelModalVisible && 
         <EditProfileTattoo setVisibility={setIsEditPanelModalVisible} />}
         <div className="titleAdmin">PANEL DE TATUADOR</div>
-        <div className="infoTatuador">NOMBRE: {Profile.user_name} </div>
-        <div className="infoTatuador">EMAIL: {Profile.email} </div>
-        <div className="infoTatuador">PHONE: {Profile.phone} </div>
-        <div className="infoTatuador">LICENCIA: {Profile.licenseNumber} </div>
-        <div className="infoTatuador">FORMACION: {Profile.formation} </div>
+        <div className="infoTatuador">NOMBRE: {profile.length > 0 ? profile[0].user_name : ""}</div>
+        <div className="infoTatuador">EMAIL:  {profile.length > 0 ? profile[0].email : ""}</div>
+        <div className="infoTatuador">PHONE:  {profile.length > 0 ? profile[0].phone : ""}</div>
+        <div className="infoTatuador">LICENCIA:  {profile.length > 0 ? profile[0].licenseNumber : ""}</div>
+        <div className="infoTatuador">FORMACION: {profile.length > 0 ? profile[0].formation : ""}</div>
         <div className="buttonEditArtist" onClick={handleClickOnEdit}>
           EDIT
         </div>
         <div className="buttons">
           <div
             className="buttonUsers"
-            onClick={() => navigate(destination2)}
+            onClick={() => navigate("/myTattooPanel/tattooArtistAppointments")}
           >
             Ver Citas
           </div>
