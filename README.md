@@ -152,7 +152,18 @@ Vista del panel de admin
 <img src = "./src/images/readme/Panel admin users.jpg" width = "600px" alt ="Foto de la vista principal">
 
 
+###### Info a pie de pagina 
+Con la info del estudio, barra de navegacion para no tener que volver arriba, scroll to top, api de google maps y de instagram
 
+<img src = "./src/images/readme/Footer.jpg" width = "600px" alt ="Foto de la vista principal">
+
+###### Responsive
+
+Unas pocas muestras del responsive de la pagina
+
+<img src = "./src/images/readme/Responsive1.jpg" width = "300px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Responsive2.jpg" width = "300px" alt ="Foto de la vista principal">
+<img src = "./src/images/readme/Responsive3.jpg" width = "300px" alt ="Foto de la vista principal">
 
 
 
