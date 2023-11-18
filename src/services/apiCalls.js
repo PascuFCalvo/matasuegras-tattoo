@@ -60,11 +60,11 @@ export const myDetailAppointments = async (body,token) => {
 }
 
 export const updateUser = async (body) => {
+  console.log(body)
   return await axios.put(`http://localhost:4000/user/update`, body)
 }
 
 
-// localhost:4000/user/update
 
 
 

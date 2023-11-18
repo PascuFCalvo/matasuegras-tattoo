@@ -27,6 +27,7 @@ export const EditProfileUser = ({ setVisibility }) => {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setNameToFilter(decoded.user_name);
       dispatch(login(decoded));
+      console.log(decoded.user_name)
     }
   }, [dispatch, rdxUserData.credentials]);
 
@@ -53,7 +54,7 @@ export const EditProfileUser = ({ setVisibility }) => {
     setProfile(filterProfile()); 
   }, [nameToFilter, users]);
 
-  console.log(profile);
+  console.log(profile[0].id);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -65,10 +66,11 @@ export const EditProfileUser = ({ setVisibility }) => {
 
   const handleSaveClick = () => {
     let body = {
+      id:profile[0].id,
       user_name: formData.user_name,
       email: formData.email,
-      phone: formData.phone,
-      id: profile[0].id, 
+      phone: formData.phone
+      
     };
 
     alert("logica para updatear usuario, de momento no me ha dado tiempo a implementarla");
