@@ -43,7 +43,7 @@ export const SuperAdminButton = () => {
     </div>
   ) : (
     <div>
-      Error: No se pudo determinar el destino. Por favor, inicia sesión.
+      
     </div>
   );
 };

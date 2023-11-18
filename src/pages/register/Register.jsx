@@ -68,7 +68,7 @@ export const Register = () => {
   return (
     <div><div className="Register">
       <div className="formBackgroundRegister">
-        <div className="overInput">Nombre</div>
+        <div className="overInputlogin">Nombre</div>
         <CustomInput
           design={`customInput ${userError.user_nameError !== "" ? 'customInputError' : ''}`}
           type={"text"}
@@ -79,7 +79,7 @@ export const Register = () => {
           functionBlur={errorCheck}
         />
         <div className='errorMsg'>{userError.user_nameError}</div>
-        <div className="overInput">email</div>
+        <div className="overInputlogin">email</div>
         <CustomInput
           design={`customInput ${userError.emailError !== "" ? 'customInputError' : ''}`}
           type={"email"}
@@ -90,7 +90,7 @@ export const Register = () => {
           functionBlur={errorCheck}
         />
         <div className='errorMsg'>{userError.emailError}</div>
-        <div className="overInput">Password</div>
+        <div className="overInputlogin">Password</div>
         <CustomInput
           design={`customInput ${userError.passwordError !== "" ? 'customInputError' : ''}`}
           type={"password"}
@@ -101,7 +101,7 @@ export const Register = () => {
           functionBlur={errorCheck}
         />
         <div className='errorMsg'>{userError.passwordError}</div>
-        <div className="overInput">Telefono</div>
+        <div className="overInputlogin">Telefono</div>
         <CustomInput
           design={`customInput ${userError.phoneError !== "" ? 'customInputError' : ''}`}
           type={"text"}

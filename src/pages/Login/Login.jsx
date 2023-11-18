@@ -84,7 +84,7 @@ export const Login = () => {
     <div>
       <div className="Login">
         <div className="formBackground">
-          <div className="overInput">eMail</div>
+          <div className="overInputlogin">eMail</div>
           <CustomInput
             design={`customInput ${credencialesError.emailError !== "" ? 'customInputError' : ''}`}
             type="email"
@@ -95,7 +95,7 @@ export const Login = () => {
             
           />
           <div className='errorMsg'>{credencialesError.emailError}</div>
-          <div className="overInput">Password</div>
+          <div className="overInputlogin">Password</div>
           <CustomInput
             design={`customInput ${credencialesError.passwordError !== "" ? 'customInputError' : ''}`}
             type="password"

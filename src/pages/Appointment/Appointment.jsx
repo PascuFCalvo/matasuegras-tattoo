@@ -8,46 +8,34 @@ import { login, userData } from "../userSlice";
 import { jwtDecode } from "jwt-decode";
 
 export const Appointment = () => {
-
   const navigate = useNavigate();
-
-
   const dispatch = useDispatch();
+
   const rdxUserData = useSelector(userData);
-  
+
   const [tattooArtists, setTattooArtists] = useState([]);
-  const [selectedDate, setSelectedDate] = useState(getTodayDate());
-  const [selectedShift, setSelectedShift] = useState("morning");
   const [selectedTattooArtist, setSelectedTattooArtist] = useState("");
+  const [selectedTattooArtistId, setSelectedTattooArtistId] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedShift, setSelectedShift] = useState("morning");
   const [selectedService, setSelectedService] = useState("tattoo");
-  const [selectedTattooArtistId, setSelectedTattooArtistId] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [selectedUserId, setSelectedUserId] = useState();
+  const [selectedUserId, setSelectedUserId] = useState(""); 
+ 
 
-  let decoded;
+  
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       console.log("No estás logeado");
     } else {
-      
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      decoded = jwtDecode(rdxUserData.credentials.token);
-      console.log(decoded)
+      const decoded = jwtDecode(rdxUserData.credentials.token);
+      setSelectedUserId(decoded.id);
+      console.log(decoded.id);
       dispatch(login(decoded));
-      
     }
   }, [dispatch, rdxUserData.credentials]);
-  
-  
-  useEffect(()=>{
-    setSelectedUserId(decoded.id)
-  },[decoded])
 
-
- 
-
-  console.log(selectedUserId)
   useEffect(() => {
     const bringTattooArtist = async () => {
       try {
@@ -62,6 +50,16 @@ export const Appointment = () => {
       bringTattooArtist();
     }
   }, [tattooArtists]);
+
+  useEffect(() => {
+    const selectedTattooArtistObject = tattooArtists.find(
+      (artist) => artist.user_name === selectedTattooArtist
+    );
+
+    if (selectedTattooArtistObject) {
+      setSelectedTattooArtistId(selectedTattooArtistObject.id);
+    }
+  }, [selectedTattooArtist, tattooArtists]);
 
   const handleDateChange = (event) => {
     const selectedDate = event.target.value;
@@ -81,14 +79,6 @@ export const Appointment = () => {
   const handleTattooArtistChange = (event) => {
     const selectedTattooArtist = event.target.value;
     setSelectedTattooArtist(selectedTattooArtist);
-
-    const selectedTattooArtistObject = tattooArtists.find(
-      (artist) => artist.user_name === selectedTattooArtist
-    );
-      
-    if (selectedTattooArtistObject) {
-      setSelectedTattooArtistId(selectedTattooArtistObject.id);
-    }
   };
 
   const handleServiceChange = (event) => {
@@ -114,38 +104,52 @@ export const Appointment = () => {
     return `${year}-${month}-${day}`;
   };
 
-  const handleSubmit = () => {
-    const body = {
-      title: title,
-      description: description,
-      tattoo_artist: selectedTattooArtistId,
-      client: selectedUserId,
-      type: selectedService,
-      date: formatSelectedDate(),
-      turn: selectedShift,
-    };
-    console.log(body);
+  const handleSubmit = async () => {
+    try {
+      // if (
+      //   !title ||
+      //   !description ||
+      //   !selectedTattooArtistId ||
+      //   !selectedService ||
+      //   !selectedDate ||
+      //   !selectedUserId ||
+      //   !selectedShift
+      // ) {
+      //   alert("Revisa el formulario, te falta algún dato");
+      //   return;
+      // }
 
-    if (!body.title || !body.description || !body.tattoo_artist || !body.type || !body.date || !body.client || !body.turn){
-      alert("Revisa el formulario, te falta algun dato")
+      const body = {
+        "title": title,
+        "description": description,
+        "tattoo_artist": selectedTattooArtistId,
+        "client": selectedUserId,
+        "type": selectedService,
+        "date": formatSelectedDate(),
+        "turn": selectedShift,
+      };
+
+      console.log(body);
+
+      await createAppointment(body);
+
+      setTimeout(() => {
+        navigate("/success");
+      }, 1000);
+    } catch (error) {
+      console.error("Error creating appointment:", error);
+      alert("Hubo un error al crear la cita. Por favor, inténtalo de nuevo.");
     }
-
-    createAppointment(body)
-      .then(() => {
-      
-        setTimeout(() => {
-          navigate("/login");
-        }, 1000);
-      })
-      .catch((error) => console.log(error));
   };
+
   function getTodayDate() {
     const today = new Date();
     const year = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, "0");
     const day = String(today.getDate()).padStart(2, "0");
-    return `${year}/${month}/${day}`;
+    return `${year}-${month}-${day}`;
   }
+
   return (
     <div>
       <div className="Appointment">
@@ -183,8 +187,8 @@ export const Appointment = () => {
               value={selectedService}
               onChange={handleServiceChange}
             >
-              <option value="tattoo">Tattoo</option>
-              <option value="piercing">Piercing</option>
+              <option value="tattoo">tattoo</option>
+              <option value="piercing">piercing</option>
             </select>
             <div className="title">Selecciona un Turno</div>
             <select
@@ -194,7 +198,7 @@ export const Appointment = () => {
               onChange={handleShiftChange}
             >
               <option value="morning">Mañana</option>
-              <option value="afternoon">Tarde</option>
+              <option value="evening">Tarde</option>
             </select>
             <div className="title">Selecciona un Tatuador</div>
             <select
@@ -203,7 +207,6 @@ export const Appointment = () => {
               value={selectedTattooArtist}
               onChange={handleTattooArtistChange}
             >
-              
               {tattooArtists.map((tattooArtist) => (
                 <option key={tattooArtist.id} value={tattooArtist.user_name}>
                   {tattooArtist.user_name}
