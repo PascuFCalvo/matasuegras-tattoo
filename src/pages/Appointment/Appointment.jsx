@@ -27,7 +27,10 @@ export const Appointment = () => {
   
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
-      console.log("No estás logeado");
+      alert("No estás logeado");
+      navigate("/login") 
+    
+      
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setSelectedUserId(decoded.id);
@@ -106,18 +109,18 @@ export const Appointment = () => {
 
   const handleSubmit = async () => {
     try {
-      // if (
-      //   !title ||
-      //   !description ||
-      //   !selectedTattooArtistId ||
-      //   !selectedService ||
-      //   !selectedDate ||
-      //   !selectedUserId ||
-      //   !selectedShift
-      // ) {
-      //   alert("Revisa el formulario, te falta algún dato");
-      //   return;
-      // }
+      if (
+        !title ||
+        !description ||
+        !selectedTattooArtistId ||
+        !selectedService ||
+        !selectedDate ||
+        !selectedUserId ||
+        !selectedShift
+      ) {
+        alert("Revisa el formulario, te falta algún dato");
+        return;
+      }
 
       const body = {
         "title": title,
@@ -134,10 +137,12 @@ export const Appointment = () => {
       await createAppointment(body);
 
       setTimeout(() => {
-        navigate("/success");
+        alert("Cita creada correctamente")
+        navigate("/");
       }, 1000);
     } catch (error) {
       console.error("Error creating appointment:", error);
+      
       alert("Hubo un error al crear la cita. Por favor, inténtalo de nuevo.");
     }
   };
