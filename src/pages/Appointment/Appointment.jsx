@@ -160,7 +160,7 @@ export const Appointment = () => {
       <div className="Appointment">
         {tattooArtists.length > 0 ? (
           <div className="AppointmentBackground">
-            <div className="title">Titulo</div>
+            <div className="titleAppointment">Titulo</div>
             <input
               className="customInput"
               type="text"
@@ -168,7 +168,7 @@ export const Appointment = () => {
               value={title}
               onChange={handleTitleChange}
             />
-            <div className="title">Descripcion</div>
+            <div className="titleAppointment">Descripcion</div>
             <input
               className="customInput"
               type="text"
@@ -176,7 +176,7 @@ export const Appointment = () => {
               value={description}
               onChange={handleDescriptionChange}
             />
-            <div className="title">Selecciona una fecha</div>
+            <div className="titleAppointment">Selecciona una fecha</div>
             <input
               className="selectDate"
               type="date"
@@ -185,7 +185,7 @@ export const Appointment = () => {
               onChange={handleDateChange}
               min={getTodayDate()}
             />
-            <div className="title">Selecciona un Servicio</div>
+            <div className="titleAppointment">Selecciona un Servicio</div>
             <select
               className="selectService"
               id="selectService"
@@ -195,7 +195,7 @@ export const Appointment = () => {
               <option value="tattoo">tattoo</option>
               <option value="piercing">piercing</option>
             </select>
-            <div className="title">Selecciona un Turno</div>
+            <div className="titleAppointment">Selecciona un Turno</div>
             <select
               className="selectShift"
               id="shift"
@@ -205,7 +205,7 @@ export const Appointment = () => {
               <option value="morning">Mañana</option>
               <option value="evening">Tarde</option>
             </select>
-            <div className="title">Selecciona un Tatuador</div>
+            <div className="titleAppointment">Selecciona un Tatuador</div>
             <select
               className="selectArtist"
               id="selectTattooArtist"
