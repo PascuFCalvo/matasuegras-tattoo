@@ -23,6 +23,6 @@ export const Button = styled.div`
    color: black;
 
    &:hover {
-      color: goldenrod;
+      color: #739F8D;
    }
 `;

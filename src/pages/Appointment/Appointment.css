@@ -2,7 +2,7 @@
    font-family: tattoo;
    display: flex;
    justify-content: flex-end;
-   height: 82vh;
+   height: 80vh;
    width: 100vw;
    justify-content: center;
      
@@ -71,14 +71,14 @@
 
    height: 3em;
    width: 10em;
-   background-color: rgb(218, 183, 94);
+   background-color: #739F8D;;
    color: rgb(255, 255, 255);
    font-weight: bolder;
    display: flex;
    justify-content: center;
    align-items: center;
    position: absolute;
-   bottom: -50em ;
+   bottom: -45em ;
    right: 2em;
    margin-bottom: 2em;
    
@@ -92,7 +92,7 @@
 
 .blankPedirCita{
    position: absolute;
-   bottom: -50em ;
+   bottom: -45em ;
    height: 1em;
    width: 100%;
    
@@ -103,7 +103,7 @@
    transition: 0.2s;
    color: white;
    cursor: pointer;
-   background-color: rgb(221, 176, 61);;
+   background-color: #A7D6C3;
 }
 
 .buttonSubmitPedirCitat:active {
