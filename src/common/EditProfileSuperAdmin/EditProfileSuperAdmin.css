@@ -1,0 +1,19 @@
+.CardEditTattoo{
+   margin-top: 10%;
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   width: auto;
+   height: auto;
+   padding: 5%;
+   background-color: bisque;
+   border: solid 1px black;
+}
+
+.titleEdit{
+   color: black;
+   font-size: 22px;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

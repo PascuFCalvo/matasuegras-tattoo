@@ -1,17 +1,17 @@
 import { jwtDecode } from "jwt-decode";
-import "./EditProfileUser.css";
+import "./EditProfileSuperAdmin.css";
 import { useEffect, useState } from "react";
 import { getAllUsers, updateUser } from "../../services/apiCalls";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
 
-export const EditProfileUser = ({ setVisibility }) => {
+export const EditProfileSuperAdmin = ({ setVisibility, idToEdit }) => {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
-  const [profile, setProfile] = useState([]);
-  const [nameToFilter, setNameToFilter] = useState();
+ 
+  console.log(idToEdit)
 
   const [formData, setFormData] = useState({
     user_name: "",
@@ -24,9 +24,8 @@ export const EditProfileUser = ({ setVisibility }) => {
       console.log("No estás logeado");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
-      setNameToFilter(decoded.user_name);
+      
       dispatch(login(decoded));
-      console.log(decoded.user_name);
     }
   }, [dispatch, rdxUserData.credentials]);
 
@@ -42,13 +41,6 @@ export const EditProfileUser = ({ setVisibility }) => {
     }
   }, [users]);
 
-  useEffect(() => {
-    const filterProfile = () => {
-      return users.filter((users) => users.user_name === nameToFilter);
-    };
-
-    setProfile(filterProfile());
-  }, [nameToFilter, users]);
 
   
 
@@ -62,22 +54,16 @@ export const EditProfileUser = ({ setVisibility }) => {
 
   const handleSaveClick = () => {
     let body = {
-      id: profile[0].id,
+      id: idToEdit,
       user_name: formData.user_name,
       email: formData.email,
       phone: formData.phone,
     };
 
-    alert(
-      "Se va a actualizar el usuario"
-    );
     updateUser(body)
       .then((resultado) => {
         console.log(resultado);
-
-        alert("usuario actualizado");
-
-        setTimeout(() => {}, 1000);
+        alert("Usuario actualizado");
       })
       .catch((error) => console.log(error));
 
@@ -98,7 +84,7 @@ export const EditProfileUser = ({ setVisibility }) => {
         <input
           className="input"
           name="user_name"
-          placeholder={profile.length > 0 ? profile[0].user_name : ""}
+          placeholder=""
           value={formData.user_name}
           onChange={handleInputChange}
         />
@@ -106,7 +92,7 @@ export const EditProfileUser = ({ setVisibility }) => {
         <input
           className="input"
           name="email"
-          placeholder={profile.length > 0 ? profile[0].email : ""}
+          placeholder=""
           value={formData.email}
           onChange={handleInputChange}
         />
@@ -114,7 +100,7 @@ export const EditProfileUser = ({ setVisibility }) => {
         <input
           className="input"
           name="phone"
-          placeholder={profile.length > 0 ? profile[0].phone : ""}
+          placeholder=""
           value={formData.phone}
           onChange={handleInputChange}
         />
