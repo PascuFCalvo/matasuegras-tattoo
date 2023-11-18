@@ -31,7 +31,36 @@
    display: flex;
 }
 
+.containerInput{
+   display: flex;
+   width: 52em;
+   margin-bottom: 2em;
+   justify-content: flex-end;
+   
+}
 
+.inputBuscar{
+   background-color: white;
+   border: none;
+   width: 25em;
+   color: black;
+   height: 1em;
+   padding: 1em;
+   font-size: 18px;
+   ;
+}
+
+.buttonBuscar{
+   background-color: #C2544F;
+   margin-left: 1em;
+   border: none;
+}
+
+.buttonBuscar:hover{
+   background-color: #FF8981;
+   transition: 0.4s
+   
+}
 
 .buttonDelete{
    display: flex;

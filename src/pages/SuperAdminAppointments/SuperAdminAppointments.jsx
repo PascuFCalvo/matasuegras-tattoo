@@ -1,10 +1,8 @@
 import "./SuperAdminAppointments.css";
 import { useEffect, useState } from "react";
 import {
-  
   deleteAnAppointment,
   getAppointments,
-  
 } from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
@@ -21,29 +19,29 @@ export const SuperAdminAppointments = () => {
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
   const [appointments, setAppointments] = useState([]);
-
+  const [originalAppointments, setOriginalAppointments] = useState([]); 
+  const [busqueda, setBusqueda] = useState("");
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       console.log("No estás logeado");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
-      console.log(rdxUserData.credentials)
-      console.log(rdxUserData.credentials.token)
+      console.log(rdxUserData.credentials);
+      console.log(rdxUserData.credentials.token);
       console.log(decoded);
       dispatch(login(decoded));
-      
     }
   }, [dispatch, rdxUserData.credentials]);
-
 
   useEffect(() => {
     if (appointments.length === 0) {
       getAppointments(rdxUserData.credentials.token)
-      .then((response) => {
-          console.log(appointments)
+        .then((response) => {
+          console.log(appointments);
           setAppointments(response.data.myAppointments);
-          console.log(response.data)
+          setOriginalAppointments(response.data.myAppointments); // Guarda una copia original
+          console.log(response.data);
         })
         .catch((error) => {
           console.error("Error fetching tattoos:", error);
@@ -51,7 +49,10 @@ export const SuperAdminAppointments = () => {
     }
   }, [appointments, rdxUserData.credentials.token]);
 
-  
+  useEffect(() => {
+    filtrar(busqueda, originalAppointments); // Filtra la lista original
+  }, [busqueda, originalAppointments]);
+
   const handleAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
@@ -78,7 +79,6 @@ export const SuperAdminAppointments = () => {
   };
 
   const handleEditAppointmentClick = (appointment) => {
-    
     const appointmentDetails = {
       id: appointment.id,
       title: appointment.title,
@@ -103,12 +103,34 @@ export const SuperAdminAppointments = () => {
         console.log(response);
         alert(`cita eliminada`);
         setTimeout(() => {
-          navigate("/superAdmin")
+          navigate("/superAdmin");
         }, 500);
       })
       .catch((error) => {
         console.error("Error fetching appointments:", error);
       });
+  };
+
+  const handlechange = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    setBusqueda(searchTerm);
+    filtrar(searchTerm, originalAppointments); // Filtra la lista original
+  };
+
+  const filtrar = (terminoBusqueda, lista) => {
+    if (!terminoBusqueda) {
+      setAppointments(lista);
+      return;
+    }
+
+    const resultadosBusqueda = lista.filter((elemento) => {
+      return (
+        elemento.title.toLowerCase().includes(terminoBusqueda) ||
+        elemento.description.toLowerCase().includes(terminoBusqueda)
+      );
+    });
+
+    setAppointments(resultadosBusqueda);
   };
 
   return (
@@ -127,6 +149,15 @@ export const SuperAdminAppointments = () => {
 
       <div className="ListUsers">
         <div className="panelAdminTitle">LISTADO DE CITAS</div>
+        <div className="containerInput">
+          <input
+            className="inputBuscar"
+            value={busqueda}
+            placeholder="busca por nombre o descripcion"
+            onChange={handlechange}
+          />
+          <button className="buttonBuscar">Buscar</button>
+        </div>
         {appointments.length > 0 ? (
           <>
             <div className="User">
@@ -145,7 +176,7 @@ export const SuperAdminAppointments = () => {
                         {appointment.userAppointment.user_name}
                       </div>
                       <div className="level">
-                      {appointment.tattoArtistAppointment.user_name}
+                        {appointment.tattoArtistAppointment.user_name}
                       </div>
                     </>
                   </div>
@@ -156,12 +187,20 @@ export const SuperAdminAppointments = () => {
                     >
                       Edit
                     </div>
-                    <div className="buttonDelete" onClick={() => handleDeleteAppointmentClick(appointment)}>X</div>
+                    <div
+                      className="buttonDelete"
+                      onClick={() => handleDeleteAppointmentClick(appointment)}
+                    >
+                      X
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="buttonBack" onClick={() => navigate("/superAdmin")}>
+            <div
+              className="buttonBack"
+              onClick={() => navigate("/superAdmin")}
+            >
               Volver al panel
             </div>
           </>
