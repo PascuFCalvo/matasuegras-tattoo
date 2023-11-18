@@ -35,7 +35,7 @@ export const Appointment = () => {
       setSelectedUserId(decoded.id);
       dispatch(login(decoded));
     }
-  }, [dispatch, rdxUserData.credentials]);
+  }, [dispatch, navigate, rdxUserData.credentials]);
 
   useEffect(() => {
     const bringTattooArtist = async () => {
