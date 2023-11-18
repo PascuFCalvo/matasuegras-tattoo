@@ -37,12 +37,7 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
   };
 
   const handleSaveClick = () => {
-    let tattoo_artist;
-    if (formData.tattoo_artist === "Black alien"){
-      tattoo_artist = 1;
-      
-    }
-
+   
 
     let body = {
       user_id: tokendecoded.id,
@@ -51,7 +46,7 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
       description: formData.description,
       client: tokendecoded.id,
       type: formData.type,
-      tattoo_artist:tattoo_artist,
+      tattoo_artist:formData.tattoo_artist,
     };
 
     console.log(body)
@@ -105,7 +100,7 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
           value={formData.description}
           onChange={handleInputChange}
         />
-        <select
+        {/* <select
           className="inputselect"
           name="type"
           value={formData.type}
@@ -144,7 +139,7 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
           <option value="option1">morning</option>
           <option value="option2">evening</option>
           
-        </select>
+        </select> */}
       </>
       <div className="botonera">
         <button className="buttonClose" onClick={handleHideClick}>
