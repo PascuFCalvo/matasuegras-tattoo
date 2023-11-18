@@ -89,11 +89,16 @@
 }
 
 .buttonClose {
-   background-color: rgb(26, 26, 26);
+   background-color: #C2544F;
    margin-bottom: 1em;
    border-bottom: 2px solid bisque;
    border-radius: 0px;
 }
+
+.buttonClose:hover{
+   background-color: #FF8981;
+}
+
 
 .buttonClose:hover {
    outline: bisque;
@@ -123,10 +128,15 @@
 
 
 .buttonSave{
-   background-color: green;
+   background-color: #739F8D;
    margin-bottom: 1em;
    border-bottom: 2px solid bisque;
    border-radius: 0px;
    margin: 0.5em;
+   border: none;
 
+}
+
+.buttonSave:hover{
+   background-color: #A7D6C3;
 }

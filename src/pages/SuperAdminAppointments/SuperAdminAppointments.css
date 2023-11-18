@@ -99,19 +99,18 @@
 .buttonBack{
    width: 10em;
    height: 3em;
-   background-color: bisque;
+   background-color: #739F8D;
    margin: 2em;
-   color: black;
+   color: white;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
-   border: solid 2px black;
    display: flex;
    justify-content: center;
    align-items: center;
 }
 
 .buttonBack:hover{
-   background-color: rgb(37, 37, 37);
-   color: bisque;
+   background-color: #A7D6C3;
+   color: rgb(255, 255, 255);
    cursor: pointer;
    transform: 0.5s;
 }

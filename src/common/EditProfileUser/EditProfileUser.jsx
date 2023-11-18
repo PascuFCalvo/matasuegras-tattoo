@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import "./EditProfileUser.css";
 import { useEffect, useState } from "react";
-import { getAllUsers,  updateUser } from "../../services/apiCalls";
+import { getAllUsers, updateUser } from "../../services/apiCalls";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
@@ -14,10 +14,9 @@ export const EditProfileUser = ({ setVisibility }) => {
   const [nameToFilter, setNameToFilter] = useState();
 
   const [formData, setFormData] = useState({
-    user_name: "", 
+    user_name: "",
     email: "",
     phone: "",
-    
   });
 
   useEffect(() => {
@@ -27,7 +26,7 @@ export const EditProfileUser = ({ setVisibility }) => {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setNameToFilter(decoded.user_name);
       dispatch(login(decoded));
-      console.log(decoded.user_name)
+      console.log(decoded.user_name);
     }
   }, [dispatch, rdxUserData.credentials]);
 
@@ -36,7 +35,6 @@ export const EditProfileUser = ({ setVisibility }) => {
       getAllUsers()
         .then((response) => {
           setUsers(response.data.Users);
-          
         })
         .catch((error) => {
           console.error("Error fetching users artist:", error);
@@ -46,15 +44,13 @@ export const EditProfileUser = ({ setVisibility }) => {
 
   useEffect(() => {
     const filterProfile = () => {
-      return users.filter(
-        (users) => users.user_name === nameToFilter
-      );
+      return users.filter((users) => users.user_name === nameToFilter);
     };
 
-    setProfile(filterProfile()); 
+    setProfile(filterProfile());
   }, [nameToFilter, users]);
 
-  console.log(profile[0].id);
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -66,16 +62,16 @@ export const EditProfileUser = ({ setVisibility }) => {
 
   const handleSaveClick = () => {
     let body = {
-      id:profile[0].id,
+      id: profile[0].id,
       user_name: formData.user_name,
       email: formData.email,
-      phone: formData.phone
-      
+      phone: formData.phone,
     };
 
-    alert("logica para updatear usuario, de momento no me ha dado tiempo a implementarla");
+    alert(
+      "logica para updatear usuario, de momento no me ha dado tiempo a implementarla"
+    );
     updateUser(body)
-      
       .then((resultado) => {
         console.log(resultado);
 
@@ -98,7 +94,7 @@ export const EditProfileUser = ({ setVisibility }) => {
     <>
       <div className="CardEditTattoo">
         <div className="titleEdit">PANEL DE EDICION</div>
-        <div className = "overInput">NOMBRE</div>
+        <div className="overInput">NOMBRE</div>
         <input
           className="input"
           name="user_name"
@@ -106,7 +102,7 @@ export const EditProfileUser = ({ setVisibility }) => {
           value={formData.user_name}
           onChange={handleInputChange}
         />
-        <div className = "overInput">EMAIL</div>
+        <div className="overInput">EMAIL</div>
         <input
           className="input"
           name="email"
@@ -114,7 +110,7 @@ export const EditProfileUser = ({ setVisibility }) => {
           value={formData.email}
           onChange={handleInputChange}
         />
-        <div className = "overInput">TELEFONO</div>
+        <div className="overInput">TELEFONO</div>
         <input
           className="input"
           name="phone"
@@ -122,7 +118,7 @@ export const EditProfileUser = ({ setVisibility }) => {
           value={formData.phone}
           onChange={handleInputChange}
         />
-        
+
         <div className="botonera">
           <button className="buttonCloseEdit" onClick={handleHideClick}>
             Cerrar

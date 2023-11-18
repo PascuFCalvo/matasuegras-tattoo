@@ -47,6 +47,7 @@ export const UserPanelAppointments = () => {
     );
   };
   console.log(appointments)
+  
   const handleAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
@@ -95,8 +96,9 @@ export const UserPanelAppointments = () => {
     deleteAnAppointment(body)
       .then((response) => {
         console.log(response);
+        alert(`cita eliminada`);
         setTimeout(() => {
-          navigate("/MyUserPanel")
+          navigate("/myUserPanel")
         }, 500);
       })
       .catch((error) => {

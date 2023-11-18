@@ -87,25 +87,7 @@
    width: 12em;
 }
 
-.buttonBack{
-   width: 10em;
-   height: 3em;
-   background-color: bisque;
-   margin: 2em;
-   color: black;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   border: solid 2px black;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-}
 
-.buttonBack:hover{
-   background-color: rgb(37, 37, 37);
-   color: bisque;
-   cursor: pointer;
-   transform: 0.5s;
-}
 
 @media only screen and (max-width: 1280px) {
    .ListUsers {

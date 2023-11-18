@@ -94,8 +94,9 @@ export const TattoArtistAppointments = () => {
     deleteAnAppointment(body)
       .then((response) => {
         console.log(response);
+        alert(`cita eliminada`);
         setTimeout(() => {
-          navigate("/MyTattooPanel")
+          navigate("/superAdmin")
         }, 500);
       })
       .catch((error) => {

@@ -2,6 +2,7 @@ import "./SuperAdminAppointments.css";
 import { useEffect, useState } from "react";
 import {
   
+  deleteAnAppointment,
   getAppointments,
   
 } from "../../services/apiCalls";
@@ -77,6 +78,7 @@ export const SuperAdminAppointments = () => {
   };
 
   const handleEditAppointmentClick = (appointment) => {
+    
     const appointmentDetails = {
       id: appointment.id,
       title: appointment.title,
@@ -90,6 +92,23 @@ export const SuperAdminAppointments = () => {
 
     setIsEditModalVisible(true);
     setSelectedAppointment(appointmentDetails);
+  };
+
+  const handleDeleteAppointmentClick = (appointment) => {
+    let body = { id: appointment.id };
+    console.log(body);
+    alert(`vamos a borrar la id ${appointment.id}`);
+    deleteAnAppointment(body)
+      .then((response) => {
+        console.log(response);
+        alert(`cita eliminada`);
+        setTimeout(() => {
+          navigate("/superAdmin")
+        }, 500);
+      })
+      .catch((error) => {
+        console.error("Error fetching appointments:", error);
+      });
   };
 
   return (
@@ -135,10 +154,9 @@ export const SuperAdminAppointments = () => {
                       className="buttonEdit"
                       onClick={() => handleEditAppointmentClick(appointment)}
                     >
-                      {" "}
                       Edit
                     </div>
-                    <div className="buttonDelete">X</div>
+                    <div className="buttonDelete" onClick={() => handleDeleteAppointmentClick(appointment)}>X</div>
                   </div>
                 </div>
               ))}

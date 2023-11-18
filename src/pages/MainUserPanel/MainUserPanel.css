@@ -36,14 +36,13 @@
    width: 15em;
    height: 5em;
    border: none;
-   background-color: #006C60;
+   background-color: #739F8D;
    margin: 2em;
 }
 
 .buttonUsers:hover{
-   background-color: #3F8566;
-   
-   transition: 0.5s;
+   background-color: #A7D6C3; 
+  transition: 0.5s;
    cursor: pointer;
 
 }
