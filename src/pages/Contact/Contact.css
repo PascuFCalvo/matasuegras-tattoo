@@ -4,8 +4,7 @@
 }
 
 .backgroundContact {
-   background: rgb(255,228,196);
-   background: linear-gradient(0deg, rgba(255,228,196,1) 0%, rgba(198,173,142,1) 100%);
+   background: rgb(255, 228, 196);
 
    display: flex;
    flex-direction: column;
@@ -116,7 +115,7 @@
    background-color: rgb(53, 53, 53);
    cursor: pointer;
    background-color: #3F8566;
-   
+
 }
 
 @media only screen and (max-width: 1280px) {
@@ -176,24 +175,17 @@
 
    }
 
-
    .columnaIzquierda {
 
       width: 90vw;
-
-
-
    }
 
    .columnaDerecha {
       width: 90vw;
 
-
    }
 
-
 }
-
 
 
 @media only screen and (max-width: 420px) {
@@ -202,50 +194,52 @@
       margin-left: 0.5em;
       margin-right: 0.5em;
       flex-direction: column;
-      width: 90vw;
+      width: 80vw;
+      overflow-x: hidden;
+      
    }
 
    .inputContacto {
 
-      width: 90vw;
-
+      width: 80vw;
    }
 
    .Campo {
-      max-width: 90vw;
-
+      max-width: 80vw;
+      font-size: 22px;
    }
 
-   .titleContact {
-      max-width: 90vw;
-
-
-
-   }
+   
+      
+      .titleContact {
+         width: 80vw;
+         
+         font-size: 23px;
+         text-align: start;
+      
+      
+      }
+   
 
    .textContact {
-      max-width: 90vw;
-
+      max-width: 80vw;
+      font-size: 20px;
    }
 
 
    .columnaIzquierda {
 
-      width: 90vw;
-
-
-
+      width: 80vw;
    }
 
    .columnaDerecha {
-      width: 90vw;
-
-
+      width: 80vw;
    }
 
    .googleMap {
-      width: 95vw;
+      
+      width: 90vw;
    }
 
-
+   
 }

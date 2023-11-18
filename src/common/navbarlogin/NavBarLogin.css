@@ -86,12 +86,34 @@
    }
  }
 
+ 
+ @media only screen and (max-width: 960px) {
+   
+   .navbarButtonsLogin{
+   
+    width: 10em;
+     margin-top: -18em;
+     margin-left: 74%;
+     
+     
+     
+   }
+
+   .botonNavBarLogin:hover {
+   
+      border: none;
+      
+   }
+   
+ }
+
+
  @media only screen and (max-width: 420px) {
    
    .navbarButtonsLogin{
       font-size: 12px;
-     margin-left: 100%;
-     margin-top: -32%;
+     margin-left: 67%;
+     margin-top: -48%;
      
      
      

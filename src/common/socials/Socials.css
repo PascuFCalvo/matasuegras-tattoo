@@ -39,7 +39,7 @@
      
       margin-left: 78%;
       /* flex-direction: column; */
-      margin-top: -17em;
+      margin-top: -15em;
       
    
    
@@ -52,7 +52,7 @@
      
       margin-left: 82%;
       flex-direction: column;
-      margin-top: -2.2em;
+      margin-top: -5.5em;
       transform: scale(0.8);
       
    
@@ -64,9 +64,9 @@
    
    .navbarButtonsSocials {
      
-      margin-left: 64%;
+      margin-left: 0%;
       flex-direction: row;
-      margin-top: -2.4em;
+      margin-top: -1.4em;
       transform: scale(0.6);
       
    

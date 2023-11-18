@@ -60,12 +60,29 @@
    }
 }
 
+@media only screen and (max-width: 960px) {
+
+   .navbarButtons {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-direction: column;
+      padding-top: 3em;
+      width: 20em;
+      margin-left: 2em;
+      
+   }
+
+
+   
+}
+
 
 @media only screen and (max-width: 420px) {
 
    .navbarButtons {
       font-size: 10px;
-      
+      padding-top: 8em;
       width: 10em;
       
    }
@@ -81,32 +98,3 @@
    }
 }
 
-/* @media only screen and (max-width: 420px) {
-   .navbarButtons {
-
-
-      display: flex;
-      flex-direction: column;
-      transform: scale(0.5);
-      padding-top: 6em;
-      margin-top: 6em;
-      margin-bottom: 3em;
-      height: 0em;
-      margin-left: 20vw;
-      
-   }
-
-   .botonNavBar {
-
-      margin-left: -15em;
-
-
-
-   }
-
-   .botonNavBar:hover {
-
-      border: none;
-
-   }
-} */
