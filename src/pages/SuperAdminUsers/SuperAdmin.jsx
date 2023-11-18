@@ -12,7 +12,8 @@ export const SuperAdminUsers = () => {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
-  const [idToEdit, setIdToEdit] = useState(null);
+  const [idToEdit, setIdToEdit] = useState();
+  const [nameToSend , setNameToSend] = useState()
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
@@ -20,7 +21,6 @@ export const SuperAdminUsers = () => {
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       dispatch(login(decoded));
-      console.log(decoded.user_name);
     }
   }, [dispatch, rdxUserData.credentials]);
 
@@ -44,11 +44,13 @@ export const SuperAdminUsers = () => {
         });
     }
   }, [users]);
-
   
-
-  const handleEditUser = (id) => { 
-    setIdToEdit(id); // Update the state with the ID
+  
+  const handleEditUser = (id, user_name) => { 
+    console.log(id)
+    console.log(user_name)
+    setIdToEdit(id);
+    setNameToSend(user_name) 
     setIsEditPanelModalVisible(true);
   };
 
@@ -62,6 +64,7 @@ export const SuperAdminUsers = () => {
             <EditProfileSuperAdmin
               setVisibility={setIsEditPanelModalVisible}
               idToEdit={idToEdit}
+              nameToEdit = {nameToSend}
             />
           )}
         </>

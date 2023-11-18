@@ -5,14 +5,16 @@ import { getAllUsers, updateUser } from "../../services/apiCalls";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
+import { useNavigate } from "react-router-dom";
 
-export const EditProfileSuperAdmin = ({ setVisibility, idToEdit }) => {
+export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) => {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
+  const navigate = useNavigate();
  
   console.log(idToEdit)
-
+  console.log(nameToEdit)
   const [formData, setFormData] = useState({
     user_name: "",
     email: "",
@@ -64,6 +66,8 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit }) => {
       .then((resultado) => {
         console.log(resultado);
         alert("Usuario actualizado");
+        navigate("/superAdmin/superAdminUsers")
+        
       })
       .catch((error) => console.log(error));
 
@@ -84,7 +88,7 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit }) => {
         <input
           className="input"
           name="user_name"
-          placeholder=""
+          placeholder={nameToEdit}
           value={formData.user_name}
           onChange={handleInputChange}
         />
