@@ -39,7 +39,7 @@ Desarrollada como formacion del Bootcamp de Full Stack Developer de Geekshubs Ac
 
 
 
-​<p align= "center"><a href = "https://pascufcalvo.github.io/FSDVlcWeek3-4/index.html">CLICK TO PLAY</a></p>
+​<p align= "center"><a href = "https://vimeo.com/885968667?share=copy">HAZ CLICK PARA VER EL VIDEO DE LA WEB EN FUNCIONAMIENTO</a></p>
                    
 ​
 ## Tabla de contenidos
@@ -88,7 +88,7 @@ Conexion a Redes sociales.
 
 ###### Menu principal:
 Vista principal del estudio
-Tiene scroll hacia abajo para ir viendo todas las secciones
+Aqui puedes ver toda la pagina en general, con sus diferentes secciones 
 
 <img src = "./src/images/readme/Portada.jpg" width = "600px" alt ="Foto de la vista principal">
 <img src = "./src/images/readme/VistaInferior.jpg" width = "600px" alt ="Foto de la vista principal">
@@ -100,7 +100,7 @@ Vista del estudio
 <img src = "./src/images/readme/Estudio2.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### Tatuadores
-Vista de los tatuadores
+Vista de los tatuadores, con una breve descripcion, un bonito hover y si haces click en ellos se abre su presentacion.
 
 <img src = "./src/images/readme/Tatuadores1.jpg" width = "600px" alt ="Foto de la vista principal">
 <img src = "./src/images/readme/Tatuadores2.jpg" width = "600px" alt ="Foto de la vista principal">
@@ -112,12 +112,12 @@ Galeria de tattoos
 <img src = "./src/images/readme/Galeria.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### Contacto
-Formulario de contacto
+Formulario de contacto, que envia un mail con los datos para consultar cualquier duda
 <img src = "./src/images/readme/Contacto.jpg" width = "600px" alt ="Foto de la vista principal">
 
 
 ###### Citas
-Vista del crador de citas
+Vista del crador de citas, una vezte logeas puedes reservar una cita en el estudio
 
 <img src = "./src/images/readme/Appointment.jpg" width = "600px" alt ="Vista del Login">
 
@@ -131,20 +131,18 @@ Vista del Register
 
 <img src = "./src/images/readme/Registro.jpg" width = "600px" alt ="Vista del Register">
 
-###### LogOut
-Vista del logout
 
-<img src = "./src/resources/tutorial.jpg" width = "300px" alt ="Vista del logout">
-
-###### Panel de usuario
+###### Panel de usuario/tatudaor
 Vista del panel de usuario
 
-<img src = "./src/resources/tutorial.jpg" width = "300px" alt ="Vista del panel de usuario">
+<img src = "./src/images/readme/panel_del_tatuador.jpg" width = "600px" alt ="Vista del panel de usuario">
+<img src = "./src/images/readme/panel_de_edicion.jpg" width = "600px" alt ="Vista del panel de usuario">
+<img src = "./src/images/readme/panel_c.jpg" width = "600px" alt ="Vista del panel de usuario">
+<img src = "./src/images/readme/edicion_citas.jpg" width = "600px" alt ="Vista del panel de usuario">
 
-###### Panel de tatuador
-Vista del panel de tatuador
 
-<img src = "./src/resources/tutorial.jpg" width = "300px" alt ="Vista del panel de tatuador">
+
+
 
 ###### Panel de admin
 Vista del panel de admin
@@ -163,6 +161,7 @@ Vista del panel de admin
 - ��Todo el codigo ha sido creado en em's.
 - ��Boton back to top en la vista main
 - ��Necesito mas tiempo para asimilar muchos trozos de codigo bien.
+- ��Ahora mismo el backend no esta todo lo seguro que deberia, tengo que activar algunos middlewares
 
 
 <br>
@@ -170,8 +169,11 @@ Vista del panel de admin
 
 ### Cambios pendientes
 - ��Todos los alerts han de ser modales en la version definitiva.
-- ��Me gustaria hacer el tablero dinamico mediante drag & drop.
+- ��Añadir busqueda
 - ��Mejorar el responsive
+- ��Mejorar la edicion de campos con mas opciones
+
+
 
 
 ###Explicacion de todo la logica del codigo
