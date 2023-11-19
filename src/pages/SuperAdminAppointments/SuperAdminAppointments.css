@@ -99,6 +99,26 @@
    background-color: #A7D6C3;
 }
 
+.pagination {
+   display: flex;
+   justify-content: center;
+   margin-top: 20px;
+ }
+ 
+ .pagination div {
+   margin: 0 5px;
+   padding: 5px 10px;
+   border: 1px solid #ccc;
+   cursor: pointer;
+   transition: background-color 0.3s;
+ }
+ 
+ .pagination div:hover {
+   background-color: #ddd;
+   background-color: rgb(210, 155, 89);
+ }
+ 
+
 .id{
    width: 2em;
 }

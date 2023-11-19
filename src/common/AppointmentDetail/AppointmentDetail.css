@@ -20,7 +20,9 @@
    margin-left: 30%;
    z-index: 2;
    border: bisque;
-}
+  padding-left: 5%;
+  padding-right: 5%;
+  }
 
 .cardDetailCita{
    display: flex;

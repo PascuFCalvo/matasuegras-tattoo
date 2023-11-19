@@ -1,15 +1,11 @@
-import "./SuperAdminAppointments.css";
 import { useEffect, useState } from "react";
-import {
-  deleteAnAppointment,
-  getAppointments,
-} from "../../services/apiCalls";
 import { useNavigate } from "react-router-dom";
-import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
-import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
-import { login, userData } from "../userSlice";
+import { getAppointments, deleteAnAppointment } from "../../services/apiCalls";
 import { jwtDecode } from "jwt-decode";
 import { useDispatch, useSelector } from "react-redux";
+import { login, userData } from "../userSlice";
+import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
+import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
 
 export const SuperAdminAppointments = () => {
   const navigate = useNavigate();
@@ -19,8 +15,10 @@ export const SuperAdminAppointments = () => {
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
   const [appointments, setAppointments] = useState([]);
-  const [originalAppointments, setOriginalAppointments] = useState([]); 
+  const [originalAppointments, setOriginalAppointments] = useState([]);
   const [busqueda, setBusqueda] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
@@ -134,6 +132,24 @@ export const SuperAdminAppointments = () => {
     setAppointments(resultadosBusqueda);
   };
 
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentAppointments = appointments.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(appointments.length / itemsPerPage);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <div key={i} onClick={() => setCurrentPage(i)}>
+          {i}
+        </div>
+      );
+    }
+    return pageNumbers;
+  };
+
   return (
     <>
       <AppointmentDetail
@@ -159,11 +175,11 @@ export const SuperAdminAppointments = () => {
           />
           <button className="buttonBuscar">Buscar</button>
         </div>
-        {appointments.length > 0 ? (
+        {currentAppointments.length > 0 ? (
           <>
             <div className="User">
               <div className="UserInfo"></div>
-              {appointments.map((appointment) => (
+              {currentAppointments.map((appointment) => (
                 <div className="completeRow" key={appointment.id}>
                   <div
                     className="userRow"
@@ -197,6 +213,9 @@ export const SuperAdminAppointments = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="pagination">
+              {renderPageNumbers()}
             </div>
             <div
               className="buttonBack"

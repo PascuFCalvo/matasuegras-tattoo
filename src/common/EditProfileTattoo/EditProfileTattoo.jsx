@@ -77,7 +77,6 @@ export const EditProfileTattoo = ({ setVisibility }) => {
     setProfile(filterProfile());
   }, [decoded, nameToFilter, users]);
 
-  // Update formData when profile changes
   useEffect(() => {
     setFormData({
       user_name: profile.length > 0 ? profile[0].user_name : "",
@@ -109,11 +108,12 @@ export const EditProfileTattoo = ({ setVisibility }) => {
       phone: formData.phone,
     };
 
-    alert("Se va a actualizar el usuario");
+    alert("Se va a actualizar el tatuador");
     updateUser(body, rdxUserData.credentials.token)
       .then((resultado) => {
         console.log(resultado);
-        alert("Usuario actualizado");
+        
+        
         setTimeout(() => {
           setVisibility(false);
         }, 1000);
