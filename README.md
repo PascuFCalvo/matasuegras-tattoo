@@ -171,7 +171,9 @@ Unas pocas muestras del responsive de la pagina
 
 
 ### Observaciones
-​
+
+- ��Ha sido un trabajo durisimo, aun con todas las ayudas al alcance, Stack overflow, youtube, ChatGPt...han sido dos semanas de dedicacion plena a esto, al menos espero que os guste :).<br></br>
+
 - ��Todo el codigo ha sido creado en em's.
 - ��Boton back to top en la vista main
 - ��Necesito mas tiempo para asimilar muchos trozos de codigo bien, mucho codigo copiapega de tutoriale de youtube/stackoverflow.
