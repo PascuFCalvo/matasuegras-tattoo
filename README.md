@@ -176,7 +176,7 @@ Unas pocas muestras del responsive de la pagina
 
 - ��Todo el codigo ha sido creado en em's.
 - ��Boton back to top en la vista main
-- ��Necesito mas tiempo para asimilar muchos trozos de codigo bien, mucho codigo copiapega de tutoriale de youtube/stackoverflow.
+- ��Necesito mas tiempo para asimilar muchos trozos de codigo bien, mucho codigo copiapega de tutoriales de youtube/stackoverflow.
 - ��Ahora mismo el backend no esta todo lo seguro que deberia, tengo que activar algunos middlewares, pero son las 19:00 de un domingo y no quiero tocar nada.
 
 
