@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
+import "./SuperAdminAppointments.css"
 
 export const SuperAdminAppointments = () => {
   const navigate = useNavigate();

@@ -21,7 +21,7 @@ export const Gallery = () => {
           console.error("Error fetching tattoos:", error);
         });
     }
-  });
+  },[tattoos.length]);
   
   
   // const images = tattoos.Images
