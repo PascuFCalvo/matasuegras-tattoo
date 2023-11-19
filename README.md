@@ -1,4 +1,3 @@
-<h1 align="center"> WIP WIP WIP WIP</h1>
 
 
 <h1 align="center"> MATASUEGRAS TATTOO ESTUDIO</h1>
@@ -77,6 +76,10 @@ API de googlemaps.
 
 API de instagram.
 
+DatePicker.
+
+Embed a Youtube.
+
 Conexion a Redes sociales.
 
 
@@ -137,7 +140,7 @@ Vista del panel de usuario
 
 <img src = "./src/images/readme/panel_del_tatuador.jpg" width = "600px" alt ="Vista del panel de usuario">
 <img src = "./src/images/readme/panel_de_edicion.jpg" width = "600px" alt ="Vista del panel de usuario">
-<img src = "./src/images/readme/panel_c.jpg" width = "600px" alt ="Vista del panel de usuario">
+
 <img src = "./src/images/readme/edicion_citas.jpg" width = "600px" alt ="Vista del panel de usuario">
 
 
@@ -171,18 +174,23 @@ Unas pocas muestras del responsive de la pagina
 ​
 - ��Todo el codigo ha sido creado en em's.
 - ��Boton back to top en la vista main
-- ��Necesito mas tiempo para asimilar muchos trozos de codigo bien.
-- ��Ahora mismo el backend no esta todo lo seguro que deberia, tengo que activar algunos middlewares
+- ��Necesito mas tiempo para asimilar muchos trozos de codigo bien, mucho codigo copiapega de tutoriale de youtube/stackoverflow.
+- ��Ahora mismo el backend no esta todo lo seguro que deberia, tengo que activar algunos middlewares, pero son las 19:00 de un domingo y no quiero tocar nada.
 
 
 <br>
 
 
 ### Cambios pendientes
+
 - ��Todos los alerts han de ser modales en la version definitiva.
-- ��Mejorar el responsive
-- ��Mejorar la edicion de campos con mas opciones
-- ��Añadir que la foto del tatuador cambie en cada tarjeta de detalle
+- ��Mejorar el responsive.
+- ��Mejorar la edicion de campos con mas opciones.
+- ��Añadir que la foto del tatuador cambie en cada tarjeta de detalle.
+- ��Pulir los estilos porque hay muchos repetidos y que no se aplican.
+- ��Volver a repasar el backend para mejorar las API calls y la obtencion de datos.
+
+
 
 
 
