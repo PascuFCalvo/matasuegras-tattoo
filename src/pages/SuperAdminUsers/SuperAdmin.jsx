@@ -13,10 +13,12 @@ export const SuperAdminUsers = () => {
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
   const [idToEdit, setIdToEdit] = useState();
-  const [nameToSend , setNameToSend] = useState()
+  const [nameToSend, setNameToSend] = useState();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
-    if (!rdxUserData.credentials ) {
+    if (!rdxUserData.credentials) {
       console.log("No estás logeado");
       navigate("/login");
     } else {
@@ -28,8 +30,7 @@ export const SuperAdminUsers = () => {
   const navigate = useNavigate();
 
   const deleteUser = (id) => {
-    deleteAUser(id,rdxUserData.credentials.token)
-    .then((resultado) => {
+    deleteAUser(id, rdxUserData.credentials.token).then((resultado) => {
       console.log(resultado);
       setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
     });
@@ -42,21 +43,37 @@ export const SuperAdminUsers = () => {
           setUsers(response.data.Users);
         })
         .catch((error) => {
-          console.error("Error fetching tattoos:", error);
+          console.error("Error fetching users:", error);
         });
     }
-  }, [users]);
-  
-  
-  const handleEditUser = (id, user_name) => { 
-    console.log(id)
-    console.log(user_name)
+  }, [users, rdxUserData.credentials.token]);
+
+  const handleEditUser = (id, user_name) => {
+    console.log(id);
+    console.log(user_name);
     setIdToEdit(id);
-    setNameToSend(user_name) 
+    setNameToSend(user_name);
     setIsEditPanelModalVisible(true);
   };
 
-  
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentUsers = users.slice(indexOfFirstItem, indexOfLastItem);
+
+  const totalPages = Math.ceil(users.length / itemsPerPage);
+
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        <div key={i} onClick={() => setCurrentPage(i)}>
+          {i}
+        </div>
+      );
+    }
+    return pageNumbers;
+  };
+
   return (
     <div>
       <div className="ListUsers">
@@ -66,15 +83,15 @@ export const SuperAdminUsers = () => {
             <EditProfileSuperAdmin
               setVisibility={setIsEditPanelModalVisible}
               idToEdit={idToEdit}
-              nameToEdit = {nameToSend}
+              nameToEdit={nameToSend}
             />
           )}
         </>
-        {users.length > 0 ? (
+        {currentUsers.length > 0 ? (
           <>
             <div className="User">
               <div className="UserInfo"></div>
-              {users.map((user, index) => (
+              {currentUsers.map((user, index) => (
                 <div className="completeRow" key={user.id}>
                   <div className="userRow">
                     <div className="id">{user.id}</div>
@@ -88,9 +105,8 @@ export const SuperAdminUsers = () => {
                   <div className="buttonsSuperAdmin">
                     <div
                       className="buttonEdit"
-                      onClick={() => handleEditUser(user.id)}
+                      onClick={() => handleEditUser(user.id, user.user_name)}
                     >
-                      
                       Edit
                     </div>
                     <div
@@ -102,6 +118,9 @@ export const SuperAdminUsers = () => {
                   </div>
                 </div>
               ))}
+            </div>
+            <div className="pagination">
+              {renderPageNumbers()}
             </div>
             <div
               className="buttonBack"
