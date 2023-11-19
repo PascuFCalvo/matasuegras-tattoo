@@ -13,6 +13,7 @@ export const EditProfileUser = ({ setVisibility }) => {
   const rdxUserData = useSelector(userData);
   const [profile, setProfile] = useState([]);
   const [nameToFilter, setNameToFilter] = useState();
+  const [decoded, setDecoded] = useState();
 
   const [formData, setFormData] = useState({
     user_name: "",
@@ -25,16 +26,16 @@ export const EditProfileUser = ({ setVisibility }) => {
       console.log("No estás logeado");
       Navigate("/login");
     } else {
-      const decoded = jwtDecode(rdxUserData.credentials.token);
-      setNameToFilter(decoded.user_name);
-      dispatch(login(decoded));
-      console.log(decoded.user_name);
+      const decodedToken = jwtDecode(rdxUserData.credentials.token);
+      setDecoded(decodedToken);
+      dispatch(login(decodedToken));
+      setNameToFilter(decodedToken.user_name);
     }
   }, [dispatch, rdxUserData.credentials]);
 
   useEffect(() => {
     if (users.length === 0) {
-      getAllUsers()
+      getAllUsers(rdxUserData.credentials.token)
         .then((response) => {
           setUsers(response.data.Users);
         })
@@ -44,16 +45,20 @@ export const EditProfileUser = ({ setVisibility }) => {
     }
   }, [users]);
 
+  console.log(users)
+
   useEffect(() => {
     const filterProfile = () => {
       return users.filter((users) => users.user_name === nameToFilter);
     };
-
+    
     setProfile(filterProfile());
-  }, [nameToFilter, users]);
+  }, [decoded, nameToFilter, users]);
+  
+ 
 
   
-
+ 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -64,7 +69,7 @@ export const EditProfileUser = ({ setVisibility }) => {
 
   const handleSaveClick = () => {
     let body = {
-      id: profile.id,
+      id: decoded.id,
       user_name: formData.user_name,
       email: formData.email,
       phone: formData.phone,

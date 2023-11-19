@@ -180,9 +180,9 @@ Unas pocas muestras del responsive de la pagina
 
 ### Cambios pendientes
 - ��Todos los alerts han de ser modales en la version definitiva.
-- ��Añadir busqueda
 - ��Mejorar el responsive
 - ��Mejorar la edicion de campos con mas opciones
+- ��Añadir que la foto del tatuador cambie en cada tarjeta de detalle
 
 
 

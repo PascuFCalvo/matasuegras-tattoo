@@ -1,60 +1,64 @@
 import { jwtDecode } from "jwt-decode";
 import "./EditProfileTattoo.css";
 import { useEffect, useState } from "react";
-import { getTattooArtist, updateUser } from "../../services/apiCalls";
+import { getAllUsers, updateUser } from "../../services/apiCalls";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
 import { Navigate } from "react-router-dom";
 
 export const EditProfileTattoo = ({ setVisibility }) => {
-  const [tattooArtist, setTattooArtist] = useState([]);
+  const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
   const [profile, setProfile] = useState([]);
   const [nameToFilter, setNameToFilter] = useState();
+  const [decoded, setDecoded] = useState();
 
   const [formData, setFormData] = useState({
-    user_name: "", 
+    user_name: "",
     email: "",
     phone: "",
-    
   });
 
   useEffect(() => {
-    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+    if (!rdxUserData.credentials.token) {
       console.log("No estás logeado");
       Navigate("/login");
     } else {
-      const decoded = jwtDecode(rdxUserData.credentials.token);
-      setNameToFilter(decoded.user_name);
-      dispatch(login(decoded));
+      const decodedToken = jwtDecode(rdxUserData.credentials.token);
+      setDecoded(decodedToken);
+      dispatch(login(decodedToken));
+      setNameToFilter(decodedToken.user_name);
     }
   }, [dispatch, rdxUserData.credentials]);
 
   useEffect(() => {
-    if (tattooArtist.length === 0) {
-      getTattooArtist()
+    if (users.length === 0) {
+      getAllUsers(rdxUserData.credentials.token)
         .then((response) => {
-          setTattooArtist(response.data.Artists);
+          setUsers(response.data.Users);
         })
         .catch((error) => {
-          console.error("Error fetching tattoo artist:", error);
+          console.error("Error fetching users artist:", error);
         });
     }
-  }, [tattooArtist]);
+  }, [users]);
+
+  console.log(users)
 
   useEffect(() => {
     const filterProfile = () => {
-      return tattooArtist.filter(
-        (tattooArtist) => tattooArtist.user_name === nameToFilter
-      );
+      return users.filter((users) => users.user_name === nameToFilter);
     };
+    
+    setProfile(filterProfile());
+  }, [decoded, nameToFilter, users]);
+  
+ 
 
-    setProfile(filterProfile()); 
-  }, [nameToFilter, tattooArtist]);
-
-
+  
+ 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -65,15 +69,16 @@ export const EditProfileTattoo = ({ setVisibility }) => {
 
   const handleSaveClick = () => {
     let body = {
+      id: decoded.id,
       user_name: formData.user_name,
       email: formData.email,
       phone: formData.phone,
-      id: profile.id, 
     };
 
-    alert("logica para updatear usuario, de momento no me ha dado tiempo a implementarla");
-    updateUser(body)
-      
+    alert(
+      "Se va a actualizar el usuario"
+    );
+    updateUser(body, rdxUserData.credentials.token)
       .then((resultado) => {
         console.log(resultado);
 
@@ -96,7 +101,7 @@ export const EditProfileTattoo = ({ setVisibility }) => {
     <>
       <div className="CardEditTattoo">
         <div className="titleEdit">PANEL DE EDICION</div>
-        <div className = "overInput">NOMBRE</div>
+        <div className="overInput">NOMBRE</div>
         <input
           className="input"
           name="user_name"
@@ -104,7 +109,7 @@ export const EditProfileTattoo = ({ setVisibility }) => {
           value={formData.user_name}
           onChange={handleInputChange}
         />
-        <div className = "overInput">EMAIL</div>
+        <div className="overInput">EMAIL</div>
         <input
           className="input"
           name="email"
@@ -112,7 +117,7 @@ export const EditProfileTattoo = ({ setVisibility }) => {
           value={formData.email}
           onChange={handleInputChange}
         />
-        <div className = "overInput">TELEFONO</div>
+        <div className="overInput">TELEFONO</div>
         <input
           className="input"
           name="phone"
@@ -120,7 +125,7 @@ export const EditProfileTattoo = ({ setVisibility }) => {
           value={formData.phone}
           onChange={handleInputChange}
         />
-        
+
         <div className="botonera">
           <button className="buttonCloseEdit" onClick={handleHideClick}>
             Cerrar
