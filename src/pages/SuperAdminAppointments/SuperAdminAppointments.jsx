@@ -96,7 +96,7 @@ export const SuperAdminAppointments = () => {
 
   const handleDeleteAppointmentClick = (appointment) => {
     let body = { id: appointment.id };
-    console.log(body);
+    console.log(body,rdxUserData.credentials.token);
     alert(`vamos a borrar la id ${appointment.id}`);
     deleteAnAppointment(body)
       .then((response) => {
