@@ -3,6 +3,7 @@ import elEstudio1 from "../../images/elEstudio1.jpg"
 import elEstudio2 from "../../images/elEstudio2.jpg"
 import elEstudio3 from "../../images/elEstudio3.jpg"
 import elEstudio4 from "../../images/elEstudio4.jpg"
+import YoutubeEmbed from "../YoutubeEmbed/YoutubeEmbed";
 
 
 export const MainEstudio = () => {
@@ -37,7 +38,12 @@ export const MainEstudio = () => {
       <img src ={elEstudio3}></img>
       </div>
       <img className = "final" src ={elEstudio4}></img>
+      <div className="App">
+      <div className = "tituloTexto">MAKING OF DEL ESTUDIO</div>
+      <YoutubeEmbed embedId="Qd8lEeGW3-A" />
     </div>
+    </div>
+    
     
       </div>
     

@@ -4,15 +4,17 @@ import elEstudio2 from "../../images/elEstudio2.jpg"
 import elEstudio3 from "../../images/elEstudio3.jpg"
 import elEstudio4 from "../../images/elEstudio4.jpg"
 import { FooterBlack } from "../../common/FooterBlack/FooterBlack";
+import YoutubeEmbed from "../../common/YoutubeEmbed/YoutubeEmbed";
 
 export const ElEstudio = () => {
 
-  
+
 
   
 
   return (
    <div><div className="backgroundElEstudio">
+    
       <div className = "textoEstudio">
          <div className = "tituloTexto">
          NUESTRO ESTUDIO DE TATUAJE Y PIERCING EN VALENCIA<br/>
@@ -42,6 +44,10 @@ export const ElEstudio = () => {
       <img src ={elEstudio3}></img>
       </div>
       <img className = "final" src ={elEstudio4}></img>
+      <div className="App">
+      <div className = "tituloTexto">MAKING OF DEL ESTUDIO</div>
+      <YoutubeEmbed embedId="Qd8lEeGW3-A" />
+    </div>
     </div>
     <FooterBlack/>
       </div>

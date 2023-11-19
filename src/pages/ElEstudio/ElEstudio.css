@@ -16,6 +16,30 @@
    
 }
 
+.App{
+   max-width: 1000px;
+   width: 80%;
+   color: black;
+   margin-bottom: 5em;
+
+}
+
+.video-responsive {
+   overflow: hidden;
+   padding-bottom: 56.25%;
+   position: relative;
+   height: 0;
+ }
+ 
+ .video-responsive iframe {
+   left: 0;
+   top: 0;
+   height: 100%;
+   width: 100%;
+   position: absolute;
+ }
+ 
+
 .textoEstudio {
    max-width: 1000px;
    color: #1f1f1f;
@@ -30,7 +54,7 @@
 
 }
 .final {
-   margin-bottom: 5em;
+   margin-bottom: 2em;
 }
 
 .parrafoTexto{
