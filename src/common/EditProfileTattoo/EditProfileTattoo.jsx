@@ -1,19 +1,21 @@
-import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 import "./EditProfileTattoo.css";
+import { getAllUsers, getTattooArtist, updateTattoo, updateUser } from "../../services/apiCalls";
 import { useEffect, useState } from "react";
-import { getAllUsers, updateUser } from "../../services/apiCalls";
-
-import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
-import { Navigate } from "react-router-dom";
+import { jwtDecode } from "jwt-decode";
+import { useDispatch, useSelector } from "react-redux";
 
 export const EditProfileTattoo = ({ setVisibility }) => {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
   const [profile, setProfile] = useState([]);
+  const [artists, setArtists] = useState([]);
   const [nameToFilter, setNameToFilter] = useState();
   const [decoded, setDecoded] = useState();
+  const [filteredArtists, setFilteredArtists] = useState([]);
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     user_name: "",
@@ -24,14 +26,14 @@ export const EditProfileTattoo = ({ setVisibility }) => {
   useEffect(() => {
     if (!rdxUserData.credentials.token) {
       console.log("No estás logeado");
-      Navigate("/login");
+      navigate("/myTattooPanel");
     } else {
       const decodedToken = jwtDecode(rdxUserData.credentials.token);
       setDecoded(decodedToken);
       dispatch(login(decodedToken));
       setNameToFilter(decodedToken.user_name);
     }
-  }, [dispatch, rdxUserData.credentials]);
+  }, [dispatch, rdxUserData.credentials, navigate]);
 
   useEffect(() => {
     if (users.length === 0) {
@@ -40,25 +42,50 @@ export const EditProfileTattoo = ({ setVisibility }) => {
           setUsers(response.data.Users);
         })
         .catch((error) => {
-          console.error("Error fetching users artist:", error);
+          console.error("Error fetching users:", error);
         });
     }
-  }, [users]);
+  }, [rdxUserData.credentials.token, users]);
 
-  console.log(users)
+  useEffect(() => {
+    if (artists.length === 0) {
+      getTattooArtist(rdxUserData.credentials.token)
+        .then((response) => {
+          setArtists(response.data.Artists);
+        })
+        .catch((error) => {
+          console.error("Error fetching tattoo artists:", error);
+        });
+    }
+  }, [rdxUserData.credentials.token, artists]);
+
+  useEffect(() => {
+    const filterTattooArtists = () => {
+      const filteredArtists = artists.filter((artist) => artist.user_name === decoded.user_name);
+      console.log("Tatuador filtrado:", filteredArtists[0]);
+      setFilteredArtists(filteredArtists);
+    };
+
+    filterTattooArtists();
+  }, [decoded, artists]);
 
   useEffect(() => {
     const filterProfile = () => {
-      return users.filter((users) => users.user_name === nameToFilter);
+      return users.filter((user) => user.user_name === nameToFilter);
     };
-    
+
     setProfile(filterProfile());
   }, [decoded, nameToFilter, users]);
-  
- 
 
-  
- 
+  // Update formData when profile changes
+  useEffect(() => {
+    setFormData({
+      user_name: profile.length > 0 ? profile[0].user_name : "",
+      email: profile.length > 0 ? profile[0].email : "",
+      phone: profile.length > 0 ? profile[0].phone : "",
+    });
+  }, [profile]);
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -75,22 +102,30 @@ export const EditProfileTattoo = ({ setVisibility }) => {
       phone: formData.phone,
     };
 
-    alert(
-      "Se va a actualizar el usuario"
-    );
+    let body2 = {
+      id: filteredArtists[0].id,
+      user_name: formData.user_name,
+      email: formData.email,
+      phone: formData.phone,
+    };
+
+    alert("Se va a actualizar el usuario");
     updateUser(body, rdxUserData.credentials.token)
       .then((resultado) => {
         console.log(resultado);
-
-        alert("usuario actualizado");
-
-        setTimeout(() => {}, 1000);
+        alert("Usuario actualizado");
+        setTimeout(() => {
+          setVisibility(false);
+        }, 1000);
       })
       .catch((error) => console.log(error));
 
-    setTimeout(() => {
-      setVisibility(false);
-    }, 2000);
+    updateTattoo(body2, rdxUserData.credentials.token)
+      .then((resultado) => {
+        console.log(resultado);
+        alert("Tatuador actualizado");
+      })
+      .catch((error) => console.log(error));
   };
 
   const handleHideClick = () => {

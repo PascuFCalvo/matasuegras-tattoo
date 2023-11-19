@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import "./EditProfileUser.css";
 import { useEffect, useState } from "react";
-import { getAllUsers, updateUser } from "../../services/apiCalls";
+import { getAllUsers, updateTattoo, updateUser } from "../../services/apiCalls";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
@@ -45,20 +45,14 @@ export const EditProfileUser = ({ setVisibility }) => {
     }
   }, [users]);
 
-  console.log(users)
-
   useEffect(() => {
     const filterProfile = () => {
-      return users.filter((users) => users.user_name === nameToFilter);
+      return users.filter((user) => user.user_name === nameToFilter);
     };
-    
+
     setProfile(filterProfile());
   }, [decoded, nameToFilter, users]);
-  
- 
 
-  
- 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -68,29 +62,37 @@ export const EditProfileUser = ({ setVisibility }) => {
   };
 
   const handleSaveClick = () => {
-    let body = {
+    const body = {
       id: decoded.id,
       user_name: formData.user_name,
       email: formData.email,
       phone: formData.phone,
     };
 
-    alert(
-      "Se va a actualizar el usuario"
-    );
-    updateUser(body, rdxUserData.credentials.token)
-      .then((resultado) => {
-        console.log(resultado);
+    alert("Se va a actualizar el usuario");
 
-        alert("usuario actualizado");
+    
+    Promise.all([
+      updateTattoo(body, rdxUserData.credentials.token),
+      updateUser(body, rdxUserData.credentials.token),
+    ])
+      .then((results) => {
+        console.log(results);
+
+        alert("Usuario actualizado");
 
         setTimeout(() => {}, 1000);
       })
-      .catch((error) => console.log(error));
-
-    setTimeout(() => {
-      setVisibility(false);
-    }, 2000);
+      .catch((error) => {
+        console.log(error);
+        
+      })
+      .finally(() => {
+        
+        setTimeout(() => {
+          setVisibility(false);
+        }, 2000);
+      });
   };
 
   const handleHideClick = () => {

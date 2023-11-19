@@ -97,3 +97,12 @@ export const updateUser = async (body, token) => {
     },
   });
 };
+
+export const updateTattoo = async (body, token) => {
+  console.log(token);
+  return await axios.put(`http://localhost:4000/tattoo_artist/update`,  body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
