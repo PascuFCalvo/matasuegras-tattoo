@@ -1,4 +1,4 @@
-.BackgroundMainSuperAdmin{
+.BackgroundMainSuperAdmin {
    background-color: bisque;
    width: 100vw;
    height: 100vh;
@@ -6,6 +6,7 @@
    flex-direction: column;
    align-items: center;
 }
+
 .titleAdmin {
    padding-top: 2em;
    font-size: 30px;
@@ -13,7 +14,7 @@
 
 }
 
-.headerAdminPanel{
+.headerAdminPanel {
    margin-top: 2em;
    width: 50vw;
    height: 15em;
@@ -40,9 +41,9 @@
    margin: 2em;
 }
 
-.buttonUsers:hover{
-   background-color: #A7D6C3; 
-  transition: 0.5s;
+.buttonUsers:hover {
+   background-color: #A7D6C3;
+   transition: 0.5s;
    cursor: pointer;
 
 }
@@ -50,6 +51,6 @@
 @media only screen and (max-width: 1280px) {
    .BackgroundMainSuperAdmin {
       margin-top: 23vh;
-   
-} 
+
+   }
 }

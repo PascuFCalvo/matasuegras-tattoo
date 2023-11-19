@@ -7,14 +7,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
 import { useNavigate } from "react-router-dom";
 
-export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) => {
+export const EditProfileSuperAdmin = ({
+  setVisibility,
+  idToEdit,
+  nameToEdit,
+}) => {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
   const navigate = useNavigate();
- 
-  console.log(idToEdit)
-  console.log(nameToEdit)
+
   const [formData, setFormData] = useState({
     user_name: "",
     email: "",
@@ -23,11 +25,10 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) =
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
-      console.log("No estás logeado");
       navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
-      
+
       dispatch(login(decoded));
     }
   }, [dispatch, rdxUserData.credentials]);
@@ -43,9 +44,6 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) =
         });
     }
   }, [users]);
-
-
-  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -67,8 +65,7 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) =
       .then((resultado) => {
         console.log(resultado);
         alert("Usuario actualizado");
-        navigate("/superAdmin/superAdminUsers")
-        
+        navigate("/superAdmin/superAdminUsers");
       })
       .catch((error) => console.log(error));
 
@@ -92,6 +89,8 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) =
           placeholder={nameToEdit}
           value={formData.user_name}
           onChange={handleInputChange}
+          maxLength="25"
+          type="text"
         />
         <div className="overInput">EMAIL</div>
         <input
@@ -100,6 +99,8 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) =
           placeholder=""
           value={formData.email}
           onChange={handleInputChange}
+          maxLength="100"
+          type="email"
         />
         <div className="overInput">TELEFONO</div>
         <input
@@ -108,6 +109,8 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) =
           placeholder=""
           value={formData.phone}
           onChange={handleInputChange}
+          maxLength="25"
+          type="text"
         />
 
         <div className="botonera">

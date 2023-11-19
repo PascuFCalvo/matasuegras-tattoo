@@ -4,7 +4,7 @@
 }
 
 
-.backGroundInfo{
+.backGroundInfo {
    width: 100vw;
    height: 200vh;
    background-color: bisque;
@@ -14,18 +14,18 @@
    color: black;
 }
 
-.title{
+.title {
    font-family: tattoo;
    font-size: 30px;
    padding: 2em;
 }
 
-.cardTattooArtist{
+.cardTattooArtist {
    display: flex;
    flex-direction: row;
 }
 
-.pictureInfoDC{
+.pictureInfoDC {
    margin: 3em;
    width: 40vw;
    height: 80em;
@@ -36,9 +36,8 @@
 .textBio {
    margin: 3em;
    text-align: start;
-   width:40vw;
+   width: 40vw;
    font-size: 20px;
    line-height: 2;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-

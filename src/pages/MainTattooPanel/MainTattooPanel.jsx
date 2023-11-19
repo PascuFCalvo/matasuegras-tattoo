@@ -11,7 +11,7 @@ import { login, userData } from "../userSlice";
 export const MainTattooPanel = () => {
   const [isEditPanelModalVisible, setIsEditPanelModalVisible] = useState(false);
   const [tattooArtist, setTattooArtist] = useState([]);
- 
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
@@ -61,14 +61,25 @@ export const MainTattooPanel = () => {
     <>
       <div className="BackgroundMainSuperAdmin">
         <div className="headerAdminPanel"></div>
-        {isEditPanelModalVisible && 
-        <EditProfileTattoo setVisibility={setIsEditPanelModalVisible} />}
+        {isEditPanelModalVisible && (
+          <EditProfileTattoo setVisibility={setIsEditPanelModalVisible} />
+        )}
         <div className="titleAdmin">PANEL DE TATUADOR</div>
-        <div className="infoTatuador">NOMBRE: {profile.length > 0 ? profile[0].user_name : ""}</div>
-        <div className="infoTatuador">EMAIL:  {profile.length > 0 ? profile[0].email : ""}</div>
-        <div className="infoTatuador">PHONE:  {profile.length > 0 ? profile[0].phone : ""}</div>
-        <div className="infoTatuador">LICENCIA:  {profile.length > 0 ? profile[0].licenseNumber : ""}</div>
-        <div className="infoTatuador">FORMACION: {profile.length > 0 ? profile[0].formation : ""}</div>
+        <div className="infoTatuador">
+          NOMBRE: {profile.length > 0 ? profile[0].user_name : ""}
+        </div>
+        <div className="infoTatuador">
+          EMAIL: {profile.length > 0 ? profile[0].email : ""}
+        </div>
+        <div className="infoTatuador">
+          PHONE: {profile.length > 0 ? profile[0].phone : ""}
+        </div>
+        <div className="infoTatuador">
+          LICENCIA: {profile.length > 0 ? profile[0].licenseNumber : ""}
+        </div>
+        <div className="infoTatuador">
+          FORMACION: {profile.length > 0 ? profile[0].formation : ""}
+        </div>
         <div className="buttonEditArtist" onClick={handleClickOnEdit}>
           EDIT
         </div>

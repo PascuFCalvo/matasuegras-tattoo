@@ -196,7 +196,7 @@
       flex-direction: column;
       width: 80vw;
       overflow-x: hidden;
-      
+
    }
 
    .inputContacto {
@@ -209,17 +209,17 @@
       font-size: 22px;
    }
 
-   
-      
-      .titleContact {
-         width: 80vw;
-         
-         font-size: 23px;
-         text-align: start;
-      
-      
-      }
-   
+
+
+   .titleContact {
+      width: 80vw;
+
+      font-size: 23px;
+      text-align: start;
+
+
+   }
+
 
    .textContact {
       max-width: 80vw;
@@ -237,9 +237,9 @@
    }
 
    .googleMap {
-      
+
       width: 90vw;
    }
 
-   
+
 }

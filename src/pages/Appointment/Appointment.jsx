@@ -129,7 +129,7 @@ export const Appointment = () => {
         turn: selectedShift,
       };
 
-      await createAppointment(body,rdxUserData.credentials.token);
+      await createAppointment(body, rdxUserData.credentials.token);
 
       setTimeout(() => {
         alert("Cita creada correctamente");
@@ -141,15 +141,13 @@ export const Appointment = () => {
     }
   };
 
-
-
   // eslint-disable-next-line react/display-name
   const ExampleCustomInput = forwardRef(({ value, onClick }, ref) => (
     <button className="example-custom-input" onClick={onClick} ref={ref}>
       {value}
     </button>
   ));
- 
+
   const isWeekday = (date) => {
     const day = getDay(date);
     return day !== 0 && day !== 1;
@@ -167,6 +165,8 @@ export const Appointment = () => {
               id="title"
               value={title}
               onChange={handleTitleChange}
+              maxLength="25"
+          
             />
             <div className="titleAppointment">Descripcion</div>
             <input
@@ -175,12 +175,20 @@ export const Appointment = () => {
               id="description"
               value={description}
               onChange={handleDescriptionChange}
+              maxLength="300"
+          
             />
             <div className="titleAppointment">Selecciona una fecha</div>
-            <DatePicker className="prueba"
+            <DatePicker
+              className="prueba"
               selected={startDate}
               onChange={handleDateChange}
-              includeDateIntervals={[{ start: subDays(new Date(), 0), end: addDays(new Date(), 180) }]}
+              includeDateIntervals={[
+                {
+                  start: subDays(new Date(), 0),
+                  end: addDays(new Date(), 180),
+                },
+              ]}
               withPortal
               filterDate={isWeekday}
               placeholderText="Click aqui para elegir una fecha"

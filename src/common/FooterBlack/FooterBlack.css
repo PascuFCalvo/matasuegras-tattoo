@@ -11,50 +11,50 @@
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
-   
+
 }
 
-.verticalCard{
+.verticalCard {
    width: 20em;
    text-align: start;
    margin-left: 1em;
    margin-right: 1em;
-   
-   
+
+
 }
 
-.columnaIzquierdaArribaFooter{
+.columnaIzquierdaArribaFooter {
    margin-top: 2em;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-.columnaIzquierdaFooter{
+.columnaIzquierdaFooter {
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    line-height: 2;
    font-size: 16px;
    margin-top: 2em;
 }
 
-.verticalCardTitle{
+.verticalCardTitle {
    margin-top: 1em;
    font-size: 22px;
    font-family: tattoo;
    color: #739F8D;
 }
 
-.googleMapFooterBlack{
+.googleMapFooterBlack {
    margin-top: 2em;
 }
 
-.instagram{
+.instagram {
    margin-top: 2em;
    height: 350px;
    width: 350px;
    margin-bottom: 1em;
 }
 
-.verticalNavbar{
-   margin-top:1.5em;
+.verticalNavbar {
+   margin-top: 1.5em;
 }
 
 
@@ -64,13 +64,12 @@
 
 
 @media only screen and (max-width: 420px) {
-   
-   .instagram{
-     
+
+   .instagram {
+
       margin-left: -1em;
    }
-   
-   
-   
- }
 
+
+
+}

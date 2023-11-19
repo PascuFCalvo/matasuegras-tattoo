@@ -1,4 +1,4 @@
-.CardEditTattoo{
+.CardEditTattoo {
    margin-top: 10%;
    position: absolute;
    display: flex;
@@ -12,7 +12,7 @@
    border: solid 1px black;
 }
 
-.titleEdit{
+.titleEdit {
    color: black;
    font-size: 22px;
    font-family: Verdana, Geneva, Tahoma, sans-serif;

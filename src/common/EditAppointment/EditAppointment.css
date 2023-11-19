@@ -3,7 +3,7 @@
    src: url("../../assets/fonts/YesevaOne-Regular.ttf");
 }
 
-.titleEditCitas{
+.titleEditCitas {
    font-size: 20px;
    margin-top: 1em;
    margin-bottom: 1em;
@@ -11,7 +11,7 @@
 }
 
 
-.editedCardBody{
+.editedCardBody {
 
    height: auto;
    width: 40em;
@@ -37,50 +37,55 @@
 
 .visible {
    opacity: 1;
- }
- 
- .hidden {
+}
+
+.hidden {
    opacity: 0;
    pointer-events: none;
    height: 0;
    overflow: hidden;
- }
+}
 
-.appointmentID{
+.appointmentID {
    font-size: 20px;
    margin-bottom: 1em;
 }
-.appointmentTitle{
+
+.appointmentTitle {
    font-family: tattoo;
    font-size: 20px;
    margin-bottom: 1em;
 }
-.appointmentDesc{
+
+.appointmentDesc {
    font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size:20px;
+   font-size: 20px;
    margin-left: 10%;
    margin-right: 10%;
    display: flex;
    text-align: start;
    margin-bottom: 1em;
 }
-.appointmentTattoo{
+
+.appointmentTattoo {
    font-family: tattoo;
    font-size: 20px;
    margin-bottom: 1em;
 }
-.appointmentDate{
+
+.appointmentDate {
    font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size:20px;
+   font-size: 20px;
    margin-left: 10%;
    margin-right: 10%;
    display: flex;
    text-align: start;
    margin-bottom: 1em;
 }
-.appointmentTurn{
+
+.appointmentTurn {
    font-family: Verdana, Geneva, Tahoma, sans-serif;
-   font-size:20px;
+   font-size: 20px;
    margin-left: 10%;
    margin-right: 10%;
    display: flex;
@@ -95,7 +100,7 @@
    border-radius: 0px;
 }
 
-.buttonClose:hover{
+.buttonClose:hover {
    background-color: #FF8981;
 }
 
@@ -105,7 +110,7 @@
    border: solid 1px bisque;
 }
 
-.input{
+.input {
    background-color: white;
    padding: 0.5em;
    margin: 0.5em;
@@ -115,7 +120,8 @@
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    width: 12em;
 }
-.inputselect{
+
+.inputselect {
    background-color: white;
    padding: 0.5em;
    margin: 0.5em;
@@ -127,7 +133,7 @@
 }
 
 
-.buttonSave{
+.buttonSave {
    background-color: #739F8D;
    margin-bottom: 1em;
    border-bottom: 2px solid bisque;
@@ -137,6 +143,6 @@
 
 }
 
-.buttonSave:hover{
+.buttonSave:hover {
    background-color: #A7D6C3;
 }

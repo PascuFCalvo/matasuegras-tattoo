@@ -1,20 +1,18 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./Login.css";
 import { CustomInput } from "../../common/CustomInput/CustomInput";
 import { logUser } from "../../services/apiCalls";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { validator } from "../../services/useful";
 import { jwtDecode } from "jwt-decode";
 
 //Importo Rdx
 
-import { useSelector, useDispatch } from "react-redux";  //useDispatch es necesario para emitir acciones
+import { useSelector, useDispatch } from "react-redux"; //useDispatch es necesario para emitir acciones
 import { login, userData } from "../userSlice";
 import { Footer } from "../../common/footer/Footer";
 
-
 export const Login = () => {
-
   const navigate = useNavigate();
 
   const rdxUserData = useSelector(userData);
@@ -26,24 +24,22 @@ export const Login = () => {
   });
 
   const [credencialesError, setCredencialesError] = useState({
-    
-    emailError: '',
-    passwordError: '',
-    
+    emailError: "",
+    passwordError: "",
   });
 
-  const [msgError, setMsgError] = useState('');
+  const [msgError, setMsgError] = useState("");
 
-  useEffect(()=>{
-    if(rdxUserData.credentials.token){
-      navigate("/")
+  useEffect(() => {
+    if (rdxUserData.credentials.token) {
+      navigate("/");
     }
-  },[navigate, rdxUserData])
+  }, [navigate, rdxUserData]);
 
   const functionHandler = (e) => {
     setCredenciales((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
@@ -52,33 +48,25 @@ export const Login = () => {
 
     setCredencialesError((prevState) => ({
       ...prevState,
-      [e.target.name + 'Error']: error,
+      [e.target.name + "Error"]: error,
     }));
   };
 
   const logMe = () => {
-
     logUser(credenciales)
-        .then(
-            resultado => {
-
-                let decodificado = jwtDecode(resultado.data.token);
-                console.log("soy el token decodificado....", decodificado);
-                //Aqui guardaría el token........en RDXXX
-                dispatch(login({ credentials: resultado.data }))
-
-                //Una vez guardado el token....nos vamos a home....
-                setTimeout(()=>{
-                    navigate("/");
-                },500);
-            }
-        )
-        .catch(error => {
-          console.log(msgError)
-          setMsgError(error.message);
-        });
-
-  }
+      .then((resultado) => {
+        let decodificado = jwtDecode(resultado.data.token);
+        console.log("soy el token decodificado....", decodificado);
+        dispatch(login({ credentials: resultado.data }));
+        setTimeout(() => {
+          navigate("/");
+        }, 500);
+      })
+      .catch((error) => {
+        console.log(msgError);
+        setMsgError(error.message);
+      });
+  };
 
   return (
     <div>
@@ -86,25 +74,30 @@ export const Login = () => {
         <div className="formBackground">
           <div className="overInputlogin">eMail</div>
           <CustomInput
-            design={`customInput ${credencialesError.emailError !== "" ? 'customInputError' : ''}`}
+            design={`customInput ${
+              credencialesError.emailError !== "" ? "customInputError" : ""
+            }`}
             type="email"
             name="email"
             placeholder="mail@domain.com"
             functionProp={functionHandler}
             functionBlur={errorCheck}
-            
+            maxLength="50"
           />
-          <div className='errorMsg'>{credencialesError.emailError}</div>
+          <div className="errorMsg">{credencialesError.emailError}</div>
           <div className="overInputlogin">Password</div>
           <CustomInput
-            design={`customInput ${credencialesError.passwordError !== "" ? 'customInputError' : ''}`}
+            design={`customInput ${
+              credencialesError.passwordError !== "" ? "customInputError" : ""
+            }`}
             type="password"
             name="password"
             placeholder="********"
             functionProp={functionHandler}
             functionBlur={errorCheck}
+            maxLength="50"
           />
-          <div className='errorMsg'>{credencialesError.passwordError}</div>
+          <div className="errorMsg">{credencialesError.passwordError}</div>
           <div className="buttonSubmitLogin" onClick={logMe}>
             Log Me!
           </div>

@@ -6,14 +6,10 @@ import { login, userData } from "../userSlice";
 import { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
-
 export const MainSuperAdmin = () => {
- 
- 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
-  
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
@@ -24,7 +20,6 @@ export const MainSuperAdmin = () => {
       dispatch(login(decoded));
     }
   }, [dispatch, rdxUserData.credentials]);
- 
 
   const destination1 = "superAdminUsers";
   const destination2 = "superAdminAppointments";

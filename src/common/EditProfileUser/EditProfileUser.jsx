@@ -23,7 +23,6 @@ export const EditProfileUser = ({ setVisibility }) => {
 
   useEffect(() => {
     if (!rdxUserData.credentials.token) {
-      console.log("No estás logeado");
       Navigate("/login");
     } else {
       const decodedToken = jwtDecode(rdxUserData.credentials.token);
@@ -71,7 +70,6 @@ export const EditProfileUser = ({ setVisibility }) => {
 
     alert("Se va a actualizar el usuario");
 
-    
     Promise.all([
       updateTattoo(body, rdxUserData.credentials.token),
       updateUser(body, rdxUserData.credentials.token),
@@ -85,10 +83,8 @@ export const EditProfileUser = ({ setVisibility }) => {
       })
       .catch((error) => {
         console.log(error);
-        
       })
       .finally(() => {
-        
         setTimeout(() => {
           setVisibility(false);
         }, 2000);
@@ -110,6 +106,8 @@ export const EditProfileUser = ({ setVisibility }) => {
           placeholder={profile.length > 0 ? profile[0].user_name : ""}
           value={formData.user_name}
           onChange={handleInputChange}
+          maxLength="25"
+          type="text"
         />
         <div className="overInput">EMAIL</div>
         <input
@@ -118,6 +116,8 @@ export const EditProfileUser = ({ setVisibility }) => {
           placeholder={profile.length > 0 ? profile[0].email : ""}
           value={formData.email}
           onChange={handleInputChange}
+          maxLength="50"
+          type="email"
         />
         <div className="overInput">TELEFONO</div>
         <input
@@ -126,6 +126,8 @@ export const EditProfileUser = ({ setVisibility }) => {
           placeholder={profile.length > 0 ? profile[0].phone : ""}
           value={formData.phone}
           onChange={handleInputChange}
+          maxLength="25"
+          type="text"
         />
 
         <div className="botonera">

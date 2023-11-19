@@ -1,14 +1,14 @@
-.Appointment{
+.Appointment {
    font-family: tattoo;
    display: flex;
    justify-content: flex-end;
    height: 80vh;
    width: 100vw;
    justify-content: center;
-     
+
 }
 
-.AppointmentBackground{
+.AppointmentBackground {
    display: flex;
    flex-direction: column;
    justify-content: start;
@@ -21,17 +21,17 @@
    overflow-y: scroll;
 }
 
-.titleAppointment{
+.titleAppointment {
    padding-top: 1em;
    margin-bottom: 1em;
    font-family: tattoo;
-    font-size: 22px;
+   font-size: 22px;
 
 }
 
 
 
-.example-custom-input{
+.example-custom-input {
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    width: 16em;
    padding: 1em;
@@ -45,13 +45,13 @@
    color: bisque
 }
 
-.example-custom-input:hover{
+.example-custom-input:hover {
    border: solid 2px bisque;
    background-color: rgba(255, 255, 255, 0.6);
    transition: 0.4s;
 }
 
-.selectDate{
+.selectDate {
    width: 63%;
    padding-top: 3em;
    font-size: 18px;
@@ -60,8 +60,10 @@
    background-color: transparent;
 }
 
-.selectService, .selectShift, .selectArtist{
-   
+.selectService,
+.selectShift,
+.selectArtist {
+
    width: 63%;
    margin-top: 2em;
    height: 4em;
@@ -69,55 +71,56 @@
    background-color: transparent;
    border: none;
    border-bottom: solid 2px bisque;
- 
-   
- }
 
- .selectShift > option {
+
+}
+
+.selectShift>option {
    background-color: rgb(255, 255, 255);
    color: black;
- }
+}
 
- .selectService >option{
+.selectService>option {
    background-color: rgb(255, 255, 255);
    color: black
- }
+}
 
- .selectArtist >option{
+.selectArtist>option {
    background-color: rgb(255, 255, 255);
    color: black
- }
+}
 
 
- .buttonSubmitPedirCita {
+.buttonSubmitPedirCita {
 
    height: 3em;
    width: 10em;
-   background-color: #739F8D;;
+   background-color: #739F8D;
+   ;
    color: rgb(255, 255, 255);
    font-weight: bolder;
    display: flex;
    justify-content: center;
    align-items: center;
    position: absolute;
-   bottom: -30em ;
+   bottom: -30em;
    right: 2em;
    margin-bottom: 2em;
-   
-   
+
+
 }
 
-.inputEdit{
+.inputEdit {
    padding: 1em;
    ;
 }
 
-.blankPedirCita{
+.blankPedirCita {
    position: absolute;
-   bottom: -32em ;
+   bottom: -32em;
    height: 1em;
    width: 100%;
-   
+
 }
 
 .buttonSubmitPedirCita:hover {
@@ -132,31 +135,31 @@
 
    background-color: rgb(218, 183, 94);
 }
- 
+
 
 
 
 @media only screen and (max-width: 1280px) {
    .Appointment {
       margin-top: 0vh;
-   
-} 
-   
-   
- }
 
- @media only screen and (max-width: 960px) {
-   .AppointmentBackground{
+   }
+
+
+}
+
+@media only screen and (max-width: 960px) {
+   .AppointmentBackground {
       margin-top: -16em;
       width: 40em;
       height: 40em;
-      
+
    }
-   
-} 
+
+}
 
 @media only screen and (max-width: 420px) {
-   .AppointmentBackground{
+   .AppointmentBackground {
       font-size: 16px;
       margin-top: -12em;
       overflow-y: scroll;
@@ -164,32 +167,22 @@
       height: 30em;
       transform: scale(0.8);
       background-color: rgb(36, 36, 36);
-      
+
    }
 
    .buttonSubmitPedirCita {
 
-      
-      bottom: -62em ;
-      
+
+      bottom: -62em;
+
    }
 
-   .blankPedirCita{
+   .blankPedirCita {
       position: absolute;
-      bottom: -61em ;
-      
-      
+      bottom: -61em;
+
+
    }
-   
-   
-} 
 
 
-   
-   
-  
-
-
-
-
- 
+}

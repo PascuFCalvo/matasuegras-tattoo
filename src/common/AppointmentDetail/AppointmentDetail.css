@@ -1,39 +1,39 @@
 @font-face {
-   font-family: tattoo;
-   src: url("../../assets/fonts/YesevaOne-Regular.ttf");
+  font-family: tattoo;
+  src: url("../../assets/fonts/YesevaOne-Regular.ttf");
 }
 
 
-.detailedCardBody{
+.detailedCardBody {
 
-   height: auto;
-   width: 50em;
-   position: absolute;
-   display: flex;
-   margin-top: 2%;
-   margin-bottom: 5%;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   color: bisque;
-   background-color: #739F8D;
-   margin-left: 30%;
-   z-index: 2;
-   border: bisque;
+  height: auto;
+  width: 50em;
+  position: absolute;
+  display: flex;
+  margin-top: 2%;
+  margin-bottom: 5%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: bisque;
+  background-color: #739F8D;
+  margin-left: 30%;
+  z-index: 2;
+  border: bisque;
   padding-left: 5%;
   padding-right: 5%;
-  }
-
-.cardDetailCita{
-   display: flex;
-   flex-direction: column;
-   justify-content: flex-start;
-   align-items: flex-start;
-   padding-left: 3em;
-   padding-right: 3em;
 }
 
-.cabeceraCard{
+.cardDetailCita {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.cabeceraCard {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -41,115 +41,115 @@
   width: 100%;
   margin-bottom: 3em;
 }
-.imagenCita1{
-   height: 10em;
-   width: auto;
-   margin-top: 2em;
-   
-   
-   
-   
+
+.imagenCita1 {
+  height: 10em;
+  width: auto;
+  margin-top: 2em;
+
+
 }
 
 
-.imagenCita2{
+.imagenCita2 {
   border-radius: 50%;
   width: 10em;
   height: 10em;
   margin-top: 2em;
   margin-left: 12em;
- 
-  
- 
+
+
+
 }
 
 .visible {
-   opacity: 1;
- }
- 
- .hidden {
-   opacity: 0;
-   pointer-events: none;
-   height: 0;
-   overflow: hidden;
- }
+  opacity: 1;
+}
 
- .detailID{
-   font-family: tattoo;
-   font-size: 24px;
-   margin-bottom: 1em;
- }
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+}
 
- .detailTitle{
-   font-size:20px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   margin-bottom: 1em;
-   margin-left: -5em;
-   
- }
+.detailID {
+  font-family: tattoo;
+  font-size: 24px;
+  margin-bottom: 1em;
+}
 
- .detailDesc{
-   font-size:20px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   margin-bottom: 1em;
-   color: white;
-   margin-left: -5em;
- }
+.detailTitle {
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 1em;
+  margin-left: -5em;
 
- .blanco{
-   color: white
- }
- .crimson{
-   color: #C2544F;
-   font-size: 50px;
-   margin: 0.5em;
- }
+}
 
- .detailWork{
-   font-size:20px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   margin-bottom: 1em;
-   margin-left: -5em;
- }
+.detailDesc {
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 1em;
+  color: white;
+  margin-left: -5em;
+}
 
- .detailTattoo{
-   font-size:20px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   margin-bottom: 1em;
-   margin-left: -5em;
- }
+.blanco {
+  color: white
+}
 
- .detailClient{
-   font-size:20px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   margin-bottom: 1em;
-   margin-left: -5em;
- }
+.crimson {
+  color: #C2544F;
+  font-size: 50px;
+  margin: 0.5em;
+}
 
- .detailDate{
-   font-size:16px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   margin-bottom: 1em;
-   margin-left: -6.2em;
- }
+.detailWork {
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 1em;
+  margin-left: -5em;
+}
 
- .detailTurn{
-   font-size:20px;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-   margin-bottom: 2em;
-   margin-left: -5em;
- }
+.detailTattoo {
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 1em;
+  margin-left: -5em;
+}
+
+.detailClient {
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 1em;
+  margin-left: -5em;
+}
+
+.detailDate {
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 1em;
+  margin-left: -6.2em;
+}
+
+.detailTurn {
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 2em;
+  margin-left: -5em;
+}
 
 
 
 .buttonClose {
-   
-   margin-bottom: 1em;
-   border: none;
-   border-radius: 0px;
+
+  margin-bottom: 1em;
+  border: none;
+  border-radius: 0px;
 }
 
 .buttonClose:hover {
-   outline: bisque;
-   
+  outline: bisque;
+
 }

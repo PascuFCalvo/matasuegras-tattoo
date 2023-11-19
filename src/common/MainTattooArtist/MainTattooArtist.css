@@ -9,7 +9,7 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   
+
    height: auto;
    font-family: tattoo;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -17,7 +17,7 @@
 
 }
 
-.flexTattoArtist{
+.flexTattoArtist {
    position: relative
 }
 
@@ -32,45 +32,45 @@
 
 .tattooimage {
    width: 100%;
-   
+
 }
 
-.p{
+.p {
    width: 12em;
    height: 2em;
    position: absolute;
    margin-left: -3em;
-   top:15%;
+   top: 15%;
    color: rgba(255, 0, 0, 0);
    font-size: 1.6em;
-   
+
 }
 
-.pfila2{
+.pfila2 {
    width: 12em;
    height: 2em;
    position: absolute;
    margin-left: -3em;
-   top:63%;
+   top: 63%;
    color: rgba(255, 0, 0, 0);
    font-size: 1.6em;
 }
 
-.tattooimage:hover{
+.tattooimage:hover {
    filter: sepia(0.5) brightness(70%);
    transition: 1s;
-   color: white;  
+   color: white;
 }
 
-.tattooimage:hover + .p {
+.tattooimage:hover+.p {
    transition: 2s;
    color: white;
- }
+}
 
- .tattooimage:hover + .pfila2 {
+.tattooimage:hover+.pfila2 {
    transition: 2s;
    color: white;
- }
+}
 
 
 
@@ -90,15 +90,16 @@
    display: flex;
    flex-direction: row;
    flex-wrap: wrap;
-   
+
 }
+
 @media only screen and (max-width: 1360px) {
 
-   #col2{
+   #col2 {
       margin-top: -0.7em;
    }
 
-   
+
 
    .gridTattooArtist {
       display: flex;
@@ -112,22 +113,22 @@
       justify-content: center;
       align-items: center;
       max-width: 25em;
-      
+
    }
 
-   .p{
-      
+   .p {
+
       margin-left: -1em;
-      top:15%;
-      
-      
+      top: 15%;
+
+
    }
-   
-   .pfila2{
-      
+
+   .pfila2 {
+
       margin-left: -2em;
-      top:62%;
-      
+      top: 62%;
+
    }
-   
- }
+
+}

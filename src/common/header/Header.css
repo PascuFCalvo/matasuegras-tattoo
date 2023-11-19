@@ -1,34 +1,31 @@
-.header{
-   
+.header {
+
    height: 20vh;
    width: 100vw;
-   
-   
+
+
 }
 
 @media only screen and (max-width: 960px) {
-   
-   .header{
-      
+
+   .header {
+
       background-color: rgb(61, 61, 61);
       height: 40vh;
       border-bottom: 1.5vw solid white;
       width: 100vw;
-      
-      
-   }
- }
 
- @media only screen and (max-width: 420px) {
-   
-   .header{
+
+   }
+}
+
+@media only screen and (max-width: 420px) {
+
+   .header {
       margin-left: -0em;
       background-color: rgb(61, 61, 61);
       height: vh;
-      border-bottom:  1.5vw solid white;
+      border-bottom: 1.5vw solid white;
       width: 100vw
-      
-      
    }
- }
-
+}

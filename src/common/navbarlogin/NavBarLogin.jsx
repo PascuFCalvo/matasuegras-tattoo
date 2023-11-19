@@ -10,20 +10,18 @@ export const NavbarLogin = () => {
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
 
-
-  let [nombreBoton, setNombreBoton] = useState()
+  let [nombreBoton, setNombreBoton] = useState();
 
   useEffect(() => {
-    if (!rdxUserData.credentials.token) {  
+    if (!rdxUserData.credentials.token) {
       console.log("No estás logeado");
     } else {
+      navigate("/");
       const decoded = jwtDecode(rdxUserData.credentials.token);
       dispatch(login(decoded));
       setNombreBoton(decoded.user_name);
     }
   }, [dispatch, rdxUserData.credentials.token]);
-
-  
 
   const handleLogout = () => {
     dispatch(logout()); // Dispatch the logout action to clear user data
@@ -36,7 +34,6 @@ export const NavbarLogin = () => {
           id: 1,
           nombre: `LOG OUT`,
           onClick: handleLogout,
-          
         },
       ]
     : [
@@ -61,7 +58,9 @@ export const NavbarLogin = () => {
       {botones.map((boton) => {
         return (
           <div
-            className={`botonNavBarLogin ${boton.nombre === "LOG OUT" ? 'logout' : ''}`}
+            className={`botonNavBarLogin ${
+              boton.nombre === "LOG OUT" ? "logout" : ""
+            }`}
             key={boton.id}
             onClick={boton.onClick}
           >
@@ -70,9 +69,7 @@ export const NavbarLogin = () => {
         );
       })}
       {rdxUserData.credentials.token && (
-        <div className="botonNavBarLogin2">
-          {nombreBoton}
-        </div>
+        <div className="botonNavBarLogin2">{nombreBoton}</div>
       )}
     </div>
   );

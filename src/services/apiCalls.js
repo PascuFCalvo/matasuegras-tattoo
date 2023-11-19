@@ -47,7 +47,7 @@ export const getAppointmentsAsATattooArtist = async (body) => {
 };
 
 export const deleteAUser = async (id, token) => {
-  console.log(token)
+
   return await axios.delete(`http://localhost:4000/blackAlien/deleteuser`, 
   {
     headers: {
@@ -60,7 +60,7 @@ export const deleteAUser = async (id, token) => {
 };
 
 export const deleteAnAppointment = async (id, token) => {
-  console.log(token)
+
   return await axios.delete(
     `http://localhost:4000/appointments/delete`,
     {
@@ -90,7 +90,7 @@ export const myDetailAppointments = async (body, token) => {
 };
 
 export const updateUser = async (body, token) => {
-  console.log(token);
+
   return await axios.put(`http://localhost:4000/user/update`,  body, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -99,7 +99,7 @@ export const updateUser = async (body, token) => {
 };
 
 export const updateTattoo = async (body, token) => {
-  console.log(token);
+
   return await axios.put(`http://localhost:4000/tattoo_artist/update`,  body, {
     headers: {
       Authorization: `Bearer ${token}`,

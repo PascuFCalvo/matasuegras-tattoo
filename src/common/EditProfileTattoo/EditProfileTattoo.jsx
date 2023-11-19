@@ -1,6 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import "./EditProfileTattoo.css";
-import { getAllUsers, getTattooArtist, updateTattoo, updateUser } from "../../services/apiCalls";
+import {
+  getAllUsers,
+  getTattooArtist,
+  updateTattoo,
+  updateUser,
+} from "../../services/apiCalls";
 import { useEffect, useState } from "react";
 import { login, userData } from "../../pages/userSlice";
 import { jwtDecode } from "jwt-decode";
@@ -25,7 +30,6 @@ export const EditProfileTattoo = ({ setVisibility }) => {
 
   useEffect(() => {
     if (!rdxUserData.credentials.token) {
-      console.log("No estás logeado");
       navigate("/myTattooPanel");
     } else {
       const decodedToken = jwtDecode(rdxUserData.credentials.token);
@@ -61,7 +65,9 @@ export const EditProfileTattoo = ({ setVisibility }) => {
 
   useEffect(() => {
     const filterTattooArtists = () => {
-      const filteredArtists = artists.filter((artist) => artist.user_name === decoded.user_name);
+      const filteredArtists = artists.filter(
+        (artist) => artist.user_name === decoded.user_name
+      );
       console.log("Tatuador filtrado:", filteredArtists[0]);
       setFilteredArtists(filteredArtists);
     };
@@ -112,8 +118,7 @@ export const EditProfileTattoo = ({ setVisibility }) => {
     updateUser(body, rdxUserData.credentials.token)
       .then((resultado) => {
         console.log(resultado);
-        
-        
+
         setTimeout(() => {
           setVisibility(false);
         }, 1000);
@@ -143,6 +148,8 @@ export const EditProfileTattoo = ({ setVisibility }) => {
           placeholder={profile.length > 0 ? profile[0].user_name : ""}
           value={formData.user_name}
           onChange={handleInputChange}
+          maxLength="25"
+          type="text"
         />
         <div className="overInput">EMAIL</div>
         <input
@@ -151,6 +158,8 @@ export const EditProfileTattoo = ({ setVisibility }) => {
           placeholder={profile.length > 0 ? profile[0].email : ""}
           value={formData.email}
           onChange={handleInputChange}
+          maxLength="25"
+          type="email"
         />
         <div className="overInput">TELEFONO</div>
         <input
@@ -159,6 +168,8 @@ export const EditProfileTattoo = ({ setVisibility }) => {
           placeholder={profile.length > 0 ? profile[0].phone : ""}
           value={formData.phone}
           onChange={handleInputChange}
+          maxLength="25"
+          type="text"
         />
 
         <div className="botonera">

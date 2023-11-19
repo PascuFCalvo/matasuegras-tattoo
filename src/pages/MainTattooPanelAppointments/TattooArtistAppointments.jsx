@@ -23,7 +23,7 @@ export const TattoArtistAppointments = () => {
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setNameToFilter(decoded.user_name);
-      console.log(decoded.user_name)
+
       dispatch(login(decoded));
     }
   }, [dispatch, rdxUserData.credentials]);
@@ -42,10 +42,11 @@ export const TattoArtistAppointments = () => {
 
   const filteredAppointments = () => {
     return appointments.filter(
-      (appointment) => appointment.tattoArtistAppointment.user_name === nameToFilter
+      (appointment) =>
+        appointment.tattoArtistAppointment.user_name === nameToFilter
     );
   };
-  console.log(appointments)
+
   const handleAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
@@ -89,14 +90,14 @@ export const TattoArtistAppointments = () => {
 
   const handleDeleteAppointmentClick = (appointment) => {
     let body = { id: appointment.id };
-    console.log(body);
+
     alert(`vamos a borrar la id ${appointment.id}`);
-    deleteAnAppointment(body,rdxUserData.credentials.token)
+    deleteAnAppointment(body, rdxUserData.credentials.token)
       .then((response) => {
         console.log(response);
         alert(`cita eliminada`);
         setTimeout(() => {
-          navigate("/myTattooPanel")
+          navigate("/myTattooPanel");
         }, 500);
       })
       .catch((error) => {

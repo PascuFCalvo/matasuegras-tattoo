@@ -1,5 +1,5 @@
-.superAdminButton{
-  width: 12em;
+.superAdminButton {
+   width: 12em;
    margin-left: 83%;
    margin-top: -22em;
    display: flex;
@@ -7,56 +7,56 @@
    align-items: center;
    height: 3em;
    background-color: #A7D6C3;
-  
+
    color: white;
    padding: 0.2;
-   
+
 
 }
 
-.superAdminButton:hover{
+.superAdminButton:hover {
    transition: 0.5s;
-   
-   background-color:#3F8566;
-   
+
+   background-color: #3F8566;
+
    cursor: pointer;
 }
 
 @media only screen and (max-width: 1280px) {
-   
+
    .superAdminButton {
-     
+
       margin-left: 80%;
       margin-top: -20em;
-      
-      
-   
-   
-   }
- }
 
- @media only screen and (max-width: 960px) {
-   
+
+
+
+   }
+}
+
+@media only screen and (max-width: 960px) {
+
    .superAdminButton {
-     
+
       margin-left: 75%;
       margin-top: -28em;
-      
-      
-   
-   
+
+
+
+
    }
- }
+}
 
 @media only screen and (max-width: 420px) {
-   
+
    .superAdminButton {
-     transform: scale(0.9);
+      transform: scale(0.9);
       margin-left: 26%;
-      
+
       margin-top: -4em;
-      
-   
-   
+
+
+
    }
- }
+}

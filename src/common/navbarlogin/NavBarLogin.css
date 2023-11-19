@@ -4,7 +4,7 @@
 }
 
 .navbarButtonsLogin {
-   
+
    font-family: tattoo;
    display: flex;
    flex-direction: row;
@@ -13,23 +13,23 @@
    margin-left: 77%;
    margin-top: -6.2em;
    font-size: 21px;
-   
-  
+
+
 }
 
-.botonNavBarLogin2{
+.botonNavBarLogin2 {
    padding: 1em;
    z-index: 2;
    margin-top: 1.2em;
 }
- 
- .botonNavBarLogin.logout {
-   color: #C2544F;
- }
 
- .botonNavBarLogin.logout:hover {
+.botonNavBarLogin.logout {
+   color: #C2544F;
+}
+
+.botonNavBarLogin.logout:hover {
    color: #FF8981;
- }
+}
 
 .botonNavBarLogin {
    padding: 1em;
@@ -39,90 +39,91 @@
 }
 
 .botonNavBarLogin:hover {
-   
+
 
    cursor: pointer;
    color: #dab75e;
    transition: 0.5s;
-   
-   
+
+
 }
 
 @media only screen and (max-width: 1280px) {
-   
-   .navbarButtonsLogin{
-    flex-direction: column; 
-    align-items: flex-end;
-    justify-content: flex-start;
-    margin-right: 2em;
-    
-    
-    
-    margin-top: -19.5em; 
-    height: 10em;
-   
+
+   .navbarButtonsLogin {
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-start;
+      margin-right: 2em;
+
+
+
+      margin-top: -19.5em;
+      height: 10em;
+
    }
 
    .botonNavBarLogin {
-      
+
       font-size: 1.2em;
       margin-bottom: -2em;
    }
-   
+
    .botonNavBarLogin:hover {
-   
+
       font-size: 1.2em;
-      
+
       cursor: pointer;
       color: #dab75e;
       transition: 0.5s;
-      
-      
-   }
-   .botonNavBarLogin:hover {
-   
-      border: none;
-      
-   }
- }
 
- 
- @media only screen and (max-width: 960px) {
-   
-   .navbarButtonsLogin{
-   
-    width: 10em;
-     margin-top: -18em;
-     margin-left: 74%;
-     
-     
-     
+
    }
 
    .botonNavBarLogin:hover {
-   
+
       border: none;
-      
+
    }
-   
- }
+}
 
 
- @media only screen and (max-width: 420px) {
-   
-   .navbarButtonsLogin{
+@media only screen and (max-width: 960px) {
+
+   .navbarButtonsLogin {
+
+      width: 10em;
+      margin-top: -18em;
+      margin-left: 74%;
+
+
+
+   }
+
+   .botonNavBarLogin:hover {
+
+      border: none;
+
+   }
+
+}
+
+
+@media only screen and (max-width: 420px) {
+
+   .navbarButtonsLogin {
       font-size: 12px;
-     margin-left: 67%;
-     margin-top: -48%;
-     
-     
-     
+      margin-left: 67%;
+      margin-top: -48%;
+
+
+
    }
 
    .botonNavBarLogin:hover {
-   
+
       border: none;
-      
+
    }
-   
-   }
+
+}

@@ -3,8 +3,8 @@
    src: url("../../assets/fonts/YesevaOne-Regular.ttf");
 }
 
-.ListUsers{
-   font-family:tattoo;
+.ListUsers {
+   font-family: tattoo;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -16,9 +16,9 @@
    height: auto;
 }
 
-.panelAdminTitle{
+.panelAdminTitle {
    font-size: 26px;
-   
+
 }
 
 .userRow {
@@ -27,15 +27,15 @@
    border: none;
 }
 
-.userRow:hover{
+.userRow:hover {
    cursor: pointer;
    background-color: rgb(252, 199, 135);
-   
+
 }
 
 
 
-.buttonDelete{
+.buttonDelete {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -46,12 +46,12 @@
    margin-left: 1em;
 }
 
-.buttonDelete:hover{
-   background-color:#FF8981;
+.buttonDelete:hover {
+   background-color: #FF8981;
    cursor: pointer;
 }
 
-.buttonEdit{
+.buttonEdit {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -62,20 +62,20 @@
    margin-left: 1em;
 }
 
-.buttonEdit:hover{
+.buttonEdit:hover {
    cursor: pointer;
    background-color: #A7D6C3;
 }
 
-.id{
+.id {
    width: 2em;
 }
 
-.titleAppointment{
+.titleAppointment {
    width: 14em;
 }
 
-.email{
+.email {
    width: 18em;
 }
 
@@ -98,7 +98,7 @@
 
 
 
-.inputEdit{
+.inputEdit {
    font-size: 16px;
    padding: 0.5em;
    width: 90%;
@@ -108,16 +108,17 @@
    border: none;
 }
 
-.completeRow{
+.completeRow {
    display: flex;
 }
 
-.deleteButtons{
+.deleteButtons {
    display: flex;
 }
+
 @media only screen and (max-width: 1280px) {
    .ListUsers {
       margin-top: 23vh;
-   
-} 
+
+   }
 }

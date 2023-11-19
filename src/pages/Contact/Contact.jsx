@@ -45,36 +45,57 @@ export const Contact = () => {
             formulario y contactaremos contigo en breve.
           </div>
 
-         <form className = "FormularioContacto" action="https://formsubmit.co/Pascual.fernandez.calvo@gmail.com" method="POST">
-            <div className = "Campo">
-            *NOMBRE (REQUERIDO)
-            </div>
-            <input type="text" name="name" required className = "inputContacto"></input>
-            <div className = "Campo">
-            *TU CORREO ELECTRÓNICO (REQUERIDO)
-            </div>
-            <input type="email" name="email" required className = "inputContacto"></input>
-            <div className = "Campo">
-            ASUNTO
-            </div>
-            <input type="text" name="asunto" required className = "inputContacto"></input>
-            <div className = "Campo">
-            *DESCRIBE TU TATUAJE: (REQUERIDO)
-            MOTIVO , MEDIDA Y ZONA.
-            </div>
-            <textarea type="text" name="descripciongit" required className = "inputContacto" id = "asunto"></textarea>
-
-            <div className = "Campo">
-            ¡¡IMPORTANTE !!:
-            Revisa tu bandeja de correo no deseado si no obtienes respuesta en 24 horas.
-            </div>
-            
-            <button className = "buttonSend" type="submit">Enviar</button>
-
-         </form>
-            
-            
+          <form
+            className="FormularioContacto"
+            action="https://formsubmit.co/Pascual.fernandez.calvo@gmail.com"
+            method="POST"
+          >
+            <div className="Campo">*NOMBRE (REQUERIDO)</div>
+            <input
+              type="text"
+              name="name"
+              required
+              className="inputContacto"
+              maxLength="25"
           
+            ></input>
+            <div className="Campo">*TU CORREO ELECTRÓNICO (REQUERIDO)</div>
+            <input
+              type="email"
+              name="email"
+              required
+              className="inputContacto"
+              maxLength="50"
+            ></input>
+            <div className="Campo">ASUNTO</div>
+            <input
+              type="text"
+              name="asunto"
+              required
+              className="inputContacto"
+              maxLength="50"
+            ></input>
+            <div className="Campo">
+              *DESCRIBE TU TATUAJE: (REQUERIDO) MOTIVO , MEDIDA Y ZONA.
+            </div>
+            <textarea
+              type="text"
+              name="descripciongit"
+              required
+              className="inputContacto"
+              id="asunto"
+              maxLength="500"
+            ></textarea>
+
+            <div className="Campo">
+              ¡¡IMPORTANTE !!: Revisa tu bandeja de correo no deseado si no
+              obtienes respuesta en 24 horas.
+            </div>
+
+            <button className="buttonSend" type="submit">
+              Enviar
+            </button>
+          </form>
         </div>
       </div>
 

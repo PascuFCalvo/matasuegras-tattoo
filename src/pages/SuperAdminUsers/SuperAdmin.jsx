@@ -19,7 +19,6 @@ export const SuperAdminUsers = () => {
 
   useEffect(() => {
     if (!rdxUserData.credentials) {
-      console.log("No estás logeado");
       navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
@@ -49,8 +48,6 @@ export const SuperAdminUsers = () => {
   }, [users, rdxUserData.credentials.token]);
 
   const handleEditUser = (id, user_name) => {
-    console.log(id);
-    console.log(user_name);
     setIdToEdit(id);
     setNameToSend(user_name);
     setIsEditPanelModalVisible(true);
@@ -119,13 +116,8 @@ export const SuperAdminUsers = () => {
                 </div>
               ))}
             </div>
-            <div className="pagination">
-              {renderPageNumbers()}
-            </div>
-            <div
-              className="buttonBack"
-              onClick={() => navigate("/superAdmin")}
-            >
+            <div className="pagination">{renderPageNumbers()}</div>
+            <div className="buttonBack" onClick={() => navigate("/superAdmin")}>
               Volver al panel
             </div>
           </>

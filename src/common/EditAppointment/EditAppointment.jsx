@@ -23,22 +23,19 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
     turn: selected.turn,
   });
 
-  let redirect
+  let redirect;
 
-  if(tokendecoded.level === "black_alien"){
-    redirect = "/superAdmin"
-  }else if(tokendecoded.level === "tattoo"){
-    redirect = "/myTattooPanel"
-  }else redirect = "/myUserPanel"
-
+  if (tokendecoded.level === "black_alien") {
+    redirect = "/superAdmin";
+  } else if (tokendecoded.level === "tattoo") {
+    redirect = "/myTattooPanel";
+  } else redirect = "/myUserPanel";
 
   const handleHideClick = () => {
     setVisibility(false);
   };
 
   const handleSaveClick = () => {
-   
-
     let body = {
       user_id: tokendecoded.id,
       id: selected.id,
@@ -46,28 +43,20 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
       description: formData.description,
       client: tokendecoded.id,
       type: formData.type,
-      tattoo_artist:formData.tattoo_artist,
+      tattoo_artist: formData.tattoo_artist,
     };
 
-    console.log(body)
+    updateAnAppointment(body, rdxUserData.credentials.token)
+      .then((resultado) => {
+        console.log(resultado);
+        alert("cita actualizada");
 
-   
-    
-      
-      updateAnAppointment(body,rdxUserData.credentials.token)
-        .then((resultado) => {
-          console.log(resultado);
-          alert ("cita actualizada")
-          
-          setTimeout(() => {
-          navigate(redirect)  
-          }, 1000);
-          
-          
-        })
-        .catch((error) => console.log(error));
+        setTimeout(() => {
+          navigate(redirect);
+        }, 1000);
+      })
+      .catch((error) => console.log(error));
 
-    
     setTimeout(() => {
       setVisibility(false);
     }, 2000);
@@ -85,13 +74,14 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
     <div className={`editedCardBody ${visibility ? "visible" : "hidden"}`}>
       <div className="titleEditCitas">PANEL DE EDICION DE CITAS</div>
       <>
-      
         <input
           className="input"
           name="title"
           placeholder={selected.title}
           value={formData.title}
           onChange={handleInputChange}
+          maxLength="25"
+          type="text"
         />
         <input
           className="input"
@@ -99,6 +89,8 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
           placeholder={selected.description}
           value={formData.description}
           onChange={handleInputChange}
+          maxLength="300"
+          type="text"
         />
         {/* <select
           className="inputselect"

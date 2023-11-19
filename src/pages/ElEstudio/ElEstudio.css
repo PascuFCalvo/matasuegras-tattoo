@@ -3,20 +3,21 @@
    src: url("../../assets/fonts/YesevaOne-Regular.ttf");
 }
 
-.backgroundElEstudio{
+.backgroundElEstudio {
    background: bisque;
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    height: auto;
-   font-family: tattoo;;
-   font-weight:100;
+   font-family: tattoo;
+   ;
+   font-weight: 100;
    /* margin-top: 2em; */
-   
+
 }
 
-.App{
+.App {
    max-width: 1000px;
    width: 80%;
    color: black;
@@ -29,16 +30,16 @@
    padding-bottom: 56.25%;
    position: relative;
    height: 0;
- }
- 
- .video-responsive iframe {
+}
+
+.video-responsive iframe {
    left: 0;
    top: 0;
    height: 100%;
    width: 100%;
    position: absolute;
- }
- 
+}
+
 
 .textoEstudio {
    max-width: 1000px;
@@ -50,21 +51,22 @@
    text-align: start;
    padding-left: 10%;
    padding-right: 10%;
-   
+
 
 }
+
 .final {
    margin-bottom: 2em;
 }
 
-.parrafoTexto{
+.parrafoTexto {
    font-family: Verdana, Geneva, Tahoma, sans-serif;
    font-size: 18;
    line-height: 2;
    padding-bottom: 2em;
 }
 
-.tituloTexto{
+.tituloTexto {
    text-align: center;
    font-size: 30px;
    padding-bottom: 2em;
@@ -74,32 +76,32 @@
 img {
    max-width: 1000px;
    width: 80%;
-   
+
 }
 
-.flexfotos{
+.flexfotos {
    max-width: 1000px;
    width: 80%;
    display: flex;
    justify-content: space-between;
-   padding-top:2em;
-   padding-bottom:2em;
-   
+   padding-top: 2em;
+   padding-bottom: 2em;
+
 }
 
-.flexfotos > img{
-   
+.flexfotos>img {
+
    width: 48.5%;
-   
+
 }
 
 
 
 @media only screen and (max-width: 1280px) {
-   .backgroundElEstudio{
+   .backgroundElEstudio {
       margin-top: 23vh;
-   
-} 
-   
-   
- }
+
+   }
+
+
+}

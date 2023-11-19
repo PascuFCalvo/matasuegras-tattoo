@@ -2,10 +2,11 @@
    height: auto;
    width: 100vw;
    background: bisque;
-  
+
    color: black;
    /* margin-top: 2em; */
 }
+
 .tattooRoster {
    padding-left: 10%;
    padding-right: 10%;
@@ -16,6 +17,7 @@
    display: flex;
    flex-wrap: wrap;
 }
+
 .tattooRoster img {
    width: 20em;
    padding: 2em;
@@ -29,18 +31,18 @@
 @media only screen and (max-width: 1280px) {
    .Gallery {
       margin-top: 23vh;
-   
-} 
-   
-   
- }
+
+   }
+
+
+}
 
 @media only screen and (max-width: 420px) {
-   
+
    .tattooRoster {
       padding-left: 0%;
       padding-right: 0%;
-   
-   
+
+
    }
- }
+}

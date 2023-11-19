@@ -20,12 +20,11 @@ export const UserPanelAppointments = () => {
 
   useEffect(() => {
     if (!rdxUserData.credentials.token) {
-      console.log("No estás logeado");
       navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setNameToFilter(decoded.user_name);
-      console.log(decoded.user_name)
+
       dispatch(login(decoded));
     }
   }, [dispatch, rdxUserData.credentials]);
@@ -47,8 +46,7 @@ export const UserPanelAppointments = () => {
       (appointment) => appointment.userAppointment.user_name === nameToFilter
     );
   };
-  console.log(appointments)
-  
+
   const handleAppointmentClick = (appointment) => {
     const appointmentDetails = {
       id: appointment.id,
@@ -92,14 +90,14 @@ export const UserPanelAppointments = () => {
 
   const handleDeleteAppointmentClick = (appointment) => {
     let body = { id: appointment.id };
-    console.log(body);
+
     alert(`vamos a borrar la id ${appointment.id}`);
-    deleteAnAppointment(body,rdxUserData.credentials.token)
+    deleteAnAppointment(body, rdxUserData.credentials.token)
       .then((response) => {
         console.log(response);
         alert(`cita eliminada`);
         setTimeout(() => {
-          navigate("/myUserPanel")
+          navigate("/myUserPanel");
         }, 500);
       })
       .catch((error) => {

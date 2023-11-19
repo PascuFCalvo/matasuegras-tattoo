@@ -14,10 +14,10 @@ export const SuperAdminButton = () => {
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
-      console.log("No estás logeado");
+      navigate("/");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
-      
+
       dispatch(login(decoded));
       setDestination(decoded.level);
     }
@@ -42,8 +42,6 @@ export const SuperAdminButton = () => {
       {buttonText}
     </div>
   ) : (
-    <div>
-      
-    </div>
+    <div></div>
   );
 };

@@ -3,8 +3,8 @@
    src: url("../../assets/fonts/YesevaOne-Regular.ttf");
 }
 
-.ListUsers{
-   font-family:tattoo;
+.ListUsers {
+   font-family: tattoo;
    display: flex;
    justify-content: center;
    align-items: center;
@@ -16,12 +16,12 @@
    min-height: 100vh;
 }
 
-.titleAdmin{
+.titleAdmin {
    margin-bottom: 1em;
    font-family: tattoo;
 }
 
-.panelAdminTitle{
+.panelAdminTitle {
    font-size: 26px;
    padding: 2em;
 }
@@ -31,16 +31,16 @@
    display: flex;
 }
 
-.containerInput{
+.containerInput {
    display: flex;
    width: 52em;
    margin-bottom: 2em;
    justify-content: flex-end;
    margin-right: -8em;
-   
+
 }
 
-.inputBuscar{
+.inputBuscar {
    background-color: white;
    border: none;
    width: 25em;
@@ -51,19 +51,18 @@
    ;
 }
 
-.buttonBuscar{
+.buttonBuscar {
    background-color: #C2544F;
    margin-left: 1em;
    border: none;
 }
 
-.buttonBuscar:hover{
+.buttonBuscar:hover {
    background-color: #FF8981;
    transition: 0.4s
-   
 }
 
-.buttonDelete{
+.buttonDelete {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -73,16 +72,17 @@
    height: 3em;
    margin-left: 1em;
 }
-.infotatuador{
+
+.infotatuador {
    font-size: 20px;
 }
 
-.buttonDelete:hover{
+.buttonDelete:hover {
    background-color: #C2544F;
    cursor: pointer;
 }
 
-.buttonEdit{
+.buttonEdit {
    display: flex;
    justify-content: center;
    align-items: center;
@@ -94,7 +94,7 @@
    margin-bottom: 1em;
 }
 
-.buttonEdit:hover{
+.buttonEdit:hover {
    cursor: pointer;
    background-color: #A7D6C3;
 }
@@ -103,31 +103,31 @@
    display: flex;
    justify-content: center;
    margin-top: 20px;
- }
- 
- .pagination div {
+}
+
+.pagination div {
    margin: 0 5px;
    padding: 5px 10px;
    border: 1px solid #ccc;
    cursor: pointer;
    transition: background-color 0.3s;
- }
- 
- .pagination div:hover {
+}
+
+.pagination div:hover {
    background-color: #ddd;
    background-color: rgb(210, 155, 89);
- }
- 
+}
 
-.id{
+
+.id {
    width: 2em;
 }
 
-.userName{
+.userName {
    width: 12em;
 }
 
-.email{
+.email {
    width: 16em;
 }
 
@@ -147,7 +147,7 @@
    width: 12em;
 }
 
-.buttonBack{
+.buttonBack {
    width: 10em;
    height: 3em;
    background-color: #739F8D;
@@ -159,7 +159,7 @@
    align-items: center;
 }
 
-.buttonBack:hover{
+.buttonBack:hover {
    background-color: #A7D6C3;
    color: rgb(255, 255, 255);
    cursor: pointer;
@@ -169,6 +169,6 @@
 @media only screen and (max-width: 1280px) {
    .ListUsers {
       margin-top: 23vh;
-   
-} 
+
+   }
 }

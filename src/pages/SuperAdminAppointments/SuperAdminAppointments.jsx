@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../userSlice";
 import { AppointmentDetail } from "../../common/AppointmentDetail/AppointmentDetail";
 import { EditAppointment } from "../../common/EditAppointment/EditAppointment";
-import "./SuperAdminAppointments.css"
+import "./SuperAdminAppointments.css";
 
 export const SuperAdminAppointments = () => {
   const navigate = useNavigate();
@@ -23,13 +23,9 @@ export const SuperAdminAppointments = () => {
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
-      console.log("No estás logeado");
       navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
-      console.log(rdxUserData.credentials);
-      console.log(rdxUserData.credentials.token);
-      console.log(decoded);
       dispatch(login(decoded));
     }
   }, [dispatch, rdxUserData.credentials]);
@@ -38,10 +34,8 @@ export const SuperAdminAppointments = () => {
     if (appointments.length === 0) {
       getAppointments(rdxUserData.credentials.token)
         .then((response) => {
-          console.log(appointments);
           setAppointments(response.data.myAppointments);
           setOriginalAppointments(response.data.myAppointments); // Guarda una copia original
-          console.log(response.data);
         })
         .catch((error) => {
           console.error("Error fetching tattoos:", error);
@@ -112,7 +106,7 @@ export const SuperAdminAppointments = () => {
   };
 
   const handlechange = (e) => {
-    const terminoBusqueda= e.target.value.toLowerCase();
+    const terminoBusqueda = e.target.value.toLowerCase();
     setBusqueda(terminoBusqueda);
     filtrar(terminoBusqueda, originalAppointments); // Filtra la lista original
   };
@@ -135,7 +129,10 @@ export const SuperAdminAppointments = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentAppointments = appointments.slice(indexOfFirstItem, indexOfLastItem);
+  const currentAppointments = appointments.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const totalPages = Math.ceil(appointments.length / itemsPerPage);
 
@@ -215,13 +212,8 @@ export const SuperAdminAppointments = () => {
                 </div>
               ))}
             </div>
-            <div className="pagination">
-              {renderPageNumbers()}
-            </div>
-            <div
-              className="buttonBack"
-              onClick={() => navigate("/superAdmin")}
-            >
+            <div className="pagination">{renderPageNumbers()}</div>
+            <div className="buttonBack" onClick={() => navigate("/superAdmin")}>
               Volver al panel
             </div>
           </>

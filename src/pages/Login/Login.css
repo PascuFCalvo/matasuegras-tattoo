@@ -5,7 +5,7 @@
 
 
 
-.Login{
+.Login {
    font-family: tattoo;
    display: flex;
    justify-content: flex-end;
@@ -13,7 +13,7 @@
    width: 100vw;
 }
 
-.formBackground{
+.formBackground {
    display: flex;
    flex-direction: column;
    justify-content: start;
@@ -23,7 +23,7 @@
    width: 30em;
    height: 25em;
    position: relative;
-   
+
 
 }
 
@@ -38,9 +38,9 @@
    justify-content: center;
    align-items: center;
    position: absolute;
-   bottom: 1em ;
+   bottom: 1em;
    right: 2em;
-   
+
 }
 
 .buttonSubmitLogin:hover {
@@ -48,7 +48,7 @@
    transition: 0.2s;
    color: white;
    cursor: pointer;
-   background-color:#3F8566;
+   background-color: #3F8566;
 }
 
 .buttonSubmitLogin:active {
@@ -56,7 +56,7 @@
    background-color: #006C60;
 }
 
-.overInputlogin{
+.overInputlogin {
    margin-top: 1em;
    font-size: 22px;
    width: 100%;
@@ -64,24 +64,24 @@
    margin-left: 3.6em;
    height: 2em;
    margin-top: 1em;
-   
+
 }
 
 @media only screen and (max-width: 1280px) {
-   .Login{
+   .Login {
       margin-left: -8%;
    }
 }
 
 @media only screen and (max-width: 960px) {
-   .Login{
+   .Login {
       margin-left: 6%;
       margin-top: 1%;
    }
 }
 
 @media only screen and (max-width: 420px) {
-   .Login{
+   .Login {
       background-color: rgb(36, 36, 36);
       transform: scale(0.7);
       margin-top: -14%;
@@ -90,11 +90,11 @@
       height: 25em;
    }
 
-   .formBackground{
+   .formBackground {
       margin: 0em;
       background-color: transparent;
       z-index: 2;
-      
-   
+
+
    }
 }

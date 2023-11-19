@@ -5,7 +5,7 @@
 
 
 
-.Register{
+.Register {
    font-family: tattoo;
    display: flex;
    justify-content: flex-end;
@@ -13,7 +13,7 @@
    width: 100%;
 }
 
-.formBackgroundRegister{
+.formBackgroundRegister {
    display: flex;
    flex-direction: column;
    justify-content: start;
@@ -25,7 +25,7 @@
    position: relative;
    overflow-y: scroll;
    overflow-x: hidden;
-   
+
 
 }
 
@@ -40,16 +40,16 @@
    justify-content: center;
    align-items: center;
    position: absolute;
-   bottom: -6em ;
+   bottom: -6em;
    right: 2em;
    margin-bottom: 2em;
-   
-   
+
+
 }
 
-.blank{
+.blank {
    position: absolute;
-   bottom: -6em ;
+   bottom: -6em;
    height: 1em;
    width: 100%;
    background-color: transparent;
@@ -60,7 +60,8 @@
    transition: 0.2s;
    color: white;
    cursor: pointer;
-   background-color: rgb(221, 176, 61);;
+   background-color: rgb(221, 176, 61);
+   ;
 }
 
 .buttonSubmit:active {
@@ -68,7 +69,7 @@
    background-color: rgb(218, 183, 94);
 }
 
-.overInput{
+.overInput {
    margin-top: 1em;
    font-size: 22px;
    width: 100%;
@@ -76,43 +77,46 @@
    margin-left: 3.6em;
    height: 2em;
    margin-top: 1em;
-   
+
 }
 
-.errorMsg{
+.errorMsg {
    color: crimson;
    display: flex;
    justify-content: end;
    font-size: 18px;
    font-family: Verdana, Geneva, Tahoma, sans-serif;
-   
+
 }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    /* display: none; <- Crashes Chrome on hover */
-    -webkit-appearance: none;
-    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+   /* display: none; <- Crashes Chrome on hover */
+   -webkit-appearance: none;
+   margin: 0;
+   /* <-- Apparently some margin are still there even though it's hidden */
 }
 
 input[type=number] {
-    -moz-appearance:textfield; /* Firefox */
+   -moz-appearance: textfield;
+   /* Firefox */
 }
 
 @media only screen and (max-width: 1280px) {
-   .Register{
+   .Register {
       margin-left: -8%;
       margin-top: 3%
    }
 }
 
 @media only screen and (max-width: 960px) {
-   .Register{
+   .Register {
       margin-left: 6%;
       margin-top: 1%;
    }
+
    @media only screen and (max-width: 420px) {
-      .Register{
+      .Register {
          background-color: rgb(36, 36, 36);
          transform: scale(0.7);
          margin-top: -14%;
@@ -120,15 +124,14 @@ input[type=number] {
          width: 28em;
          height: 25em;
       }
-   
-      .formBackgroundRegister{
+
+      .formBackgroundRegister {
          margin: 0em;
          background-color: transparent;
          z-index: 2;
-         
-      
+
+
       }
    }
 
 }
-

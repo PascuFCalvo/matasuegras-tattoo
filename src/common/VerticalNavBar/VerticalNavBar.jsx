@@ -1,50 +1,51 @@
-import "./VerticalNavbar.css"
-import {  useNavigate } from "react-router-dom";
-
+import "./VerticalNavbar.css";
+import { useNavigate } from "react-router-dom";
 
 export const VerticalNavbar = () => {
   let botones = [
     {
       id: 1,
       nombre: "INICIO",
-      path: "../"
+      path: "../",
     },
     {
       id: 2,
       nombre: "ESTUDIO",
-      path: "../elestudio"
+      path: "../elestudio",
     },
     {
       id: 3,
       nombre: "TATUADORES",
-      path: "../tatuadores"
+      path: "../tatuadores",
     },
     {
       id: 4,
       nombre: "GALERIA",
-      path: "../gallery"
+      path: "../gallery",
     },
     {
       id: 5,
       nombre: "PEDIR CITA",
-      path: "../cita"
+      path: "../cita",
     },
     {
       id: 6,
       nombre: "CONTACTO",
-      path: "../contacto"
+      path: "../contacto",
     },
   ];
 
   const navigate = useNavigate();
 
   return (
-    <div className = "VerticalnavbarButtons">
+    <div className="VerticalnavbarButtons">
       {botones.map((boton) => {
         return (
-          <div className="VerticalbotonNavBar" key={boton.id} onClick={() => 
-          navigate(boton.path)
-          } >
+          <div
+            className="VerticalbotonNavBar"
+            key={boton.id}
+            onClick={() => navigate(boton.path)}
+          >
             {boton.nombre}
           </div>
         );

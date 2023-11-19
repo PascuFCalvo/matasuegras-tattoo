@@ -1,41 +1,37 @@
-.logoChiquito{
+.logoChiquito {
    width: 12em;
    height: 8em;
    margin: auto;
    background-image: url("../../images/matasuegras.png");
    background-size: 12em;
    background-repeat: no-repeat;
-   
    filter: sepia(2);
    margin-top: 2em;
    position: absolute;
-   
    left: 5%;
-   
 
-   
 }
 
 .logoChiquito:hover {
    cursor: pointer;
-   
+
 }
 
 @media only screen and (max-width: 960px) {
-   
-   .logoChiquito{
-   
-     margin-left: 35%;
-     margin-right: 35%;
-     margin-top: 12%;
-     
+
+   .logoChiquito {
+
+      margin-left: 35%;
+      margin-right: 35%;
+      margin-top: 12%;
+
    }
-   }
+}
 
 @media only screen and (max-width: 420px) {
-   
-   .logoChiquito{
+
+   .logoChiquito {
       transform: scale(0.6);
-     margin-left: 22%;
+      margin-left: 22%;
    }
-   }
+}
