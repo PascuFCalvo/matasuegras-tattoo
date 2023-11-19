@@ -13,6 +13,10 @@ export const TattoArtist = () => {
   return (
     <div>
       <div className="backgroundTattooArtist">
+      <div className="nuestrosTatuadores">
+          {" "}
+          NUESTROS TATUADORES RESIDENTES
+        </div>
         <div className="gridTattooArtist">
           <div className="flexTattoArtist">
             <img
