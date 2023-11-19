@@ -39,29 +39,39 @@ export const getAppointments = async (token) => {
 };
 
 export const getAppointmentsAsATattooArtist = async (body) => {
+  
   return await axios.get(
     `http://localhost:4000/tattoo_artist/myAppointments`,
     body
   );
 };
 
-export const deleteAUser = async (id) => {
-  return await axios.delete(`http://localhost:4000/blackAlien/deleteuser`, {
-    data: { id: id },
-  });
+export const deleteAUser = async (id, token) => {
+  console.log(token)
+  return await axios.delete(`http://localhost:4000/blackAlien/deleteuser`, 
+  {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    data: { id: id } 
+  }
+  
+);
 };
 
 export const deleteAnAppointment = async (id, token) => {
+  console.log(token)
   return await axios.delete(
     `http://localhost:4000/appointments/delete`,
-    { data: { id: id } },
     {
       headers: {
         Authorization: `Bearer ${token}`,
       },
+      data: { id: id } 
     }
+    
   );
-};
+  };
 
 export const updateAnAppointment = async (body, token) => {
   return await axios.put(`http://localhost:4000/appointments/update`, body, {
@@ -79,7 +89,11 @@ export const myDetailAppointments = async (body, token) => {
   });
 };
 
-export const updateUser = async (body) => {
-  console.log(body);
-  return await axios.put(`http://localhost:4000/user/update`, body);
+export const updateUser = async (body, token) => {
+  console.log(token);
+  return await axios.put(`http://localhost:4000/user/update`,  body, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };

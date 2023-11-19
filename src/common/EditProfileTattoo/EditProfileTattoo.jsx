@@ -5,6 +5,7 @@ import { getTattooArtist, updateUser } from "../../services/apiCalls";
 
 import { useDispatch, useSelector } from "react-redux";
 import { login, userData } from "../../pages/userSlice";
+import { Navigate } from "react-router-dom";
 
 export const EditProfileTattoo = ({ setVisibility }) => {
   const [tattooArtist, setTattooArtist] = useState([]);
@@ -23,6 +24,7 @@ export const EditProfileTattoo = ({ setVisibility }) => {
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       console.log("No estás logeado");
+      Navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setNameToFilter(decoded.user_name);
@@ -66,7 +68,7 @@ export const EditProfileTattoo = ({ setVisibility }) => {
       user_name: formData.user_name,
       email: formData.email,
       phone: formData.phone,
-      id: profile[0].id, 
+      id: profile.id, 
     };
 
     alert("logica para updatear usuario, de momento no me ha dado tiempo a implementarla");

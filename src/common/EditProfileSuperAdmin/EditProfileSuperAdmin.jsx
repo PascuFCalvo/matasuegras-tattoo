@@ -24,6 +24,7 @@ export const EditProfileSuperAdmin = ({ setVisibility, idToEdit , nameToEdit}) =
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       console.log("No estás logeado");
+      navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       

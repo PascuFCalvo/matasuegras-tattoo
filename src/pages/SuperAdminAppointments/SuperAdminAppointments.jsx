@@ -25,6 +25,7 @@ export const SuperAdminAppointments = () => {
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       console.log("No estás logeado");
+      navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       console.log(rdxUserData.credentials);
@@ -96,9 +97,9 @@ export const SuperAdminAppointments = () => {
 
   const handleDeleteAppointmentClick = (appointment) => {
     let body = { id: appointment.id };
-    console.log(body,rdxUserData.credentials.token);
+    console.log(body);
     alert(`vamos a borrar la id ${appointment.id}`);
-    deleteAnAppointment(body)
+    deleteAnAppointment(body, rdxUserData.credentials.token)
       .then((response) => {
         console.log(response);
         alert(`cita eliminada`);

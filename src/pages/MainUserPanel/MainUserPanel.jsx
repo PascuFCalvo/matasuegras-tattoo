@@ -21,8 +21,9 @@ export const MainUserPanel = () => {
   const [decoded, setDecoded] = useState(null);
 
   useEffect(() => {
-    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+    if (!rdxUserData.credentials.token) {
       console.log("No estás logeado");
+      navigate("/login");
     } else {
       const decodedToken = jwtDecode(rdxUserData.credentials.token);
       setDecoded(decodedToken);

@@ -16,8 +16,9 @@ export const SuperAdminUsers = () => {
   const [nameToSend , setNameToSend] = useState()
 
   useEffect(() => {
-    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+    if (!rdxUserData.credentials ) {
       console.log("No estás logeado");
+      navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       dispatch(login(decoded));
@@ -27,7 +28,8 @@ export const SuperAdminUsers = () => {
   const navigate = useNavigate();
 
   const deleteUser = (id) => {
-    deleteAUser(id).then((resultado) => {
+    deleteAUser(id,rdxUserData.credentials.token)
+    .then((resultado) => {
       console.log(resultado);
       setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
     });
@@ -35,7 +37,7 @@ export const SuperAdminUsers = () => {
 
   useEffect(() => {
     if (users.length === 0) {
-      getAllUsers()
+      getAllUsers(rdxUserData.credentials.token)
         .then((response) => {
           setUsers(response.data.Users);
         })

@@ -2,16 +2,17 @@
 import "./AppointmentDetail.css";
 import { jwtDecode } from "jwt-decode";
 import matasuegras from "../../images/matasuegras.png";
+import sento from "../../images/sento.jpg";
 
 import { useSelector } from "react-redux";
 import { userData } from "../../pages/userSlice";
 
 export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
+  
   const rdxUserData = useSelector(userData);
   const isLoggedIn = rdxUserData.credentials.token;
   const tokendecoded = jwtDecode(isLoggedIn);
+  console.log(tokendecoded)
  
   const { id, title, description,type, tattoo_artist,client, date, turn } = selected;
 
@@ -22,7 +23,9 @@ export const AppointmentDetail = ({ selected, visibility, setVisibility }) => {
 
   return (
     <div className={`detailedCardBody ${visibility ? "visible" : "hidden"}`}>
-      <img className="imagenCita" src={matasuegras} alt="Matasuegras" />
+      <div className="cabeceraCard"><img className="imagenCita1" src={matasuegras} alt="Matasuegras" />
+        <img className="imagenCita2" src={sento} alt="Matasuegras" /></div>
+      
       {
         <div className="cardDetailCita">
           <div className="detailID">TU NUMERO DE CITA: <span className="crimson">{id}</span></div>

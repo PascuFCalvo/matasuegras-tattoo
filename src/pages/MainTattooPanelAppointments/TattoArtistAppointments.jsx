@@ -19,7 +19,7 @@ export const TattoArtistAppointments = () => {
 
   useEffect(() => {
     if (!rdxUserData.credentials.token) {
-      console.log("No estás logeado");
+      navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setNameToFilter(decoded.user_name);
@@ -89,9 +89,9 @@ export const TattoArtistAppointments = () => {
 
   const handleDeleteAppointmentClick = (appointment) => {
     let body = { id: appointment.id };
-    console.log(body,rdxUserData.credentials.token);
+    console.log(body);
     alert(`vamos a borrar la id ${appointment.id}`);
-    deleteAnAppointment(body)
+    deleteAnAppointment(body,rdxUserData.credentials.token)
       .then((response) => {
         console.log(response);
         alert(`cita eliminada`);

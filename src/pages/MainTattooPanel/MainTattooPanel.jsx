@@ -21,6 +21,7 @@ export const MainTattooPanel = () => {
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       console.log("No estás logeado");
+      navigate("/login");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
       setNameToFilter(decoded.user_name);
