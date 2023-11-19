@@ -129,7 +129,7 @@ export const Appointment = () => {
         turn: selectedShift,
       };
 
-      await createAppointment(body);
+      await createAppointment(body,rdxUserData.credentials.token);
 
       setTimeout(() => {
         alert("Cita creada correctamente");

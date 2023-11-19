@@ -18,20 +18,23 @@ export const MainUserPanel = () => {
   const rdxUserData = useSelector(userData);
   const [profile, setProfile] = useState([]);
   const [nameToFilter, setNameToFilter] = useState();
+  const [decoded, setDecoded] = useState(null);
 
   useEffect(() => {
     if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
       console.log("No estás logeado");
     } else {
-      const decoded = jwtDecode(rdxUserData.credentials.token);
-      setNameToFilter(decoded.user_name);
-      dispatch(login(decoded));
+      const decodedToken = jwtDecode(rdxUserData.credentials.token);
+      setDecoded(decodedToken);
+      setNameToFilter(decodedToken.user_name);
+      dispatch(login(decodedToken));
+      
     }
   }, [dispatch, rdxUserData.credentials]);
 
   useEffect(() => {
-    if (users.length === 0) {
-      getAllUsers()
+    if (users.length === 0 && decoded) {
+      getAllUsers(rdxUserData.credentials.token)
         .then((response) => {
           setUsers(response.data.Users);
         })
@@ -39,7 +42,8 @@ export const MainUserPanel = () => {
           console.error("Error fetching tattoo artist:", error);
         });
     }
-  }, [users]);
+  }, [users, decoded]);
+
 
   useEffect(() => {
     const filterProfile = () => {

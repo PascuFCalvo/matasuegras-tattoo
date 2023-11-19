@@ -8,10 +8,14 @@ export const registerUser = async (body) => {
   return await axios.post(`http://localhost:4000/user/register`, body);
 };
 
-export const createAppointment = async (body) => {
+export const createAppointment = async (body,token) => {
   console.log(body)
-   return await axios.post(`http://localhost:4000/appointments/create`, body)
-}
+   return await axios.post(`http://localhost:4000/appointments/create`, body,
+   {headers: {
+       Authorization: `Bearer ${token}`,
+     },
+   })
+ }
 export const getTattoos = async () => {
   return await axios.get(`http://localhost:4000/public/getImages`);
 };
@@ -20,10 +24,13 @@ export const getTattooArtist = async () => {
   return await axios.get(`http://localhost:4000/public/tattooArtists`);
 };
 
-export const getAllUsers = async () => {
-  return await axios.get(`http://localhost:4000/blackAlien/getUsers`)
+export const getAllUsers = async (token) => {
+  console.log(token)
+  return await axios.get(`http://localhost:4000/blackAlien/getUsers` ,{headers: {
+    Authorization: `Bearer ${token}`,
+  },
+})
 }
-
 export const getAppointments= async (token) => {
   return await axios.get(`http://localhost:4000/blackAlien/getAppointments`,
   {
@@ -52,8 +59,8 @@ export const updateAnAppointment= async (body) => {
 }
 
 export const myDetailAppointments = async (body,token) => {
-  return await axios.get(`http://localhost:4000/user/myAppointments`, body,{
-    headers: {
+  return await axios.get(`http://localhost:4000/user/myAppointments`, body,
+  {headers: {
       Authorization: `Bearer ${token}`,
     },
   })
