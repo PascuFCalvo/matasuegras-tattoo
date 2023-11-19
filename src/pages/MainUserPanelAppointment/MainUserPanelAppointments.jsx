@@ -19,7 +19,7 @@ export const UserPanelAppointments = () => {
   const [nameToFilter, setNameToFilter] = useState();
 
   useEffect(() => {
-    if (!rdxUserData.credentials || !rdxUserData.credentials.token) {
+    if (!rdxUserData.credentials.token) {
       console.log("No estás logeado");
     } else {
       const decoded = jwtDecode(rdxUserData.credentials.token);
@@ -93,7 +93,7 @@ export const UserPanelAppointments = () => {
     let body = { id: appointment.id };
     console.log(body);
     alert(`vamos a borrar la id ${appointment.id}`);
-    deleteAnAppointment(body)
+    deleteAnAppointment(body,rdxUserData.credentials.token)
       .then((response) => {
         console.log(response);
         alert(`cita eliminada`);

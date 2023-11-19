@@ -9,7 +9,7 @@ export const registerUser = async (body) => {
 };
 
 export const createAppointment = async (body,token) => {
-  console.log(body)
+  
    return await axios.post(`http://localhost:4000/appointments/create`, body,
    {headers: {
        Authorization: `Bearer ${token}`,
@@ -25,7 +25,7 @@ export const getTattooArtist = async () => {
 };
 
 export const getAllUsers = async (token) => {
-  console.log(token)
+  
   return await axios.get(`http://localhost:4000/blackAlien/getUsers` ,{headers: {
     Authorization: `Bearer ${token}`,
   },
@@ -47,11 +47,15 @@ export const getAppointmentsAsATattooArtist= async (body) => {
 
 export const deleteAUser= async (id) => {
   
-  return await axios.delete(`http://localhost:4000/blackAlien/deleteuser`, {data : { id: id}})
+  return await axios.delete(`http://localhost:4000/blackAlien/deleteuser`, {data : { id: id}}
+  )
 }
 
-export const deleteAnAppointment= async (id) => {
-  return await axios.delete(`http://localhost:4000/appointments/delete`, {data : { id: id}})
+export const deleteAnAppointment= async (id, token) => {
+  return await axios.delete(`http://localhost:4000/appointments/delete`, {data : { id: id}},{headers: {
+    Authorization: `Bearer ${token}`,
+  },
+})
 }
 
 export const updateAnAppointment= async (body) => {
