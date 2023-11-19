@@ -54,7 +54,7 @@ export const EditAppointment = ({ selected, visibility, setVisibility }) => {
    
     
       
-      updateAnAppointment(body)
+      updateAnAppointment(body,rdxUserData.credentials.token)
         .then((resultado) => {
           console.log(resultado);
           alert ("cita actualizada")
