@@ -51,6 +51,8 @@ export const SuperAdminUsers = () => {
     setIdToEdit(id);
     setNameToSend(user_name);
     setIsEditPanelModalVisible(true);
+
+    
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;

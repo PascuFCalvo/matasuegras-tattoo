@@ -23,12 +23,14 @@ export const getTattooArtist = async () => {
   return await axios.get(`http://localhost:4000/public/tattooArtists`);
 };
 
-export const getAllUsers = async (token) => {
-  return await axios.get(`http://localhost:4000/blackAlien/getUsers`, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const getAllUsers = async () => {
+  return await axios.get(`http://localhost:4000/blackAlien/getUsers`, 
+  // {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // }
+  );
 };
 export const getAppointments = async (token) => {
   return await axios.get(`http://localhost:4000/blackAlien/getAppointments`, {
@@ -73,12 +75,14 @@ export const deleteAnAppointment = async (id, token) => {
   );
   };
 
-export const updateAnAppointment = async (body, token) => {
-  return await axios.put(`http://localhost:4000/appointments/update`, body, {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const updateAnAppointment = async (body) => {
+  return await axios.put(`http://localhost:4000/appointments/update`, body, 
+  // {
+  //   headers: {
+  //     Authorization: `Bearer ${token}`,
+  //   },
+  // }
+  );
 };
 
 export const myDetailAppointments = async (body, token) => {

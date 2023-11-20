@@ -65,7 +65,6 @@ export const EditProfileSuperAdmin = ({
       .then((resultado) => {
         console.log(resultado);
         alert("Usuario actualizado");
-        navigate("/superAdmin/superAdminUsers");
       })
       .catch((error) => console.log(error));
 
