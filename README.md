@@ -82,6 +82,12 @@ Embed a Youtube.
 
 Conexion a Redes sociales.
 
+<br></br>  
+
+### Repositorio donde esta el backend:
+https://github.com/PascuFCalvo/tatto_studio_backend
+<br></br>  
+
 
 
 
@@ -170,21 +176,28 @@ Unas pocas muestras del responsive de la pagina
 
 
 
-### Observaciones
+### Observaciones.
 
-- ��Ha sido un trabajo durisimo, aun con todas las ayudas al alcance, Stack overflow, youtube, ChatGPt...han sido dos semanas de dedicacion plena a esto, al menos espero que os guste :).<br></br>
-
+- ��Ha sido un trabajo durisimo, aun con todas las ayudas al alcance, Stack overflow, youtube, ChatGPt...han sido dos semanas de dedicacion plena a esto, al menos espero que os guste :).
 - ��Todo el codigo ha sido creado en em's.
 - ��Boton back to top en la vista main
 - ��Necesito mas tiempo para asimilar muchos trozos de codigo bien, mucho codigo copiapega de tutoriales de youtube/stackoverflow.
-- ��Ahora mismo el backend no esta todo lo seguro que deberia, tengo que activar algunos middlewares, pero son las 19:00 de un domingo y no quiero tocar nada.
+
 
 
 <br>
 
+### Bugs conocidos.
 
-### Cambios pendientes
+- ��Cuando editas tu perfil de usuario, tienes que volver a logearte para que se te actualice la informacion del token y en la barra del navbar login aparezca tu nuevo nombre.
+- ��Pequeño fallo en el hover de los tatuadores que no muestra los nombres completamente cenrados.
+- ��Cuando editas usuarios no aparece el div donde te indica la palabra PHONE:
 
+<br>
+
+### Cambios y añadidods pendientes para futuras versiones.
+
+- ��Añadir validacion de fechas para no poder elegir fechas repetidas
 - ��Todos los alerts han de ser modales en la version definitiva.
 - ��Mejorar el responsive.
 - ��Mejorar la edicion de campos con mas opciones.
