@@ -42,7 +42,7 @@ export const EditProfileUser = ({ setVisibility }) => {
           console.error("Error fetching users artist:", error);
         });
     }
-  }, [users]);
+  }, [users, rdxUserData.credentials.token]);
 
   useEffect(() => {
     const filterProfile = () => {
@@ -77,9 +77,12 @@ export const EditProfileUser = ({ setVisibility }) => {
       .then((results) => {
         console.log(results);
 
-        alert("Usuario actualizado");
+        // Actualizar el token en el estado de Redux si es necesario
+        if (results[1].data.newToken) {
+          dispatch(login({ token: results[1].data.newToken }));
+        }
 
-        setTimeout(() => {}, 1000);
+        alert("Usuario actualizado");
       })
       .catch((error) => {
         console.log(error);

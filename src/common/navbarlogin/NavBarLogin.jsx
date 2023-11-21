@@ -10,25 +10,31 @@ export const NavbarLogin = () => {
   const dispatch = useDispatch();
   const rdxUserData = useSelector(userData);
 
+  const [token, setToken] = useState(rdxUserData.credentials.token);
+
   let [nombreBoton, setNombreBoton] = useState();
 
   useEffect(() => {
-    if (!rdxUserData.credentials.token) {
+    setToken(rdxUserData.credentials.token);
+  }, [rdxUserData.credentials.token]);
+
+  useEffect(() => {
+    if (!token) {
       console.log("No estás logeado");
     } else {
       navigate("/");
-      const decoded = jwtDecode(rdxUserData.credentials.token);
+      const decoded = jwtDecode(token);
       dispatch(login(decoded));
       setNombreBoton(decoded.user_name);
     }
-  }, [dispatch, rdxUserData.credentials.token]);
+  }, [token]);
 
   const handleLogout = () => {
-    dispatch(logout()); // Dispatch the logout action to clear user data
+    dispatch(logout());
     navigate("/login");
   };
 
-  const botones = rdxUserData.credentials.token
+  const botones = token
     ? [
         {
           id: 1,
@@ -68,9 +74,7 @@ export const NavbarLogin = () => {
           </div>
         );
       })}
-      {rdxUserData.credentials.token && (
-        <div className="botonNavBarLogin2">{nombreBoton}</div>
-      )}
+      {token && <div className="botonNavBarLogin2">{nombreBoton}</div>}
     </div>
   );
 };

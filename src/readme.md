@@ -1,6 +1,5 @@
 <h1 align="center"> WIP WIP WIP WIP</h1>
 
-
 <h1 align="center"> MATASUEGRAS TATTOO ESTUDIO</h1>
 ​
 ​
@@ -18,9 +17,6 @@ Desarrollada como formacion del Bootcamp de Full Stack Developer de Geekshubs Ac
 ​
 <p align="center">JavaScript, HTML5, CSS3, Bootstrap, GIT y GitHUB
 
-
-
-
 <p align = "center" display= "flex">
   <tr >
     <td valign="top"><img src=https://cdn-icons-png.flaticon.com/512/5968/5968267.png width="55"></td>
@@ -33,25 +29,25 @@ Desarrollada como formacion del Bootcamp de Full Stack Developer de Geekshubs Ac
       <td valign="top"><img src="https://cdn.icon-icons.com/icons2/3913/PNG/512/openai_logo_icon_248315.png" width="50"></td>
       <td valign="top"><img src="https://banner2.cleanpng.com/20180531/sas/kisspng-bootstrap-react-software-framework-javascript-fron-5b0f9b1ab26fd7.9058729715277494027309.jpg" width="70"></td>
       <td valign="top"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Flag_of_India.svg/1280px-Flag_of_India.svg.png" width="60"></td>
-  
-  
-  
-
 
 
 ​<p align= "center"><a href = "https://pascufcalvo.github.io/FSDVlcWeek3-4/index.html">CLICK TO PLAY</a></p>
-                   
+
 ​
+
 ## Tabla de contenidos
+
 ​
 
 - [👩🏻‍💻 Descripción del proyecto]
 - [🔍 Observaciones]
 - [⚖️ Licencia y Copyright]
 - [📚Instrucciones]
-​
-​
+  ​
+  ​
+
 ### Descripción
+
 ​
 Quinto proyecto creado durante la semana 9 y 10 del bootcamp, consiste en una web completamente funcional de un estudio de tatuajes. Tanto a nivel de frontend como de backend.
 
@@ -79,14 +75,10 @@ API de instagram.
 
 Conexion a Redes sociales.
 
-
-
-
-
-
 ## Aqui las diferentes vistas del juego:
 
 ###### Menu principal:
+
 Vista principal del estudio
 Tiene scroll hacia abajo para ir viendo todas las secciones
 
@@ -94,12 +86,14 @@ Tiene scroll hacia abajo para ir viendo todas las secciones
 <img src = "./images/readme/VistaInferior.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### El Estudio
+
 Vista del estudio
 
 <img src = "./images/readme/Estudio1.jpg" width = "600px" alt ="Foto de la vista principal">
 <img src = "./images/readme/Estudio2.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### Tatuadores
+
 Vista de los tatuadores
 
 <img src = "./images/readme/Tatuadores1.jpg" width = "600px" alt ="Foto de la vista principal">
@@ -107,81 +101,89 @@ Vista de los tatuadores
 <img src = "./images/readme/Tatuadores3.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### Galeria
+
 Galeria de tattoos
 
 <img src = "./images/readme/Galeria.jpg" width = "600px" alt ="Foto de la vista principal">
 
 ###### Contacto
+
 Formulario de contacto
 <img src = "./images/readme/Contacto.jpg" width = "600px" alt ="Foto de la vista principal">
 
-
 ###### Citas
+
 Vista del crador de citas
 
 <img src = "./images/readme/Appointment.jpg" width = "600px" alt ="Vista del Login">
 
 ###### Login
+
 Vista del Login
 
 <img src = "./images/readme/Login.jpg" width = "600px" alt ="Vista del Login">
 
 ###### Register
+
 Vista del Register
 
 <img src = "./images/readme/Registro.jpg" width = "600px" alt ="Vista del Register">
 
 ###### LogOut
+
 Vista del logout
 
 <img src = "./resources/tutorial.jpg" width = "300px" alt ="Vista del logout">
 
 ###### Panel de usuario
+
 Vista del panel de usuario
 
 <img src = "./resources/tutorial.jpg" width = "300px" alt ="Vista del panel de usuario">
 
 ###### Panel de tatuador
+
 Vista del panel de tatuador
 
 <img src = "./resources/tutorial.jpg" width = "300px" alt ="Vista del panel de tatuador">
 
 ###### Panel de admin
+
 Vista del panel de admin
 
 <img src = "./images/readme/Panel admin.jpg" width = "600px" alt ="Foto de la vista principal">
 <img src = "./images/readme/Panel admin citas.jpg" width = "600px" alt ="Foto de la vista principal">
 <img src = "./images/readme/Panel admin users.jpg" width = "600px" alt ="Foto de la vista principal">
 
-
-
-
-
-
 ### Observaciones
+
 ​
+
 - ��Todo el codigo ha sido creado en em's.
 - ��Me gustaria añadir mas hooks para estilos.
 - ��Boton back to top en la vista main
 - ��Necesito mas tiempo para asimilar muchos trozos de codigo bien.
 
-
-
 <br>
 <br>
 
+### Bugs conocidos
 
+- ��Cuando editas tu perfil de usuario, tienes que volver a logearte para que se te actualice la informacion del token y en la barra del navbar login aparezca tu nuevo nombre.
+- ��Pequeño fallo en el hover de los tatuadores que no muestra los nombres completamente cenrados.
 
 ### Cambios pendientes
-- ��Me gustaria hacer el tablero dinamico mediante drag & drop.
-- ��Mejorar el responsive
 
+- ��Hay que recorzar el backend con mas auths, muchos estan desactivados para ver que el codigo funciona y hay que reactivarlos y ver que reciban bien el token.
+- ��Mejorar el responsive
 
 ### Agradecimientos
 
 A toda esos heroes anonimos que suben trocitos de codigo a internet y hace la vida mucho mas facil a los estudintes.
 ​
 ​
+
 ### Licencia y copyright
+
 📝 La licencia utilizada es una MIT License.
 Este proyecto ha sido realizado pixel a pixel por mi, Pascual Fernandez, para completar la segunda semana del BootCamp Full Stack de GeeksHubs Academy Valencia.
